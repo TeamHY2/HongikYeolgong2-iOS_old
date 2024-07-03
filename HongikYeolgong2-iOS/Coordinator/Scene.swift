@@ -12,3 +12,18 @@ enum SceneType: Hashable {
     case home
     case menu
 }
+
+enum FullScreenType: String, Identifiable {
+    var id: String {
+        self.rawValue
+    }
+    
+    case test
+}
+enum SheetType: String, Identifiable {
+    var id: String {
+        self.rawValue
+    }
+    
+    case test
+}

@@ -29,7 +29,7 @@
 		8274CF322C33D59400FBFA9D /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		8274CF342C33D6C200FBFA9D /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
 		8274CF362C33D6D600FBFA9D /* SceneCoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinatorType.swift; sourceTree = "<group>"; };
-		8274CF382C33DB1000FBFA9D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = "HongikYeolgong2-iOS/Coordinator/HomeView.swift"; sourceTree = SOURCE_ROOT; };
+		8274CF382C33DB1000FBFA9D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = "HongikYeolgong2-iOS/Scene/Container/Home/HomeView.swift"; sourceTree = SOURCE_ROOT; };
 		8274CF3A2C33DBC800FBFA9D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8274CF3C2C33DE2300FBFA9D /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		82D4D6102C327BDC00A92327 /* HongikYeolgong2-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HongikYeolgong2-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,26 +110,11 @@
 		5E5B0BCB2C3287A900936435 /* Container */ = {
 			isa = PBXGroup;
 			children = (
-				5E5B0BCF2C32893E00936435 /* Ready */,
-				5E5B0BCD2C3288DE00936435 /* Calendar */,
-				5E5B0BCC2C3287D800936435 /* Home */,
+				825665772C351B5A0018C799 /* Calendar */,
+				825665762C351B540018C799 /* Ready */,
+				825665752C351B170018C799 /* Home */,
 			);
 			path = Container;
-			sourceTree = "<group>";
-		};
-		5E5B0BCC2C3287D800936435 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				8274CF382C33DB1000FBFA9D /* HomeView.swift */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
-		5E5B0BCD2C3288DE00936435 /* Calendar */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Calendar;
 			sourceTree = "<group>";
 		};
 		5E5B0BCE2C32890300936435 /* Menu */ = {
@@ -140,11 +125,26 @@
 			path = Menu;
 			sourceTree = "<group>";
 		};
-		5E5B0BCF2C32893E00936435 /* Ready */ = {
+		825665752C351B170018C799 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				8274CF382C33DB1000FBFA9D /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		825665762C351B540018C799 /* Ready */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Ready;
+			sourceTree = "<group>";
+		};
+		825665772C351B5A0018C799 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 		8274CF2F2C33D3DB00FBFA9D /* Coordinator */ = {
