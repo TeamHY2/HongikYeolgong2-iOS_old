@@ -10,6 +10,13 @@
 		5E5B0BD12C3289B800936435 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5B0BD02C3289B800936435 /* UIFont+.swift */; };
 		5E5B0BD32C3289D500936435 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5B0BD22C3289D500936435 /* UIColor+.swift */; };
 		5E5B0BD52C328A1000936435 /* CustomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5B0BD42C328A1000936435 /* CustomText.swift */; };
+		825665792C35202E0018C799 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825665782C35202E0018C799 /* MenuViewModel.swift */; };
+		8274CF332C33D59400FBFA9D /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8274CF322C33D59400FBFA9D /* Scene.swift */; };
+		8274CF352C33D6C200FBFA9D /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8274CF342C33D6C200FBFA9D /* SceneCoordinator.swift */; };
+		8274CF372C33D6D600FBFA9D /* SceneCoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8274CF362C33D6D600FBFA9D /* SceneCoordinatorType.swift */; };
+		8274CF392C33DB1000FBFA9D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8274CF382C33DB1000FBFA9D /* HomeView.swift */; };
+		8274CF3B2C33DBC800FBFA9D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8274CF3A2C33DBC800FBFA9D /* LoginView.swift */; };
+		8274CF3D2C33DE2300FBFA9D /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8274CF3C2C33DE2300FBFA9D /* MenuView.swift */; };
 		82D4D6142C327BDC00A92327 /* HongikYeolgong2_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D4D6132C327BDC00A92327 /* HongikYeolgong2_iOSApp.swift */; };
 		82D4D6162C327BDC00A92327 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D4D6152C327BDC00A92327 /* ContentView.swift */; };
 		82D4D6182C327BDF00A92327 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82D4D6172C327BDF00A92327 /* Assets.xcassets */; };
@@ -20,6 +27,13 @@
 		5E5B0BD02C3289B800936435 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		5E5B0BD22C3289D500936435 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		5E5B0BD42C328A1000936435 /* CustomText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomText.swift; sourceTree = "<group>"; };
+		825665782C35202E0018C799 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
+		8274CF322C33D59400FBFA9D /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
+		8274CF342C33D6C200FBFA9D /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
+		8274CF362C33D6D600FBFA9D /* SceneCoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinatorType.swift; sourceTree = "<group>"; };
+		8274CF382C33DB1000FBFA9D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = "HongikYeolgong2-iOS/Scene/Container/Home/HomeView.swift"; sourceTree = SOURCE_ROOT; };
+		8274CF3A2C33DBC800FBFA9D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		8274CF3C2C33DE2300FBFA9D /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		82D4D6102C327BDC00A92327 /* HongikYeolgong2-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HongikYeolgong2-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82D4D6132C327BDC00A92327 /* HongikYeolgong2_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HongikYeolgong2_iOSApp.swift; sourceTree = "<group>"; };
 		82D4D6152C327BDC00A92327 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -83,6 +97,7 @@
 		5E5B0BC92C32877100936435 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				8274CF3A2C33DBC800FBFA9D /* LoginView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -97,39 +112,52 @@
 		5E5B0BCB2C3287A900936435 /* Container */ = {
 			isa = PBXGroup;
 			children = (
-				5E5B0BCF2C32893E00936435 /* Ready */,
-				5E5B0BCD2C3288DE00936435 /* Calendar */,
-				5E5B0BCC2C3287D800936435 /* Home */,
+				825665772C351B5A0018C799 /* Calendar */,
+				825665762C351B540018C799 /* Ready */,
+				825665752C351B170018C799 /* Home */,
 			);
 			path = Container;
 			sourceTree = "<group>";
 		};
-		5E5B0BCC2C3287D800936435 /* Home */ = {
+		5E5B0BCE2C32890300936435 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				8274CF3C2C33DE2300FBFA9D /* MenuView.swift */,
+				825665782C35202E0018C799 /* MenuViewModel.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		825665752C351B170018C799 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				8274CF382C33DB1000FBFA9D /* HomeView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
 		};
-		5E5B0BCD2C3288DE00936435 /* Calendar */ = {
+		825665762C351B540018C799 /* Ready */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Ready;
+			sourceTree = "<group>";
+		};
+		825665772C351B5A0018C799 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Calendar;
 			sourceTree = "<group>";
 		};
-		5E5B0BCE2C32890300936435 /* Menu */ = {
+		8274CF2F2C33D3DB00FBFA9D /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				8274CF322C33D59400FBFA9D /* Scene.swift */,
+				8274CF342C33D6C200FBFA9D /* SceneCoordinator.swift */,
+				8274CF362C33D6D600FBFA9D /* SceneCoordinatorType.swift */,
 			);
-			path = Menu;
-			sourceTree = "<group>";
-		};
-		5E5B0BCF2C32893E00936435 /* Ready */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Ready;
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		82D4D6072C327BDC00A92327 = {
@@ -153,6 +181,7 @@
 			children = (
 				82D4D6132C327BDC00A92327 /* HongikYeolgong2_iOSApp.swift */,
 				82D4D6152C327BDC00A92327 /* ContentView.swift */,
+				8274CF2F2C33D3DB00FBFA9D /* Coordinator */,
 				5E5B0BC82C3286EB00936435 /* Scene */,
 				5E5B0BC72C3286C500936435 /* Font */,
 				5E5B0BC62C3286A600936435 /* Extension */,
@@ -242,10 +271,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8274CF392C33DB1000FBFA9D /* HomeView.swift in Sources */,
 				82D4D6162C327BDC00A92327 /* ContentView.swift in Sources */,
+				8274CF372C33D6D600FBFA9D /* SceneCoordinatorType.swift in Sources */,
+				825665792C35202E0018C799 /* MenuViewModel.swift in Sources */,
 				5E5B0BD32C3289D500936435 /* UIColor+.swift in Sources */,
 				5E5B0BD12C3289B800936435 /* UIFont+.swift in Sources */,
+				8274CF332C33D59400FBFA9D /* Scene.swift in Sources */,
 				82D4D6142C327BDC00A92327 /* HongikYeolgong2_iOSApp.swift in Sources */,
+				8274CF3D2C33DE2300FBFA9D /* MenuView.swift in Sources */,
+				8274CF352C33D6C200FBFA9D /* SceneCoordinator.swift in Sources */,
+				8274CF3B2C33DBC800FBFA9D /* LoginView.swift in Sources */,
 				5E5B0BD52C328A1000936435 /* CustomText.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
