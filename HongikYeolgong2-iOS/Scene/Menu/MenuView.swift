@@ -10,10 +10,12 @@ import SwiftUI
 struct MenuView: View {
     @StateObject private var loginManager = LoginManager.shared
     @EnvironmentObject private var coordinator: SceneCoordinator
+    @ObservedObject var viewModel: MenuViewModel
     
     var body: some View {
         VStack {
             Text("Menu View ⚙️")
+            Text("\(viewModel.title)")
             
             Button(action: {
                 coordinator.popToRoot()
@@ -26,5 +28,5 @@ struct MenuView: View {
 }
 
 #Preview {
-    MenuView()
+    MenuView(viewModel: MenuViewModel())
 }

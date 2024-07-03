@@ -15,7 +15,7 @@ struct HomeView: View {
             VStack {
                 Text("Home View 🏠")
                 Button(action: {
-                    coordinator.push(.menu)
+                    coordinator.push(.menu(MenuViewModel()))
                 }, label: {
                     Text("Go to menu")
                 })
@@ -31,7 +31,7 @@ struct HomeView: View {
                 }) {
                     Text("FullScreen")
                 }
-            }
+            }            
             .navigationDestination(for: SceneType.self) { scene in
                 coordinator.buildScreen(scene: scene)
             }

@@ -47,8 +47,8 @@ final class SceneCoordinator: ObservableObject {
             HomeView()
         case .loginOnboarding:
             LoginView()
-        case .menu:
-            MenuView()        
+        case .menu(let viewModel):
+            MenuView(viewModel: viewModel)
         }
     }
     
