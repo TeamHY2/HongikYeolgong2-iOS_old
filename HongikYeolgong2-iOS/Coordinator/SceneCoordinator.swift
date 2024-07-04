@@ -47,8 +47,6 @@ final class SceneCoordinator: ObservableObject {
             HomeView()
         case .loginOnboarding:
             LoginView()
-        case .menu(let viewModel):
-            MenuView(viewModel: viewModel)
         }
     }
     
@@ -63,8 +61,8 @@ final class SceneCoordinator: ObservableObject {
     @ViewBuilder
     func buildScreen(fullScreen: FullScreenType) -> some View {
         switch fullScreen {
-        case .test:
-            Text("FullScreen test!")
+        case .menu:
+            MenuView()
         }
     }
 }
