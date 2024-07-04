@@ -7,9 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5E5B0BD12C3289B800936435 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5B0BD02C3289B800936435 /* UIFont+.swift */; };
 		5E5B0BD32C3289D500936435 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5B0BD22C3289D500936435 /* UIColor+.swift */; };
 		5E5B0BD52C328A1000936435 /* CustomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5B0BD42C328A1000936435 /* CustomText.swift */; };
+		5E5CD43F2C3698A4002CE244 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5CD43E2C3698A4002CE244 /* CustomButton.swift */; };
+		5E5CD4412C369994002CE244 /* UIScreen+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5CD4402C369994002CE244 /* UIScreen+.swift */; };
+		5E89D7802C357FF700C9CB71 /* SUITE-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5E89D7792C357FF700C9CB71 /* SUITE-Regular.otf */; };
+		5E89D7812C357FF700C9CB71 /* SUITE-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5E89D77A2C357FF700C9CB71 /* SUITE-Heavy.otf */; };
+		5E89D7822C357FF700C9CB71 /* SUITE-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5E89D77B2C357FF700C9CB71 /* SUITE-ExtraBold.otf */; };
+		5E89D7832C357FF700C9CB71 /* SUITE-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5E89D77C2C357FF700C9CB71 /* SUITE-SemiBold.otf */; };
+		5E89D7842C357FF700C9CB71 /* SUITE-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5E89D77D2C357FF700C9CB71 /* SUITE-Light.otf */; };
+		5E89D7852C357FF700C9CB71 /* SUITE-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5E89D77E2C357FF700C9CB71 /* SUITE-Medium.otf */; };
+		5E89D7862C357FF700C9CB71 /* SUITE-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5E89D77F2C357FF700C9CB71 /* SUITE-Bold.otf */; };
+		5E89D7902C35800500C9CB71 /* Pretendard-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5E89D7872C35800500C9CB71 /* Pretendard-ExtraLight.otf */; };
+		5E89D7912C35800500C9CB71 /* Pretendard-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5E89D7882C35800500C9CB71 /* Pretendard-Thin.otf */; };
+		5E89D7922C35800500C9CB71 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5E89D7892C35800500C9CB71 /* Pretendard-SemiBold.otf */; };
+		5E89D7932C35800500C9CB71 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5E89D78A2C35800500C9CB71 /* Pretendard-Light.otf */; };
+		5E89D7942C35800500C9CB71 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5E89D78B2C35800500C9CB71 /* Pretendard-ExtraBold.otf */; };
+		5E89D7952C35800500C9CB71 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5E89D78C2C35800500C9CB71 /* Pretendard-Bold.otf */; };
+		5E89D7962C35800500C9CB71 /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5E89D78D2C35800500C9CB71 /* Pretendard-Black.otf */; };
+		5E89D7972C35800500C9CB71 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5E89D78E2C35800500C9CB71 /* Pretendard-Medium.otf */; };
+		5E89D7982C35800500C9CB71 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5E89D78F2C35800500C9CB71 /* Pretendard-Regular.otf */; };
+		5E89D79A2C35855F00C9CB71 /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E89D7992C35855F00C9CB71 /* Font+.swift */; };
 		825665792C35202E0018C799 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825665782C35202E0018C799 /* MenuViewModel.swift */; };
 		8274CF332C33D59400FBFA9D /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8274CF322C33D59400FBFA9D /* Scene.swift */; };
 		8274CF352C33D6C200FBFA9D /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8274CF342C33D6C200FBFA9D /* SceneCoordinator.swift */; };
@@ -24,9 +42,28 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5E5B0BD02C3289B800936435 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		5E5B0BD22C3289D500936435 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		5E5B0BD42C328A1000936435 /* CustomText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomText.swift; sourceTree = "<group>"; };
+		5E5CD43E2C3698A4002CE244 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		5E5CD4402C369994002CE244 /* UIScreen+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+.swift"; sourceTree = "<group>"; };
+		5E89D7712C356E5500C9CB71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		5E89D7792C357FF700C9CB71 /* SUITE-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SUITE-Regular.otf"; path = "../../../../Downloads/SUITE-otf/SUITE-Regular.otf"; sourceTree = "<group>"; };
+		5E89D77A2C357FF700C9CB71 /* SUITE-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SUITE-Heavy.otf"; path = "../../../../Downloads/SUITE-otf/SUITE-Heavy.otf"; sourceTree = "<group>"; };
+		5E89D77B2C357FF700C9CB71 /* SUITE-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SUITE-ExtraBold.otf"; path = "../../../../Downloads/SUITE-otf/SUITE-ExtraBold.otf"; sourceTree = "<group>"; };
+		5E89D77C2C357FF700C9CB71 /* SUITE-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SUITE-SemiBold.otf"; path = "../../../../Downloads/SUITE-otf/SUITE-SemiBold.otf"; sourceTree = "<group>"; };
+		5E89D77D2C357FF700C9CB71 /* SUITE-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SUITE-Light.otf"; path = "../../../../Downloads/SUITE-otf/SUITE-Light.otf"; sourceTree = "<group>"; };
+		5E89D77E2C357FF700C9CB71 /* SUITE-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SUITE-Medium.otf"; path = "../../../../Downloads/SUITE-otf/SUITE-Medium.otf"; sourceTree = "<group>"; };
+		5E89D77F2C357FF700C9CB71 /* SUITE-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SUITE-Bold.otf"; path = "../../../../Downloads/SUITE-otf/SUITE-Bold.otf"; sourceTree = "<group>"; };
+		5E89D7872C35800500C9CB71 /* Pretendard-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Pretendard-ExtraLight.otf"; path = "../../../../Downloads/Pretendard-1.3.9 (1)/public/static/Pretendard-ExtraLight.otf"; sourceTree = "<group>"; };
+		5E89D7882C35800500C9CB71 /* Pretendard-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Pretendard-Thin.otf"; path = "../../../../Downloads/Pretendard-1.3.9 (1)/public/static/Pretendard-Thin.otf"; sourceTree = "<group>"; };
+		5E89D7892C35800500C9CB71 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Pretendard-SemiBold.otf"; path = "../../../../Downloads/Pretendard-1.3.9 (1)/public/static/Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		5E89D78A2C35800500C9CB71 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Pretendard-Light.otf"; path = "../../../../Downloads/Pretendard-1.3.9 (1)/public/static/Pretendard-Light.otf"; sourceTree = "<group>"; };
+		5E89D78B2C35800500C9CB71 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Pretendard-ExtraBold.otf"; path = "../../../../Downloads/Pretendard-1.3.9 (1)/public/static/Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
+		5E89D78C2C35800500C9CB71 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Pretendard-Bold.otf"; path = "../../../../Downloads/Pretendard-1.3.9 (1)/public/static/Pretendard-Bold.otf"; sourceTree = "<group>"; };
+		5E89D78D2C35800500C9CB71 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Pretendard-Black.otf"; path = "../../../../Downloads/Pretendard-1.3.9 (1)/public/static/Pretendard-Black.otf"; sourceTree = "<group>"; };
+		5E89D78E2C35800500C9CB71 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Pretendard-Medium.otf"; path = "../../../../Downloads/Pretendard-1.3.9 (1)/public/static/Pretendard-Medium.otf"; sourceTree = "<group>"; };
+		5E89D78F2C35800500C9CB71 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Pretendard-Regular.otf"; path = "../../../../Downloads/Pretendard-1.3.9 (1)/public/static/Pretendard-Regular.otf"; sourceTree = "<group>"; };
+		5E89D7992C35855F00C9CB71 /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
 		825665782C35202E0018C799 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		8274CF322C33D59400FBFA9D /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		8274CF342C33D6C200FBFA9D /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
@@ -63,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				5E5B0BD42C328A1000936435 /* CustomText.swift */,
+				5E5CD43E2C3698A4002CE244 /* CustomButton.swift */,
 			);
 			path = CustomObject;
 			sourceTree = "<group>";
@@ -70,8 +108,9 @@
 		5E5B0BC62C3286A600936435 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				5E5B0BD02C3289B800936435 /* UIFont+.swift */,
+				5E89D7992C35855F00C9CB71 /* Font+.swift */,
 				5E5B0BD22C3289D500936435 /* UIColor+.swift */,
+				5E5CD4402C369994002CE244 /* UIScreen+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -79,6 +118,22 @@
 		5E5B0BC72C3286C500936435 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				5E89D78D2C35800500C9CB71 /* Pretendard-Black.otf */,
+				5E89D78C2C35800500C9CB71 /* Pretendard-Bold.otf */,
+				5E89D78B2C35800500C9CB71 /* Pretendard-ExtraBold.otf */,
+				5E89D7872C35800500C9CB71 /* Pretendard-ExtraLight.otf */,
+				5E89D78A2C35800500C9CB71 /* Pretendard-Light.otf */,
+				5E89D78E2C35800500C9CB71 /* Pretendard-Medium.otf */,
+				5E89D78F2C35800500C9CB71 /* Pretendard-Regular.otf */,
+				5E89D7892C35800500C9CB71 /* Pretendard-SemiBold.otf */,
+				5E89D7882C35800500C9CB71 /* Pretendard-Thin.otf */,
+				5E89D77F2C357FF700C9CB71 /* SUITE-Bold.otf */,
+				5E89D77B2C357FF700C9CB71 /* SUITE-ExtraBold.otf */,
+				5E89D77A2C357FF700C9CB71 /* SUITE-Heavy.otf */,
+				5E89D77D2C357FF700C9CB71 /* SUITE-Light.otf */,
+				5E89D77E2C357FF700C9CB71 /* SUITE-Medium.otf */,
+				5E89D7792C357FF700C9CB71 /* SUITE-Regular.otf */,
+				5E89D77C2C357FF700C9CB71 /* SUITE-SemiBold.otf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -179,6 +234,7 @@
 		82D4D6122C327BDC00A92327 /* HongikYeolgong2-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				5E89D7712C356E5500C9CB71 /* Info.plist */,
 				82D4D6132C327BDC00A92327 /* HongikYeolgong2_iOSApp.swift */,
 				82D4D6152C327BDC00A92327 /* ContentView.swift */,
 				8274CF2F2C33D3DB00FBFA9D /* Coordinator */,
@@ -259,8 +315,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E89D7932C35800500C9CB71 /* Pretendard-Light.otf in Resources */,
+				5E89D7952C35800500C9CB71 /* Pretendard-Bold.otf in Resources */,
 				82D4D61B2C327BDF00A92327 /* Preview Assets.xcassets in Resources */,
+				5E89D7972C35800500C9CB71 /* Pretendard-Medium.otf in Resources */,
+				5E89D7942C35800500C9CB71 /* Pretendard-ExtraBold.otf in Resources */,
+				5E89D7802C357FF700C9CB71 /* SUITE-Regular.otf in Resources */,
+				5E89D7902C35800500C9CB71 /* Pretendard-ExtraLight.otf in Resources */,
+				5E89D7922C35800500C9CB71 /* Pretendard-SemiBold.otf in Resources */,
+				5E89D7862C357FF700C9CB71 /* SUITE-Bold.otf in Resources */,
+				5E89D7842C357FF700C9CB71 /* SUITE-Light.otf in Resources */,
+				5E89D7822C357FF700C9CB71 /* SUITE-ExtraBold.otf in Resources */,
+				5E89D7832C357FF700C9CB71 /* SUITE-SemiBold.otf in Resources */,
+				5E89D7812C357FF700C9CB71 /* SUITE-Heavy.otf in Resources */,
+				5E89D7982C35800500C9CB71 /* Pretendard-Regular.otf in Resources */,
 				82D4D6182C327BDF00A92327 /* Assets.xcassets in Resources */,
+				5E89D7912C35800500C9CB71 /* Pretendard-Thin.otf in Resources */,
+				5E89D7962C35800500C9CB71 /* Pretendard-Black.otf in Resources */,
+				5E89D7852C357FF700C9CB71 /* SUITE-Medium.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,14 +343,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E5CD43F2C3698A4002CE244 /* CustomButton.swift in Sources */,
 				8274CF392C33DB1000FBFA9D /* HomeView.swift in Sources */,
 				82D4D6162C327BDC00A92327 /* ContentView.swift in Sources */,
 				8274CF372C33D6D600FBFA9D /* SceneCoordinatorType.swift in Sources */,
 				825665792C35202E0018C799 /* MenuViewModel.swift in Sources */,
+				5E89D79A2C35855F00C9CB71 /* Font+.swift in Sources */,
 				5E5B0BD32C3289D500936435 /* UIColor+.swift in Sources */,
-				5E5B0BD12C3289B800936435 /* UIFont+.swift in Sources */,
 				8274CF332C33D59400FBFA9D /* Scene.swift in Sources */,
 				82D4D6142C327BDC00A92327 /* HongikYeolgong2_iOSApp.swift in Sources */,
+				5E5CD4412C369994002CE244 /* UIScreen+.swift in Sources */,
 				8274CF3D2C33DE2300FBFA9D /* MenuView.swift in Sources */,
 				8274CF352C33D6C200FBFA9D /* SceneCoordinator.swift in Sources */,
 				8274CF3B2C33DBC800FBFA9D /* LoginView.swift in Sources */,
@@ -419,6 +493,7 @@
 				DEVELOPMENT_TEAM = P4D4ZQC4YF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "HongikYeolgong2-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -449,6 +524,7 @@
 				DEVELOPMENT_TEAM = P4D4ZQC4YF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "HongikYeolgong2-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

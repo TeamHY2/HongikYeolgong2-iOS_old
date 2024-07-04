@@ -1,8 +1,15 @@
-//
-//  UIScreen+.swift
-//  HongikYeolgong2-iOS
-//
-//  Created by 변정훈 on 7/4/24.
-//
 
 import Foundation
+import UIKit
+
+extension UIScreen {
+    
+    static func UIWidth(_ iPhoneProMaxWidth: CGFloat) -> CGFloat {
+        return UIScreen.main.bounds.size.width * (iPhoneProMaxWidth/430)
+    }
+    
+    static func UIHeight(_ iPhoneProMaxHeight: CGFloat) -> CGFloat {
+        return UIScreen.main.bounds.size.height * (iPhoneProMaxHeight/932)
+    }
+    
+}
