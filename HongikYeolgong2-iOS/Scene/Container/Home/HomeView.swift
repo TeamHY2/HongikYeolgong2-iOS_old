@@ -13,25 +13,17 @@ struct HomeView: View {
     var body: some View {
         NavigationStack(path: $coordinator.paths) {
             VStack {
-                Text("Home View 🏠")
                 Button(action: {
-                    coordinator.push(.menu(MenuViewModel()))
+                    coordinator.present(fullScreen: .menu)
                 }, label: {
-                    Text("Go to menu")
+                    Text("Go to menu ⚙️")
                 })
-                
-                Button(action: {
-                    coordinator.present(sheet: .test)
-                }) {
-                    Text("Sheet")
-                }
-                
-                Button(action: {
-                    coordinator.present(fullScreen: .test)
-                }) {
-                    Text("FullScreen")
-                }
-            }            
+            }
+            .customNavigation(left: {
+                Text("홍익열공이")
+            }, right: {
+                Image(systemName: "line.3.horizontal")
+            })
             .navigationDestination(for: SceneType.self) { scene in
                 coordinator.buildScreen(scene: scene)
             }

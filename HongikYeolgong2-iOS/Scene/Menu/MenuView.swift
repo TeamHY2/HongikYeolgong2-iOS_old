@@ -8,25 +8,22 @@
 import SwiftUI
 
 struct MenuView: View {
-    @StateObject private var loginManager = LoginManager.shared
     @EnvironmentObject private var coordinator: SceneCoordinator
-    @ObservedObject var viewModel: MenuViewModel
     
     var body: some View {
         VStack {
-            Text("Menu View ⚙️")
-            Text("\(viewModel.title)")
-            
-            Button(action: {
-                coordinator.popToRoot()
-                loginManager.logout()
-            }, label: {
-                Text("Logout test")
-            })
+           Text("Menu View")
         }
+        .customNavigation(right: {
+            Button(action: {
+                coordinator.dismissFullScreenCover()
+            }, label: {
+                Image(systemName: "xmark")
+            })
+        })
     }
 }
 
 #Preview {
-    MenuView(viewModel: MenuViewModel())
+    MenuView()
 }
