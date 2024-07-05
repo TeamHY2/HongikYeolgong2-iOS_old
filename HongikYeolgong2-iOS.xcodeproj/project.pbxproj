@@ -116,12 +116,9 @@
 			children = (
 				5E89D7992C35855F00C9CB71 /* Font+.swift */,
 				5E5B0BD22C3289D500936435 /* UIColor+.swift */,
-
 				5E5CD4402C369994002CE244 /* UIScreen+.swift */,
-
 				825668A62C367F130066B216 /* View+.swift */,
 				825668A82C36855A0066B216 /* UINavigationController+.swift */,
-
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -363,11 +360,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-
 				5E5CD43F2C3698A4002CE244 /* CustomButton.swift in Sources */,
-
 				825668A92C36855A0066B216 /* UINavigationController+.swift in Sources */,
-
 				8274CF392C33DB1000FBFA9D /* HomeView.swift in Sources */,
 				82D4D6162C327BDC00A92327 /* ContentView.swift in Sources */,
 				8274CF372C33D6D600FBFA9D /* SceneCoordinatorType.swift in Sources */,
@@ -514,17 +508,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HongikYeolgong2-iOS/Preview Content\"";
-				DEVELOPMENT_TEAM = P4D4ZQC4YF;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = P4D4ZQC4YF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-
 				INFOPLIST_FILE = "HongikYeolgong2-iOS/Info.plist";
-
 				INFOPLIST_KEY_CFBundleDisplayName = "홍익열공이";
-
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -539,6 +532,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamHY2.HongikYeolgong2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = hy2_Development;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -555,17 +549,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HongikYeolgong2-iOS/Preview Content\"";
-				DEVELOPMENT_TEAM = P4D4ZQC4YF;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = P4D4ZQC4YF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-
 				INFOPLIST_FILE = "HongikYeolgong2-iOS/Info.plist";
-
 				INFOPLIST_KEY_CFBundleDisplayName = "홍익열공이";
-
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -580,6 +573,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamHY2.HongikYeolgong2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = hy2_Development;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
