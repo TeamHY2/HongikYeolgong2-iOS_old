@@ -10,6 +10,7 @@ import Foundation
 enum SceneType: Hashable {
     case loginOnboarding
     case home
+    case menu
 }
 
 extension SceneType {
@@ -23,6 +24,8 @@ extension SceneType {
             hasher.combine("home")
         case .loginOnboarding:
             hasher.combine("login")
+        case .menu:
+            hasher.combine("menu")
         }
     }
 }
@@ -32,7 +35,7 @@ enum FullScreenType: String, Identifiable {
         self.rawValue
     }
     
-    case menu
+    case test
 }
 enum SheetType: String, Identifiable {
     var id: String {

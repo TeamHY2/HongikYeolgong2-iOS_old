@@ -35,11 +35,12 @@ struct ContentView: View {
             // 이곳에서 로그인 상태를 체크 현재는 임시 변수를 사용합니다      
             switch loginManager.signStatus {
             case .sign:
-                HomeView()
+                HomeView()                    
             case .unSign:
                 LoginView()
             }
         }
+    
         
     }
 }

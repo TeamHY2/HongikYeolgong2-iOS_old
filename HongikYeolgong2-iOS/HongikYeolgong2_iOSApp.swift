@@ -14,7 +14,7 @@ struct HongikYeolgong2_iOSApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(coordinator)
+                .environmentObject(coordinator)                
         }
     }
 }

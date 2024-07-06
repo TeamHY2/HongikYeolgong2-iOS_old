@@ -12,12 +12,19 @@ struct LoginView: View {
     
     var body: some View {
         NavigationStack {
-            Text("Login View 🔒")
-            Button(action: {
-                loginManager.login()
-            }, label: {
-                Text("Login test")
-            })
+            ZStack {
+                Color(.customBackground)
+                    .ignoresSafeArea(.all)
+                
+                VStack {
+                    Button(action: {
+                        loginManager.login()
+                    }, label: {
+                        Text("Login test")
+                    })
+                    .foregroundColor(.white)
+                }
+            }
         }
     }
 }

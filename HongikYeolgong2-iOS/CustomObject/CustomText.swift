@@ -25,7 +25,7 @@ struct CustomText: View {
     
     var body: some View {
         Text(title)
-            .font(.custom(font.rawValue, fixedSize: textSize))
+            .font(.custom(font.rawValue, fixedSize: textSize))            
             .fontWeight(textWeight)
             .foregroundStyle(Color(textColor))
             .minimumScaleFactor(0.2)

@@ -12,13 +12,13 @@ struct MenuView: View {
     
     var body: some View {
         VStack {
-           Text("Menu View")
+           
         }
-        .customNavigation(right: {
+        .customNavigation(left: {
             Button(action: {
-                coordinator.dismissFullScreenCover()
+                coordinator.pop()
             }, label: {
-                Image(systemName: "xmark")
+                Image(.icBack)
             })
         })
     }
