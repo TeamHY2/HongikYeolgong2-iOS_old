@@ -13,7 +13,7 @@ struct HomeView: View {
     var body: some View {
         NavigationStack(path: $coordinator.paths) {
             VStack(spacing: 0) {
-                
+                Quote()                
             }
             .customNavigation(left: {
                 CustomText(font: .suite, title: "홍익열공이", textColor: .customGray100, textWeight: .semibold, textSize: 18)

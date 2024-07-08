@@ -14,13 +14,15 @@ struct CustomText: View {
     let textColor: UIColor
     let textWeight: Font.Weight
     let textSize: CGFloat
+    let textAlignment: TextAlignment
     
-    init(font: fontOption, title: String, textColor: UIColor, textWeight: Font.Weight, textSize: CGFloat) {
+    init(font: fontOption, title: String, textColor: UIColor, textWeight: Font.Weight, textSize: CGFloat, textAlignment: TextAlignment = .leading) {
         self.font = font
         self.title = title
         self.textColor = textColor
         self.textWeight = textWeight
         self.textSize = textSize
+        self.textAlignment = textAlignment
     }
     
     var body: some View {
@@ -29,7 +31,7 @@ struct CustomText: View {
             .fontWeight(textWeight)
             .foregroundStyle(Color(textColor))
             .minimumScaleFactor(0.2)
-            .multilineTextAlignment(.leading)
+            .multilineTextAlignment(textAlignment)
             .lineLimit(nil)
     }
 }
