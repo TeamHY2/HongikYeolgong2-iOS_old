@@ -14,19 +14,25 @@ struct HomeView: View {
     var body: some View {
         
         VStack(spacing: 0) {
+            Spacer()
+                .frame(height: isStart ? UIScreen.UIHeight(11) : UIScreen.UIHeight(43))
+            
             if isStart {
-                
+                TimeLapse()
             } else {
                 Quote()
-                    .padding(.top, UIScreen.UIHeight(43))
             }
-                        
-            HStack(spacing: 0) {
-                if isStart {
-                    CustomButton(action: {
-                        isStart = false
-                    }, font: .suite, title: "열람실 이용 종료", titleColor: .customGray100, backgroundColor: .customGray600, leading: 0, trailing: 0)
-                } else {
+            
+            Spacer()
+                .frame(height: isStart ? UIScreen.UIHeight(28) : UIScreen.UIHeight(120))
+            
+            if isStart {
+                CustomButton(action: {
+                    isStart = false
+                }, font: .suite, title: "열람실 이용 종료", titleColor: .customGray100, backgroundColor: .customGray600, leading: 0, trailing: 0)
+                
+            } else {
+                HStack {
                     CustomButton2(action: {}, title: "좌석", image: .angularButton01, maxWidth: 69, minHeight: 52)
                     
                     Spacer(minLength: 12)
@@ -35,8 +41,8 @@ struct HomeView: View {
                         isStart = true
                     }, title: "열람실 이용 시작", image: .angularButton02, maxWidth: .infinity, minHeight: 52)
                 }
+                
             }
-            .padding(.top, UIScreen.UIHeight(120))
             
             Spacer()
         }
