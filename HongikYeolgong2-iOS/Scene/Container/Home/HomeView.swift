@@ -9,33 +9,49 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject private var coordinator: SceneCoordinator
+    @State private var isStart = false
     
     var body: some View {
-        NavigationStack(path: $coordinator.paths) {
-            VStack(spacing: 0) {
-                Quote()                
+        
+        VStack(spacing: 0) {
+            if isStart {
+                
+            } else {
+                Quote()
+                    .padding(.top, UIScreen.UIHeight(43))
             }
-            .customNavigation(left: {
-                CustomText(font: .suite, title: "홍익열공이", textColor: .customGray100, textWeight: .semibold, textSize: 18)
-            }, right: {
-                Button(action: {
-                    coordinator.push(.menu)
-                }, label: {
-                    Image(.icHamburger)
-                })
-            })
-            .navigationDestination(for: SceneType.self) { scene in
-                coordinator.buildScreen(scene: scene)
+                        
+            HStack(spacing: 0) {
+                if isStart {
+                    CustomButton(action: {
+                        isStart = false
+                    }, font: .suite, title: "열람실 이용 종료", titleColor: .customGray100, backgroundColor: .customGray600, leading: 0, trailing: 0)
+                } else {
+                    CustomButton2(action: {}, title: "좌석", image: .angularButton01, maxWidth: 69, minHeight: 52)
+                    
+                    Spacer(minLength: 12)
+                    
+                    CustomButton2(action: {
+                        isStart = true
+                    }, title: "열람실 이용 시작", image: .angularButton02, maxWidth: .infinity, minHeight: 52)
+                }
             }
-            .sheet(item: $coordinator.sheet) { sheet in
-                coordinator.buildScreen(sheet: sheet)
-            }
-            .fullScreenCover(item: $coordinator.fullScreen) { fullScreen in
-                coordinator.buildScreen(fullScreen: fullScreen)
-            }
+            .padding(.top, UIScreen.UIHeight(120))
+            
+            Spacer()
         }
+        .customNavigation(left: {
+            CustomText(font: .suite, title: "홍익열공이", textColor: .customGray100, textWeight: .semibold, textSize: 18)
+        }, right: {
+            Button(action: {
+                coordinator.push(.menu)
+            }, label: {
+                Image(.icHamburger)
+            })
+        })
     }
 }
+
 
 #Preview {
     HomeView()

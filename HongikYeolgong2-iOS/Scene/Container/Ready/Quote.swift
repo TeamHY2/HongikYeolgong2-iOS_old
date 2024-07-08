@@ -15,10 +15,10 @@ struct Quote: View {
                 Image(.shineCount02)
                 Image(.shineCount03)
             }
-            .padding(.bottom, 16)
+            .padding(.bottom, UIScreen.UIHeight(16))
             
             CustomText(font: .pretendard, title: "행동보다 빠르게 불안감을 없앨 수 있는 것은 없습니다.", textColor: .customGray100, textWeight: .regular, textSize: 18, textAlignment: .center)
-                .padding(.bottom, 12)                
+                .padding(.bottom, UIScreen.UIHeight(12))
                 
             CustomText(font: .pretendard, title: "- 윌터 앤더슨", textColor: .customGray200, textWeight: .regular, textSize: 12)
         }

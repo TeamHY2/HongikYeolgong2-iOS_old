@@ -39,6 +39,7 @@
 		827DC0752C39943200E88069 /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 827DC0652C39943200E88069 /* Pretendard-Black.otf */; };
 		827DC0762C39943200E88069 /* SUITE-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 827DC0662C39943200E88069 /* SUITE-Heavy.otf */; };
 		82B1FE7B2C3BC567002D9163 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B1FE7A2C3BC567002D9163 /* Quote.swift */; };
+		82B1FE812C3C1755002D9163 /* CustomButton2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B1FE802C3C1755002D9163 /* CustomButton2.swift */; };
 		82D4D6142C327BDC00A92327 /* HongikYeolgong2_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D4D6132C327BDC00A92327 /* HongikYeolgong2_iOSApp.swift */; };
 		82D4D6162C327BDC00A92327 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D4D6152C327BDC00A92327 /* ContentView.swift */; };
 		82D4D6182C327BDF00A92327 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82D4D6172C327BDF00A92327 /* Assets.xcassets */; };
@@ -79,6 +80,7 @@
 		827DC0652C39943200E88069 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Pretendard-Black.otf"; path = "../../../font/Pretendard-Black.otf"; sourceTree = "<group>"; };
 		827DC0662C39943200E88069 /* SUITE-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SUITE-Heavy.otf"; path = "../../../font/SUITE-Heavy.otf"; sourceTree = "<group>"; };
 		82B1FE7A2C3BC567002D9163 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
+		82B1FE802C3C1755002D9163 /* CustomButton2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton2.swift; sourceTree = "<group>"; };
 		82D4D6102C327BDC00A92327 /* HongikYeolgong2-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HongikYeolgong2-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82D4D6132C327BDC00A92327 /* HongikYeolgong2_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HongikYeolgong2_iOSApp.swift; sourceTree = "<group>"; };
 		82D4D6152C327BDC00A92327 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				82B1FE7A2C3BC567002D9163 /* Quote.swift */,
+				82B1FE802C3C1755002D9163 /* CustomButton2.swift */,
 			);
 			path = Ready;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				825668A72C367F130066B216 /* View+.swift in Sources */,
 				825665792C35202E0018C799 /* MenuViewModel.swift in Sources */,
 				5E89D79A2C35855F00C9CB71 /* Font+.swift in Sources */,
+				82B1FE812C3C1755002D9163 /* CustomButton2.swift in Sources */,
 				5E5B0BD32C3289D500936435 /* UIColor+.swift in Sources */,
 				8274CF332C33D59400FBFA9D /* Scene.swift in Sources */,
 				82D4D6142C327BDC00A92327 /* HongikYeolgong2_iOSApp.swift in Sources */,
