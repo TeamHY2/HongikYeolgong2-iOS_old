@@ -22,12 +22,12 @@ struct CustomNavBarModifier<C, L, R>: ViewModifier where C: View, L: View, R: Vi
     func body(content: Content) -> some View {
         VStack {
             ZStack {
-                HStack {
-                    left?()
+                HStack(spacing: 0) {
+                    left?()                        
                     Spacer()
                     right?()
                 }
-                .frame(height: 52)
+                .frame(height: UIScreen.UIHeight(52))
                 .frame(maxWidth: .infinity)
                 
                 HStack {
@@ -36,7 +36,7 @@ struct CustomNavBarModifier<C, L, R>: ViewModifier where C: View, L: View, R: Vi
                     Spacer()
                 }
             }
-            .padding(.horizontal, 32)
+           
             
             Spacer()
             
@@ -44,6 +44,7 @@ struct CustomNavBarModifier<C, L, R>: ViewModifier where C: View, L: View, R: Vi
             
             Spacer()
         }
+        .padding(.horizontal, UIScreen.UIWidth(32))
         .background(Color(.customBackground))
         .navigationBarHidden(true)
     }

@@ -28,6 +28,7 @@ final class LoginManager: ObservableObject {
 }
 
 struct ContentView: View {
+    @EnvironmentObject private var coordinator: SceneCoordinator
     @StateObject var loginManager = LoginManager.shared
     
     var body: some View {
@@ -35,7 +36,18 @@ struct ContentView: View {
             // 이곳에서 로그인 상태를 체크 현재는 임시 변수를 사용합니다      
             switch loginManager.signStatus {
             case .sign:
-                HomeView()                    
+                NavigationStack(path: $coordinator.paths) {
+                    HomeView()
+                        .navigationDestination(for: SceneType.self) { scene in
+                            coordinator.buildScreen(scene: scene)
+                        }
+                        .sheet(item: $coordinator.sheet) { sheet in
+                            coordinator.buildScreen(sheet: sheet)
+                        }
+                        .fullScreenCover(item: $coordinator.fullScreen) { fullScreen in
+                            coordinator.buildScreen(fullScreen: fullScreen)
+                        }
+                }
             case .unSign:
                 LoginView()
             }

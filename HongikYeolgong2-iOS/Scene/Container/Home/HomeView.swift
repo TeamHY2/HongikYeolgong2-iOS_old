@@ -9,33 +9,55 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject private var coordinator: SceneCoordinator
+    @State private var isStart = false
     
     var body: some View {
-        NavigationStack(path: $coordinator.paths) {
-            VStack(spacing: 0) {
+        
+        VStack(spacing: 0) {
+            Spacer()
+                .frame(height: isStart ? UIScreen.UIHeight(11) : UIScreen.UIHeight(43))
+            
+            if isStart {
+                TimeLapse()
+            } else {
+                Quote()
+            }
+            
+            Spacer()
+                .frame(height: isStart ? UIScreen.UIHeight(28) : UIScreen.UIHeight(120))
+            
+            if isStart {
+                CustomButton(action: {
+                    isStart = false
+                }, font: .suite, title: "열람실 이용 종료", titleColor: .customGray100, backgroundColor: .customGray600, leading: 0, trailing: 0)
+                
+            } else {
+                HStack {
+                    CustomButton2(action: {}, title: "좌석", image: .angularButton01, maxWidth: 69, minHeight: 52)
+                    
+                    Spacer(minLength: 12)
+                    
+                    CustomButton2(action: {
+                        isStart = true
+                    }, title: "열람실 이용 시작", image: .angularButton02, maxWidth: .infinity, minHeight: 52)
+                }
                 
             }
-            .customNavigation(left: {
-                CustomText(font: .suite, title: "홍익열공이", textColor: .customGray100, textWeight: .semibold, textSize: 18)
-            }, right: {
-                Button(action: {
-                    coordinator.push(.menu)
-                }, label: {
-                    Image(.icHamburger)
-                })
-            })
-            .navigationDestination(for: SceneType.self) { scene in
-                coordinator.buildScreen(scene: scene)
-            }
-            .sheet(item: $coordinator.sheet) { sheet in
-                coordinator.buildScreen(sheet: sheet)
-            }
-            .fullScreenCover(item: $coordinator.fullScreen) { fullScreen in
-                coordinator.buildScreen(fullScreen: fullScreen)
-            }
+            
+            Spacer()
         }
+        .customNavigation(left: {
+            CustomText(font: .suite, title: "홍익열공이", textColor: .customGray100, textWeight: .semibold, textSize: 18)
+        }, right: {
+            Button(action: {
+                coordinator.push(.menu)
+            }, label: {
+                Image(.icHamburger)
+            })
+        })
     }
 }
+
 
 #Preview {
     HomeView()
