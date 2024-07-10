@@ -37,7 +37,7 @@ struct ContentView: View {
             switch loginManager.signStatus {
             case .sign:
                 NavigationStack(path: $coordinator.paths) {
-                    HomeView()
+                    HomeView(viewModel: HomeViewModel())
                         .navigationDestination(for: SceneType.self) { scene in
                             coordinator.buildScreen(scene: scene)
                         }

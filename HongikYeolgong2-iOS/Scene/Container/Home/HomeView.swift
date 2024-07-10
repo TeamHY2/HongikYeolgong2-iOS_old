@@ -15,6 +15,8 @@ struct HomeView: View {
     @State private var showingAlert2 = false
     @State private var currentDate = Date()
     
+    let viewModel: HomeViewModel!
+    
     var body: some View {
         VStack(spacing: 0) {
             Spacer()
@@ -85,5 +87,5 @@ struct HomeView: View {
 
 
 #Preview {
-    HomeView()
+    HomeView(viewModel: HomeViewModel())
 }
