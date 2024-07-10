@@ -12,7 +12,6 @@ struct HomeView: View {
     @State private var isStart = false
     
     var body: some View {
-        
         VStack(spacing: 0) {
             Spacer()
                 .frame(height: isStart ? UIScreen.UIHeight(11) : UIScreen.UIHeight(43))
@@ -55,6 +54,8 @@ struct HomeView: View {
                 Image(.icHamburger)
             })
         })
+        .modifier(DialogModifier())
+        
     }
 }
 

@@ -38,6 +38,7 @@
 		827DC0742C39943200E88069 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 827DC0642C39943200E88069 /* Pretendard-Medium.otf */; };
 		827DC0752C39943200E88069 /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 827DC0652C39943200E88069 /* Pretendard-Black.otf */; };
 		827DC0762C39943200E88069 /* SUITE-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 827DC0662C39943200E88069 /* SUITE-Heavy.otf */; };
+		828FF2B32C3E71F1001A4ADE /* DialogModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828FF2B22C3E71F1001A4ADE /* DialogModifier.swift */; };
 		82B1FE7B2C3BC567002D9163 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B1FE7A2C3BC567002D9163 /* Quote.swift */; };
 		82B1FE812C3C1755002D9163 /* CustomButton2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B1FE802C3C1755002D9163 /* CustomButton2.swift */; };
 		82B1FE832C3C1BCD002D9163 /* TimeLapse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B1FE822C3C1BCD002D9163 /* TimeLapse.swift */; };
@@ -80,6 +81,7 @@
 		827DC0642C39943200E88069 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Pretendard-Medium.otf"; path = "../../../font/Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		827DC0652C39943200E88069 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Pretendard-Black.otf"; path = "../../../font/Pretendard-Black.otf"; sourceTree = "<group>"; };
 		827DC0662C39943200E88069 /* SUITE-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SUITE-Heavy.otf"; path = "../../../font/SUITE-Heavy.otf"; sourceTree = "<group>"; };
+		828FF2B22C3E71F1001A4ADE /* DialogModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogModifier.swift; sourceTree = "<group>"; };
 		82B1FE7A2C3BC567002D9163 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
 		82B1FE802C3C1755002D9163 /* CustomButton2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton2.swift; sourceTree = "<group>"; };
 		82B1FE822C3C1BCD002D9163 /* TimeLapse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLapse.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				825668A42C367ED30066B216 /* CustomNavBarModifier.swift */,
+				828FF2B22C3E71F1001A4ADE /* DialogModifier.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 				5E5CD4412C369994002CE244 /* UIScreen+.swift in Sources */,
 				8274CF3D2C33DE2300FBFA9D /* MenuView.swift in Sources */,
 				8274CF352C33D6C200FBFA9D /* SceneCoordinator.swift in Sources */,
+				828FF2B32C3E71F1001A4ADE /* DialogModifier.swift in Sources */,
 				8274CF3B2C33DBC800FBFA9D /* LoginView.swift in Sources */,
 				82B1FE832C3C1BCD002D9163 /* TimeLapse.swift in Sources */,
 				5E5B0BD52C328A1000936435 /* CustomText.swift in Sources */,
