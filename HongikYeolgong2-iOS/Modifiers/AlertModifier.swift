@@ -20,7 +20,7 @@ struct AlertModifier: ViewModifier {
             .overlay(
                 ZStack {
                     Color.black
-                        .opacity(0.3)
+                        .opacity(0.5)
                         .ignoresSafeArea()
                     
                     VStack(spacing: 0) {

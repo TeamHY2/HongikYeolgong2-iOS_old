@@ -12,6 +12,9 @@ struct HomeView: View {
     @State private var isStart = false
     @State private var showingDialog = false
     @State private var showingAlert = false
+    @State private var showingAlert2 = false
+    @State private var currentDate = Date()
+    
     var body: some View {
         VStack(spacing: 0) {
             Spacer()
@@ -28,9 +31,14 @@ struct HomeView: View {
             
             if isStart {
                 CustomButton(action: {
+                    showingAlert2 = true
+                }, font: .suite, title: "열람실 이용 연장", titleColor: .customGray100, backgroundColor: .customBlue100, leading: 0, trailing: 0)
+                
+                Spacer().frame(height: UIScreen.UIHeight(12))
+                
+                CustomButton(action: {
                     showingAlert = true
                 }, font: .suite, title: "열람실 이용 종료", titleColor: .customGray100, backgroundColor: .customGray600, leading: 0, trailing: 0)
-                
             } else {
                 HStack {
                     CustomButton2(action: {}, title: "좌석", image: .angularButton01, maxWidth: 69, minHeight: 52)
@@ -56,6 +64,7 @@ struct HomeView: View {
             })
         })
         .dialog(isPresented: $showingDialog,
+                currentDate: $currentDate,
                 confirmAction: {
             isStart = true
             print("확인버튼 눌림")
@@ -66,7 +75,11 @@ struct HomeView: View {
         }, cancelAction: {
             
         })
-        
+        .alert(title: "열람실 이용 시간을 연장할까요?", confirmButtonText: "연장하기", cancleButtonText: "아니오", isPresented: $showingAlert2, confirmAction: {
+   
+        }, cancelAction: {
+            
+        })
     }
 }
 

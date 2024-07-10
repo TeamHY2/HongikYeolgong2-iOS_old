@@ -108,8 +108,8 @@ extension View {
     ///   - isPresented: 숨김 상태에 대한 변수입니다.
     ///   - confirmAction: 확인 버튼을 터치 했을때 호출되는 클로저 입니다.
     ///   - cancelAction: 취소 버튼을 터치 했을때 호출되는 클로저 입니다.
-    func dialog(isPresented: Binding<Bool>, confirmAction: @escaping () -> (), cancelAction: @escaping () -> ()) -> some View {
-        modifier(DialogModifier(isPresented: isPresented, confirmAction: confirmAction, cancelAction: cancelAction))
+    func dialog(isPresented: Binding<Bool>, currentDate: Binding<Date>, confirmAction: @escaping () -> (), cancelAction: @escaping () -> ()) -> some View {
+        modifier(DialogModifier(isPresented: isPresented, currentDate: currentDate, confirmAction: confirmAction, cancelAction: cancelAction))
     }
 }
 
