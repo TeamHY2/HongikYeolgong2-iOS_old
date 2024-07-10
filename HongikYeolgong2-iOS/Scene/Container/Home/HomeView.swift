@@ -10,8 +10,8 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject private var coordinator: SceneCoordinator
     @State private var isStart = false
-    @State private var isPresented = false
-    
+    @State private var showingDialog = false
+    @State private var showingAlert = false
     var body: some View {
         VStack(spacing: 0) {
             Spacer()
@@ -28,7 +28,7 @@ struct HomeView: View {
             
             if isStart {
                 CustomButton(action: {
-                    isStart = false
+                    showingAlert = true
                 }, font: .suite, title: "열람실 이용 종료", titleColor: .customGray100, backgroundColor: .customGray600, leading: 0, trailing: 0)
                 
             } else {
@@ -38,7 +38,7 @@ struct HomeView: View {
                     Spacer(minLength: 12)
                     
                     CustomButton2(action: {
-                        isPresented = true
+                        showingDialog = true
                     }, title: "열람실 이용 시작", image: .angularButton02, maxWidth: .infinity, minHeight: 52)
                 }
                 
@@ -55,11 +55,16 @@ struct HomeView: View {
                 Image(.icHamburger)
             })
         })
-        .dialog(isPresented: $isPresented,
+        .dialog(isPresented: $showingDialog,
                 confirmAction: {
             isStart = true
             print("확인버튼 눌림")
         }, cancelAction: {
+        })
+        .alert(title: "열람실을 다 이용하셨나요?", confirmButtonText: "네", cancleButtonText: "더 이용하기", isPresented: $showingAlert, confirmAction: {
+            isStart = false
+        }, cancelAction: {
+            
         })
         
     }

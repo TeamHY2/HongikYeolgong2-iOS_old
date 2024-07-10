@@ -112,3 +112,13 @@ extension View {
         modifier(DialogModifier(isPresented: isPresented, confirmAction: confirmAction, cancelAction: cancelAction))
     }
 }
+
+extension View {
+    func alert(title: String, isPresented: Binding<Bool>, confirmAction: @escaping () -> (), cancelAction: @escaping () -> ()) -> some View {
+        modifier(AlertModifier(title: title, confirmAction: confirmAction, cancleAction: cancelAction, isPresented: isPresented))
+    }
+    
+    func alert(title: String, confirmButtonText: String, cancleButtonText: String, isPresented: Binding<Bool>, confirmAction: @escaping () -> (), cancelAction: @escaping () -> ()) -> some View {
+        modifier(AlertModifier(title: title, confirmButtonText: confirmButtonText, cancleButtonText: cancleButtonText, confirmAction: confirmAction, cancleAction: cancelAction, isPresented: isPresented))
+    }
+}

@@ -35,12 +35,12 @@ struct DialogModifier: ViewModifier {
                         .opacity(0.3)
                         .ignoresSafeArea()
                     VStack(spacing: 0) {
-                        Spacer().frame(width: UIScreen.UIHeight(40))
+                        Spacer().frame(height: UIScreen.UIHeight(40))
                         
                         // title
                         CustomText(font: .pretendard, title: "열람실 이용 시작 시간", textColor: .customGray100, textWeight: .semibold, textSize: 18)
                         
-                        Spacer().frame(width: UIScreen.UIHeight(30))
+                        Spacer().frame(height: UIScreen.UIHeight(30))
                         
                         // picker
                         HStack {
@@ -70,7 +70,7 @@ struct DialogModifier: ViewModifier {
                         .frame(height: UIScreen.UIHeight(126))
                         .padding(.horizontal, UIScreen.UIWidth(50))
                         
-                        Spacer().frame(width: UIScreen.UIHeight(32))
+                        Spacer().frame(height: UIScreen.UIHeight(32))
                         
                         // button
                         HStack {
@@ -105,7 +105,7 @@ struct DialogModifier: ViewModifier {
                         .frame(maxWidth: UIScreen.UIWidth(316), maxHeight: UIScreen.UIHeight(336))
                         .background(Color(.customGray800))
                         .cornerRadius(8)
-                }.isHidden(!isPresented)                   
+                }.isHidden(!isPresented)                  
             )
            
     }
