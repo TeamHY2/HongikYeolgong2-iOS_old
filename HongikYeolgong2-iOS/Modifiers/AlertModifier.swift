@@ -6,13 +6,14 @@
 //
 
 import SwiftUI
-
+import Combine
 struct AlertModifier: ViewModifier {
     let title: String
     var confirmButtonText: String = "네"
     var cancleButtonText: String = "아니오"
     let confirmAction: (() -> ())?
     let cancleAction: (() -> ())?
+    @State private var scale: CGFloat = 1
     
     @Binding var isPresented: Bool
     func body(content: Content) -> some View {
@@ -62,7 +63,19 @@ struct AlertModifier: ViewModifier {
                     .frame(maxWidth: UIScreen.UIWidth(316))
                     .background(Color(.customGray800))
                     .cornerRadius(8)
-                }.isHidden(!isPresented)
+                    .scaleEffect(scale)
+                    .animation(.interpolatingSpring(mass: 1.0, stiffness: 200, damping: 15), value: scale)
+                    }
+                    
+                    .onReceive(Just(isPresented), perform: { newValue in
+                        if newValue {
+                            scale = 1.0
+                        } else {
+                            scale = 0.9
+                        }
+                    })
+                   
+                .isHidden(!isPresented)
             )
     }
 }
