@@ -88,3 +88,27 @@ extension View {
         modifier(CustomNavBarModifier(left: left, right: right))
     }
 }
+
+extension View {
+    /// bool값에 따라 뷰의 숨김상태를 조정합니다.
+    /// - Parameter hidden: 숨김상태를 설정하는 bool 변수 입니다.
+    /// - Returns: 숨김 상태가 적용된 뷰를 반환합니다.
+    @ViewBuilder func isHidden(_ hidden: Bool) -> some View {
+            if hidden {
+                self.hidden()
+            } else {
+                self
+            }
+        }
+}
+
+extension View {
+    /// 커스텀 다이얼로그를 반환합니다.
+    /// - Parameters:
+    ///   - isPresented: 숨김 상태에 대한 변수입니다.
+    ///   - confirmAction: 확인 버튼을 터치 했을때 호출되는 클로저 입니다.
+    ///   - cancelAction: 취소 버튼을 터치 했을때 호출되는 클로저 입니다.
+    func dialog(isPresented: Binding<Bool>, confirmAction: @escaping () -> (), cancelAction: @escaping () -> ()) -> some View {
+        modifier(DialogModifier(isPresented: isPresented, confirmAction: confirmAction, cancelAction: cancelAction))
+    }
+}

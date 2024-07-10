@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject private var coordinator: SceneCoordinator
     @State private var isStart = false
+    @State private var isPresented = false
     
     var body: some View {
         VStack(spacing: 0) {
@@ -37,7 +38,7 @@ struct HomeView: View {
                     Spacer(minLength: 12)
                     
                     CustomButton2(action: {
-                        isStart = true
+                        isPresented = true
                     }, title: "열람실 이용 시작", image: .angularButton02, maxWidth: .infinity, minHeight: 52)
                 }
                 
@@ -54,7 +55,12 @@ struct HomeView: View {
                 Image(.icHamburger)
             })
         })
-        .modifier(DialogModifier())
+        .dialog(isPresented: $isPresented,
+                confirmAction: {
+            isStart = true
+            print("확인버튼 눌림")
+        }, cancelAction: {
+        })
         
     }
 }
