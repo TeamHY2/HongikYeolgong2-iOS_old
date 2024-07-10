@@ -41,6 +41,7 @@
 		828FF2B32C3E71F1001A4ADE /* DialogModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828FF2B22C3E71F1001A4ADE /* DialogModifier.swift */; };
 		82AB4F1D2C3EBF5400787B3B /* AlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AB4F1C2C3EBF5400787B3B /* AlertModifier.swift */; };
 		82AB4F212C3EE9DB00787B3B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AB4F202C3EE9DB00787B3B /* HomeViewModel.swift */; };
+		82AB4F232C3EEE6D00787B3B /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AB4F222C3EEE6D00787B3B /* Date+.swift */; };
 		82B1FE7B2C3BC567002D9163 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B1FE7A2C3BC567002D9163 /* Quote.swift */; };
 		82B1FE812C3C1755002D9163 /* CustomButton2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B1FE802C3C1755002D9163 /* CustomButton2.swift */; };
 		82B1FE832C3C1BCD002D9163 /* TimeLapse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B1FE822C3C1BCD002D9163 /* TimeLapse.swift */; };
@@ -86,6 +87,7 @@
 		828FF2B22C3E71F1001A4ADE /* DialogModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogModifier.swift; sourceTree = "<group>"; };
 		82AB4F1C2C3EBF5400787B3B /* AlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModifier.swift; sourceTree = "<group>"; };
 		82AB4F202C3EE9DB00787B3B /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		82AB4F222C3EEE6D00787B3B /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		82B1FE7A2C3BC567002D9163 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
 		82B1FE802C3C1755002D9163 /* CustomButton2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton2.swift; sourceTree = "<group>"; };
 		82B1FE822C3C1BCD002D9163 /* TimeLapse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLapse.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				5E5CD4402C369994002CE244 /* UIScreen+.swift */,
 				825668A62C367F130066B216 /* View+.swift */,
 				825668A82C36855A0066B216 /* UINavigationController+.swift */,
+				82AB4F222C3EEE6D00787B3B /* Date+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				5E5B0BD32C3289D500936435 /* UIColor+.swift in Sources */,
 				8274CF332C33D59400FBFA9D /* Scene.swift in Sources */,
 				82D4D6142C327BDC00A92327 /* HongikYeolgong2_iOSApp.swift in Sources */,
+				82AB4F232C3EEE6D00787B3B /* Date+.swift in Sources */,
 				5E5CD4412C369994002CE244 /* UIScreen+.swift in Sources */,
 				8274CF3D2C33DE2300FBFA9D /* MenuView.swift in Sources */,
 				8274CF352C33D6C200FBFA9D /* SceneCoordinator.swift in Sources */,
