@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct TimeLapse: View {
+    let startTime: Date
+    let endTime: Date
+    
     var body: some View {
         VStack(spacing: 0) {
             HStack {
@@ -25,16 +28,16 @@ struct TimeLapse: View {
             // 이용 시간
             HStack {
                 HStack {
-                    CustomText(font: .suite, title: "11:30", textColor: .customGray100, textWeight: .extrabold, textSize: 30)
-                    CustomText(font: .suite, title: "AM", textColor: .customGray100, textWeight: .medium, textSize: 14)
+                    CustomText(font: .suite, title: startTime.getHourMinutes(), textColor: .customGray100, textWeight: .extrabold, textSize: 30)
+                    CustomText(font: .suite, title: startTime.getDaypart(), textColor: .customGray100, textWeight: .medium, textSize: 14)
                 }
                 
                 Spacer()
                     .frame(width: UIScreen.UIWidth(53))
                 
                 HStack {
-                    CustomText(font: .suite, title: "5:30", textColor: .customGray100, textWeight: .extrabold, textSize: 30)
-                    CustomText(font: .suite, title: "PM", textColor: .customGray100, textWeight: .medium, textSize: 14)
+                    CustomText(font: .suite, title: endTime.getHourMinutes(), textColor: .customGray100, textWeight: .extrabold, textSize: 30)
+                    CustomText(font: .suite, title: endTime.getDaypart(), textColor: .customGray100, textWeight: .medium, textSize: 14)
                 }
                 Spacer()
             }
@@ -67,5 +70,5 @@ struct TimeLapse: View {
 }
 
 #Preview {
-    TimeLapse()
+    TimeLapse(startTime: Date(), endTime: Date())
 }

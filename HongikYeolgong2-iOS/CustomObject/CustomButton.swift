@@ -31,7 +31,7 @@ struct CustomButton: View {
         Button(action: action, label: {
             Spacer()
             CustomText(font: font, title: title, textColor: titleColor, textWeight: .medium, textSize: 16)
-                .frame(width: UIScreen.UIWidth(width), height: UIScreen.UIHeight(height))
+                .frame(maxWidth: UIScreen.UIWidth(width), minHeight: UIScreen.UIHeight(height))
             Spacer()
         })        
         .background(Color(backgroundColor))

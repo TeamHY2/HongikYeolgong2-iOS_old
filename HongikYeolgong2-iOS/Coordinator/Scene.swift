@@ -9,7 +9,7 @@ import Foundation
 
 enum SceneType: Hashable {
     case loginOnboarding
-    case home
+    case home(HomeViewModel)
     case menu
 }
 
