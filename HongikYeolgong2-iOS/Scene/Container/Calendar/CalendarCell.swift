@@ -18,6 +18,7 @@ struct CalendarCell: View {
         .frame(height: UIScreen.UIHeight(33))
         .background(Color(.customGray800))
         .cornerRadius(8)
+        .opacity(dayOfNumber.isEmpty ? 0 : 1)
     }
 }
 

@@ -15,6 +15,7 @@
 		8252CCDC2C40396100690D75 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8252CCDB2C40396100690D75 /* Calendar.swift */; };
 		8252CCDE2C40440600690D75 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8252CCDD2C40440600690D75 /* CalendarCell.swift */; };
 		8252CCE02C404A7300690D75 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8252CCDF2C404A7300690D75 /* Day.swift */; };
+		8252CCE22C404CFE00690D75 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8252CCE12C404CFE00690D75 /* CalendarManager.swift */; };
 		825665792C35202E0018C799 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825665782C35202E0018C799 /* MenuViewModel.swift */; };
 		825668A52C367ED30066B216 /* CustomNavBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825668A42C367ED30066B216 /* CustomNavBarModifier.swift */; };
 		825668A72C367F130066B216 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825668A62C367F130066B216 /* View+.swift */; };
@@ -64,6 +65,7 @@
 		8252CCDB2C40396100690D75 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		8252CCDD2C40440600690D75 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		8252CCDF2C404A7300690D75 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		8252CCE12C404CFE00690D75 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		825665782C35202E0018C799 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		825668A42C367ED30066B216 /* CustomNavBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBarModifier.swift; sourceTree = "<group>"; };
 		825668A62C367F130066B216 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 			children = (
 				8252CCDB2C40396100690D75 /* Calendar.swift */,
 				8252CCDD2C40440600690D75 /* CalendarCell.swift */,
+				8252CCE12C404CFE00690D75 /* CalendarManager.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 				82B1FE812C3C1755002D9163 /* CustomButton2.swift in Sources */,
 				5E5B0BD32C3289D500936435 /* UIColor+.swift in Sources */,
 				8274CF332C33D59400FBFA9D /* Scene.swift in Sources */,
+				8252CCE22C404CFE00690D75 /* CalendarManager.swift in Sources */,
 				82D4D6142C327BDC00A92327 /* HongikYeolgong2_iOSApp.swift in Sources */,
 				82AB4F232C3EEE6D00787B3B /* Date+.swift in Sources */,
 				5E5CD4412C369994002CE244 /* UIScreen+.swift in Sources */,

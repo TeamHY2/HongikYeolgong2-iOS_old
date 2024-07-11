@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 enum WeekDay: String, CaseIterable {
     case sun = "Sun"
@@ -18,6 +19,8 @@ enum WeekDay: String, CaseIterable {
 }
 
 struct CalendarView: View {
+    @State private var selecteDate = Date()
+    @State private var currentMonth = [Day]()
     
     private let columns = [GridItem(.flexible()),
                            GridItem(.flexible()),
@@ -26,22 +29,25 @@ struct CalendarView: View {
                            GridItem(.flexible()),
                            GridItem(.flexible()),
                            GridItem(.flexible())]
-    private let days = Array(1...42).map { String($0) }
     
     var body: some View {
         VStack(spacing: 0) {
             // header
             HStack(spacing: 0) {
-                CustomText(font: .suite, title: "Jan 2024", textColor: .customGray100, textWeight: .bold, textSize: 24)
+                CustomText(font: .suite, title: "\(selecteDate.getMonthString()) \(selecteDate.getYearString())", textColor: .customGray100, textWeight: .bold, textSize: 24)
                 Spacer()
                 HStack {
-                    Button(action: {}) {
+                    Button(action: {
+                        selecteDate = CalendarManager.shared.minusMonth(date: selecteDate)
+                    }) {
                         Image(.icCalendarLeft)
                     }
                     
                     Spacer().frame(width: UIScreen.UIWidth(7))
                     
-                    Button(action: {}) {
+                    Button(action: {
+                        selecteDate = CalendarManager.shared.plusMonth(date: selecteDate)
+                    }) {
                         Image(.icCalendarRight)
                     }
                 }
@@ -58,12 +64,24 @@ struct CalendarView: View {
             }
             
             Spacer().frame(height: UIScreen.UIHeight(8))
-            
+            // seleteMonth가 변경될때마다 makeMonth의 값을 받아서 currentMonth에 업데이트
             // grid
             LazyVGrid(columns: columns, spacing: UIScreen.UIWidth(5)) {
-                ForEach(days, id: \.self) {
-                    CalendarCell(dayOfNumber: $0)                        
+                ForEach(currentMonth, id: \.id) {
+                    CalendarCell(dayOfNumber: $0.dayOfNumber)
                 }
+            }
+            .onAppear {
+                CalendarManager.shared
+                    .makeMonth(date: selecteDate)
+                    .assign(to: \.currentMonth, on: self)
+                    .cancel()
+            }
+            .onChange(of: selecteDate) { date in
+                CalendarManager.shared
+                    .makeMonth(date: date)
+                    .assign(to: \.currentMonth, on: self)
+                    .cancel()
             }
         }
     }
