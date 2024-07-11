@@ -50,6 +50,8 @@ struct HomeView: View {
             }
             
             Spacer()
+            
+            CalendarView()
         }
         .customNavigation(left: {
             CustomText(font: .suite, title: "홍익열공이", textColor: .customGray100, textWeight: .semibold, textSize: 18)
