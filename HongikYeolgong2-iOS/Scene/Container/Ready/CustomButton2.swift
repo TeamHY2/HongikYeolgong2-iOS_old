@@ -21,6 +21,8 @@ struct CustomButton2: View {
         })
         .background(
             Image(image)
+                .resizable()
+                .frame(maxWidth: UIScreen.UIWidth(maxWidth), minHeight: UIScreen.UIHeight(minHeight))
                 .cornerRadius(8)
                 .background(
                     RoundedRectangle(cornerRadius: 8)

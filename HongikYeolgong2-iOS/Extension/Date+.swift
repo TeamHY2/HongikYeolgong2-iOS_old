@@ -23,4 +23,16 @@ extension Date {
         let daypart = hour < 12 ? "AM" : "PM"
         return daypart
     }
+    
+    func getMonthString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "LLL"
+        return dateFormatter.string(from: self)
+    }
+    
+    func getYearString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        return dateFormatter.string(from: self)
+    }
 }
