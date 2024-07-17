@@ -16,6 +16,7 @@
 		5E5CD43F2C3698A4002CE244 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5CD43E2C3698A4002CE244 /* CustomButton.swift */; };
 		5E5CD4412C369994002CE244 /* UIScreen+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5CD4402C369994002CE244 /* UIScreen+.swift */; };
 		5E89D79A2C35855F00C9CB71 /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E89D7992C35855F00C9CB71 /* Font+.swift */; };
+
 		5EE304162C3FDC4C0002C49E /* SUITE-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5EE3040F2C3FDC4C0002C49E /* SUITE-Regular.otf */; };
 		5EE304172C3FDC4C0002C49E /* SUITE-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5EE304102C3FDC4C0002C49E /* SUITE-Heavy.otf */; };
 		5EE304182C3FDC4C0002C49E /* SUITE-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5EE304112C3FDC4C0002C49E /* SUITE-ExtraBold.otf */; };
@@ -67,6 +68,12 @@
 		5EE3049D2C4022990002C49E /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE3049C2C4022990002C49E /* AuthenticationService.swift */; };
 		5EE304A02C4023960002C49E /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE3049F2C4023960002C49E /* AuthenticationView.swift */; };
 		5EE304A22C4023A40002C49E /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE304A12C4023A40002C49E /* AuthenticationViewModel.swift */; };
+
+		8252CCDC2C40396100690D75 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8252CCDB2C40396100690D75 /* Calendar.swift */; };
+		8252CCDE2C40440600690D75 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8252CCDD2C40440600690D75 /* CalendarCell.swift */; };
+		8252CCE02C404A7300690D75 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8252CCDF2C404A7300690D75 /* Day.swift */; };
+		8252CCE22C404CFE00690D75 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8252CCE12C404CFE00690D75 /* CalendarManager.swift */; };
+
 		825665792C35202E0018C799 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825665782C35202E0018C799 /* MenuViewModel.swift */; };
 		825668A52C367ED30066B216 /* CustomNavBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825668A42C367ED30066B216 /* CustomNavBarModifier.swift */; };
 		825668A72C367F130066B216 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825668A62C367F130066B216 /* View+.swift */; };
@@ -101,6 +108,7 @@
 		5E5CD4402C369994002CE244 /* UIScreen+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+.swift"; sourceTree = "<group>"; };
 		5E89D7712C356E5500C9CB71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5E89D7992C35855F00C9CB71 /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
+
 		5E8F934C2C416DF300ECE6C5 /* HongikYeolgong2-iOSDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "HongikYeolgong2-iOSDebug.entitlements"; sourceTree = "<group>"; };
 		5EE3040F2C3FDC4C0002C49E /* SUITE-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SUITE-Regular.otf"; path = "../../../../Downloads/SUITE-otf/SUITE-Regular.otf"; sourceTree = "<group>"; };
 		5EE304102C3FDC4C0002C49E /* SUITE-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SUITE-Heavy.otf"; path = "../../../../Downloads/SUITE-otf/SUITE-Heavy.otf"; sourceTree = "<group>"; };
@@ -126,6 +134,12 @@
 		5EE3049C2C4022990002C49E /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		5EE3049F2C4023960002C49E /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		5EE304A12C4023A40002C49E /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+
+		8252CCDB2C40396100690D75 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
+		8252CCDD2C40440600690D75 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		8252CCDF2C404A7300690D75 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		8252CCE12C404CFE00690D75 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
+
 		825665782C35202E0018C799 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		825668A42C367ED30066B216 /* CustomNavBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBarModifier.swift; sourceTree = "<group>"; };
 		825668A62C367F130066B216 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
@@ -201,7 +215,11 @@
 		5E5B0BC42C32866900936435 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+
 				5E029B592C4157C20091249A /* User.swift */,
+
+				8252CCDF2C404A7300690D75 /* Day.swift */,
+
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -356,6 +374,9 @@
 		825665772C351B5A0018C799 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				8252CCDB2C40396100690D75 /* Calendar.swift */,
+				8252CCDD2C40440600690D75 /* CalendarCell.swift */,
+				8252CCE12C404CFE00690D75 /* CalendarManager.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -552,7 +573,12 @@
 				825668A92C36855A0066B216 /* UINavigationController+.swift in Sources */,
 				8274CF392C33DB1000FBFA9D /* HomeView.swift in Sources */,
 				82D4D6162C327BDC00A92327 /* ContentView.swift in Sources */,
+
 				5E029B5A2C4157C20091249A /* User.swift in Sources */,
+
+				8252CCDC2C40396100690D75 /* Calendar.swift in Sources */,
+				8252CCE02C404A7300690D75 /* Day.swift in Sources */,
+
 				82B1FE7B2C3BC567002D9163 /* Quote.swift in Sources */,
 				82AB4F212C3EE9DB00787B3B /* HomeViewModel.swift in Sources */,
 				5EE304A22C4023A40002C49E /* AuthenticationViewModel.swift in Sources */,
@@ -562,12 +588,17 @@
 				825668A52C367ED30066B216 /* CustomNavBarModifier.swift in Sources */,
 				825668A72C367F130066B216 /* View+.swift in Sources */,
 				825665792C35202E0018C799 /* MenuViewModel.swift in Sources */,
+				8252CCDE2C40440600690D75 /* CalendarCell.swift in Sources */,
 				5E89D79A2C35855F00C9CB71 /* Font+.swift in Sources */,
 				82B1FE812C3C1755002D9163 /* CustomButton2.swift in Sources */,
 				5E5B0BD32C3289D500936435 /* UIColor+.swift in Sources */,
 				5EE304942C4015880002C49E /* LoginViewModel.swift in Sources */,
 				8274CF332C33D59400FBFA9D /* Scene.swift in Sources */,
+
 				5EE3049B2C4020B70002C49E /* Services.swift in Sources */,
+
+				8252CCE22C404CFE00690D75 /* CalendarManager.swift in Sources */,
+
 				82D4D6142C327BDC00A92327 /* HongikYeolgong2_iOSApp.swift in Sources */,
 				82AB4F232C3EEE6D00787B3B /* Date+.swift in Sources */,
 				5E5CD4412C369994002CE244 /* UIScreen+.swift in Sources */,

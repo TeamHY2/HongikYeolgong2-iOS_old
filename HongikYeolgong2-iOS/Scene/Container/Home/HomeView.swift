@@ -40,7 +40,7 @@ struct HomeView: View {
                 HStack {
                     CustomButton2(action: {}, title: "좌석", image: .angularButton01, maxWidth: 69, minHeight: 52)
                     
-                    Spacer(minLength: 12)
+                    Spacer().frame(width: UIScreen.UIWidth(12))
                     
                     CustomButton2(action: {
                         viewModel.showingDialog = true
@@ -50,6 +50,8 @@ struct HomeView: View {
             }
             
             Spacer()
+            
+            CalendarView()
         }
         .customNavigation(left: {
             CustomText(font: .suite, title: "홍익열공이", textColor: .customGray100, textWeight: .semibold, textSize: 18)
