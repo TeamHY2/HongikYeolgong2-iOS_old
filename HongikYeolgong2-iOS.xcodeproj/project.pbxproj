@@ -254,6 +254,7 @@
 		5E5B0BC82C3286EB00936435 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				5E8964E52C47C2E900F342CE /* APP */,
 				5E5B0BCB2C3287A900936435 /* Container */,
 				5E5B0BCE2C32890300936435 /* Menu */,
 				5E5B0BC92C32877100936435 /* Login */,
@@ -295,6 +296,15 @@
 				825665782C35202E0018C799 /* MenuViewModel.swift */,
 			);
 			path = Menu;
+			sourceTree = "<group>";
+		};
+		5E8964E52C47C2E900F342CE /* APP */ = {
+			isa = PBXGroup;
+			children = (
+				82D4D6132C327BDC00A92327 /* HongikYeolgong2_iOSApp.swift */,
+				82D4D6152C327BDC00A92327 /* ContentView.swift */,
+			);
+			path = APP;
 			sourceTree = "<group>";
 		};
 		5EE304962C4020230002C49E /* General */ = {
@@ -393,8 +403,6 @@
 				5EE304952C401A160002C49E /* HongikYeolgong2-iOSRelease.entitlements */,
 				5E89D7712C356E5500C9CB71 /* Info.plist */,
 				5EE304682C3FE9E90002C49E /* GoogleService-Info.plist */,
-				82D4D6132C327BDC00A92327 /* HongikYeolgong2_iOSApp.swift */,
-				82D4D6152C327BDC00A92327 /* ContentView.swift */,
 				5EE3049E2C40236F0002C49E /* Authentication */,
 				5EE304992C4020900002C49E /* Services */,
 				5EE304962C4020230002C49E /* General */,

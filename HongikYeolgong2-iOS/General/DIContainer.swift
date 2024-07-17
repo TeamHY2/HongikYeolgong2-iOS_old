@@ -2,39 +2,6 @@
 
 import Foundation
 
-//class DIContainer: ObservableObject {
-//    var services: ServiceType
-//    
-//    init(services: ServiceType) {
-//        self.services = services
-//    }
-//}
-
-//class DIContainer: ObservableObject {
-//    static let shared = DIContainer()
-//    
-//    @Published private var services: [String: Any] = [:]
-//
-//    func register<T>(_ type: T.Type, instance: T) {
-//        services[String(describing: type)] = instance
-//    }
-//
-//    func resolve<T>(_ type: T.Type) -> T? {
-//        return services[String(describing: type)] as? T
-//    }
-//}
-//
-//
-//
-//protocol authServiceType {
-//    var authService: AuthenticationServiceType { get set }
-//}
-//
-//class authService: authServiceType {
-//    var authService: AuthenticationServiceType
-//    
-//}
-
 final class DIContainer {
     static let shared = DIContainer()
     

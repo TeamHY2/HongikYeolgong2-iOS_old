@@ -13,12 +13,21 @@ enum AuthenticationError: Error {
 }
 
 protocol AuthenticationServiceType {
+    func checkAuthenticationState() -> String? 
     func handleSignInWithAppleRequest(_ request: ASAuthorizationAppleIDRequest) -> String
     func handleSignInWithAppleCompletion(_ authorization: ASAuthorization, none: String) -> AnyPublisher<User, ServiceError>
 }
 
 
 class AuthenticationService: AuthenticationServiceType {
+    
+    func checkAuthenticationState() -> String? {
+        if let user = Auth.auth().currentUser {
+            return user.uid
+        } else {
+            return nil
+        }
+    }
     
     func handleSignInWithAppleRequest(_ request: ASAuthorizationAppleIDRequest) -> String {
         request.requestedScopes = [.fullName, .email]
@@ -100,6 +109,10 @@ extension AuthenticationService {
 
 
 class StubAuthenticationService: AuthenticationServiceType {
+    
+    func checkAuthenticationState() -> String? {
+        return nil
+    }
     
     func handleSignInWithAppleRequest(_ request: ASAuthorizationAppleIDRequest) -> String {
         return ""

@@ -3,25 +3,9 @@
 import SwiftUI
 import AuthenticationServices
 struct LoginView: View {
-    @StateObject private var loginManager = LoginManager.shared
     @EnvironmentObject var authViewModel: AuthenticationViewModel
     
     var body: some View {
-//        NavigationStack {
-//            ZStack {
-//                Color(.customBackground)
-//                    .ignoresSafeArea(.all)
-//                
-//                VStack {
-//                    Button(action: {
-//                        loginManager.login()
-//                    }, label: {
-//                        Text("Login test")
-//                    })
-//                    .foregroundColor(.white)
-//                }
-//            }
-//        }
         VStack{
             SignInWithAppleButton(onRequest: { request in
                 authViewModel.send(action: .appleLogin(request))
