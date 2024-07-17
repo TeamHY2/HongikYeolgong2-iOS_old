@@ -5,11 +5,15 @@ import Firebase
 
 @main
 struct HongikYeolgong2_iOSApp: App {
+    
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-
+    
     var body: some Scene {
         WindowGroup {
-            AuthenticationView(authViewModel: AuthenticationViewModel())
+            AuthenticationView()
+                .environmentObject(SceneCoordinator())
+                .environmentObject(AuthenticationViewModel())
+                .environmentObject(HomeViewModel())
         }
     }
 }

@@ -3,21 +3,33 @@
 import SwiftUI
 
 struct AuthenticationView: View {
-    @StateObject private var coordinator = SceneCoordinator()
-    @StateObject var authViewModel: AuthenticationViewModel
+    @EnvironmentObject private var coordinator: SceneCoordinator
+    @EnvironmentObject private var viewModel: AuthenticationViewModel
+    
     var body: some View {
         VStack {
-            switch authViewModel.authenticationState {
+            switch viewModel.authenticationState {
             case .unauthenticated:
                 LoginView()
-                    .environmentObject(authViewModel)
             case .authenticated:
-                HomeView(viewModel: HomeViewModel())
-                    .environmentObject(coordinator)
+                Group {
+                    NavigationStack(path: $coordinator.paths) {
+                        HomeView()
+                            .navigationDestination(for: SceneType.self) { scene in
+                                coordinator.buildScreen(scene: scene)
+                            }
+                            .sheet(item: $coordinator.sheet) { sheet in
+                                coordinator.buildScreen(sheet: sheet)
+                            }
+                            .fullScreenCover(item: $coordinator.fullScreen) { fullScreen in
+                                coordinator.buildScreen(fullScreen: fullScreen)
+                            }
+                    }
+                }
             }
         }
         .onAppear {
-            authViewModel.send(action: .checkAuthenticationState) 
+            viewModel.send(action: .checkAuthenticationState)
         }
     }
 }

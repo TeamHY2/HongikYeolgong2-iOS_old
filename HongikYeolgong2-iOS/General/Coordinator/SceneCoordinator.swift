@@ -43,8 +43,8 @@ final class SceneCoordinator: ObservableObject {
     @ViewBuilder
     func buildScreen(scene: SceneType) -> some View {
         switch scene {
-        case .home(let viewModel):
-            HomeView(viewModel: viewModel)
+        case .home:
+            HomeView()
         case .loginOnboarding:
             LoginView()
         case .menu:

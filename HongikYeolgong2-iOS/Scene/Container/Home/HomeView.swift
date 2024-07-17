@@ -9,8 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject private var coordinator: SceneCoordinator
-    
-    @StateObject var viewModel: HomeViewModel
+    @EnvironmentObject private var viewModel: HomeViewModel
     
     var body: some View {
         VStack(spacing: 0) {
@@ -84,5 +83,5 @@ struct HomeView: View {
 
 
 #Preview {
-    HomeView(viewModel: HomeViewModel())
+    HomeView()
 }
