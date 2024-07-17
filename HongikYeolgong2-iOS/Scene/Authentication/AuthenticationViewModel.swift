@@ -23,7 +23,9 @@ class AuthenticationViewModel: ObservableObject {
     
     private var currentNonce: String?
     private var subscriptions = Set<AnyCancellable>()
-    private var authService: AuthenticationServiceType = DIContainer.shared.resolve()
+    
+    // Dependency
+    @Inject private var authService: AuthenticationServiceType
     
     init() {}
     
