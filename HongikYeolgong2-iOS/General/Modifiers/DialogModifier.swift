@@ -8,7 +8,9 @@
 import SwiftUI
 import Combine
 
+
 struct DialogModifier: ViewModifier {
+    
     private var hours = Array(1...12)
     private var minutes = Array(0...59)
     private var dayParts = ["AM", "PM"]
@@ -48,34 +50,18 @@ struct DialogModifier: ViewModifier {
                         
                         // picker
                         HStack {
-                            Picker("Hour", selection: $selectedHour.value) {
-                                ForEach(hours, id: \.self) {
-                                    CustomText(font: .suite, title: String(format: "%02d", $0), textColor: .white, textWeight: .bold, textSize: 24)
-                                }
+                            CustomPicker(selected: $selectedHour.value, data: hours)
                                 
-                                
-                            }
-                            .pickerStyle(.wheel)
-                            
                             CustomText(font: .suite, title: ":", textColor: .white, textWeight: .bold, textSize: 24)
                             
-                            Picker("Minutes", selection: $selectedMinute.value) {
-                                ForEach(minutes, id: \.self) {
-                                    CustomText(font: .suite, title: String(format: "%02d", $0), textColor: .white, textWeight: .bold, textSize: 24)
-                                }
-                            }
-                            .pickerStyle(.wheel)
+                            CustomPicker(selected: $selectedMinute.value, data: minutes)
                             
-                            Picker("", selection: $daypart.value) {
-                                ForEach(dayParts, id: \.self) {
-                                    CustomText(font: .suite, title: "\($0)", textColor: .white, textWeight: .bold, textSize: 24)
-                                    
-                                }
-                            }
-                            .pickerStyle(.wheel)
+                            CustomPicker(selected: $daypart.value, data: dayParts)
                         }
-                        .frame(height: UIScreen.UIHeight(126))
+                        .frame(height: UIScreen.UIHeight(131))
                         .padding(.horizontal, UIScreen.UIWidth(50))
+                        .clipped()
+                        
                         
                         Spacer().frame(height: UIScreen.UIHeight(32))
                         
