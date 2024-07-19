@@ -28,7 +28,7 @@ struct HomeView: View {
             if viewModel.isRoomReserved {
                 CustomButton(action: {
                     viewModel.showingAlert2 = true
-                }, font: .suite, title: "열람실 이용 연장", titleColor: .customGray100, backgroundColor: .customBlue100, leading: 0, trailing: 0)
+                }, font: .suite, title: "열람실 이용 연장", titleColor: .white, backgroundColor: .customBlue100, leading: 0, trailing: 0)
                 
                 Spacer().frame(height: UIScreen.UIHeight(12))
                 
