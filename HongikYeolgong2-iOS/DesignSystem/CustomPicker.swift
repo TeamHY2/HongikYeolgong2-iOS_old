@@ -10,7 +10,9 @@ import SwiftUI
 import UIKit
 
 struct CustomPicker<T>: UIViewRepresentable {
+    
     @Binding var selected: T
+    
     let data: [T]
     
     func makeCoordinator() -> Coordinator {

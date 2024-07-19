@@ -49,18 +49,38 @@ struct DialogModifier: ViewModifier {
                         Spacer().frame(height: UIScreen.UIHeight(30))
                         
                         // picker
-                        HStack {
-                            CustomPicker(selected: $selectedHour.value, data: hours)
+                            HStack {
+                                CustomPicker(selected: $selectedHour.value, data: hours)
+                                    
+                                CustomText(font: .suite, title: ":", textColor: .white, textWeight: .bold, textSize: 24)
                                 
-                            CustomText(font: .suite, title: ":", textColor: .white, textWeight: .bold, textSize: 24)
-                            
-                            CustomPicker(selected: $selectedMinute.value, data: minutes)
-                            
-                            CustomPicker(selected: $daypart.value, data: dayParts)
-                        }
-                        .frame(height: UIScreen.UIHeight(131))
-                        .padding(.horizontal, UIScreen.UIWidth(50))
-                        .clipped()
+                                CustomPicker(selected: $selectedMinute.value, data: minutes)
+                                
+                                CustomPicker(selected: $daypart.value, data: dayParts)
+                            }
+                            .frame(height: UIScreen.UIHeight(131))
+                            .frame(width: UIScreen.UIWidth(166))
+                            .padding(.horizontal, UIScreen.UIWidth(50))
+                            .mask(
+                                LinearGradient(
+                                        gradient: Gradient(stops: [
+                                            .init(color: Color(.customGray800).opacity(0), location: 0),
+                                            .init(color: Color(.customGray800), location: 0.33)
+                                        ]),
+                                        startPoint: .top,
+                                        endPoint: .bottom
+                                )
+                            )
+                            .mask(
+                                LinearGradient(
+                                        gradient: Gradient(stops: [
+                                            .init(color: Color(.customGray800).opacity(0), location: 0),
+                                            .init(color: Color(.customGray800), location: 0.33)
+                                        ]),
+                                        startPoint: .bottom,
+                                        endPoint: .top
+                                )
+                            )
                         
                         
                         Spacer().frame(height: UIScreen.UIHeight(32))
