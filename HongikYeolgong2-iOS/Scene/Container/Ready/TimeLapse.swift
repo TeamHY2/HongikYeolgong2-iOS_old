@@ -33,7 +33,7 @@ struct TimeLapse: View {
                 }
                 
                 Spacer()
-                    .frame(width: UIScreen.UIWidth(53))
+                    .frame(width: UIScreen.UIWidth(30))
                 
                 HStack {
                     CustomText(font: .suite, title: endTime.getHourMinutes(), textColor: .customGray100, textWeight: .extrabold, textSize: 30)
@@ -55,7 +55,7 @@ struct TimeLapse: View {
                 .frame(height: UIScreen.UIHeight(11))
             
             HStack {
-                CustomText(font: .suite, title: "3H 52M", textColor: .customGray100, textWeight: .extrabold, textSize: 30)
+                CustomText(font: .suite, title: "03:52:00", textColor: .customGray100, textWeight: .extrabold, textSize: 30)
                 
                 Spacer()
                 

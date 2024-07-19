@@ -24,6 +24,9 @@ struct CustomPicker<T>: UIViewRepresentable {
         picker.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)  
         picker.dataSource = context.coordinator
         picker.delegate = context.coordinator
+        if data.first as? Int != nil {
+            picker.selectRow(data.count / 2, inComponent: 0, animated: false)
+        }
         return picker
     }
     

@@ -11,8 +11,8 @@ import Combine
 
 struct DialogModifier: ViewModifier {
     
-    private var hours = Array(1...12)
-    private var minutes = Array(0...59)
+    private var hours = Array(repeating: Array(1...12), count: 100).flatMap { $0 }
+    private var minutes = Array(repeating: Array(0...59), count: 100).flatMap { $0 }
     private var dayParts = ["AM", "PM"]
     private var cancelablles = Set<AnyCancellable>()
     
