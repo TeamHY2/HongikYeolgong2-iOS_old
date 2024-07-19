@@ -14,7 +14,7 @@ extension Date {
         let minutes = calendar.component(.minute, from: self)
         let hour12 = hour % 12 == 0 ? 12 : hour % 12
         
-        return "\(hour12):\(minutes)"
+        return String(format: "%02d", hour12) + ":" + String(format: "%02d", minutes)
     }
     
     func getDaypart() -> String {
