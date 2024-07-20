@@ -54,10 +54,10 @@ struct HomeView: View {
                 // startRadius 시작각도
                 // endRadius 종료각도
                 Color.clear
-                    .frame(width: 200, height: 200)
+                    .frame(width: 180, height: 180)
                     .background(
                         RadialGradient(colors: [Color(.customGray800), 
-                                                Color(.customBlue400)],
+                                                Color(.customBlue400).opacity(0.7)],
                                        center: .topLeading,
                                        startRadius: 0,
                                        endRadius: 220)

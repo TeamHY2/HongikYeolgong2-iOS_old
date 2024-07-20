@@ -8,36 +8,49 @@
 import SwiftUI
 
 struct TimeLapse: View {
+    
     let startTime: Date
     let endTime: Date
     
     var body: some View {
         VStack(spacing: 0) {
             HStack {
-                CustomText(font: .suite, title: "Start", textColor: .customGray300, textWeight: .medium, textSize: 12)
-                
-                Image(.arrow)
-                
-                CustomText(font: .suite, title: "End", textColor: .customGray300, textWeight: .medium, textSize: 12)
-                Spacer()
-            }
-            
-            Spacer()
-                .frame(height: UIScreen.UIHeight(11))
-            
-            // 이용 시간
-            HStack {
-                HStack {
-                    CustomText(font: .suite, title: startTime.getHourMinutes(), textColor: .customGray100, textWeight: .extrabold, textSize: 30)
-                    CustomText(font: .suite, title: startTime.getDaypart(), textColor: .customGray100, textWeight: .medium, textSize: 14)
+                ZStack(alignment: .myAlignment) {
+                    CustomText(font: .suite, title: "Start", textColor: .customGray300, textWeight: .medium, textSize: 12)
+                        .alignmentGuide(.hAlignment) { d in
+                            d[.trailing]
+                        }
+                    
+                    Image(.arrow)
+                        .alignmentGuide(.hAlignment) { d in
+                            d[.leading] - 12
+                        }
+                        .alignmentGuide(.vAlignment) { d in
+                            d[.bottom] + (d.height / 2)
+                        }
+                        
+                    HStack(alignment: .lastTextBaseline)  {
+                        CustomText(font: .suite, title: startTime.getHourMinutes(), textColor: .customGray100, textWeight: .extrabold, textSize: 30)
+                        CustomText(font: .suite, title: startTime.getDaypart(), textColor: .customGray100, textWeight: .medium, textSize: 14)
+                    }
+                    .alignmentGuide(.hAlignment, computeValue: { d in
+                        d[.lastTextBaseline]
+                    })
+                    .alignmentGuide(.vAlignment) { d in
+                        d[.top] - 11
+                    }
                 }
                 
-                Spacer()
-                    .frame(width: UIScreen.UIWidth(30))
-                
-                HStack {
-                    CustomText(font: .suite, title: endTime.getHourMinutes(), textColor: .customGray100, textWeight: .extrabold, textSize: 30)
-                    CustomText(font: .suite, title: endTime.getDaypart(), textColor: .customGray100, textWeight: .medium, textSize: 14)
+                VStack(alignment: .leading) {
+                    CustomText(font: .suite, title: "End", textColor: .customGray300, textWeight: .medium, textSize: 12)
+                    
+                    Spacer().frame(height: UIScreen.UIHeight(11))
+                    
+                    HStack(alignment: .lastTextBaseline) {
+                        CustomText(font: .suite, title: endTime.getHourMinutes(), textColor: .customGray100, textWeight: .extrabold, textSize: 30)
+                        CustomText(font: .suite, title: endTime.getDaypart(), textColor: .customGray100, textWeight: .medium, textSize: 14)
+                    }
+                    
                 }
                 Spacer()
             }
@@ -50,7 +63,7 @@ struct TimeLapse: View {
                 CustomText(font: .suite, title: "Time Left", textColor: .customGray300, textWeight: .medium, textSize: 12)
                 Spacer()
             }
-           
+            
             Spacer()
                 .frame(height: UIScreen.UIHeight(11))
             
@@ -67,6 +80,30 @@ struct TimeLapse: View {
             }
         }
     }
+}
+
+extension HorizontalAlignment {
+    private enum MyHorizontalAlignment : AlignmentID {
+        static func defaultValue(in d: ViewDimensions) -> CGFloat {
+            return d[HorizontalAlignment.leading]
+        }
+    }
+        
+    static let hAlignment = HorizontalAlignment(MyHorizontalAlignment.self)
+}
+
+extension VerticalAlignment {
+    private enum MyVerticalAlignment : AlignmentID {
+        static func defaultValue(in d: ViewDimensions) -> CGFloat {
+            return d[VerticalAlignment.bottom]
+        }
+    }
+    
+    static let vAlignment = VerticalAlignment(MyVerticalAlignment.self)
+}
+
+extension Alignment {
+    static let myAlignment = Alignment(horizontal: .hAlignment, vertical: .vAlignment)
 }
 
 #Preview {
