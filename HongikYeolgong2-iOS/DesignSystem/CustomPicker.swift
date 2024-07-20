@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import UIKit
 
-struct CustomPicker<T>: UIViewRepresentable {
+struct CustomPicker<T: Equatable>: UIViewRepresentable {
     
     @Binding var selected: T
     
@@ -24,9 +24,17 @@ struct CustomPicker<T>: UIViewRepresentable {
         picker.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)  
         picker.dataSource = context.coordinator
         picker.delegate = context.coordinator
-        if data.first as? Int != nil {
-            picker.selectRow(data.count / 2, inComponent: 0, animated: false)
+        
+        // 처음 Picker가 나타날때 현재시간으로 설정
+        if data.randomElement() as? Int != nil,
+            let findIndex = data.enumerated().map({ $0 }).firstIndex(where: ({$0.element == selected && $0.offset >= data.count / 2})) {
+            
+            picker.selectRow(findIndex, inComponent: 0, animated: false)
+            
+        } else if let seleted = selected as? String {
+            picker.selectRow(seleted == "AM" ? 0 : 1, inComponent: 0, animated: false)
         }
+        
         return picker
     }
     
