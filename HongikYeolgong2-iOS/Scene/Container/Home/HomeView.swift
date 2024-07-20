@@ -50,8 +50,23 @@ struct HomeView: View {
             
             Spacer()
             
+            ZStack(alignment: .topLeading) {
+                // startRadius 시작각도
+                // endRadius 종료각도
+                Color.clear
+                    .frame(width: 200, height: 200)
+                    .background(
+                        RadialGradient(colors: [Color(.customGray800), 
+                                                Color(.customBlue400)],
+                                       center: .topLeading,
+                                       startRadius: 0,
+                                       endRadius: 220)
+                                   .blur(radius: 60)
+                                   .compositingGroup()
+                    )
+                CalendarView()
+            }
             
-            CalendarView()                
         }
         .customNavigation(left: {
             CustomText(font: .suite, title: "홍익열공이", textColor: .customGray100, textWeight: .semibold, textSize: 18)

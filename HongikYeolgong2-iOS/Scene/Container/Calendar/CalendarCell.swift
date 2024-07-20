@@ -16,7 +16,7 @@ enum CellStyle: CaseIterable {
 
 struct CalendarCell: View {
     let dayOfNumber: String
-    let cellStyle: CellStyle = CellStyle.allCases.randomElement()!
+    let cellStyle: CellStyle = .dayCount00
     
     var body: some View {
         
