@@ -8,7 +8,7 @@
 import Foundation
 
 final class HomeViewModel: ViewModelType {
-    @Published var isRoomReserved = false
+    @Published var isBooked = false
     @Published var useageStartTime = Date()
     @Published var showingAlert = false
     @Published var showingAlert2 = false
@@ -17,17 +17,26 @@ final class HomeViewModel: ViewModelType {
     @Inject var calendarRepository: CalendarRepositoryType
     
     
-    enum Action {}
+    enum Action {
+        case startUsing
+        case showDialog
+        case showAlert
+        case showAlert2
+        case useCompleted
+    }
     
     func send(action: Action) {
-        
-    }
-    
-    func startRoomUsage() {
-        isRoomReserved = true
-    }
-    
-    func cancleRoomUsage() {
-        isRoomReserved = false
+        switch action {
+        case .startUsing:
+            isBooked = true
+        case .showDialog:
+            showingDialog = true
+        case .showAlert:
+            showingAlert = true
+        case .showAlert2:
+            showingAlert2 = true
+        case .useCompleted:
+            break
+        }
     }
 }
