@@ -15,43 +15,41 @@ struct TimeLapse: View {
     var body: some View {
         VStack(spacing: 0) {
             HStack {
-                ZStack(alignment: .myAlignment) {
-                    CustomText(font: .suite, title: "Start", textColor: .customGray300, textWeight: .medium, textSize: 12)
-                        .alignmentGuide(.hAlignment) { d in
-                            d[.trailing]
-                        }
-                    
-                    Image(.arrow)
-                        .alignmentGuide(.hAlignment) { d in
-                            d[.leading] - 12
-                        }
-                        .alignmentGuide(.vAlignment) { d in
-                            d[.bottom] + (d.height / 2)
-                        }
+                VStack(alignment: .leading, spacing: 0) {
+                    HStack(alignment: .center) {
+                        CustomText(font: .suite, title: "Start", textColor: .customGray300, textWeight: .medium, textSize: 12)
                         
-                    HStack(alignment: .lastTextBaseline)  {
+                        Image(.arrow)
+                            .offset(y: -4)
+                    }
+                    
+                    Spacer()
+                        .frame(height: UIScreen.UIHeight(11))
+                    
+                    HStack(alignment: .firstTextBaseline)  {
                         CustomText(font: .suite, title: startTime.getHourMinutes(), textColor: .customGray100, textWeight: .extrabold, textSize: 30)
                         CustomText(font: .suite, title: startTime.getDaypart(), textColor: .customGray100, textWeight: .medium, textSize: 14)
                     }
-                    .alignmentGuide(.hAlignment, computeValue: { d in
-                        d[.lastTextBaseline]
-                    })
-                    .alignmentGuide(.vAlignment) { d in
-                        d[.top] - 11
-                    }
                 }
                 
-                VStack(alignment: .leading) {
-                    CustomText(font: .suite, title: "End", textColor: .customGray300, textWeight: .medium, textSize: 12)
+                VStack(alignment: .leading, spacing: 0) {
+                    HStack {
+                        CustomText(font: .suite, title: "End", textColor: .customGray300, textWeight: .medium, textSize: 12)
+                        
+                        Image(.arrow)
+                            .offset(y: -4)
+                            .opacity(0)
+                    }
                     
-                    Spacer().frame(height: UIScreen.UIHeight(11))
+                    Spacer()
+                        .frame(height: UIScreen.UIHeight(11))
                     
-                    HStack(alignment: .lastTextBaseline) {
+                    HStack(alignment: .firstTextBaseline) {
                         CustomText(font: .suite, title: endTime.getHourMinutes(), textColor: .customGray100, textWeight: .extrabold, textSize: 30)
                         CustomText(font: .suite, title: endTime.getDaypart(), textColor: .customGray100, textWeight: .medium, textSize: 14)
                     }
-                    
                 }
+                
                 Spacer()
             }
             
@@ -80,30 +78,6 @@ struct TimeLapse: View {
             }
         }
     }
-}
-
-extension HorizontalAlignment {
-    private enum MyHorizontalAlignment : AlignmentID {
-        static func defaultValue(in d: ViewDimensions) -> CGFloat {
-            return d[HorizontalAlignment.leading]
-        }
-    }
-        
-    static let hAlignment = HorizontalAlignment(MyHorizontalAlignment.self)
-}
-
-extension VerticalAlignment {
-    private enum MyVerticalAlignment : AlignmentID {
-        static func defaultValue(in d: ViewDimensions) -> CGFloat {
-            return d[VerticalAlignment.bottom]
-        }
-    }
-    
-    static let vAlignment = VerticalAlignment(MyVerticalAlignment.self)
-}
-
-extension Alignment {
-    static let myAlignment = Alignment(horizontal: .hAlignment, vertical: .vAlignment)
 }
 
 #Preview {
