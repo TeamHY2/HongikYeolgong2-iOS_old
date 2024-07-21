@@ -8,10 +8,13 @@
 import SwiftUI
 import Combine
 
+
 struct DialogModifier: ViewModifier {
-    private var hours = Array(1...12)
-    private var minutes = Array(0...59)
-    private var dayParts = ["AM", "PM"]
+    
+    private let hours = Array(repeating: Array(1...12), count: 100).flatMap { $0 }
+    private let minutes = Array(repeating: Array(0...59), count: 100).flatMap { $0 }
+    private let dayParts = ["AM", "PM"]
+    
     private var cancelablles = Set<AnyCancellable>()
     
     @State private var selectedHour = CurrentValueSubject<Int, Never>(0)
@@ -47,35 +50,39 @@ struct DialogModifier: ViewModifier {
                         Spacer().frame(height: UIScreen.UIHeight(30))
                         
                         // picker
-                        HStack {
-                            Picker("Hour", selection: $selectedHour.value) {
-                                ForEach(hours, id: \.self) {
-                                    CustomText(font: .suite, title: String(format: "%02d", $0), textColor: .white, textWeight: .bold, textSize: 24)
-                                }
-                                
-                                
-                            }
-                            .pickerStyle(.wheel)
-                            
-                            CustomText(font: .suite, title: ":", textColor: .white, textWeight: .bold, textSize: 24)
-                            
-                            Picker("Minutes", selection: $selectedMinute.value) {
-                                ForEach(minutes, id: \.self) {
-                                    CustomText(font: .suite, title: String(format: "%02d", $0), textColor: .white, textWeight: .bold, textSize: 24)
-                                }
-                            }
-                            .pickerStyle(.wheel)
-                            
-                            Picker("", selection: $daypart.value) {
-                                ForEach(dayParts, id: \.self) {
-                                    CustomText(font: .suite, title: "\($0)", textColor: .white, textWeight: .bold, textSize: 24)
+                            HStack {
+                                CustomPicker(selected: $selectedHour.value, data: hours)
                                     
-                                }
+                                CustomText(font: .suite, title: ":", textColor: .white, textWeight: .bold, textSize: 24)
+                                
+                                CustomPicker(selected: $selectedMinute.value, data: minutes)
+                                
+                                CustomPicker(selected: $daypart.value, data: dayParts)
                             }
-                            .pickerStyle(.wheel)
-                        }
-                        .frame(height: UIScreen.UIHeight(126))
-                        .padding(.horizontal, UIScreen.UIWidth(50))
+                            .frame(height: UIScreen.UIHeight(131))
+                            .frame(width: UIScreen.UIWidth(166))
+                            .padding(.horizontal, UIScreen.UIWidth(50))
+                            .mask(
+                                LinearGradient(
+                                        gradient: Gradient(stops: [
+                                            .init(color: Color(.customGray800).opacity(0), location: 0),
+                                            .init(color: Color(.customGray800), location: 0.33)
+                                        ]),
+                                        startPoint: .top,
+                                        endPoint: .bottom
+                                )
+                            )
+                            .mask(
+                                LinearGradient(
+                                        gradient: Gradient(stops: [
+                                            .init(color: Color(.customGray800).opacity(0), location: 0),
+                                            .init(color: Color(.customGray800), location: 0.33)
+                                        ]),
+                                        startPoint: .bottom,
+                                        endPoint: .top
+                                )
+                            )
+                        
                         
                         Spacer().frame(height: UIScreen.UIHeight(32))
                         
