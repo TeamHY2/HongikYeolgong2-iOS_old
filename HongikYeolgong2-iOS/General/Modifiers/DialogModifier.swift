@@ -27,7 +27,7 @@ struct DialogModifier: ViewModifier {
     let confirmAction: (() -> ())?
     let cancleAction: (() -> ())?
     
-    init(isPresented: Binding<Bool>, currentDate: Binding<Date>, confirmAction: @escaping () -> (), cancelAction: @escaping () -> ()) {
+    init(isPresented: Binding<Bool>, currentDate: Binding<Date>, confirmAction: @escaping () -> (), cancelAction: (() -> ())? = nil) {
         self._isPresented = isPresented
         self._currentDate = currentDate
         self.confirmAction = confirmAction

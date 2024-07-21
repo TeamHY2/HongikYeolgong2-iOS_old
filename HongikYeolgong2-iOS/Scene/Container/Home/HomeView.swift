@@ -78,21 +78,15 @@ struct HomeView: View {
             })
         })
         .dialog(isPresented: $viewModel.showingDialog,
-                currentDate: $viewModel.useageStartTime,
-                confirmAction: {
+                currentDate: $viewModel.useageStartTime) {
             viewModel.send(action: .startUsing)
-        }, cancelAction: {
-        })
-        .alert(title: "열람실을 다 이용하셨나요?", confirmButtonText: "네", cancleButtonText: "더 이용하기", isPresented: $viewModel.showingAlert, confirmAction: {
+        }
+        .alert(title: "열람실을 다 이용하셨나요?", confirmButtonText: "네", cancleButtonText: "더 이용하기", isPresented: $viewModel.showingAlert) {
             viewModel.send(action: .useCompleted)
-        }, cancelAction: {
+        }
+        .alert(title: "열람실 이용 시간을 연장할까요?", confirmButtonText: "연장하기", cancleButtonText: "아니오", isPresented: $viewModel.showingAlert2) {
             
-        })
-        .alert(title: "열람실 이용 시간을 연장할까요?", confirmButtonText: "연장하기", cancleButtonText: "아니오", isPresented: $viewModel.showingAlert2, confirmAction: {
-            
-        }, cancelAction: {
-            
-        })
+        }
     }
 }
 
