@@ -26,6 +26,7 @@ final class CalendarViewModel: ViewModelType {
     private var cancellables = Set<AnyCancellable>()
     
     enum Action {
+        case saveData(StudyRecord)
         case move(MoveType)
         case viewOnAppear
     }
@@ -36,6 +37,8 @@ final class CalendarViewModel: ViewModelType {
             changeMonth(moveType)
         case .viewOnAppear:
              getMonth()
+        case .saveData(let data):
+            updateStudyRecord(data)
         }
     }
 }
@@ -60,6 +63,7 @@ extension CalendarViewModel {
         fetchStudyRecord(for: selecteDate)
     }
     
+    // 캘린더에 데이터 가져오기
     func fetchStudyRecord(for date: Date) {
         calendarRepository.fetchStudyRecord()
             .sink { completion in
@@ -67,6 +71,18 @@ extension CalendarViewModel {
             } receiveValue: { [weak self] studyArray in
                 guard let self = self else { return }
                 currentMonth = makeMonth(date: date, studyArray: studyArray)
+            }
+            .store(in: &cancellables)
+    }
+    
+    // 캘린더 데이터 저장
+    func updateStudyRecord(_ data: StudyRecord) {
+        calendarRepository.updateStudyRecord(data)
+            .sink { completion in
+                
+            } receiveValue: { [weak self] studyArray in
+                guard let self = self else { return }
+                currentMonth = makeMonth(date: selecteDate, studyArray: studyArray)
             }
             .store(in: &cancellables)
     }

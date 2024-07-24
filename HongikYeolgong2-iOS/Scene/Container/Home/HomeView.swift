@@ -8,8 +8,13 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State private var showCompleteAlert = false
+    @State private var showTimeExtensionAlert = false
+    @State private var showingDialog = false
+    
     @EnvironmentObject private var coordinator: SceneCoordinator
     @EnvironmentObject private var timerViewModel: TimerViewModel
+    @EnvironmentObject private var calendarViewModel: CalendarViewModel
     
     var body: some View {
         VStack(spacing: 0) {
@@ -29,13 +34,13 @@ struct HomeView: View {
             
             if timerViewModel.isStart {
                 CustomButton(action: {
-                    timerViewModel.send(action: .showAlert2)
+                    showTimeExtensionAlert = true
                 }, font: .suite, title: "열람실 이용 연장", titleColor: .white, backgroundColor: .customBlue100, leading: 0, trailing: 0)
                 
                 Spacer().frame(height: UIScreen.UIHeight(12))
                 
                 CustomButton(action: {
-                    timerViewModel.send(action: .showAlert)
+                    showCompleteAlert = true
                 }, font: .suite, title: "열람실 이용 종료", titleColor: .customGray100, backgroundColor: .customGray600, leading: 0, trailing: 0)
             } else {
                 HStack {
@@ -44,7 +49,7 @@ struct HomeView: View {
                     Spacer().frame(width: UIScreen.UIWidth(12))
                     
                     CustomButton2(action: {
-                        timerViewModel.send(action: .showDialog)
+                        showingDialog = true
                     }, title: "열람실 이용 시작", image: .angularButton02, maxWidth: .infinity, minHeight: 52)
                 }
                 
@@ -79,14 +84,22 @@ struct HomeView: View {
                 Image(.icHamburger)
             })
         })
-        .dialog(isPresented: $timerViewModel.showingDialog,
+        .dialog(isPresented: $showingDialog,
                 currentDate: $timerViewModel.startTime) {
-            timerViewModel.send(action: .startUsing)
+            timerViewModel.send(action: .startButtonTap)
         }
-        .alert(title: "열람실을 다 이용하셨나요?", confirmButtonText: "네", cancleButtonText: "더 이용하기", isPresented: $timerViewModel.showingAlert) {
-            timerViewModel.send(action: .useCompleted)
+        .alert(title: "열람실을 다 이용하셨나요?", confirmButtonText: "네", cancleButtonText: "더 이용하기", isPresented: $showCompleteAlert) {
+            // 타이머 중지
+            timerViewModel.send(action: .completeButtonTap)
+            
+            // 총시간
+            let totalTime = timerViewModel.totalTime
+            let data = StudyRecord(date: Date(), totalTime: totalTime)
+            
+            // 캘린더 업데이트
+            calendarViewModel.send(action: .saveData(data))
         }
-        .alert(title: "열람실 이용 시간을 연장할까요?", confirmButtonText: "연장하기", cancleButtonText: "아니오", isPresented: $timerViewModel.showingAlert2) {
+        .alert(title: "열람실 이용 시간을 연장할까요?", confirmButtonText: "연장하기", cancleButtonText: "아니오", isPresented: $showTimeExtensionAlert) {
             
         }
     }

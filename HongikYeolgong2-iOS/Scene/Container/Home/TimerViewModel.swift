@@ -13,10 +13,8 @@ final class TimerViewModel: ViewModelType {
     @Published var isStart = false
     @Published var startTime = Date()
     @Published var endTime: Date!
-    @Published var showingAlert = false
-    @Published var showingAlert2 = false
-    @Published var showingDialog = false
     @Published var timeRemaining = 0
+    @Published var totalTime = 0
     
     private let timer = Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()
     
@@ -24,17 +22,14 @@ final class TimerViewModel: ViewModelType {
     
     // Input
     enum Action {
-        case startUsing
-        case showDialog
-        case showAlert
-        case showAlert2
-        case useCompleted
+        case startButtonTap
+        case completeButtonTap
     }
     
     // Binding
     func send(action: Action) {
         switch action {
-        case .startUsing:
+        case .startButtonTap:
             isStart = true
             endTime = startTime + TimeInterval(3600 * 6)
             timeRemaining = Int(endTime.timeIntervalSince(startTime))
@@ -44,15 +39,10 @@ final class TimerViewModel: ViewModelType {
                 timeRemaining -= 1
             }
             .store(in: &cancellables)
-        case .showDialog:
-            showingDialog = true
-        case .showAlert:
-            showingAlert = true
-        case .showAlert2:
-            showingAlert2 = true
-        case .useCompleted:
-            isStart = false
+        case .completeButtonTap:
             cancellables.removeAll()
+            isStart = false
+            totalTime = Int(endTime.timeIntervalSince(startTime)) - timeRemaining                       
         }
     }
 }

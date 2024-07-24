@@ -10,7 +10,7 @@ import Combine
 
 protocol CalendarRepositoryType {
     func fetchStudyRecord() -> AnyPublisher<[StudyRecord], Never>
-    func updateStudyRecord(for: Date, _: StudyRecord) -> AnyPublisher<[StudyRecord], Never>
+    func updateStudyRecord(_: StudyRecord) -> AnyPublisher<[StudyRecord], Never>
 }
 
 // 테스트용 데이터
@@ -27,8 +27,8 @@ class CalendarRepositoryMock: CalendarRepositoryType {
         return mockData.eraseToAnyPublisher()
     }
     
-    func updateStudyRecord(for date: Date, _ data: StudyRecord) -> AnyPublisher<[StudyRecord], Never> {
-        mockData.send([data])
+    func updateStudyRecord(_ data: StudyRecord) -> AnyPublisher<[StudyRecord], Never> {        
+        mockData.send(mockData.value + [data])
         return mockData.eraseToAnyPublisher()
     }
 }
