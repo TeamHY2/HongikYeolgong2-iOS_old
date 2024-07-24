@@ -9,17 +9,26 @@ import Foundation
 import Combine
 
 protocol CalendarRepositoryType {
-    func fetch() -> AnyPublisher<[Day], Never>
-    func insert() -> AnyPublisher<Void, Never>
+    func fetchStudyRecord() -> AnyPublisher<[StudyRecord], Never>
+    func updateStudyRecord(for: Date, _: StudyRecord) -> AnyPublisher<[StudyRecord], Never>
 }
 
+// 테스트용 데이터
 class CalendarRepositoryMock: CalendarRepositoryType {
-    let mockData: [Day] = []
-    func fetch() -> AnyPublisher<[Day], Never> {
-        Just(mockData).eraseToAnyPublisher()
+    let mockData = CurrentValueSubject<[StudyRecord], Never>([.init(date: Date() - TimeInterval(86400 * 2), totalTime: (3600 * 4)),
+                                                     .init(date: Date() - TimeInterval(86400 * 3), totalTime: (3600 * 1)),
+                                                     .init(date: Date() - TimeInterval(86400 * 5), totalTime: (3600 * 4)),
+                                                     .init(date: Date() - TimeInterval(86400 * 10), totalTime: (3600 * 2)),
+                                                     .init(date: Date() - TimeInterval(86400 * 22), totalTime: (3600 * 12)),
+                                                     .init(date: Date() - TimeInterval(86400 * 6), totalTime: (3600 * 6)),
+                                                     .init(date: Date() - TimeInterval(86400 * 7), totalTime: (3600 * 7)),])
+    
+    func fetchStudyRecord() -> AnyPublisher<[StudyRecord], Never> {
+        return mockData.eraseToAnyPublisher()
     }
     
-    func insert() -> AnyPublisher<Void, Never> {
-        Just(()).eraseToAnyPublisher()
+    func updateStudyRecord(for date: Date, _ data: StudyRecord) -> AnyPublisher<[StudyRecord], Never> {
+        mockData.send([data])
+        return mockData.eraseToAnyPublisher()
     }
 }

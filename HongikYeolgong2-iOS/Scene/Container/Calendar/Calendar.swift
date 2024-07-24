@@ -8,9 +8,18 @@
 import SwiftUI
 import Combine
 
-
+enum WeekDay: String, CaseIterable {
+    case sun = "Sun"
+    case Mon = "Mon"
+    case Tue = "Tue"
+    case Wed = "Wed"
+    case Thu = "Thu"
+    case Fri = "Fri"
+    case Sat = "Sat"
+}
 
 struct CalendarView: View {
+    
     @EnvironmentObject private var viewModel: CalendarViewModel
     
     private let columns = [GridItem(.flexible()),
@@ -62,7 +71,7 @@ struct CalendarView: View {
             // grid
             LazyVGrid(columns: columns, spacing: UIScreen.UIWidth(5)) {
                 ForEach(viewModel.currentMonth, id: \.id) {
-                    CalendarCell(dayOfNumber: $0.dayOfNumber)
+                    CalendarCell(dayInfo: $0)
                 }
             }
             .onAppear {

@@ -8,18 +8,9 @@
 import Foundation
 import Combine
 
-enum WeekDay: String, CaseIterable {
-    case sun = "Sun"
-    case Mon = "Mon"
-    case Tue = "Tue"
-    case Wed = "Wed"
-    case Thu = "Thu"
-    case Fri = "Fri"
-    case Sat = "Sat"
-}
-
 final class CalendarViewModel: ViewModelType {
-    enum DateMove {
+    
+    enum MoveType {
         case current
         case next
         case prev
@@ -35,24 +26,49 @@ final class CalendarViewModel: ViewModelType {
     private var cancellables = Set<AnyCancellable>()
     
     enum Action {
-        case move(DateMove)
+        case move(MoveType)
         case viewOnAppear
     }
     
     func send(action: Action) {
         switch action {
-        case .move(let move):
-            if move == .next {
-                selecteDate = plusMonth(date: selecteDate)
-            } else if move == .prev {
-                selecteDate = minusMonth(date: selecteDate)
-            } else if move == .current {
-                selecteDate = Date()
-            }
-            currentMonth = makeMonth(date: selecteDate)
+        case .move(let moveType):
+            changeMonth(moveType)
         case .viewOnAppear:
-             currentMonth = makeMonth(date: selecteDate)      
+             getMonth()
         }
+    }
+}
+
+extension CalendarViewModel {
+    // 선택한 달이 변경되는 경우
+    func changeMonth(_ moveType: MoveType) {
+        switch moveType {
+        case .current:
+            selecteDate = Date()
+        case .next:
+            selecteDate = plusMonth(date: selecteDate)
+        case .prev:
+            selecteDate = minusMonth(date: selecteDate)
+        }
+        
+        fetchStudyRecord(for: selecteDate)
+    }
+    
+    // 앱이 처음 실행됬을때 데이터를 받아옴
+    func getMonth() {
+        fetchStudyRecord(for: selecteDate)
+    }
+    
+    func fetchStudyRecord(for date: Date) {
+        calendarRepository.fetchStudyRecord()
+            .sink { completion in
+                
+            } receiveValue: { [weak self] studyArray in
+                guard let self = self else { return }
+                currentMonth = makeMonth(date: date, studyArray: studyArray)
+            }
+            .store(in: &cancellables)
     }
 }
 
@@ -86,24 +102,39 @@ extension CalendarViewModel {
         return components.weekday! - 1
     }
     
-    func makeMonth(date: Date) -> [Day] {
+    func makeMonth(date: Date, studyArray: [StudyRecord]) -> [Day] {
+        var days: [Day] = []
+        var count: Int = 1
+        
         let daysInMonth = daysInMonth(date: date)
         let firstDayOfMonth = firstOfMonth(date: date)
         let startingSpace = weekDay(date: firstDayOfMonth)
-        
-        var count: Int = 1
-        var days: [Day] = []
-        
+                
         while(count <= 42) {
+            // 이번달이 아닌경우 공백 처리
             if (count <= startingSpace || count - startingSpace > daysInMonth) {
                 days.append(Day(dayOfNumber: ""))
             }
+            
             else {
                 let numberOfDay = count - startingSpace
+                
                 guard calendar.date(byAdding: .day, value: numberOfDay - 1, to: firstOfMonth(date: date)) != nil else {
                     return []
                 }
-                days.append(Day(dayOfNumber: "\(count - startingSpace)"))
+                // 현재날짜 생성
+                var components = calendar.dateComponents([.year, .month, .day], from: date)
+                components.day = numberOfDay
+                
+                // 현재날짜와 서버에서 받아온 데이터의 날짜가 일치하는지 확인
+                if let currentDay = calendar.date(from: components) {
+                    let matchData = studyArray.filter { calendar.isDate($0.date, inSameDayAs: currentDay)}
+                    days.append(Day(dayOfNumber: "\(numberOfDay)", studyRecord: matchData))
+                } else {
+                    // 일치하는 데이터가 존재하지 않는경우
+                    days.append(Day(dayOfNumber: "\(numberOfDay)"))
+                }
+                
             }
             count += 1
         }

@@ -15,54 +15,70 @@ enum CellStyle: CaseIterable {
 }
 
 struct CalendarCell: View {
-    let dayOfNumber: String
-    let cellStyle: CellStyle = .dayCount00
+    let dayInfo: Day
+    
+    private var totalTime: Int {
+        if let stduyRecords = dayInfo.studyRecord {
+            return stduyRecords.map { $0.totalTime }.reduce(0, +)
+        } else {
+            return 0
+        }
+    }
+    
+    private var cellStyle: CellStyle {
+        if totalTime < (3600 * 3) {
+            return .dayCount00
+        } else if totalTime < (3600 * 6) {
+            return .dayCount01
+        } else if totalTime < ( 3600 * 9) {
+            return .dayCount02
+        } else {
+            return .dayCount03
+        }
+    }
     
     var body: some View {
-        
         switch cellStyle {
         case .dayCount00:
             VStack {
-                CustomText(font: .suite, title: dayOfNumber, textColor: .customGray300, textWeight: .medium, textSize: 14)
+                CustomText(font: .suite, title: dayInfo.dayOfNumber, textColor: .customGray300, textWeight: .medium, textSize: 14)
             }
             .frame(maxWidth: .infinity)
             .frame(height: UIScreen.UIHeight(33))
             .background(Color(.customGray800))
             .cornerRadius(8)
-            .opacity(dayOfNumber.isEmpty ? 0 : 1)
+            .opacity(dayInfo.dayOfNumber.isEmpty ? 0 : 1)
         case .dayCount01:
             VStack {
-                CustomText(font: .suite, title: dayOfNumber, textColor: .customGray100, textWeight: .medium, textSize: 14)
+                CustomText(font: .suite, title: dayInfo.dayOfNumber, textColor: .customGray100, textWeight: .medium, textSize: 14)
             }
             .frame(maxWidth: .infinity)
             .frame(height: UIScreen.UIHeight(33))
             .background(Image(.dayCount01))
             .cornerRadius(8)
-            .opacity(dayOfNumber.isEmpty ? 0 : 1)
+            .opacity(dayInfo.dayOfNumber.isEmpty ? 0 : 1)
         case .dayCount02:
             VStack {
-                CustomText(font: .suite, title: dayOfNumber, textColor: .white, textWeight: .medium, textSize: 14)
+                CustomText(font: .suite, title: dayInfo.dayOfNumber, textColor: .white, textWeight: .medium, textSize: 14)
             }
             .frame(maxWidth: .infinity)
             .frame(height: UIScreen.UIHeight(33))
             .background(Image(.dayCount02))
             .cornerRadius(8)
-            .opacity(dayOfNumber.isEmpty ? 0 : 1)
+            .opacity(dayInfo.dayOfNumber.isEmpty ? 0 : 1)
         case .dayCount03:
             VStack {
-                CustomText(font: .suite, title: dayOfNumber, textColor: .customGray600, textWeight: .medium, textSize: 14)
+                CustomText(font: .suite, title: dayInfo.dayOfNumber, textColor: .customGray600, textWeight: .medium, textSize: 14)
             }
             .frame(maxWidth: .infinity)
             .frame(height: UIScreen.UIHeight(33))
             .background(Image(.dayCount03))
             .cornerRadius(8)
-            .opacity(dayOfNumber.isEmpty ? 0 : 1)
+            .opacity(dayInfo.dayOfNumber.isEmpty ? 0 : 1)
         }
-        
-        
     }
 }
 
 #Preview {
-    CalendarCell(dayOfNumber: "1")
+    CalendarCell(dayInfo: Day(dayOfNumber: "1"))
 }
