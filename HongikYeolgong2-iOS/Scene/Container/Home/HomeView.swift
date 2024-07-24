@@ -17,7 +17,9 @@ struct HomeView: View {
                 .frame(height: viewModel.isBooked ? UIScreen.UIHeight(11) : UIScreen.UIHeight(43))
             
             if viewModel.isBooked {
-                TimeLapse(startTime: viewModel.useageStartTime, endTime: viewModel.useageStartTime + TimeInterval(3600 * 4))
+                TimeLapse(startTime: viewModel.startTime, 
+                          endTime: viewModel.endTime,
+                          timeRemaining: viewModel.timeRemaining)
             } else {
                 Quote()
             }
@@ -78,7 +80,7 @@ struct HomeView: View {
             })
         })
         .dialog(isPresented: $viewModel.showingDialog,
-                currentDate: $viewModel.useageStartTime) {
+                currentDate: $viewModel.startTime) {
             viewModel.send(action: .startUsing)
         }
         .alert(title: "열람실을 다 이용하셨나요?", confirmButtonText: "네", cancleButtonText: "더 이용하기", isPresented: $viewModel.showingAlert) {

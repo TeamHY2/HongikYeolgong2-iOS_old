@@ -11,6 +11,7 @@ struct TimeLapse: View {
     
     let startTime: Date
     let endTime: Date
+    let timeRemaining: Int
     
     var body: some View {
         VStack(spacing: 0) {
@@ -66,7 +67,7 @@ struct TimeLapse: View {
                 .frame(height: UIScreen.UIHeight(11))
             
             HStack {
-                CustomText(font: .suite, title: "03:52:00", textColor: .customGray100, textWeight: .extrabold, textSize: 30)
+                CustomText(font: .suite, title: timeRemaining.getFullTimeString(), textColor: timeRemaining <= (1800) ? .customYellow100 : .customGray100, textWeight: .extrabold, textSize: 30)
                 
                 Spacer()
                 
@@ -80,6 +81,18 @@ struct TimeLapse: View {
     }
 }
 
+extension Int {
+    func getFullTimeString() -> String {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.hour, .minute, .second]
+        formatter.unitsStyle = .positional
+        formatter.zeroFormattingBehavior = .pad
+        let formattedString = formatter.string(from: TimeInterval(self))!
+        return formattedString
+    }
+    
+}
+
 #Preview {
-    TimeLapse(startTime: Date(), endTime: Date())
+    TimeLapse(startTime: Date(), endTime: Date(), timeRemaining: 0)
 }

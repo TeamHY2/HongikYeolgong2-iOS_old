@@ -6,17 +6,25 @@
 //
 
 import Foundation
+import Combine
 
 final class HomeViewModel: ViewModelType {
+    // State
     @Published var isBooked = false
-    @Published var useageStartTime = Date()
+    @Published var startTime = Date()
+    @Published var endTime: Date!
     @Published var showingAlert = false
     @Published var showingAlert2 = false
     @Published var showingDialog = false
-        
+    @Published var timeRemaining = 0
+    
+    private let timer = Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()
+    
+    private var cancellables = Set<AnyCancellable>()
+    
     @Inject var calendarRepository: CalendarRepositoryType
     
-    
+    // Input
     enum Action {
         case startUsing
         case showDialog
@@ -25,10 +33,19 @@ final class HomeViewModel: ViewModelType {
         case useCompleted
     }
     
+    // Binding
     func send(action: Action) {
         switch action {
         case .startUsing:
             isBooked = true
+            endTime = startTime + TimeInterval(3600 * 6)
+            timeRemaining = Int(endTime.timeIntervalSince(startTime))
+            
+            timer.sink { [weak self] _ in
+                guard let self = self else { return }
+                timeRemaining -= 1
+            }
+            .store(in: &cancellables)
         case .showDialog:
             showingDialog = true
         case .showAlert:
@@ -36,7 +53,8 @@ final class HomeViewModel: ViewModelType {
         case .showAlert2:
             showingAlert2 = true
         case .useCompleted:
-            break
+            isBooked = false
+            cancellables.removeAll()
         }
     }
 }
