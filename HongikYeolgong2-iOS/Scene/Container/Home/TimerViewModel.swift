@@ -1,16 +1,16 @@
 //
-//  HomeViewModel.swift
+//  TimerViewModel.swift
 //  HongikYeolgong2-iOS
 //
-//  Created by 석기권 on 7/11/24.
+//  Created by 석기권 on 7/24/24.
 //
 
 import Foundation
 import Combine
 
-final class HomeViewModel: ViewModelType {
+final class TimerViewModel: ViewModelType {
     // State
-    @Published var isBooked = false
+    @Published var isStart = false
     @Published var startTime = Date()
     @Published var endTime: Date!
     @Published var showingAlert = false
@@ -21,8 +21,6 @@ final class HomeViewModel: ViewModelType {
     private let timer = Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()
     
     private var cancellables = Set<AnyCancellable>()
-    
-    @Inject var calendarRepository: CalendarRepositoryType
     
     // Input
     enum Action {
@@ -37,7 +35,7 @@ final class HomeViewModel: ViewModelType {
     func send(action: Action) {
         switch action {
         case .startUsing:
-            isBooked = true
+            isStart = true
             endTime = startTime + TimeInterval(3600 * 6)
             timeRemaining = Int(endTime.timeIntervalSince(startTime))
             
@@ -53,8 +51,9 @@ final class HomeViewModel: ViewModelType {
         case .showAlert2:
             showingAlert2 = true
         case .useCompleted:
-            isBooked = false
+            isStart = false
             cancellables.removeAll()
         }
     }
 }
+

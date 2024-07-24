@@ -13,7 +13,8 @@ struct HongikYeolgong2_iOSApp: App {
             AuthenticationView()
                 .environmentObject(SceneCoordinator())
                 .environmentObject(AuthenticationViewModel())
-                .environmentObject(HomeViewModel())
+                .environmentObject(TimerViewModel())
+                .environmentObject(CalendarViewModel())
         }
     }
 }

@@ -8,19 +8,10 @@
 import SwiftUI
 import Combine
 
-enum WeekDay: String, CaseIterable {
-    case sun = "Sun"
-    case Mon = "Mon"
-    case Tue = "Tue"
-    case Wed = "Wed"
-    case Thu = "Thu"
-    case Fri = "Fri"
-    case Sat = "Sat"
-}
+
 
 struct CalendarView: View {
-    @State private var selecteDate = Date()
-    @State private var currentMonth = [Day]()
+    @EnvironmentObject private var viewModel: CalendarViewModel
     
     private let columns = [GridItem(.flexible()),
                            GridItem(.flexible()),
@@ -34,14 +25,14 @@ struct CalendarView: View {
         VStack(spacing: 0) {
             // header
             HStack(spacing: 0) {
-                CustomText(font: .suite, title: selecteDate.getMonthString(), textColor: .customGray100, textWeight: .bold, textSize: 24)
+                CustomText(font: .suite, title: viewModel.selecteDate.getMonthString(), textColor: .customGray100, textWeight: .bold, textSize: 24)
                     .frame(width: UIScreen.UIWidth(54))
                 
-                CustomText(font: .suite, title: selecteDate.getYearString(), textColor: .customGray100, textWeight: .bold, textSize: 24)
+                CustomText(font: .suite, title: viewModel.selecteDate.getYearString(), textColor: .customGray100, textWeight: .bold, textSize: 24)
                 Spacer()
                 HStack {
                     Button(action: {
-                        selecteDate = CalendarManager.shared.minusMonth(date: selecteDate)
+                        viewModel.send(action: .move(.prev))
                     }) {
                         Image(.icCalendarLeft)
                     }
@@ -49,7 +40,7 @@ struct CalendarView: View {
                     Spacer().frame(width: UIScreen.UIWidth(7))
                     
                     Button(action: {
-                        selecteDate = CalendarManager.shared.plusMonth(date: selecteDate)
+                        viewModel.send(action: .move(.next))
                     }) {
                         Image(.icCalendarRight)
                     }
@@ -70,22 +61,13 @@ struct CalendarView: View {
             // seleteMonth가 변경될때마다 makeMonth의 값을 받아서 currentMonth에 업데이트
             // grid
             LazyVGrid(columns: columns, spacing: UIScreen.UIWidth(5)) {
-                ForEach(currentMonth, id: \.id) {
+                ForEach(viewModel.currentMonth, id: \.id) {
                     CalendarCell(dayOfNumber: $0.dayOfNumber)
                 }
             }
             .onAppear {
-                CalendarManager.shared
-                    .makeMonth(date: selecteDate)
-                    .assign(to: \.currentMonth, on: self)
-                    .cancel()
-            }
-            .onChange(of: selecteDate) { date in
-                CalendarManager.shared
-                    .makeMonth(date: date)
-                    .assign(to: \.currentMonth, on: self)
-                    .cancel()
-            }
+                viewModel.send(action: .viewOnAppear)
+            }           
         }
     }
 }

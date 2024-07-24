@@ -9,33 +9,33 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject private var coordinator: SceneCoordinator
-    @EnvironmentObject private var viewModel: HomeViewModel
+    @EnvironmentObject private var timerViewModel: TimerViewModel
     
     var body: some View {
         VStack(spacing: 0) {
             Spacer()
-                .frame(height: viewModel.isBooked ? UIScreen.UIHeight(11) : UIScreen.UIHeight(43))
+                .frame(height: timerViewModel.isStart ? UIScreen.UIHeight(11) : UIScreen.UIHeight(43))
             
-            if viewModel.isBooked {
-                TimeLapse(startTime: viewModel.startTime, 
-                          endTime: viewModel.endTime,
-                          timeRemaining: viewModel.timeRemaining)
+            if timerViewModel.isStart {
+                TimeLapse(startTime: timerViewModel.startTime,
+                          endTime: timerViewModel.endTime,
+                          timeRemaining: timerViewModel.timeRemaining)
             } else {
                 Quote()
             }
             
             Spacer()
-                .frame(height: viewModel.isBooked ? UIScreen.UIHeight(28) : UIScreen.UIHeight(120))
+                .frame(height: timerViewModel.isStart ? UIScreen.UIHeight(28) : UIScreen.UIHeight(120))
             
-            if viewModel.isBooked {
+            if timerViewModel.isStart {
                 CustomButton(action: {
-                    viewModel.send(action: .showAlert2)
+                    timerViewModel.send(action: .showAlert2)
                 }, font: .suite, title: "열람실 이용 연장", titleColor: .white, backgroundColor: .customBlue100, leading: 0, trailing: 0)
                 
                 Spacer().frame(height: UIScreen.UIHeight(12))
                 
                 CustomButton(action: {
-                    viewModel.send(action: .showAlert)
+                    timerViewModel.send(action: .showAlert)
                 }, font: .suite, title: "열람실 이용 종료", titleColor: .customGray100, backgroundColor: .customGray600, leading: 0, trailing: 0)
             } else {
                 HStack {
@@ -44,7 +44,7 @@ struct HomeView: View {
                     Spacer().frame(width: UIScreen.UIWidth(12))
                     
                     CustomButton2(action: {
-                        viewModel.send(action: .showDialog)
+                        timerViewModel.send(action: .showDialog)
                     }, title: "열람실 이용 시작", image: .angularButton02, maxWidth: .infinity, minHeight: 52)
                 }
                 
@@ -79,14 +79,14 @@ struct HomeView: View {
                 Image(.icHamburger)
             })
         })
-        .dialog(isPresented: $viewModel.showingDialog,
-                currentDate: $viewModel.startTime) {
-            viewModel.send(action: .startUsing)
+        .dialog(isPresented: $timerViewModel.showingDialog,
+                currentDate: $timerViewModel.startTime) {
+            timerViewModel.send(action: .startUsing)
         }
-        .alert(title: "열람실을 다 이용하셨나요?", confirmButtonText: "네", cancleButtonText: "더 이용하기", isPresented: $viewModel.showingAlert) {
-            viewModel.send(action: .useCompleted)
+        .alert(title: "열람실을 다 이용하셨나요?", confirmButtonText: "네", cancleButtonText: "더 이용하기", isPresented: $timerViewModel.showingAlert) {
+            timerViewModel.send(action: .useCompleted)
         }
-        .alert(title: "열람실 이용 시간을 연장할까요?", confirmButtonText: "연장하기", cancleButtonText: "아니오", isPresented: $viewModel.showingAlert2) {
+        .alert(title: "열람실 이용 시간을 연장할까요?", confirmButtonText: "연장하기", cancleButtonText: "아니오", isPresented: $timerViewModel.showingAlert2) {
             
         }
     }

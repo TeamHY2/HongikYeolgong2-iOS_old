@@ -1,20 +1,62 @@
 //
-//  CalendarManager.swift
+//  CalendarViewModel.swift
 //  HongikYeolgong2-iOS
 //
-//  Created by 석기권 on 7/12/24.
+//  Created by 석기권 on 7/24/24.
 //
 
 import Foundation
 import Combine
 
-final class CalendarManager {
-    static let shared = CalendarManager()
+enum WeekDay: String, CaseIterable {
+    case sun = "Sun"
+    case Mon = "Mon"
+    case Tue = "Tue"
+    case Wed = "Wed"
+    case Thu = "Thu"
+    case Fri = "Fri"
+    case Sat = "Sat"
+}
+
+final class CalendarViewModel: ViewModelType {
+    enum DateMove {
+        case current
+        case next
+        case prev
+    }
     
-    private init() {}
+    @Published var selecteDate = Date()
+    @Published var currentMonth = [Day]()
     
-    let calendar = Calendar.current
+    @Inject private var calendarRepository: CalendarRepositoryType
     
+    private let calendar = Calendar.current
+    
+    private var cancellables = Set<AnyCancellable>()
+    
+    enum Action {
+        case move(DateMove)
+        case viewOnAppear
+    }
+    
+    func send(action: Action) {
+        switch action {
+        case .move(let move):
+            if move == .next {
+                selecteDate = plusMonth(date: selecteDate)
+            } else if move == .prev {
+                selecteDate = minusMonth(date: selecteDate)
+            } else if move == .current {
+                selecteDate = Date()
+            }
+            currentMonth = makeMonth(date: selecteDate)
+        case .viewOnAppear:
+             currentMonth = makeMonth(date: selecteDate)      
+        }
+    }
+}
+
+extension CalendarViewModel {
     func plusMonth(date: Date) -> Date {
         return calendar.date(byAdding: .month, value: 1, to: date)!
     }
@@ -28,13 +70,11 @@ final class CalendarManager {
         return range.count
     }
     
-    /// 현재 날짜
     func daysOfMonth(date: Date) -> Int {
         let componets = calendar.dateComponents([.day], from: date)
         return componets.day!
     }
     
-    /// 현재 달의 첫번째 날에대한 정보
     func firstOfMonth(date: Date) -> Date {
         
         let components = calendar.dateComponents([.year, .month], from: date)
@@ -46,7 +86,7 @@ final class CalendarManager {
         return components.weekday! - 1
     }
     
-    func makeMonth(date: Date) -> AnyPublisher<[Day], Never> {
+    func makeMonth(date: Date) -> [Day] {
         let daysInMonth = daysInMonth(date: date)
         let firstDayOfMonth = firstOfMonth(date: date)
         let startingSpace = weekDay(date: firstDayOfMonth)
@@ -61,12 +101,12 @@ final class CalendarManager {
             else {
                 let numberOfDay = count - startingSpace
                 guard calendar.date(byAdding: .day, value: numberOfDay - 1, to: firstOfMonth(date: date)) != nil else {
-                    return Just([]).eraseToAnyPublisher()
+                    return []
                 }
                 days.append(Day(dayOfNumber: "\(count - startingSpace)"))
             }
             count += 1
         }
-        return Just(days).eraseToAnyPublisher()
+        return days
     }
 }
