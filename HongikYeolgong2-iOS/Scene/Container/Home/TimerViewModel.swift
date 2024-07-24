@@ -24,6 +24,7 @@ final class TimerViewModel: ViewModelType {
     enum Action {
         case startButtonTap
         case completeButtonTap
+        case addTimeButtonTap
     }
     
     // Binding
@@ -42,7 +43,11 @@ final class TimerViewModel: ViewModelType {
         case .completeButtonTap:
             cancellables.removeAll()
             isStart = false
-            totalTime = Int(endTime.timeIntervalSince(startTime)) - timeRemaining                       
+            totalTime = Int(endTime.timeIntervalSince(startTime)) - timeRemaining         
+        case .addTimeButtonTap:
+            totalTime = Int(endTime.timeIntervalSince(startTime)) - timeRemaining
+            endTime = endTime + TimeInterval(3600 * 6)            
+            timeRemaining = Int(endTime.timeIntervalSince(startTime)) - totalTime
         }
     }
 }

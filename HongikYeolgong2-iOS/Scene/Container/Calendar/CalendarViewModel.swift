@@ -26,7 +26,7 @@ final class CalendarViewModel: ViewModelType {
     private var cancellables = Set<AnyCancellable>()
     
     enum Action {
-        case saveData(StudyRecord)
+        case saveButtonTap(StudyRecord)
         case move(MoveType)
         case viewOnAppear
     }
@@ -37,7 +37,7 @@ final class CalendarViewModel: ViewModelType {
             changeMonth(moveType)
         case .viewOnAppear:
              getMonth()
-        case .saveData(let data):
+        case .saveButtonTap(let data):
             updateStudyRecord(data)
         }
     }

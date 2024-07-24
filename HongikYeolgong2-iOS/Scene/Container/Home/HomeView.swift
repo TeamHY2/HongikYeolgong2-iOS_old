@@ -97,10 +97,10 @@ struct HomeView: View {
             let data = StudyRecord(date: Date(), totalTime: totalTime)
             
             // 캘린더 업데이트
-            calendarViewModel.send(action: .saveData(data))
+            calendarViewModel.send(action: .saveButtonTap(data))
         }
         .alert(title: "열람실 이용 시간을 연장할까요?", confirmButtonText: "연장하기", cancleButtonText: "아니오", isPresented: $showTimeExtensionAlert) {
-            
+            timerViewModel.send(action: .addTimeButtonTap)
         }
     }
 }
