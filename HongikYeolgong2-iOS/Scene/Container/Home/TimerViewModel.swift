@@ -41,8 +41,11 @@ final class TimerViewModel: ViewModelType {
     
     func startTimer() {
         isStart = true
-        endTime = startTime + TimeInterval(10)
+        endTime = startTime + TimeInterval(60)
         timeRemaining = Int(endTime.timeIntervalSince(startTime))
+        
+        // Notification에 추가
+        LocalNotificationService.shared.addNotification(interval: TimeInterval(timeRemaining))
         
         timer.sink { [weak self] _ in
             guard let self = self else { return }
@@ -59,8 +62,12 @@ final class TimerViewModel: ViewModelType {
     
     func addTime() {
         totalTime = Int(endTime.timeIntervalSince(startTime)) - timeRemaining
-        endTime = endTime + TimeInterval(3600 * 6)
+        endTime = endTime + TimeInterval(60)
         timeRemaining = Int(endTime.timeIntervalSince(startTime)) - totalTime
+        
+        // Notification 제거하고 다시 등록
+        LocalNotificationService.shared.removeNotification()
+        LocalNotificationService.shared.addNotification(interval: TimeInterval(timeRemaining))
     }
 }
 

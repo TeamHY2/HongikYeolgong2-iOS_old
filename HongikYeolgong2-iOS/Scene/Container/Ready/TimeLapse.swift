@@ -68,7 +68,7 @@ struct TimeLapse: View {
                 .frame(height: UIScreen.UIHeight(11))
             
             HStack {
-                CustomText(font: .suite, title: timeRemaining.getFullTimeString(), textColor: timeRemaining <= (1800) ? .customYellow100 : .customGray100, textWeight: .extrabold, textSize: 30)
+                CustomText(font: .suite, title: timeRemaining.getFullTimeString(), textColor: timeRemaining <= (30) ? .customYellow100 : .customGray100, textWeight: .extrabold, textSize: 30)
                 
                 Spacer()
                 
