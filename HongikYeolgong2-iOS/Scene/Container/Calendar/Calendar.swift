@@ -41,7 +41,7 @@ struct CalendarView: View {
                 Spacer()
                 HStack {
                     Button(action: {
-                        viewModel.send(action: .move(.prev))
+                        viewModel.send(action: .moveButtonTap(.prev))
                     }) {
                         Image(.icCalendarLeft)
                     }
@@ -49,7 +49,7 @@ struct CalendarView: View {
                     Spacer().frame(width: UIScreen.UIWidth(7))
                     
                     Button(action: {
-                        viewModel.send(action: .move(.next))
+                        viewModel.send(action: .moveButtonTap(.next))
                     }) {
                         Image(.icCalendarRight)
                     }

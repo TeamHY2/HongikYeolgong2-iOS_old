@@ -27,13 +27,13 @@ final class CalendarViewModel: ViewModelType {
     
     enum Action {
         case saveButtonTap(StudyRecord)
-        case move(MoveType)
+        case moveButtonTap(MoveType)
         case viewOnAppear
     }
     
     func send(action: Action) {
         switch action {
-        case .move(let moveType):
+        case .moveButtonTap(let moveType):
             changeMonth(moveType)
         case .viewOnAppear:
              getMonth()
@@ -46,14 +46,32 @@ final class CalendarViewModel: ViewModelType {
 extension CalendarViewModel {
     // 선택한 달이 변경되는 경우
     func changeMonth(_ moveType: MoveType) {
+        var seletedDate: Date!
+        
         switch moveType {
         case .current:
-            selecteDate = Date()
+            seletedDate = Date()
         case .next:
-            selecteDate = plusMonth(date: selecteDate)
+            seletedDate = plusMonth(date: selecteDate)
         case .prev:
-            selecteDate = minusMonth(date: selecteDate)
+            seletedDate = minusMonth(date: selecteDate)
         }
+        
+        // 현재보다 더 미래의 월이 선택된 경우
+        let maximumDateValidate = calendar.compare(seletedDate, to: Date(), toGranularity: .month)
+        
+        // 날짜이동 최소값 날짜생성
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM"
+        let minimumDate = formatter.date(from: "2021/01")!
+        let mimumDateValidate = calendar.compare(seletedDate, to: minimumDate, toGranularity: .month)
+        
+        guard maximumDateValidate != .orderedDescending,
+              mimumDateValidate != .orderedAscending else {
+            return
+        }
+        
+        selecteDate = seletedDate
         
         fetchStudyRecord(for: selecteDate)
     }

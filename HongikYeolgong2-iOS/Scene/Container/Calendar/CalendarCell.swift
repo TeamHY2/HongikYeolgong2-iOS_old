@@ -26,11 +26,11 @@ struct CalendarCell: View {
     }
     
     private var cellStyle: CellStyle {
-        if totalTime < (3600 * 3) {
+        if totalTime == 0 {
             return .dayCount00
-        } else if totalTime < (3600 * 6) {
+        } else if totalTime < (10) {
             return .dayCount01
-        } else if totalTime < ( 3600 * 9) {
+        } else if totalTime < (20) {
             return .dayCount02
         } else {
             return .dayCount03
