@@ -13,7 +13,7 @@ final class TimerViewModel: ViewModelType {
     @Published var isStart = false
     @Published var startTime = Date()
     @Published var endTime: Date!
-    @Published var timeRemaining = 0
+    @Published var timeRemaining = 123456
     @Published var totalTime = 0
     
     private let timer = Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()
@@ -31,24 +31,36 @@ final class TimerViewModel: ViewModelType {
     func send(action: Action) {
         switch action {
         case .startButtonTap:
-            isStart = true
-            endTime = startTime + TimeInterval(3600 * 6)
-            timeRemaining = Int(endTime.timeIntervalSince(startTime))
-            
-            timer.sink { [weak self] _ in
-                guard let self = self else { return }
-                timeRemaining -= 1
-            }
-            .store(in: &cancellables)
+            startTimer()
         case .completeButtonTap:
-            cancellables.removeAll()
-            isStart = false
-            totalTime = Int(endTime.timeIntervalSince(startTime)) - timeRemaining         
+            saveTime()
         case .addTimeButtonTap:
-            totalTime = Int(endTime.timeIntervalSince(startTime)) - timeRemaining
-            endTime = endTime + TimeInterval(3600 * 6)            
-            timeRemaining = Int(endTime.timeIntervalSince(startTime)) - totalTime
+            addTime()
         }
+    }
+    
+    func startTimer() {
+        isStart = true
+        endTime = startTime + TimeInterval(10)
+        timeRemaining = Int(endTime.timeIntervalSince(startTime))
+        
+        timer.sink { [weak self] _ in
+            guard let self = self else { return }
+            timeRemaining -= 1
+        }
+        .store(in: &cancellables)
+    }
+    
+    func saveTime() {
+        cancellables.removeAll()
+        isStart = false
+        totalTime = Int(endTime.timeIntervalSince(startTime)) - timeRemaining
+    }
+    
+    func addTime() {
+        totalTime = Int(endTime.timeIntervalSince(startTime)) - timeRemaining
+        endTime = endTime + TimeInterval(3600 * 6)
+        timeRemaining = Int(endTime.timeIntervalSince(startTime)) - totalTime
     }
 }
 

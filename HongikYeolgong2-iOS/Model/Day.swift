@@ -13,8 +13,7 @@ struct Day: Identifiable {
     var studyRecord: [StudyRecord]?
 }
 
-struct StudyRecord: Identifiable {
-    let id = UUID().uuidString
+struct StudyRecord {
     let date: Date
     let totalTime: Int
 }

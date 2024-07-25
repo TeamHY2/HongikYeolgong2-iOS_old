@@ -89,23 +89,30 @@ struct HomeView: View {
             timerViewModel.send(action: .startButtonTap)
         }
         .alert(title: "열람실을 다 이용하셨나요?", confirmButtonText: "네", cancleButtonText: "더 이용하기", isPresented: $showCompleteAlert) {
-            // 타이머 중지
-            timerViewModel.send(action: .completeButtonTap)
-            
-            // 총시간
-            let totalTime = timerViewModel.totalTime
-            let data = StudyRecord(date: Date(), totalTime: totalTime)
-            
-            // 캘린더 업데이트
-            calendarViewModel.send(action: .saveButtonTap(data))
+            saveData()
         }
         .alert(title: "열람실 이용 시간을 연장할까요?", confirmButtonText: "연장하기", cancleButtonText: "아니오", isPresented: $showTimeExtensionAlert) {
             timerViewModel.send(action: .addTimeButtonTap)
         }
+        .onReceive(timerViewModel.$timeRemaining.filter { $0 <= 0 }) { _ in
+            saveData()
+        }
+    }
+    
+    func saveData() {
+        // 타이머 중지
+        timerViewModel.send(action: .completeButtonTap)
+        
+        // 총시간
+        let totalTime = timerViewModel.totalTime
+        let data = StudyRecord(date: Date(), totalTime: totalTime)
+        
+        // 캘린더 업데이트
+        calendarViewModel.send(action: .saveButtonTap(data))
     }
 }
 
 
-#Preview {
-    HomeView()
-}
+//#Preview {
+//    HomeView()
+//}
