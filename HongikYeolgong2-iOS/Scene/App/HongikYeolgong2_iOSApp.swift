@@ -13,7 +13,8 @@ struct HongikYeolgong2_iOSApp: App {
             AuthenticationView()
                 .environmentObject(SceneCoordinator())
                 .environmentObject(AuthenticationViewModel())
-                .environmentObject(HomeViewModel())
+                .environmentObject(TimerViewModel())
+                .environmentObject(CalendarViewModel())
         }
     }
 }
@@ -32,4 +33,5 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 func registerDependency() {
     DIContainer.shared.register(AuthenticationService() as AuthenticationServiceType)
+    DIContainer.shared.register(CalendarRepositoryMock() as CalendarRepositoryType)
 }

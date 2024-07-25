@@ -9,6 +9,14 @@ import Foundation
 
 struct Day: Identifiable {
     var id = UUID().uuidString
-    
     let dayOfNumber: String
+    var studyRecord: [StudyRecord]?
 }
+
+struct StudyRecord {
+    let date: Date
+    let totalTime: Int
+}
+
+
+

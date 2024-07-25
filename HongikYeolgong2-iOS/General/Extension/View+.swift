@@ -111,14 +111,26 @@ extension View {
     func dialog(isPresented: Binding<Bool>, currentDate: Binding<Date>, confirmAction: @escaping () -> (), cancelAction: @escaping () -> ()) -> some View {
         modifier(DialogModifier(isPresented: isPresented, currentDate: currentDate, confirmAction: confirmAction, cancelAction: cancelAction))
     }
+    
+    func dialog(isPresented: Binding<Bool>, currentDate: Binding<Date>, confirmAction: @escaping () -> ()) -> some View {
+        modifier(DialogModifier(isPresented: isPresented, currentDate: currentDate, confirmAction: confirmAction))
+    }
 }
 
 extension View {
-    func alert(title: String, isPresented: Binding<Bool>, confirmAction: @escaping () -> (), cancelAction: @escaping () -> ()) -> some View {
+    func alert(title: String, isPresented: Binding<Bool>, confirmAction: (() -> Void)?, cancelAction: (() -> Void)?) -> some View {
         modifier(AlertModifier(title: title, confirmAction: confirmAction, cancleAction: cancelAction, isPresented: isPresented))
     }
     
-    func alert(title: String, confirmButtonText: String, cancleButtonText: String, isPresented: Binding<Bool>, confirmAction: @escaping () -> (), cancelAction: @escaping () -> ()) -> some View {
+    func alert(title: String, isPresented: Binding<Bool>, confirmAction: (() -> Void)?) -> some View {
+        modifier(AlertModifier(title: title, confirmAction: confirmAction, isPresented: isPresented))
+    }
+    
+    func alert(title: String, confirmButtonText: String, cancleButtonText: String, isPresented: Binding<Bool>, confirmAction: (() -> Void)?, cancelAction: (() -> Void)?) -> some View {
         modifier(AlertModifier(title: title, confirmButtonText: confirmButtonText, cancleButtonText: cancleButtonText, confirmAction: confirmAction, cancleAction: cancelAction, isPresented: isPresented))
+    }
+    
+    func alert(title: String, confirmButtonText: String, cancleButtonText: String, isPresented: Binding<Bool>, confirmAction: (() -> Void)?) -> some View {
+        modifier(AlertModifier(title: title, confirmButtonText: confirmButtonText, cancleButtonText: cancleButtonText, confirmAction: confirmAction, isPresented: isPresented))
     }
 }

@@ -8,14 +8,35 @@
 import SwiftUI
 import Combine
 struct AlertModifier: ViewModifier {
-    let title: String
+    
     var confirmButtonText: String = "네"
     var cancleButtonText: String = "아니오"
+    
+    let title: String
     let confirmAction: (() -> ())?
     let cancleAction: (() -> ())?
+    
     @State private var scale: CGFloat = 1
     
     @Binding var isPresented: Bool
+    
+    init(title: String, confirmButtonText: String, cancleButtonText: String, confirmAction: (() -> Void)?, cancleAction: (() -> Void)? = nil, isPresented: Binding<Bool>) {
+        self.confirmButtonText = confirmButtonText
+        self.cancleButtonText = cancleButtonText
+        self.title = title
+        self.confirmAction = confirmAction
+        self.cancleAction = cancleAction
+        self._isPresented = isPresented
+    }
+    
+    init(title: String, confirmAction: (() -> Void)?, cancleAction: (() -> Void)? = nil, isPresented: Binding<Bool>) {
+        self.title = title
+        self.confirmAction = confirmAction
+        self.cancleAction = cancleAction
+        self._isPresented = isPresented
+    }
+    
+    
     func body(content: Content) -> some View {
         content
             .overlay(

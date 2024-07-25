@@ -8,32 +8,41 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    @State private var showCompleteAlert = false
+    @State private var showTimeExtensionAlert = false
+    @State private var showingDialog = false
+    
     @EnvironmentObject private var coordinator: SceneCoordinator
-    @EnvironmentObject private var viewModel: HomeViewModel
+    @EnvironmentObject private var timerViewModel: TimerViewModel
+    @EnvironmentObject private var calendarViewModel: CalendarViewModel
     
     var body: some View {
         VStack(spacing: 0) {
             Spacer()
-                .frame(height: viewModel.isRoomReserved ? UIScreen.UIHeight(11) : UIScreen.UIHeight(43))
+                .frame(height: timerViewModel.isStart ? UIScreen.UIHeight(11) : UIScreen.UIHeight(43))
             
-            if viewModel.isRoomReserved {
-                TimeLapse(startTime: viewModel.useageStartTime, endTime: viewModel.useageStartTime + TimeInterval(3600 * 4))
+            if timerViewModel.isStart {
+                TimeLapse(startTime: timerViewModel.startTime,
+                          endTime: timerViewModel.endTime,
+                          timeRemaining: timerViewModel.timeRemaining,
+                          totalTime: calendarViewModel.todayStudyTime)
             } else {
                 Quote()
             }
             
             Spacer()
-                .frame(height: viewModel.isRoomReserved ? UIScreen.UIHeight(28) : UIScreen.UIHeight(120))
+                .frame(height: timerViewModel.isStart ? UIScreen.UIHeight(28) : UIScreen.UIHeight(120))
             
-            if viewModel.isRoomReserved {
+            if timerViewModel.isStart {
                 CustomButton(action: {
-                    viewModel.showingAlert2 = true
+                    showTimeExtensionAlert = true
                 }, font: .suite, title: "열람실 이용 연장", titleColor: .white, backgroundColor: .customBlue100, leading: 0, trailing: 0)
                 
                 Spacer().frame(height: UIScreen.UIHeight(12))
                 
                 CustomButton(action: {
-                    viewModel.showingAlert = true
+                    showCompleteAlert = true
                 }, font: .suite, title: "열람실 이용 종료", titleColor: .customGray100, backgroundColor: .customGray600, leading: 0, trailing: 0)
             } else {
                 HStack {
@@ -42,7 +51,7 @@ struct HomeView: View {
                     Spacer().frame(width: UIScreen.UIWidth(12))
                     
                     CustomButton2(action: {
-                        viewModel.showingDialog = true
+                        showingDialog = true
                     }, title: "열람실 이용 시작", image: .angularButton02, maxWidth: .infinity, minHeight: 52)
                 }
                 
@@ -77,27 +86,35 @@ struct HomeView: View {
                 Image(.icHamburger)
             })
         })
-        .dialog(isPresented: $viewModel.showingDialog,
-                currentDate: $viewModel.useageStartTime,
-                confirmAction: {
-            viewModel.startRoomUsage()
-            print("확인버튼 눌림")
-        }, cancelAction: {
-        })
-        .alert(title: "열람실을 다 이용하셨나요?", confirmButtonText: "네", cancleButtonText: "더 이용하기", isPresented: $viewModel.showingAlert, confirmAction: {
-            viewModel.cancleRoomUsage()
-        }, cancelAction: {
-            
-        })
-        .alert(title: "열람실 이용 시간을 연장할까요?", confirmButtonText: "연장하기", cancleButtonText: "아니오", isPresented: $viewModel.showingAlert2, confirmAction: {
-            
-        }, cancelAction: {
-            
-        })
+        .dialog(isPresented: $showingDialog,
+                currentDate: $timerViewModel.startTime) {
+            timerViewModel.send(action: .startButtonTap)
+        }
+        .alert(title: "열람실을 다 이용하셨나요?", confirmButtonText: "네", cancleButtonText: "더 이용하기", isPresented: $showCompleteAlert) {
+            saveData()
+        }
+        .alert(title: "열람실 이용 시간을 연장할까요?", confirmButtonText: "연장하기", cancleButtonText: "아니오", isPresented: $showTimeExtensionAlert) {
+            timerViewModel.send(action: .addTimeButtonTap)
+        }
+        .onReceive(timerViewModel.$timeRemaining.filter { $0 <= 0 }) { _ in
+            saveData()
+        }
+    }
+    
+    func saveData() {
+        // 타이머 중지
+        timerViewModel.send(action: .completeButtonTap)
+        
+        // 총시간
+        let totalTime = timerViewModel.totalTime
+        let data = StudyRecord(date: Date(), totalTime: totalTime)
+        
+        // 캘린더 업데이트
+        calendarViewModel.send(action: .saveButtonTap(data))
     }
 }
 
 
-#Preview {
-    HomeView()
-}
+//#Preview {
+//    HomeView()
+//}
