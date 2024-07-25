@@ -16,14 +16,15 @@ final class CalendarViewModel: ViewModelType {
         case prev
     }
     
-    @Published var selecteDate = Date()
-    @Published var currentMonth = [Day]()
+    @Published var selecteDate = Date() // 선택된 날짜
+    @Published var currentMonth = [Day]() // 캘린더에 표시할 날짜정보
+    @Published var todayStudyTime = 0 // 오늘 열람실 이용시간
     
     @Inject private var calendarRepository: CalendarRepositoryType
     
     private let calendar = Calendar.current
     
-    private var cancellables = Set<AnyCancellable>()
+    private var subscriptions = Set<AnyCancellable>()
     
     enum Action {
         case saveButtonTap(StudyRecord)
@@ -83,30 +84,62 @@ extension CalendarViewModel {
     
     // 캘린더에 데이터 가져오기
     func fetchStudyRecord(for date: Date) {
-        calendarRepository.fetchStudyRecord()
-            .sink { completion in
-                
-            } receiveValue: { [weak self] studyArray in
+        let fetchDataPublisher = calendarRepository.fetchStudyRecord()
+            .share()
+        
+        fetchDataPublisher
+            .sink(receiveValue: { [weak self] studyArray in
                 guard let self = self else { return }
                 currentMonth = makeMonth(date: date, studyArray: studyArray)
+            })
+            .store(in: &subscriptions)
+        
+       fetchDataPublisher
+            .flatMap ({ [weak self] in
+                guard let self = self else {
+                    return Just(0).eraseToAnyPublisher()
+                }
+                return getTotalTime($0)
+            })
+            .sink { [weak self] totalTime in
+                guard let self = self else { return }
+                todayStudyTime = totalTime
             }
-            .store(in: &cancellables)
+            .store(in: &subscriptions)
     }
     
     // 캘린더 데이터 저장
     func updateStudyRecord(_ data: StudyRecord) {
-        calendarRepository.updateStudyRecord(data)
-            .sink { completion in
-                
-            } receiveValue: { [weak self] studyArray in
+        let updateDataPublisher = calendarRepository.updateStudyRecord(data)
+        
+        updateDataPublisher
+            .sink(receiveValue: { [weak self] studyArray in
                 guard let self = self else { return }
                 currentMonth = makeMonth(date: selecteDate, studyArray: studyArray)
+            })
+            .store(in: &subscriptions)
+        
+        updateDataPublisher
+            .flatMap ({ [weak self] in
+                guard let self = self else {
+                    return Just(0).eraseToAnyPublisher()
+                }
+                return getTotalTime($0)
+            })
+            .sink { [weak self] totalTime in
+                guard let self = self else { return }
+                todayStudyTime = totalTime
             }
-            .store(in: &cancellables)
+            .store(in: &subscriptions)
     }
 }
 
 extension CalendarViewModel {
+    func getTotalTime(_ array: [StudyRecord]) -> AnyPublisher<Int, Never> {
+       let filterdArray = array.filter { calendar.isDate($0.date, equalTo: Date(), toGranularity: .day)}
+        let totalTime = filterdArray.map { $0.totalTime }.reduce(0, +)
+        return Just(totalTime).eraseToAnyPublisher()
+    }
     func plusMonth(date: Date) -> Date {
         return calendar.date(byAdding: .month, value: 1, to: date)!
     }

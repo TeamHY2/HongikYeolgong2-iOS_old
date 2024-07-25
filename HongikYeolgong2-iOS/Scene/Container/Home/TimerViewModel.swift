@@ -18,7 +18,7 @@ final class TimerViewModel: ViewModelType {
     
     private let timer = Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()
     
-    private var cancellables = Set<AnyCancellable>()
+    private var subscriptions = Set<AnyCancellable>()
     
     // Input
     enum Action {
@@ -48,11 +48,11 @@ final class TimerViewModel: ViewModelType {
             guard let self = self else { return }
             timeRemaining -= 1
         }
-        .store(in: &cancellables)
+        .store(in: &subscriptions)
     }
     
     func saveTime() {
-        cancellables.removeAll()
+        subscriptions.removeAll()
         isStart = false
         totalTime = Int(endTime.timeIntervalSince(startTime)) - timeRemaining
     }

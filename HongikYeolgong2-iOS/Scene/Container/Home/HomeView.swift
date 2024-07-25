@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
+    
     @State private var showCompleteAlert = false
     @State private var showTimeExtensionAlert = false
     @State private var showingDialog = false
@@ -24,7 +25,8 @@ struct HomeView: View {
             if timerViewModel.isStart {
                 TimeLapse(startTime: timerViewModel.startTime,
                           endTime: timerViewModel.endTime,
-                          timeRemaining: timerViewModel.timeRemaining)
+                          timeRemaining: timerViewModel.timeRemaining,
+                          totalTime: calendarViewModel.todayStudyTime)
             } else {
                 Quote()
             }
