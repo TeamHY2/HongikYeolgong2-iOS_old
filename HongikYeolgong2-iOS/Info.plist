@@ -18,5 +18,9 @@
 		<string>Pretendard-Medium.otf</string>
 		<string>Pretendard-Light.otf</string>
 	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>processing</string>
+	</array>
 </dict>
 </plist>

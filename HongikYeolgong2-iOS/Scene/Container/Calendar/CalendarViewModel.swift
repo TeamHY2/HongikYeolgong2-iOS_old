@@ -140,6 +140,7 @@ extension CalendarViewModel {
         let totalTime = filterdArray.map { $0.totalTime }.reduce(0, +)
         return Just(totalTime).eraseToAnyPublisher()
     }
+    
     func plusMonth(date: Date) -> Date {
         return calendar.date(byAdding: .month, value: 1, to: date)!
     }
