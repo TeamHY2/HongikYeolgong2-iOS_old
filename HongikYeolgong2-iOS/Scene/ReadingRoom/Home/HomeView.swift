@@ -65,7 +65,7 @@ struct HomeView: View {
                 Color.clear
                     .frame(width: 180, height: 180)
                     .background(
-                        RadialGradient(colors: [Color(.customGray800), 
+                        RadialGradient(colors: [Color(.customGray800),
                                                 Color(.customBlue400).opacity(0.7)],
                                        center: .topLeading,
                                        startRadius: 0,
@@ -90,16 +90,10 @@ struct HomeView: View {
                 currentDate: $timerViewModel.startTime) {
             timerViewModel.send(action: .startButtonTap)
         }
-        .alert(title: "열람실을 다 이용하셨나요?", 
-               confirmButtonText: "네",
-               cancleButtonText: "더 이용하기",
-               isPresented: $showCompleteAlert) {
+        .alert(title: "열람실을 다 이용하셨나요?", confirmButtonText: "네", cancleButtonText: "더 이용하기", isPresented: $showCompleteAlert) {
             saveData()
         }
-        .alert(title: "열람실 이용 시간을 연장할까요?", 
-               confirmButtonText: "연장하기",
-               cancleButtonText: "아니오",
-               isPresented: $showTimeExtensionAlert) {
+        .alert(title: "열람실 이용 시간을 연장할까요?", confirmButtonText: "연장하기", cancleButtonText: "아니오", isPresented: $showTimeExtensionAlert) {
             timerViewModel.send(action: .addTimeButtonTap)
         }
         .onReceive(timerViewModel.$timeRemaining.filter { $0 <= 0 }) { _ in

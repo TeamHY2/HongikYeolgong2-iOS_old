@@ -25,6 +25,7 @@
 		470027A42C50AA2500E640AE /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 470027942C50AA2500E640AE /* Pretendard-Regular.otf */; };
 		475C01142C526D2500FB5556 /* LocalNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475C01132C526D2500FB5556 /* LocalNotificationService.swift */; };
 		4790ECDC2C57EDC9002FCCAF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4790ECDB2C57EDC9002FCCAF /* Constants.swift */; };
+		4790ECDE2C57F9E5002FCCAF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4790ECDD2C57F9E5002FCCAF /* HomeView.swift */; };
 		47E0A8C52C51177B009F1BA9 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E0A8C42C51177B009F1BA9 /* TimerViewModel.swift */; };
 		47E0A8C72C511B72009F1BA9 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E0A8C62C511B72009F1BA9 /* CalendarViewModel.swift */; };
 		5E029B5A2C4157C20091249A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E029B592C4157C20091249A /* User.swift */; };
@@ -82,7 +83,6 @@
 		8274CF332C33D59400FBFA9D /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8274CF322C33D59400FBFA9D /* Scene.swift */; };
 		8274CF352C33D6C200FBFA9D /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8274CF342C33D6C200FBFA9D /* SceneCoordinator.swift */; };
 		8274CF372C33D6D600FBFA9D /* SceneCoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8274CF362C33D6D600FBFA9D /* SceneCoordinatorType.swift */; };
-		8274CF392C33DB1000FBFA9D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8274CF382C33DB1000FBFA9D /* HomeView.swift */; };
 		8274CF3B2C33DBC800FBFA9D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8274CF3A2C33DBC800FBFA9D /* LoginView.swift */; };
 		8274CF3D2C33DE2300FBFA9D /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8274CF3C2C33DE2300FBFA9D /* MenuView.swift */; };
 		827C18C72C48FC5100B4AAEA /* CustomPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827C18C62C48FC5100B4AAEA /* CustomPicker.swift */; };
@@ -117,6 +117,7 @@
 		470027942C50AA2500E640AE /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Pretendard-Regular.otf"; path = "../../../../Font/Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		475C01132C526D2500FB5556 /* LocalNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationService.swift; sourceTree = "<group>"; };
 		4790ECDB2C57EDC9002FCCAF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		4790ECDD2C57F9E5002FCCAF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		47E0A8C42C51177B009F1BA9 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		47E0A8C62C511B72009F1BA9 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		5E029B592C4157C20091249A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -149,7 +150,6 @@
 		8274CF322C33D59400FBFA9D /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		8274CF342C33D6C200FBFA9D /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
 		8274CF362C33D6D600FBFA9D /* SceneCoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinatorType.swift; sourceTree = "<group>"; };
-		8274CF382C33DB1000FBFA9D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = "HongikYeolgong2-iOS/Scene/Container/Home/HomeView.swift"; sourceTree = SOURCE_ROOT; };
 		8274CF3A2C33DBC800FBFA9D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8274CF3C2C33DE2300FBFA9D /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		827C18C62C48FC5100B4AAEA /* CustomPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPicker.swift; sourceTree = "<group>"; };
@@ -275,7 +275,7 @@
 			children = (
 				5E8964E52C47C2E900F342CE /* App */,
 				5EE3049E2C40236F0002C49E /* Authentication */,
-				5E5B0BCB2C3287A900936435 /* Container */,
+				5E5B0BCB2C3287A900936435 /* ReadingRoom */,
 				5E5B0BCE2C32890300936435 /* Menu */,
 				5E5B0BC92C32877100936435 /* Login */,
 				5E5B0BCA2C32878100936435 /* Splash */,
@@ -299,14 +299,14 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
-		5E5B0BCB2C3287A900936435 /* Container */ = {
+		5E5B0BCB2C3287A900936435 /* ReadingRoom */ = {
 			isa = PBXGroup;
 			children = (
 				825665772C351B5A0018C799 /* Calendar */,
 				825665762C351B540018C799 /* Ready */,
 				825665752C351B170018C799 /* Home */,
 			);
-			path = Container;
+			path = ReadingRoom;
 			sourceTree = "<group>";
 		};
 		5E5B0BCE2C32890300936435 /* Menu */ = {
@@ -361,8 +361,8 @@
 		825665752C351B170018C799 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				8274CF382C33DB1000FBFA9D /* HomeView.swift */,
 				47E0A8C42C51177B009F1BA9 /* TimerViewModel.swift */,
+				4790ECDD2C57F9E5002FCCAF /* HomeView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -598,7 +598,6 @@
 			files = (
 				5E5CD43F2C3698A4002CE244 /* CustomButton.swift in Sources */,
 				825668A92C36855A0066B216 /* UINavigationController+.swift in Sources */,
-				8274CF392C33DB1000FBFA9D /* HomeView.swift in Sources */,
 				5E029B5A2C4157C20091249A /* User.swift in Sources */,
 				8252CCDC2C40396100690D75 /* Calendar.swift in Sources */,
 				8252CCE02C404A7300690D75 /* Day.swift in Sources */,
@@ -612,6 +611,7 @@
 				8270C9912C4D48A0000EB06A /* ServiceError.swift in Sources */,
 				825668A52C367ED30066B216 /* CustomNavBarModifier.swift in Sources */,
 				825668A72C367F130066B216 /* View+.swift in Sources */,
+				4790ECDE2C57F9E5002FCCAF /* HomeView.swift in Sources */,
 				47E0A8C52C51177B009F1BA9 /* TimerViewModel.swift in Sources */,
 				8270C9942C4D490A000EB06A /* CalendarRepository.swift in Sources */,
 				825665792C35202E0018C799 /* MenuViewModel.swift in Sources */,
