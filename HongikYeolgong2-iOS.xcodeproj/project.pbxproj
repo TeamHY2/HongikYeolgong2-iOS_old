@@ -26,6 +26,7 @@
 		475C01142C526D2500FB5556 /* LocalNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475C01132C526D2500FB5556 /* LocalNotificationService.swift */; };
 		4790ECDC2C57EDC9002FCCAF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4790ECDB2C57EDC9002FCCAF /* Constants.swift */; };
 		4790ECDE2C57F9E5002FCCAF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4790ECDD2C57F9E5002FCCAF /* HomeView.swift */; };
+		47A004742C594376000AC842 /* Publisher+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A004732C594376000AC842 /* Publisher+.swift */; };
 		47E0A8C52C51177B009F1BA9 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E0A8C42C51177B009F1BA9 /* TimerViewModel.swift */; };
 		47E0A8C72C511B72009F1BA9 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E0A8C62C511B72009F1BA9 /* CalendarViewModel.swift */; };
 		5E029B5A2C4157C20091249A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E029B592C4157C20091249A /* User.swift */; };
@@ -118,6 +119,7 @@
 		475C01132C526D2500FB5556 /* LocalNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationService.swift; sourceTree = "<group>"; };
 		4790ECDB2C57EDC9002FCCAF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4790ECDD2C57F9E5002FCCAF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		47A004732C594376000AC842 /* Publisher+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+.swift"; sourceTree = "<group>"; };
 		47E0A8C42C51177B009F1BA9 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		47E0A8C62C511B72009F1BA9 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		5E029B592C4157C20091249A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				825668A62C367F130066B216 /* View+.swift */,
 				825668A82C36855A0066B216 /* UINavigationController+.swift */,
 				82AB4F222C3EEE6D00787B3B /* Date+.swift */,
+				47A004732C594376000AC842 /* Publisher+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -396,12 +399,12 @@
 			path = Modifiers;
 			sourceTree = "<group>";
 		};
-		8270C9922C4D48B6000EB06A /* Repositories */ = {
+		8270C9922C4D48B6000EB06A /* Repository */ = {
 			isa = PBXGroup;
 			children = (
 				8270C9932C4D490A000EB06A /* CalendarRepository.swift */,
 			);
-			path = Repositories;
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		8274CF2F2C33D3DB00FBFA9D /* Coordinator */ = {
@@ -438,7 +441,7 @@
 				5E8F934C2C416DF300ECE6C5 /* HongikYeolgong2-iOSDebug.entitlements */,
 				5EE304952C401A160002C49E /* HongikYeolgong2-iOSRelease.entitlements */,
 				82E15A4E2C481D02004951BE /* Resources */,
-				8270C9922C4D48B6000EB06A /* Repositories */,
+				8270C9922C4D48B6000EB06A /* Repository */,
 				5E5B0BC42C32866900936435 /* Model */,
 				5EE304992C4020900002C49E /* Services */,
 				5EE304962C4020230002C49E /* General */,
@@ -627,6 +630,7 @@
 				8274CF3D2C33DE2300FBFA9D /* MenuView.swift in Sources */,
 				8270C9962C4D4AAE000EB06A /* ViewModelType.swift in Sources */,
 				8274CF352C33D6C200FBFA9D /* SceneCoordinator.swift in Sources */,
+				47A004742C594376000AC842 /* Publisher+.swift in Sources */,
 				5EE304A02C4023960002C49E /* AuthenticationView.swift in Sources */,
 				5E029B5F2C4159EC0091249A /* RandomNonceString.swift in Sources */,
 				828FF2B32C3E71F1001A4ADE /* DialogModifier.swift in Sources */,

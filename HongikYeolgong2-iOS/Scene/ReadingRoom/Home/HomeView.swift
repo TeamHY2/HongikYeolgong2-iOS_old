@@ -26,7 +26,7 @@ struct HomeView: View {
                 TimeLapse(startTime: timerViewModel.startTime,
                           endTime: timerViewModel.endTime,
                           timeRemaining: timerViewModel.timeRemaining,
-                          totalTime: calendarViewModel.todayStudyTime)
+                          totalTime: calendarViewModel.dailyReadingRoomUsageTime)
             } else {
                 Quote()
             }
@@ -35,7 +35,7 @@ struct HomeView: View {
                 .frame(height: timerViewModel.isStart ? UIScreen.UIHeight(28) : UIScreen.UIHeight(120))
             
             if timerViewModel.isStart {
-                if TimeInterval(timerViewModel.timeRemaining) <= Constants.beforeEndTime {
+                if TimeInterval(timerViewModel.timeRemaining) <= Constants.firstNotificationTime {
                     CustomButton(action: {
                         showTimeExtensionAlert = true
                     }, font: .suite, title: "열람실 이용 연장", titleColor: .white, backgroundColor: .customBlue100, leading: 0, trailing: 0)
@@ -99,7 +99,7 @@ struct HomeView: View {
         
         // 총시간
         let totalTime = timerViewModel.totalTime
-        let data = StudyRecord(date: Date(), totalTime: totalTime)
+        let data = ReadingRoomUsage(date: Date(), duration: totalTime)
         
         // 캘린더 업데이트
         calendarViewModel.send(action: .saveButtonTap(data))

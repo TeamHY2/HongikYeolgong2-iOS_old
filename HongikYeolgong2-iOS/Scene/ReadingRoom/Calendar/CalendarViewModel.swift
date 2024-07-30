@@ -16,9 +16,9 @@ final class CalendarViewModel: ViewModelType {
         case prev
     }
     
-    @Published var selecteDate = Date() // 선택된 날짜
+    @Published var seletedDate = Date() // 선택된 날짜
     @Published var currentMonth = [Day]() // 캘린더에 표시할 날짜정보
-    @Published var todayStudyTime = 0 // 오늘 열람실 이용시간
+    @Published var dailyReadingRoomUsageTime = 0 // 오늘 열람실 이용시간
     
     @Inject private var calendarRepository: CalendarRepositoryType
     
@@ -27,19 +27,19 @@ final class CalendarViewModel: ViewModelType {
     private var subscriptions = Set<AnyCancellable>()
     
     enum Action {
-        case saveButtonTap(StudyRecord)
+        case saveButtonTap(ReadingRoomUsage)
         case moveButtonTap(MoveType)
         case viewOnAppear
     }
     
     func send(action: Action) {
         switch action {
+        case .viewOnAppear:
+            fetchReadingRoomRecords(for: seletedDate)
         case .moveButtonTap(let moveType):
             changeMonth(moveType)
-        case .viewOnAppear:
-             getMonth()
         case .saveButtonTap(let data):
-            updateStudyRecord(data)
+            updateReadingRoomRecord(data)
         }
     }
 }
@@ -47,50 +47,45 @@ final class CalendarViewModel: ViewModelType {
 extension CalendarViewModel {
     // 선택한 달이 변경되는 경우
     func changeMonth(_ moveType: MoveType) {
-        var seletedDate: Date!
+        var currentDate: Date!
         
         switch moveType {
         case .current:
-            seletedDate = Date()
+            currentDate = Date()
         case .next:
-            seletedDate = plusMonth(date: selecteDate)
+            currentDate = plusMonth(date: seletedDate)
         case .prev:
-            seletedDate = minusMonth(date: selecteDate)
+            currentDate = minusMonth(date: seletedDate)
         }
         
         // 현재보다 더 미래의 월이 선택된 경우
-        let maximumDateValidate = calendar.compare(seletedDate, to: Date(), toGranularity: .month)
+        let maximumDateValidate = calendar.compare(currentDate, to: Date(), toGranularity: .month)
         
         // 날짜이동 최소값 날짜생성
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM"
         let minimumDate = formatter.date(from: "2021/01")!
-        let mimumDateValidate = calendar.compare(seletedDate, to: minimumDate, toGranularity: .month)
+        let mimumDateValidate = calendar.compare(currentDate, to: minimumDate, toGranularity: .month)
         
         guard maximumDateValidate != .orderedDescending,
               mimumDateValidate != .orderedAscending else {
             return
         }
         
-        selecteDate = seletedDate
+        seletedDate = currentDate
         
-        fetchStudyRecord(for: selecteDate)
-    }
-    
-    // 앱이 처음 실행됬을때 데이터를 받아옴
-    func getMonth() {
-        fetchStudyRecord(for: selecteDate)
+        fetchReadingRoomRecords(for: seletedDate)
     }
     
     // 캘린더에 데이터 가져오기
-    func fetchStudyRecord(for date: Date) {
-        let fetchDataPublisher = calendarRepository.fetchStudyRecord()
+    func fetchReadingRoomRecords(for date: Date) {
+        let fetchDataPublisher = calendarRepository.fetchReadingRoomUsageRecords()
             .share()
         
         fetchDataPublisher
-            .sink(receiveValue: { [weak self] studyArray in
-                guard let self = self else { return }
-                currentMonth = makeMonth(date: date, studyArray: studyArray)
+            .withUnretained(self)
+            .sink(receiveValue: { (owner, roomUsageInfo) in
+                owner.currentMonth = owner.makeMonth(date: date, roomUsageInfo: roomUsageInfo)
             })
             .store(in: &subscriptions)
         
@@ -103,19 +98,19 @@ extension CalendarViewModel {
             })
             .sink { [weak self] totalTime in
                 guard let self = self else { return }
-                todayStudyTime = totalTime
+                dailyReadingRoomUsageTime = totalTime
             }
             .store(in: &subscriptions)
     }
     
     // 캘린더 데이터 저장
-    func updateStudyRecord(_ data: StudyRecord) {
-        let updateDataPublisher = calendarRepository.updateStudyRecord(data)
+    func updateReadingRoomRecord(_ data: ReadingRoomUsage) {
+        let updateDataPublisher = calendarRepository.updateReadingRoomUsageRecord(data).share()
         
         updateDataPublisher
-            .sink(receiveValue: { [weak self] studyArray in
-                guard let self = self else { return }
-                currentMonth = makeMonth(date: selecteDate, studyArray: studyArray)
+            .withUnretained(self)
+            .sink(receiveValue: { (owner, roomUsageInfo) in
+                owner.currentMonth = owner.makeMonth(date: owner.seletedDate, roomUsageInfo: roomUsageInfo)
             })
             .store(in: &subscriptions)
         
@@ -128,16 +123,16 @@ extension CalendarViewModel {
             })
             .sink { [weak self] totalTime in
                 guard let self = self else { return }
-                todayStudyTime = totalTime
+                dailyReadingRoomUsageTime = totalTime
             }
             .store(in: &subscriptions)
     }
 }
 
 extension CalendarViewModel {
-    func getTotalTime(_ array: [StudyRecord]) -> AnyPublisher<Int, Never> {
+    func getTotalTime(_ array: [ReadingRoomUsage]) -> AnyPublisher<Int, Never> {
        let filterdArray = array.filter { calendar.isDate($0.date, equalTo: Date(), toGranularity: .day)}
-        let totalTime = filterdArray.map { $0.totalTime }.reduce(0, +)
+        let totalTime = filterdArray.map { $0.duration }.reduce(0, +)
         return Just(totalTime).eraseToAnyPublisher()
     }
     
@@ -170,7 +165,7 @@ extension CalendarViewModel {
         return components.weekday! - 1
     }
     
-    func makeMonth(date: Date, studyArray: [StudyRecord]) -> [Day] {
+    func makeMonth(date: Date, roomUsageInfo: [ReadingRoomUsage]) -> [Day] {
         var days: [Day] = []
         var count: Int = 1
         
@@ -196,8 +191,8 @@ extension CalendarViewModel {
                 
                 // 현재날짜와 서버에서 받아온 데이터의 날짜가 일치하는지 확인
                 if let currentDay = calendar.date(from: components) {
-                    let matchData = studyArray.filter { calendar.isDate($0.date, inSameDayAs: currentDay)}
-                    days.append(Day(dayOfNumber: "\(numberOfDay)", studyRecord: matchData))
+                    let matchData = roomUsageInfo.filter { calendar.isDate($0.date, inSameDayAs: currentDay)}
+                    days.append(Day(dayOfNumber: "\(numberOfDay)", usageRecord: matchData))
                 } else {
                     // 일치하는 데이터가 존재하지 않는경우
                     days.append(Day(dayOfNumber: "\(numberOfDay)"))

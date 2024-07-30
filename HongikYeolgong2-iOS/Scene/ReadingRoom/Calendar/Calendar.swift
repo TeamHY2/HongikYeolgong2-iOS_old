@@ -34,11 +34,11 @@ struct CalendarView: View {
         VStack(spacing: 0) {
             // header
             HStack(spacing: 0) {
-                CustomText(font: .suite, title: viewModel.selecteDate.getMonthString(), textColor: .customGray100, textWeight: .bold, textSize: 24)
+                CustomText(font: .suite, title: viewModel.seletedDate.getMonthString(), textColor: .customGray100, textWeight: .bold, textSize: 24)
                 
                 Spacer().frame(width: UIScreen.UIWidth(8))
                 
-                CustomText(font: .suite, title: viewModel.selecteDate.getYearString(), textColor: .customGray100, textWeight: .bold, textSize: 24)
+                CustomText(font: .suite, title: viewModel.seletedDate.getYearString(), textColor: .customGray100, textWeight: .bold, textSize: 24)
                 
                 Spacer()
                 HStack {

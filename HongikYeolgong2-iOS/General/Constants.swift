@@ -9,8 +9,8 @@ import Foundation
 
 enum Constants {
     static let additionalTime = TimeInterval(60)
-    static let beforeEndTime = TimeInterval(30)
-    static let beforeEndTime2 = TimeInterval(10)
+    static let firstNotificationTime = TimeInterval(30)
+    static let secondNotificationTime = TimeInterval(10)
     
     static let starRatingCount00 = 10
     static let starRatingCount01 = 20
