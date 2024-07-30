@@ -10,11 +10,12 @@ import SwiftUI
 struct Quote: View {
     var body: some View {
         VStack(spacing: 0) {
-            HStack {
+            HStack(spacing: 0) {
                 Image(.shineCount01)
                 Image(.shineCount02)
                 Image(.shineCount03)
             }
+            
             .padding(.bottom, UIScreen.UIHeight(16))
             
             CustomText(font: .pretendard, title: "행동보다 빠르게 불안감을 \n 없앨 수 있는 것은 없습니다.", textColor: .customGray100, textWeight: .regular, textSize: 18, textAlignment: .center)

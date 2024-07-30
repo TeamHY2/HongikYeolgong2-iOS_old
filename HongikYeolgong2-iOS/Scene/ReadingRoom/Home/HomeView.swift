@@ -67,6 +67,7 @@ struct HomeView: View {
         .background(
             Image(.iOSBackground)
                 .ignoresSafeArea(.all)
+                .allowsHitTesting(false)
         )
         .customNavigation(left: {
             CustomText(font: .suite, title: "홍익열공이", textColor: .customGray100, textWeight: .semibold, textSize: 18)
