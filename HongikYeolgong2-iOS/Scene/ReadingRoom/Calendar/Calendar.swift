@@ -35,9 +35,11 @@ struct CalendarView: View {
             // header
             HStack(spacing: 0) {
                 CustomText(font: .suite, title: viewModel.selecteDate.getMonthString(), textColor: .customGray100, textWeight: .bold, textSize: 24)
-                    .frame(width: UIScreen.UIWidth(54))
+                
+                Spacer().frame(width: UIScreen.UIWidth(8))
                 
                 CustomText(font: .suite, title: viewModel.selecteDate.getYearString(), textColor: .customGray100, textWeight: .bold, textSize: 24)
+                
                 Spacer()
                 HStack {
                     Button(action: {

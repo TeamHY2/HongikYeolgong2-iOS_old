@@ -35,11 +35,13 @@ struct HomeView: View {
                 .frame(height: timerViewModel.isStart ? UIScreen.UIHeight(28) : UIScreen.UIHeight(120))
             
             if timerViewModel.isStart {
-                CustomButton(action: {
-                    showTimeExtensionAlert = true
-                }, font: .suite, title: "열람실 이용 연장", titleColor: .white, backgroundColor: .customBlue100, leading: 0, trailing: 0)
-                
-                Spacer().frame(height: UIScreen.UIHeight(12))
+                if TimeInterval(timerViewModel.timeRemaining) <= Constants.beforeEndTime {
+                    CustomButton(action: {
+                        showTimeExtensionAlert = true
+                    }, font: .suite, title: "열람실 이용 연장", titleColor: .white, backgroundColor: .customBlue100, leading: 0, trailing: 0)
+                    
+                    Spacer().frame(height: UIScreen.UIHeight(12))
+                }
                 
                 CustomButton(action: {
                     showCompleteAlert = true
@@ -58,25 +60,14 @@ struct HomeView: View {
             }
             
             Spacer()
-            
-            ZStack(alignment: .topLeading) {
-                // startRadius 시작각도
-                // endRadius 종료각도
-                Color.clear
-                    .frame(width: 180, height: 180)
-                    .background(
-                        RadialGradient(colors: [Color(.customGray800),
-                                                Color(.customBlue400).opacity(0.7)],
-                                       center: .topLeading,
-                                       startRadius: 0,
-                                       endRadius: 220)
-                                   .blur(radius: 60)
-                                   .compositingGroup()
-                    )
-                CalendarView()
-            }
+                        
+            CalendarView()
             
         }
+        .background(
+            Image(.iOSBackground)
+                .ignoresSafeArea(.all)
+        )
         .customNavigation(left: {
             CustomText(font: .suite, title: "홍익열공이", textColor: .customGray100, textWeight: .semibold, textSize: 18)
         }, right: {
