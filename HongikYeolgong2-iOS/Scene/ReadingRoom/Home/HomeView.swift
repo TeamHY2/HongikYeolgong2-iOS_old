@@ -99,6 +99,8 @@ struct HomeView: View {
                               .onReceive(timerViewModel.$timeRemaining.filter { $0 <= 0 }) { _ in
                                   saveData()
                               }.onChange(of: scenePhase, perform: { value in
+                                  guard timerViewModel.isStart == true else { return }
+                                  
                                   if value == .active {
                                       timerViewModel.send(action: .enterFoureground)
                                   } else if value == .background {
