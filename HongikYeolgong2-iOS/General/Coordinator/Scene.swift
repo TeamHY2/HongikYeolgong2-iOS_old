@@ -7,6 +7,23 @@
 
 import Foundation
 
+enum AuthSceneType: Hashable {
+    case login
+}
+
+extension AuthSceneType {
+    static func == (lhs: AuthSceneType, rhs: AuthSceneType) -> Bool {
+       return lhs.hashValue == rhs.hashValue
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        switch self {
+        case .login:
+            hasher.combine("login")
+        }
+    }
+}
+
 enum SceneType: Hashable {
     case loginOnboarding
     case home
