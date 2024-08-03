@@ -20,7 +20,7 @@ final class CalendarViewModel: ViewModelType {
     @Published var currentMonth = [Day]() // 캘린더에 표시할 날짜정보
     @Published var dailyReadingRoomUsageTime = 0 // 오늘 열람실 이용시간
     
-    @Inject private var calendarRepository: CalendarRepositoryType
+    @Inject private var readingRoomRepository: ReadingRoomRepositoryType
     
     private let calendar = Calendar.current
     
@@ -79,7 +79,7 @@ extension CalendarViewModel {
     
     // 캘린더에 데이터 가져오기
     func fetchReadingRoomRecords(for date: Date) {
-        let fetchDataPublisher = calendarRepository.fetchReadingRoomUsageRecords()
+        let fetchDataPublisher = readingRoomRepository.fetchReadingRoomUsageRecords()
             .share()
         
         fetchDataPublisher
@@ -105,7 +105,7 @@ extension CalendarViewModel {
     
     // 캘린더 데이터 저장
     func updateReadingRoomRecord(_ data: ReadingRoomUsage) {
-        let updateDataPublisher = calendarRepository.updateReadingRoomUsageRecord(data).share()
+        let updateDataPublisher = readingRoomRepository.updateReadingRoomUsageRecord(data).share()
         
         updateDataPublisher
             .withUnretained(self)

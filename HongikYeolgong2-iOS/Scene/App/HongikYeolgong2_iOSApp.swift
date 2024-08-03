@@ -38,7 +38,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     
     func setupDependency() {
         DIContainer.shared.register(AuthenticationService() as AuthenticationServiceType)
-        DIContainer.shared.register(CalendarRepositoryMock() as CalendarRepositoryType)
+        DIContainer.shared.register(MockReadingRoomRepository() as ReadingRoomRepositoryType)
     }
 }
 
