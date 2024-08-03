@@ -15,7 +15,7 @@ struct Day: Identifiable {
 
 struct ReadingRoomUsage {
     let date: Date
-    let duration: Int
+    let duration: Double
 }
 
 

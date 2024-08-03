@@ -18,7 +18,7 @@ enum CellStyle: CaseIterable {
 struct CalendarCell: View {
     let dayInfo: Day
     
-    private var totalTime: Int {
+    private var totalTime: Double {
         if let stduyRecords = dayInfo.usageRecord {
             return stduyRecords.map { $0.duration }.reduce(0, +)
         } else {

@@ -12,7 +12,7 @@ enum Constants {
     static let firstNotificationTime = TimeInterval(30)
     static let secondNotificationTime = TimeInterval(10)
     
-    static let starRatingCount00 = 10
-    static let starRatingCount01 = 20
-    static let starRatingCount02 = 30
+    static let starRatingCount00 = TimeInterval(10)
+    static let starRatingCount01 = TimeInterval(20)
+    static let starRatingCount02 = TimeInterval(30)
 }

@@ -18,7 +18,7 @@ final class CalendarViewModel: ViewModelType {
     
     @Published var seletedDate = Date() // 선택된 날짜
     @Published var currentMonth = [Day]() // 캘린더에 표시할 날짜정보
-    @Published var dailyReadingRoomUsageTime = 0 // 오늘 열람실 이용시간
+    @Published var dailyReadingRoomUsageTime: Double = 0 // 오늘 열람실 이용시간
     
     @Inject private var readingRoomRepository: ReadingRoomRepositoryType
     
@@ -92,7 +92,7 @@ extension CalendarViewModel {
        fetchDataPublisher
             .flatMap ({ [weak self] in
                 guard let self = self else {
-                    return Just(0).eraseToAnyPublisher()
+                    return Just(0.0).eraseToAnyPublisher()
                 }
                 return getTotalTime($0)
             })
@@ -115,11 +115,9 @@ extension CalendarViewModel {
             .store(in: &subscriptions)
         
         updateDataPublisher
-            .flatMap ({ [weak self] in
-                guard let self = self else {
-                    return Just(0).eraseToAnyPublisher()
-                }
-                return getTotalTime($0)
+            .withUnretained(self)
+            .flatMap ({ (owner, roomUsageInfo) in
+                return owner.getTotalTime(roomUsageInfo)
             })
             .sink { [weak self] totalTime in
                 guard let self = self else { return }
@@ -130,7 +128,7 @@ extension CalendarViewModel {
 }
 
 extension CalendarViewModel {
-    func getTotalTime(_ array: [ReadingRoomUsage]) -> AnyPublisher<Int, Never> {
+    func getTotalTime(_ array: [ReadingRoomUsage]) -> AnyPublisher<Double, Never> {
        let filterdArray = array.filter { calendar.isDate($0.date, equalTo: Date(), toGranularity: .day)}
         let totalTime = filterdArray.map { $0.duration }.reduce(0, +)
         return Just(totalTime).eraseToAnyPublisher()

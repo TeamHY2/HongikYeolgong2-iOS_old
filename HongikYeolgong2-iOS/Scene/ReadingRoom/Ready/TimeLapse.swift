@@ -11,8 +11,8 @@ struct TimeLapse: View {
     
     let startTime: Date
     let endTime: Date
-    let timeRemaining: Int
-    let totalTime: Int
+    let timeRemaining: Double
+    let totalTime: Double
     
     var body: some View {
         VStack(spacing: 0) {
@@ -82,7 +82,7 @@ struct TimeLapse: View {
     }
 }
 
-extension Int {
+extension Double {
     func getFullTimeString() -> String {
         let formatter = DateComponentsFormatter()
         formatter.allowedUnits = [.hour, .minute, .second]
