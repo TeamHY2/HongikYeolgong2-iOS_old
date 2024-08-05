@@ -9,19 +9,18 @@ final class DIContainer {
     
     var dependencies: [String: Any] = [:]
     
-    func register<Dependency>(_ dependency: Dependency) {
-        let key = String(describing: type(of: Dependency.self))
+    func register<Dependency>(type key: Dependency.Type, service: Any) {
         #if DEBUG
         print(#function + " \(key) is registered")
         #endif
-        dependencies[key] = dependency
+        dependencies["\(key)"] = service
     }
     
     func resolve<Dependency>() -> Dependency {
-        let key = String(describing: type(of: Dependency.self))
+        let key = Dependency.self
         #if DEBUG
         print(#function + " \(key) is resolved")
         #endif
-        return dependencies[key] as! Dependency
+        return dependencies["\(key)"] as! Dependency
     }
 }

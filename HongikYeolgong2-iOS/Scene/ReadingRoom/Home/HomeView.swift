@@ -17,6 +17,8 @@ struct HomeView: View {
     @EnvironmentObject private var timerViewModel: TimerViewModel
     @EnvironmentObject private var calendarViewModel: CalendarViewModel
     
+    @Environment(\.scenePhase) var scenePhase
+    
     var body: some View {
         VStack(spacing: 0) {
             Spacer()
@@ -26,7 +28,7 @@ struct HomeView: View {
                 TimeLapse(startTime: timerViewModel.startTime,
                           endTime: timerViewModel.endTime,
                           timeRemaining: timerViewModel.timeRemaining,
-                          totalTime: calendarViewModel.todayStudyTime)
+                          totalTime: calendarViewModel.dailyReadingRoomUsageTime)
             } else {
                 Quote()
             }
@@ -35,11 +37,13 @@ struct HomeView: View {
                 .frame(height: timerViewModel.isStart ? UIScreen.UIHeight(28) : UIScreen.UIHeight(120))
             
             if timerViewModel.isStart {
-                CustomButton(action: {
-                    showTimeExtensionAlert = true
-                }, font: .suite, title: "열람실 이용 연장", titleColor: .white, backgroundColor: .customBlue100, leading: 0, trailing: 0)
-                
-                Spacer().frame(height: UIScreen.UIHeight(12))
+                if TimeInterval(timerViewModel.timeRemaining) <= Constants.firstNotificationTime {
+                    CustomButton(action: {
+                        showTimeExtensionAlert = true
+                    }, font: .suite, title: "열람실 이용 연장", titleColor: .white, backgroundColor: .customBlue100, leading: 0, trailing: 0)
+                    
+                    Spacer().frame(height: UIScreen.UIHeight(12))
+                }
                 
                 CustomButton(action: {
                     showCompleteAlert = true
@@ -59,24 +63,14 @@ struct HomeView: View {
             
             Spacer()
             
-            ZStack(alignment: .topLeading) {
-                // startRadius 시작각도
-                // endRadius 종료각도
-                Color.clear
-                    .frame(width: 180, height: 180)
-                    .background(
-                        RadialGradient(colors: [Color(.customGray800), 
-                                                Color(.customBlue400).opacity(0.7)],
-                                       center: .topLeading,
-                                       startRadius: 0,
-                                       endRadius: 220)
-                                   .blur(radius: 60)
-                                   .compositingGroup()
-                    )
-                CalendarView()
-            }
+            CalendarView()
             
         }
+        .background(
+            Image(.iOSBackground)
+                .ignoresSafeArea(.all)
+                .allowsHitTesting(false)
+        )
         .customNavigation(left: {
             CustomText(font: .suite, title: "홍익열공이", textColor: .customGray100, textWeight: .semibold, textSize: 18)
         }, right: {
@@ -90,15 +84,29 @@ struct HomeView: View {
                 currentDate: $timerViewModel.startTime) {
             timerViewModel.send(action: .startButtonTap)
         }
-        .alert(title: "열람실을 다 이용하셨나요?", confirmButtonText: "네", cancleButtonText: "더 이용하기", isPresented: $showCompleteAlert) {
-            saveData()
-        }
-        .alert(title: "열람실 이용 시간을 연장할까요?", confirmButtonText: "연장하기", cancleButtonText: "아니오", isPresented: $showTimeExtensionAlert) {
-            timerViewModel.send(action: .addTimeButtonTap)
-        }
-        .onReceive(timerViewModel.$timeRemaining.filter { $0 <= 0 }) { _ in
-            saveData()
-        }
+                .alert(title: "열람실을 다 이용하셨나요?", 
+                       confirmButtonText: "네",
+                       cancleButtonText: "더 이용하기",
+                       isPresented: $showCompleteAlert) {
+                    saveData()
+                }
+                       .alert(title: "열람실 이용 시간을 연장할까요?", 
+                              confirmButtonText: "연장하기",
+                              cancleButtonText: "아니오",
+                              isPresented: $showTimeExtensionAlert) {
+                           timerViewModel.send(action: .addTimeButtonTap)
+                       }
+                              .onReceive(timerViewModel.$timeRemaining.filter { $0 <= 0 }) { _ in
+                                  saveData()
+                              }.onChange(of: scenePhase, perform: { value in
+                                  guard timerViewModel.isStart == true else { return }
+                                  
+                                  if value == .active {
+                                      timerViewModel.send(action: .enterFoureground)
+                                  } else if value == .background {
+                                      timerViewModel.send(action: .enterBackground)
+                                  }
+                              })
     }
     
     func saveData() {
@@ -107,7 +115,7 @@ struct HomeView: View {
         
         // 총시간
         let totalTime = timerViewModel.totalTime
-        let data = StudyRecord(date: Date(), totalTime: totalTime)
+        let data = ReadingRoomUsage(date: Date(), duration: totalTime)
         
         // 캘린더 업데이트
         calendarViewModel.send(action: .saveButtonTap(data))

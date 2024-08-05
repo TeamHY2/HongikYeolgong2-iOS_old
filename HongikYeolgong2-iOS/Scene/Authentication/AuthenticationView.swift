@@ -10,7 +10,9 @@ struct AuthenticationView: View {
         VStack {
             switch viewModel.authenticationState {
             case .unauthenticated:
-                LoginView()
+                NavigationStack(path: $coordinator.authPath) {
+                    LoginView()                        
+                }
             case .authenticated:
                 Group {
                     NavigationStack(path: $coordinator.paths) {

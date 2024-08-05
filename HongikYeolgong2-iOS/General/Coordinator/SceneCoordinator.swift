@@ -9,6 +9,7 @@ import SwiftUI
 
 final class SceneCoordinator: ObservableObject {
     @Published var paths: [SceneType] = []
+    @Published var authPath: [AuthSceneType] = []
     @Published var sheet: SheetType?
     @Published var fullScreen: FullScreenType?
     

@@ -23,6 +23,12 @@
 		470027A22C50AA2500E640AE /* SUITE-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 470027922C50AA2500E640AE /* SUITE-Bold.otf */; };
 		470027A32C50AA2500E640AE /* SUITE-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 470027932C50AA2500E640AE /* SUITE-SemiBold.otf */; };
 		470027A42C50AA2500E640AE /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 470027942C50AA2500E640AE /* Pretendard-Regular.otf */; };
+		473812372C5E622700C86215 /* ReadingRoomRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473812362C5E622700C86215 /* ReadingRoomRepository.swift */; };
+		47433D3A2C5F66E800F048F7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 47433D392C5F66E800F048F7 /* GoogleService-Info.plist */; };
+		475C01142C526D2500FB5556 /* LocalNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475C01132C526D2500FB5556 /* LocalNotificationService.swift */; };
+		4790ECDC2C57EDC9002FCCAF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4790ECDB2C57EDC9002FCCAF /* Constants.swift */; };
+		4790ECDE2C57F9E5002FCCAF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4790ECDD2C57F9E5002FCCAF /* HomeView.swift */; };
+		47A004742C594376000AC842 /* Publisher+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A004732C594376000AC842 /* Publisher+.swift */; };
 		47E0A8C52C51177B009F1BA9 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E0A8C42C51177B009F1BA9 /* TimerViewModel.swift */; };
 		47E0A8C72C511B72009F1BA9 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E0A8C62C511B72009F1BA9 /* CalendarViewModel.swift */; };
 		5E029B5A2C4157C20091249A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E029B592C4157C20091249A /* User.swift */; };
@@ -61,7 +67,6 @@
 		5EE304632C3FDCE40002C49E /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 5EE304622C3FDCE40002C49E /* FirebaseStorage */; };
 		5EE304652C3FDCE40002C49E /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 5EE304642C3FDCE40002C49E /* FirebaseStorageCombine-Community */; };
 		5EE304672C3FDCE40002C49E /* FirebaseVertexAI-Preview in Frameworks */ = {isa = PBXBuildFile; productRef = 5EE304662C3FDCE40002C49E /* FirebaseVertexAI-Preview */; };
-		5EE304692C3FE9E90002C49E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5EE304682C3FE9E90002C49E /* GoogleService-Info.plist */; };
 		5EE304942C4015880002C49E /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE304932C4015880002C49E /* LoginViewModel.swift */; };
 		5EE304982C40204E0002C49E /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE304972C40204E0002C49E /* DIContainer.swift */; };
 		5EE3049D2C4022990002C49E /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE3049C2C4022990002C49E /* AuthenticationService.swift */; };
@@ -75,12 +80,9 @@
 		825668A72C367F130066B216 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825668A62C367F130066B216 /* View+.swift */; };
 		825668A92C36855A0066B216 /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825668A82C36855A0066B216 /* UINavigationController+.swift */; };
 		8270C9912C4D48A0000EB06A /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8270C9902C4D48A0000EB06A /* ServiceError.swift */; };
-		8270C9942C4D490A000EB06A /* CalendarRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8270C9932C4D490A000EB06A /* CalendarRepository.swift */; };
 		8270C9962C4D4AAE000EB06A /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8270C9952C4D4AAE000EB06A /* ViewModelType.swift */; };
 		8274CF332C33D59400FBFA9D /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8274CF322C33D59400FBFA9D /* Scene.swift */; };
 		8274CF352C33D6C200FBFA9D /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8274CF342C33D6C200FBFA9D /* SceneCoordinator.swift */; };
-		8274CF372C33D6D600FBFA9D /* SceneCoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8274CF362C33D6D600FBFA9D /* SceneCoordinatorType.swift */; };
-		8274CF392C33DB1000FBFA9D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8274CF382C33DB1000FBFA9D /* HomeView.swift */; };
 		8274CF3B2C33DBC800FBFA9D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8274CF3A2C33DBC800FBFA9D /* LoginView.swift */; };
 		8274CF3D2C33DE2300FBFA9D /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8274CF3C2C33DE2300FBFA9D /* MenuView.swift */; };
 		827C18C72C48FC5100B4AAEA /* CustomPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827C18C62C48FC5100B4AAEA /* CustomPicker.swift */; };
@@ -113,6 +115,12 @@
 		470027922C50AA2500E640AE /* SUITE-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SUITE-Bold.otf"; path = "../../../../Font/SUITE-Bold.otf"; sourceTree = "<group>"; };
 		470027932C50AA2500E640AE /* SUITE-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SUITE-SemiBold.otf"; path = "../../../../Font/SUITE-SemiBold.otf"; sourceTree = "<group>"; };
 		470027942C50AA2500E640AE /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Pretendard-Regular.otf"; path = "../../../../Font/Pretendard-Regular.otf"; sourceTree = "<group>"; };
+		473812362C5E622700C86215 /* ReadingRoomRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingRoomRepository.swift; sourceTree = "<group>"; };
+		47433D392C5F66E800F048F7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		475C01132C526D2500FB5556 /* LocalNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationService.swift; sourceTree = "<group>"; };
+		4790ECDB2C57EDC9002FCCAF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		4790ECDD2C57F9E5002FCCAF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		47A004732C594376000AC842 /* Publisher+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+.swift"; sourceTree = "<group>"; };
 		47E0A8C42C51177B009F1BA9 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		47E0A8C62C511B72009F1BA9 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		5E029B592C4157C20091249A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -125,7 +133,6 @@
 		5E89D7712C356E5500C9CB71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5E89D7992C35855F00C9CB71 /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
 		5E8F934C2C416DF300ECE6C5 /* HongikYeolgong2-iOSDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "HongikYeolgong2-iOSDebug.entitlements"; sourceTree = "<group>"; };
-		5EE304682C3FE9E90002C49E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5EE304932C4015880002C49E /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		5EE304952C401A160002C49E /* HongikYeolgong2-iOSRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "HongikYeolgong2-iOSRelease.entitlements"; sourceTree = "<group>"; };
 		5EE304972C40204E0002C49E /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
@@ -140,12 +147,9 @@
 		825668A62C367F130066B216 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 		825668A82C36855A0066B216 /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
 		8270C9902C4D48A0000EB06A /* ServiceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
-		8270C9932C4D490A000EB06A /* CalendarRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarRepository.swift; sourceTree = "<group>"; };
 		8270C9952C4D4AAE000EB06A /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		8274CF322C33D59400FBFA9D /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		8274CF342C33D6C200FBFA9D /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
-		8274CF362C33D6D600FBFA9D /* SceneCoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinatorType.swift; sourceTree = "<group>"; };
-		8274CF382C33DB1000FBFA9D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = "HongikYeolgong2-iOS/Scene/Container/Home/HomeView.swift"; sourceTree = SOURCE_ROOT; };
 		8274CF3A2C33DBC800FBFA9D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8274CF3C2C33DE2300FBFA9D /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		827C18C62C48FC5100B4AAEA /* CustomPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPicker.swift; sourceTree = "<group>"; };
@@ -239,6 +243,7 @@
 				825668A62C367F130066B216 /* View+.swift */,
 				825668A82C36855A0066B216 /* UINavigationController+.swift */,
 				82AB4F222C3EEE6D00787B3B /* Date+.swift */,
+				47A004732C594376000AC842 /* Publisher+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -271,7 +276,7 @@
 			children = (
 				5E8964E52C47C2E900F342CE /* App */,
 				5EE3049E2C40236F0002C49E /* Authentication */,
-				5E5B0BCB2C3287A900936435 /* Container */,
+				5E5B0BCB2C3287A900936435 /* ReadingRoom */,
 				5E5B0BCE2C32890300936435 /* Menu */,
 				5E5B0BC92C32877100936435 /* Login */,
 				5E5B0BCA2C32878100936435 /* Splash */,
@@ -295,14 +300,14 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
-		5E5B0BCB2C3287A900936435 /* Container */ = {
+		5E5B0BCB2C3287A900936435 /* ReadingRoom */ = {
 			isa = PBXGroup;
 			children = (
 				825665772C351B5A0018C799 /* Calendar */,
 				825665762C351B540018C799 /* Ready */,
 				825665752C351B170018C799 /* Home */,
 			);
-			path = Container;
+			path = ReadingRoom;
 			sourceTree = "<group>";
 		};
 		5E5B0BCE2C32890300936435 /* Menu */ = {
@@ -330,6 +335,7 @@
 				5E5B0BC62C3286A600936435 /* Extension */,
 				825668A12C3672C80066B216 /* Modifiers */,
 				8270C9952C4D4AAE000EB06A /* ViewModelType.swift */,
+				4790ECDB2C57EDC9002FCCAF /* Constants.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -338,6 +344,7 @@
 			isa = PBXGroup;
 			children = (
 				5EE3049C2C4022990002C49E /* AuthenticationService.swift */,
+				475C01132C526D2500FB5556 /* LocalNotificationService.swift */,
 				8270C9902C4D48A0000EB06A /* ServiceError.swift */,
 			);
 			path = Services;
@@ -355,8 +362,8 @@
 		825665752C351B170018C799 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				8274CF382C33DB1000FBFA9D /* HomeView.swift */,
 				47E0A8C42C51177B009F1BA9 /* TimerViewModel.swift */,
+				4790ECDD2C57F9E5002FCCAF /* HomeView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -390,12 +397,12 @@
 			path = Modifiers;
 			sourceTree = "<group>";
 		};
-		8270C9922C4D48B6000EB06A /* Repositories */ = {
+		8270C9922C4D48B6000EB06A /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				8270C9932C4D490A000EB06A /* CalendarRepository.swift */,
+				473812362C5E622700C86215 /* ReadingRoomRepository.swift */,
 			);
-			path = Repositories;
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		8274CF2F2C33D3DB00FBFA9D /* Coordinator */ = {
@@ -403,7 +410,6 @@
 			children = (
 				8274CF322C33D59400FBFA9D /* Scene.swift */,
 				8274CF342C33D6C200FBFA9D /* SceneCoordinator.swift */,
-				8274CF362C33D6D600FBFA9D /* SceneCoordinatorType.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -427,12 +433,12 @@
 		82D4D6122C327BDC00A92327 /* HongikYeolgong2-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				47433D392C5F66E800F048F7 /* GoogleService-Info.plist */,
 				5E89D7712C356E5500C9CB71 /* Info.plist */,
-				5EE304682C3FE9E90002C49E /* GoogleService-Info.plist */,
 				5E8F934C2C416DF300ECE6C5 /* HongikYeolgong2-iOSDebug.entitlements */,
 				5EE304952C401A160002C49E /* HongikYeolgong2-iOSRelease.entitlements */,
 				82E15A4E2C481D02004951BE /* Resources */,
-				8270C9922C4D48B6000EB06A /* Repositories */,
+				8270C9922C4D48B6000EB06A /* Repository */,
 				5E5B0BC42C32866900936435 /* Model */,
 				5EE304992C4020900002C49E /* Services */,
 				5EE304962C4020230002C49E /* General */,
@@ -572,12 +578,12 @@
 				470027992C50AA2500E640AE /* Pretendard-Thin.otf in Resources */,
 				470027952C50AA2500E640AE /* Pretendard-Light.otf in Resources */,
 				470027A32C50AA2500E640AE /* SUITE-SemiBold.otf in Resources */,
+				47433D3A2C5F66E800F048F7 /* GoogleService-Info.plist in Resources */,
 				470027972C50AA2500E640AE /* Pretendard-SemiBold.otf in Resources */,
 				82D4D6182C327BDF00A92327 /* Assets.xcassets in Resources */,
 				4700279A2C50AA2500E640AE /* SUITE-ExtraBold.otf in Resources */,
 				4700279D2C50AA2500E640AE /* Pretendard-Black.otf in Resources */,
 				470027A02C50AA2500E640AE /* Pretendard-ExtraLight.otf in Resources */,
-				5EE304692C3FE9E90002C49E /* GoogleService-Info.plist in Resources */,
 				470027A22C50AA2500E640AE /* SUITE-Bold.otf in Resources */,
 				4700279F2C50AA2500E640AE /* SUITE-Medium.otf in Resources */,
 			);
@@ -592,7 +598,6 @@
 			files = (
 				5E5CD43F2C3698A4002CE244 /* CustomButton.swift in Sources */,
 				825668A92C36855A0066B216 /* UINavigationController+.swift in Sources */,
-				8274CF392C33DB1000FBFA9D /* HomeView.swift in Sources */,
 				5E029B5A2C4157C20091249A /* User.swift in Sources */,
 				8252CCDC2C40396100690D75 /* Calendar.swift in Sources */,
 				8252CCE02C404A7300690D75 /* Day.swift in Sources */,
@@ -600,13 +605,14 @@
 				82B1FE7B2C3BC567002D9163 /* Quote.swift in Sources */,
 				5EE304A22C4023A40002C49E /* AuthenticationViewModel.swift in Sources */,
 				5EE304982C40204E0002C49E /* DIContainer.swift in Sources */,
-				8274CF372C33D6D600FBFA9D /* SceneCoordinatorType.swift in Sources */,
+				473812372C5E622700C86215 /* ReadingRoomRepository.swift in Sources */,
+				4790ECDC2C57EDC9002FCCAF /* Constants.swift in Sources */,
 				827C18C72C48FC5100B4AAEA /* CustomPicker.swift in Sources */,
 				8270C9912C4D48A0000EB06A /* ServiceError.swift in Sources */,
 				825668A52C367ED30066B216 /* CustomNavBarModifier.swift in Sources */,
 				825668A72C367F130066B216 /* View+.swift in Sources */,
+				4790ECDE2C57F9E5002FCCAF /* HomeView.swift in Sources */,
 				47E0A8C52C51177B009F1BA9 /* TimerViewModel.swift in Sources */,
-				8270C9942C4D490A000EB06A /* CalendarRepository.swift in Sources */,
 				825665792C35202E0018C799 /* MenuViewModel.swift in Sources */,
 				8252CCDE2C40440600690D75 /* CalendarCell.swift in Sources */,
 				5E89D79A2C35855F00C9CB71 /* Font+.swift in Sources */,
@@ -620,12 +626,14 @@
 				8274CF3D2C33DE2300FBFA9D /* MenuView.swift in Sources */,
 				8270C9962C4D4AAE000EB06A /* ViewModelType.swift in Sources */,
 				8274CF352C33D6C200FBFA9D /* SceneCoordinator.swift in Sources */,
+				47A004742C594376000AC842 /* Publisher+.swift in Sources */,
 				5EE304A02C4023960002C49E /* AuthenticationView.swift in Sources */,
 				5E029B5F2C4159EC0091249A /* RandomNonceString.swift in Sources */,
 				828FF2B32C3E71F1001A4ADE /* DialogModifier.swift in Sources */,
 				5E029B612C415A2D0091249A /* SHA256.swift in Sources */,
 				8274CF3B2C33DBC800FBFA9D /* LoginView.swift in Sources */,
 				82AB4F1D2C3EBF5400787B3B /* AlertModifier.swift in Sources */,
+				475C01142C526D2500FB5556 /* LocalNotificationService.swift in Sources */,
 				82B1FE832C3C1BCD002D9163 /* TimeLapse.swift in Sources */,
 				5E5B0BD52C328A1000936435 /* CustomText.swift in Sources */,
 				82E15A712C48218B004951BE /* DependencyWrapper.swift in Sources */,
@@ -764,7 +772,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1.0.3;
+				CURRENT_PROJECT_VERSION = 1.0.6;
 				DEVELOPMENT_ASSET_PATHS = "\"HongikYeolgong2-iOS/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = P4D4ZQC4YF;
@@ -806,7 +814,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1.0.3;
+				CURRENT_PROJECT_VERSION = 1.0.6;
 				DEVELOPMENT_ASSET_PATHS = "\"HongikYeolgong2-iOS/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = P4D4ZQC4YF;

@@ -10,12 +10,12 @@ import Foundation
 struct Day: Identifiable {
     var id = UUID().uuidString
     let dayOfNumber: String
-    var studyRecord: [StudyRecord]?
+    var usageRecord: [ReadingRoomUsage]?
 }
 
-struct StudyRecord {
+struct ReadingRoomUsage {
     let date: Date
-    let totalTime: Int
+    let duration: Double
 }
 
 

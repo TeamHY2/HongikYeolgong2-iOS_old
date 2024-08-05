@@ -15,7 +15,14 @@ struct HongikYeolgong2_iOSApp: App {
                 .environmentObject(AuthenticationViewModel())
                 .environmentObject(TimerViewModel())
                 .environmentObject(CalendarViewModel())
+                .onAppear {
+                    checkPermission()
+                }
         }
+    }
+    
+    func checkPermission() {
+        LocalNotificationService.shared.requestPermission()
     }
 }
 
@@ -24,14 +31,15 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
         FirebaseApp.configure()
-        registerDependency()
+        setupDependency()
         
         return true
     }
     
+    func setupDependency() {
+        DIContainer.shared.register(type: AuthenticationServiceType.self, service: AuthenticationService())
+        DIContainer.shared.register(type: ReadingRoomRepositoryType.self, service: MockReadingRoomRepository())
+    }
 }
 
-func registerDependency() {
-    DIContainer.shared.register(AuthenticationService() as AuthenticationServiceType)
-    DIContainer.shared.register(CalendarRepositoryMock() as CalendarRepositoryType)
-}
+

@@ -12,29 +12,35 @@ enum CellStyle: CaseIterable {
     case dayCount01
     case dayCount02
     case dayCount03
+    
 }
 
 struct CalendarCell: View {
     let dayInfo: Day
     
-    private var totalTime: Int {
-        if let stduyRecords = dayInfo.studyRecord {
-            return stduyRecords.map { $0.totalTime }.reduce(0, +)
+    private var totalTime: Double {
+        if let stduyRecords = dayInfo.usageRecord {
+            return stduyRecords.map { $0.duration }.reduce(0, +)
         } else {
             return 0
         }
     }
     
+    // 열람실 이용시간에 따라서 Cell을 다르게 보여짐
     private var cellStyle: CellStyle {
-        if totalTime == 0 {
+        if totalTime < Constants.starRatingCount00 {
             return .dayCount00
-        } else if totalTime < (10) {
+        } else if totalTime < Constants.starRatingCount01 {
             return .dayCount01
-        } else if totalTime < (20) {
+        } else if totalTime < Constants.starRatingCount02 {
             return .dayCount02
         } else {
             return .dayCount03
         }
+    }
+    
+    private var isVisible: Bool {
+        dayInfo.dayOfNumber.isEmpty
     }
     
     var body: some View {
@@ -47,7 +53,7 @@ struct CalendarCell: View {
             .frame(height: UIScreen.UIHeight(33))
             .background(Color(.customGray800))
             .cornerRadius(8)
-            .opacity(dayInfo.dayOfNumber.isEmpty ? 0 : 1)
+            .opacity(isVisible ? 0 : 1)
         case .dayCount01:
             VStack {
                 CustomText(font: .suite, title: dayInfo.dayOfNumber, textColor: .customGray100, textWeight: .medium, textSize: 14)
@@ -56,7 +62,7 @@ struct CalendarCell: View {
             .frame(height: UIScreen.UIHeight(33))
             .background(Image(.dayCount01))
             .cornerRadius(8)
-            .opacity(dayInfo.dayOfNumber.isEmpty ? 0 : 1)
+            .opacity(isVisible ? 0 : 1)
         case .dayCount02:
             VStack {
                 CustomText(font: .suite, title: dayInfo.dayOfNumber, textColor: .white, textWeight: .medium, textSize: 14)
@@ -65,7 +71,7 @@ struct CalendarCell: View {
             .frame(height: UIScreen.UIHeight(33))
             .background(Image(.dayCount02))
             .cornerRadius(8)
-            .opacity(dayInfo.dayOfNumber.isEmpty ? 0 : 1)
+            .opacity(isVisible ? 0 : 1)
         case .dayCount03:
             VStack {
                 CustomText(font: .suite, title: dayInfo.dayOfNumber, textColor: .customGray600, textWeight: .medium, textSize: 14)
@@ -74,7 +80,7 @@ struct CalendarCell: View {
             .frame(height: UIScreen.UIHeight(33))
             .background(Image(.dayCount03))
             .cornerRadius(8)
-            .opacity(dayInfo.dayOfNumber.isEmpty ? 0 : 1)
+            .opacity(isVisible ? 0 : 1)
         }
     }
 }

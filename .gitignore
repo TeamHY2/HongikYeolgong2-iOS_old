@@ -88,5 +88,12 @@ iOSInjectionProject/
 .DS_Store
 ._.DS_Store
 **/.DS_Store
-**/._.DS_Store
+**/._.DS_Stor
+
+GoogleService-Info
+._GoogleService-Info
+**/GoogleService-Info
+**/._GoogleService-Info
+
+
 # End of https://www.toptal.com/developers/gitignore/api/swift

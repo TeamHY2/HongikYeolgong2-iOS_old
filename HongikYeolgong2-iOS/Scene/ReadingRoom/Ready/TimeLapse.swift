@@ -11,8 +11,8 @@ struct TimeLapse: View {
     
     let startTime: Date
     let endTime: Date
-    let timeRemaining: Int
-    let totalTime: Int
+    let timeRemaining: Double
+    let totalTime: Double
     
     var body: some View {
         VStack(spacing: 0) {
@@ -68,21 +68,21 @@ struct TimeLapse: View {
                 .frame(height: UIScreen.UIHeight(11))
             
             HStack {
-                CustomText(font: .suite, title: timeRemaining.getFullTimeString(), textColor: timeRemaining <= (1800) ? .customYellow100 : .customGray100, textWeight: .extrabold, textSize: 30)
+                CustomText(font: .suite, title: timeRemaining.getFullTimeString(), textColor: timeRemaining <= (30) ? .customYellow100 : .customGray100, textWeight: .extrabold, textSize: 30)
                 
                 Spacer()
                 
                 HStack {
-                    Image(totalTime >= 10 ? .shineCount01 : .shineCount00)
-                    Image(totalTime >= 20 ? .shineCount02 : .shineCount00)
-                    Image(totalTime >= 30 ? .shineCount03 : .shineCount00)
+                    Image(totalTime >= Constants.starRatingCount00 ? .shineCount01 : .shineCount00)
+                    Image(totalTime >= Constants.starRatingCount01 ? .shineCount02 : .shineCount00)
+                    Image(totalTime >= Constants.starRatingCount02 ? .shineCount03 : .shineCount00)
                 }
             }
         }
     }
 }
 
-extension Int {
+extension Double {
     func getFullTimeString() -> String {
         let formatter = DateComponentsFormatter()
         formatter.allowedUnits = [.hour, .minute, .second]
