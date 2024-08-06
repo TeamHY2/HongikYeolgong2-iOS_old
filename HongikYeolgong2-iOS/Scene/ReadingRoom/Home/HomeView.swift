@@ -37,7 +37,7 @@ struct HomeView: View {
                 .frame(height: timerViewModel.isStart ? UIScreen.UIHeight(28) : UIScreen.UIHeight(120))
             
             if timerViewModel.isStart {
-                if TimeInterval(timerViewModel.timeRemaining) <= Constants.firstNotificationTime {
+                if TimeInterval(timerViewModel.timeRemaining) <= Constants.StudyRoomService.firstNotificationTime {
                     CustomButton(action: {
                         showTimeExtensionAlert = true
                     }, font: .suite, title: "열람실 이용 연장", titleColor: .white, backgroundColor: .customBlue100, leading: 0, trailing: 0)

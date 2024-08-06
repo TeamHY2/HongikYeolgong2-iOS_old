@@ -28,11 +28,11 @@ struct CalendarCell: View {
     
     // 열람실 이용시간에 따라서 Cell을 다르게 보여짐
     private var cellStyle: CellStyle {
-        if totalTime < Constants.starRatingCount00 {
+        if totalTime < Constants.StudyRoomService.starRatingCount00 {
             return .dayCount00
-        } else if totalTime < Constants.starRatingCount01 {
+        } else if totalTime < Constants.StudyRoomService.starRatingCount01 {
             return .dayCount01
-        } else if totalTime < Constants.starRatingCount02 {
+        } else if totalTime < Constants.StudyRoomService.starRatingCount02 {
             return .dayCount02
         } else {
             return .dayCount03

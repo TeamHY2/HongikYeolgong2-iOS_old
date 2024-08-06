@@ -48,7 +48,7 @@ final class TimerViewModel: ViewModelType {
     
     func startStudy() {
         isStart = true
-        endTime = startTime + Constants.additionalTime
+        endTime = startTime + Constants.StudyRoomService.additionalTime
         timeRemaining = endTime.timeIntervalSince(startTime)
         
         // Notification에 추가
@@ -72,7 +72,7 @@ final class TimerViewModel: ViewModelType {
     
     func addTime() {
         totalTime = endTime.timeIntervalSince(startTime) - timeRemaining
-        endTime = endTime + Constants.additionalTime
+        endTime = endTime + Constants.StudyRoomService.additionalTime
         timeRemaining = endTime.timeIntervalSince(startTime) - totalTime
         
         // Notification 제거하고 다시 등록
