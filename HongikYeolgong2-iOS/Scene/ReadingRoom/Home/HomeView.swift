@@ -115,7 +115,7 @@ struct HomeView: View {
         
         // 총시간
         let totalTime = timerViewModel.totalTime
-        let data = ReadingRoomUsage(date: Date(), duration: totalTime)
+        let data = StudyRoomUsage(date: Date(), duration: totalTime)
         
         // 캘린더 업데이트
         calendarViewModel.send(action: .saveButtonTap(data))

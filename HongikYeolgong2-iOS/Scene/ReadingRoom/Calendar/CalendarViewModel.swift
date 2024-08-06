@@ -20,14 +20,14 @@ final class CalendarViewModel: ViewModelType {
     @Published var currentMonth = [Day]() // 캘린더에 표시할 날짜정보
     @Published var dailyReadingRoomUsageTime: Double = 0 // 오늘 열람실 이용시간
     
-    @Inject private var readingRoomRepository: ReadingRoomRepositoryType
+    @Inject private var readingRoomRepository: StudyRoomRepositoryType
     
     private let calendar = Calendar.current
     
     private var subscriptions = Set<AnyCancellable>()
     
     enum Action {
-        case saveButtonTap(ReadingRoomUsage)
+        case saveButtonTap(StudyRoomUsage)
         case moveButtonTap(MoveType)
         case viewOnAppear
     }
@@ -104,7 +104,7 @@ extension CalendarViewModel {
     }
     
     // 캘린더 데이터 저장
-    func updateReadingRoomRecord(_ data: ReadingRoomUsage) {
+    func updateReadingRoomRecord(_ data: StudyRoomUsage) {
         let updateDataPublisher = readingRoomRepository.updateReadingRoomUsageRecord(data).share()
         
         updateDataPublisher
@@ -128,7 +128,7 @@ extension CalendarViewModel {
 }
 
 extension CalendarViewModel {
-    func getTotalTime(_ array: [ReadingRoomUsage]) -> AnyPublisher<Double, Never> {
+    func getTotalTime(_ array: [StudyRoomUsage]) -> AnyPublisher<Double, Never> {
        let filterdArray = array.filter { calendar.isDate($0.date, equalTo: Date(), toGranularity: .day)}
         let totalTime = filterdArray.map { $0.duration }.reduce(0, +)
         return Just(totalTime).eraseToAnyPublisher()
@@ -163,7 +163,7 @@ extension CalendarViewModel {
         return components.weekday! - 1
     }
     
-    func makeMonth(date: Date, roomUsageInfo: [ReadingRoomUsage]) -> [Day] {
+    func makeMonth(date: Date, roomUsageInfo: [StudyRoomUsage]) -> [Day] {
         var days: [Day] = []
         var count: Int = 1
         
