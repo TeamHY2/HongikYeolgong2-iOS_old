@@ -20,7 +20,7 @@ class AuthenticationViewModel: ObservableObject {
     @Published var authenticationState: AuthenticationState = .unauthenticated
     @Published var user: User?
     
-    var userID: String?
+    var userId: String?
     
     private var currentNonce: String?
     private var subscriptions = Set<AnyCancellable>()
@@ -47,10 +47,10 @@ extension AuthenticationViewModel {
     
     func checkAuthenticationState() {
         // db에서 유저정보를 가져와서 뷰모델에 저장
-        if let userID = authService.checkAuthenticationState() {
-            self.userID = userID
+        if let uid = authService.checkAuthenticationState() {
+            self.userId = uid
             self.authenticationState = .authenticated
-            userRepository.fetchUser(uid: userID)
+            userRepository.fetchUser(with: uid)
         }
     }
     
@@ -69,8 +69,13 @@ extension AuthenticationViewModel {
                 .withUnretained(self)
                 // 유저정보를 이용하여 새로운 비동기요청
                 .flatMap { (owner, user) -> AnyPublisher<User, Never> in
-                    owner.userRepository.createUser(uid: user.id)
+                    let newUser = User(id: user.id,
+                                       nickname: "열공이",
+                                       email: user.email)
+                    
+                    return owner.userRepository.createUser(newUser)
                 }
+                .receive(on: DispatchQueue.main)
                 .sink { _ in
                     // 성공, 실패 분기처리
                 } receiveValue: { [weak self] userInfo in

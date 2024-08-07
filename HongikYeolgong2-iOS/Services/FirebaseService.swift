@@ -25,8 +25,8 @@ final class FirebaseService {
     private init() {}
     
     enum Collections: String {
-        case user = "User"
-        case studyDay = "StudyDay"
+        case userCollection = "User"
+        case studyDayCollection = "StudyDay"
     }
 }
 
@@ -78,20 +78,38 @@ extension FirebaseService {
 
 // MARK: - POST
 extension FirebaseService {
-    func post<T: FirebaseIdentifiable>(_ value: T, to collection: String) async -> Result<T, Error> {
-        // 2.
-        let ref = database.collection(collection).document()
+    @discardableResult
+    func post<T: FirebaseIdentifiable>(_ value: T, to collection: Collections) async throws -> T {
+        // document 저장
+        let ref = database.collection(collection.rawValue).document()
         var valueToWrite: T = value
         valueToWrite.id = ref.documentID
         do {
-            //3.
+        
             try ref.setData(from: valueToWrite)
-            return .success(valueToWrite)
+            return valueToWrite
         } catch let error {
             print("Error: \(#function) in collection: \(collection), \(error)")
-            return .failure(error)
+            throw error
         }
     }
+    
+    @discardableResult
+    func post<T: FirebaseIdentifiable>(_ value: T, docId: String, to collection: Collections) async throws -> T {
+        // document 저장
+        let ref = database.collection(collection.rawValue).document(docId)
+        let valueToWrite: T = value
+        
+        do {
+        
+            try ref.setData(from: valueToWrite)
+            return valueToWrite
+        } catch let error {
+            print("Error: \(#function) in collection: \(collection), \(error)")
+            throw error
+        }
+    }
+
 }
 
 // MARK: - DELETE

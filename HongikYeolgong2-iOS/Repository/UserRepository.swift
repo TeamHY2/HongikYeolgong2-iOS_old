@@ -8,16 +8,26 @@
 import Combine
 
 protocol UserRepositoryType {
-    func createUser(uid: String) -> AnyPublisher<User, Never>
-    func fetchUser(uid: String)
+    func createUser(_ user: User) -> AnyPublisher<User, Never>
+    func fetchUser(with uid: String)
 }
 
-final class UserRepositoryImpl: UserRepositoryType {
-    func createUser(uid: String) -> AnyPublisher<User, Never> {
-        return Empty().eraseToAnyPublisher()
+final class UserRepository: UserRepositoryType {
+    
+    func createUser(_ user: User) -> AnyPublisher<User, Never> {
+        return Future<User, Never> { promise in
+            Task {
+                do {
+                    let user = try await FirebaseService.shared.post(user, docId: user.email, to: .userCollection)
+                    promise(.success(user))
+                } catch {
+                    
+                }
+            }
+        }.eraseToAnyPublisher()
     }
     
-    func fetchUser(uid: String) {
+    func fetchUser(with uid: String) {
         
     }
 }
