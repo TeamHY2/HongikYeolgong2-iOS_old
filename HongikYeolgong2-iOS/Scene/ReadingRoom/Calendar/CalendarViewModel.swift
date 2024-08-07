@@ -10,40 +10,46 @@ import Combine
 
 final class CalendarViewModel: ViewModelType {
     
-    enum MoveType {
-        case current
-        case next
-        case prev
-    }
+    // MARK: - Properties
     
-    @Published var seletedDate = Date() // 선택된 날짜
-    @Published var currentMonth = [Day]() // 캘린더에 표시할 날짜정보
-    @Published var dailyReadingRoomUsageTime: Double = 0 // 오늘 열람실 이용시간
-    
-    @Inject private var readingRoomRepository: StudyRoomRepositoryType
-    
-    private let calendar = Calendar.current
-    
-    private var subscriptions = Set<AnyCancellable>()
-    
+    // INPUT
     enum Action {
         case saveButtonTap(StudyRoomUsage)
         case moveButtonTap(MoveType)
         case viewOnAppear
     }
     
+    enum MoveType {
+        case current
+        case next
+        case prev
+    }
+    
+    // OUTPUT
+    @Published var seletedDate = Date() // 선택된 날짜
+    @Published var currentMonth = [Day]() // 캘린더에 표시할 날짜정보
+    @Published var todayStudyRoomUsageCount = 0 // 열람실 이용횟수
+    
+    @Inject private var studyRoomRepository: StudyRoomRepositoryType
+    
+    private let calendar = Calendar.current
+    
+    private var subscriptions = Set<AnyCancellable>()
+    
+   
     func send(action: Action) {
         switch action {
         case .viewOnAppear:
-            fetchReadingRoomRecords(for: seletedDate)
+            fetchStudyRoomRecords(for: seletedDate)
         case .moveButtonTap(let moveType):
             changeMonth(moveType)
         case .saveButtonTap(let data):
-            updateReadingRoomRecord(data)
+            updateStudyRoomRecord(data)
         }
     }
 }
 
+// MARK: - Binding
 extension CalendarViewModel {
     // 선택한 달이 변경되는 경우
     func changeMonth(_ moveType: MoveType) {
@@ -74,65 +80,34 @@ extension CalendarViewModel {
         
         seletedDate = currentDate
         
-        fetchReadingRoomRecords(for: seletedDate)
+        fetchStudyRoomRecords(for: seletedDate)
     }
     
     // 캘린더에 데이터 가져오기
-    func fetchReadingRoomRecords(for date: Date) {
-        let fetchDataPublisher = readingRoomRepository.fetchReadingRoomUsageRecords()
-            .share()
-        
-        fetchDataPublisher
+    func fetchStudyRoomRecords(for date: Date) {
+       studyRoomRepository.fetchStudyRoomUsageRecords()
             .withUnretained(self)
             .sink(receiveValue: { (owner, roomUsageInfo) in
                 owner.currentMonth = owner.makeMonth(date: date, roomUsageInfo: roomUsageInfo)
             })
             .store(in: &subscriptions)
-        
-       fetchDataPublisher
-            .flatMap ({ [weak self] in
-                guard let self = self else {
-                    return Just(0.0).eraseToAnyPublisher()
-                }
-                return getTotalTime($0)
-            })
-            .sink { [weak self] totalTime in
-                guard let self = self else { return }
-                dailyReadingRoomUsageTime = totalTime
-            }
-            .store(in: &subscriptions)
     }
     
     // 캘린더 데이터 저장
-    func updateReadingRoomRecord(_ data: StudyRoomUsage) {
-        let updateDataPublisher = readingRoomRepository.updateReadingRoomUsageRecord(data).share()
-        
-        updateDataPublisher
+    func updateStudyRoomRecord(_ data: StudyRoomUsage) {
+        studyRoomRepository.updateStudyRoomUsageRecord(data)
             .withUnretained(self)
             .sink(receiveValue: { (owner, roomUsageInfo) in
+                let StudyRoomUsageCount = roomUsageInfo.filter { owner.calendar.isDate($0.date, equalTo: Date(), toGranularity: .day)}.count
                 owner.currentMonth = owner.makeMonth(date: owner.seletedDate, roomUsageInfo: roomUsageInfo)
+                owner.todayStudyRoomUsageCount = StudyRoomUsageCount
             })
-            .store(in: &subscriptions)
-        
-        updateDataPublisher
-            .withUnretained(self)
-            .flatMap ({ (owner, roomUsageInfo) in
-                return owner.getTotalTime(roomUsageInfo)
-            })
-            .sink { [weak self] totalTime in
-                guard let self = self else { return }
-                dailyReadingRoomUsageTime = totalTime
-            }
-            .store(in: &subscriptions)
+            .store(in: &subscriptions)    
     }
 }
 
+// MARK: - Helper
 extension CalendarViewModel {
-    func getTotalTime(_ array: [StudyRoomUsage]) -> AnyPublisher<Double, Never> {
-       let filterdArray = array.filter { calendar.isDate($0.date, equalTo: Date(), toGranularity: .day)}
-        let totalTime = filterdArray.map { $0.duration }.reduce(0, +)
-        return Just(totalTime).eraseToAnyPublisher()
-    }
     
     func plusMonth(date: Date) -> Date {
         return calendar.date(byAdding: .month, value: 1, to: date)!
@@ -170,7 +145,7 @@ extension CalendarViewModel {
         let daysInMonth = daysInMonth(date: date)
         let firstDayOfMonth = firstOfMonth(date: date)
         let startingSpace = weekDay(date: firstDayOfMonth)
-                
+        
         while(count <= 42) {
             // 이번달이 아닌경우 공백 처리
             if (count <= startingSpace || count - startingSpace > daysInMonth) {

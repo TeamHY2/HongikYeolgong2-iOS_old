@@ -27,8 +27,8 @@ struct HomeView: View {
             if timerViewModel.isStart {
                 TimeLapse(startTime: timerViewModel.startTime,
                           endTime: timerViewModel.endTime,
-                          timeRemaining: timerViewModel.timeRemaining,
-                          totalTime: calendarViewModel.dailyReadingRoomUsageTime)
+                          timeRemaining: timerViewModel.remainingTime,
+                          usageCount: calendarViewModel.todayStudyRoomUsageCount)
             } else {
                 Quote()
             }
@@ -37,7 +37,7 @@ struct HomeView: View {
                 .frame(height: timerViewModel.isStart ? UIScreen.UIHeight(28) : UIScreen.UIHeight(120))
             
             if timerViewModel.isStart {
-                if TimeInterval(timerViewModel.timeRemaining) <= Constants.StudyRoomService.firstNotificationTime {
+                if TimeInterval(timerViewModel.remainingTime) <= Constants.StudyRoomService.firstNotificationTime {
                     CustomButton(action: {
                         showTimeExtensionAlert = true
                     }, font: .suite, title: "열람실 이용 연장", titleColor: .white, backgroundColor: .customBlue100, leading: 0, trailing: 0)
@@ -96,7 +96,7 @@ struct HomeView: View {
                               isPresented: $showTimeExtensionAlert) {
                            timerViewModel.send(action: .addTimeButtonTap)
                        }
-                              .onReceive(timerViewModel.$timeRemaining.filter { $0 <= 0 }) { _ in
+                              .onReceive(timerViewModel.$remainingTime.filter { $0 <= 0 }) { _ in
                                   saveData()
                               }.onChange(of: scenePhase, perform: { value in
                                   guard timerViewModel.isStart == true else { return }
