@@ -18,6 +18,7 @@ class AuthenticationViewModel: ObservableObject {
     }
     
     @Published var authenticationState: AuthenticationState = .unauthenticated
+    @Published var user: User?
     
     var userID: String?
     
@@ -26,35 +27,61 @@ class AuthenticationViewModel: ObservableObject {
     
     // Dependency
     @Inject private var authService: AuthenticationServiceType
+    @Inject private var userRepository: UserRepositoryType
     
     init() {}
     
     func send(action: Action) {
         switch action {
         case .checkAuthenticationState:
-            if let userID = authService.checkAuthenticationState() {
-                self.userID = userID
-                self.authenticationState = .authenticated
-            }
-        case .appleLogin(let aSAuthorizationAppleIDRequest):
-            let nonce = authService.handleSignInWithAppleRequest(aSAuthorizationAppleIDRequest)
-            currentNonce = nonce
+            checkAuthenticationState()
+        case .appleLogin(let asAuthorizationAppleIDRequest):
+            setCurrentNonce(asAuthorizationAppleIDRequest)
         case .appleLoginCompletion(let result):
-            if case let .success(authentication) = result {
-                guard let nonce = currentNonce else {return}
-                
-                authService.handleSignInWithAppleCompletion(authentication, none: nonce)
-                    .sink { completon in
-                        if case .failure(_) = result {
-                            // TODO: 로딩 실패시 로직
-                        }
-                    } receiveValue: { [weak self] user in
-                        self?.userID = user.id
-                        self?.authenticationState = .authenticated
-                    }.store(in: &subscriptions)
-            } else if case let .failure(error) = result {
-                print(error.localizedDescription)
-            }
+            setUser(result)
+        }
+    }
+}
+
+extension AuthenticationViewModel {
+    
+    func checkAuthenticationState() {
+        // db에서 유저정보를 가져와서 뷰모델에 저장
+        if let userID = authService.checkAuthenticationState() {
+            self.userID = userID
+            self.authenticationState = .authenticated
+            userRepository.fetchUser(uid: userID)
+        }
+    }
+    
+    func setCurrentNonce(_ asAuthorizationAppleIDRequest: ASAuthorizationAppleIDRequest) {
+        let nonce = authService.handleSignInWithAppleRequest(asAuthorizationAppleIDRequest)
+        currentNonce = nonce
+    }
+    
+    // 유저정보가 있다면 기존의 유저정보를 가져온다
+    // 유저정보가 없다면 db에 유저정보를 추가한다
+    func setUser(_ result: Result<ASAuthorization, Error>) {
+        if case let .success(authentication) = result {
+            guard let nonce = currentNonce else {return}
+            
+            authService.handleSignInWithAppleCompletion(authentication, none: nonce)
+                .withUnretained(self)
+                // 유저정보를 이용하여 새로운 비동기요청
+                .flatMap { (owner, user) -> AnyPublisher<User, Never> in
+                    owner.userRepository.createUser(uid: user.id)
+                }
+                .sink { _ in
+                    // 성공, 실패 분기처리
+                } receiveValue: { [weak self] userInfo in
+                    guard let self = self else { return }
+                    self.user = user
+                    self.authenticationState = .authenticated
+                }
+                .store(in: &subscriptions)
+            
+        } else if case let .failure(error) = result {
+            print(error.localizedDescription)
         }
     }
 }

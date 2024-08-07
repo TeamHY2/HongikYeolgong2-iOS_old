@@ -74,7 +74,7 @@ extension AuthenticationService {
         authenticateUserWithFirebase(credential: credential) { result in
             switch result {
             case var .success(user):
-                user.name = [appleIDCredential.fullName?.givenName, appleIDCredential.fullName?.familyName]
+                user.nickname = [appleIDCredential.fullName?.givenName, appleIDCredential.fullName?.familyName]
                     .compactMap { $0 }
                     .joined(separator: " ")
                 completion(.success(user))
@@ -98,9 +98,8 @@ extension AuthenticationService {
             
             let firebaseUser = result.user
             let user: User = .init(id: firebaseUser.uid,
-                                   name: firebaseUser.displayName ?? "",
-                                   phoneNumber: firebaseUser.phoneNumber,
-                                   profileURL: firebaseUser.photoURL?.absoluteString)
+                                   nickname: "열공이",
+                                   email: firebaseUser.email ?? "")
             
             completion(.success(user))
         }

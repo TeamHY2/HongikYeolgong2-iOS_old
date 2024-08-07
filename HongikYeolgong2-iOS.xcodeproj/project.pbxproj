@@ -25,6 +25,8 @@
 		470027A42C50AA2500E640AE /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 470027942C50AA2500E640AE /* Pretendard-Regular.otf */; };
 		473812372C5E622700C86215 /* StudyRoomRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473812362C5E622700C86215 /* StudyRoomRepository.swift */; };
 		475C01142C526D2500FB5556 /* LocalNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475C01132C526D2500FB5556 /* LocalNotificationService.swift */; };
+		477017832C63C405003F3702 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477017822C63C405003F3702 /* FirebaseService.swift */; };
+		477017852C63C9D8003F3702 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477017842C63C9D8003F3702 /* UserRepository.swift */; };
 		4790ECDC2C57EDC9002FCCAF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4790ECDB2C57EDC9002FCCAF /* Constants.swift */; };
 		4790ECDE2C57F9E5002FCCAF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4790ECDD2C57F9E5002FCCAF /* HomeView.swift */; };
 		47A004742C594376000AC842 /* Publisher+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A004732C594376000AC842 /* Publisher+.swift */; };
@@ -117,6 +119,8 @@
 		470027942C50AA2500E640AE /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Pretendard-Regular.otf"; path = "../../../../Font/Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		473812362C5E622700C86215 /* StudyRoomRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomRepository.swift; sourceTree = "<group>"; };
 		475C01132C526D2500FB5556 /* LocalNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationService.swift; sourceTree = "<group>"; };
+		477017822C63C405003F3702 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
+		477017842C63C9D8003F3702 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		4790ECDB2C57EDC9002FCCAF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4790ECDD2C57F9E5002FCCAF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		47A004732C594376000AC842 /* Publisher+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+.swift"; sourceTree = "<group>"; };
@@ -345,6 +349,7 @@
 			children = (
 				5EE3049C2C4022990002C49E /* AuthenticationService.swift */,
 				475C01132C526D2500FB5556 /* LocalNotificationService.swift */,
+				477017822C63C405003F3702 /* FirebaseService.swift */,
 				8270C9902C4D48A0000EB06A /* ServiceError.swift */,
 			);
 			path = Services;
@@ -401,6 +406,7 @@
 			isa = PBXGroup;
 			children = (
 				473812362C5E622700C86215 /* StudyRoomRepository.swift */,
+				477017842C63C9D8003F3702 /* UserRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -600,6 +606,7 @@
 				825668A92C36855A0066B216 /* UINavigationController+.swift in Sources */,
 				5E029B5A2C4157C20091249A /* User.swift in Sources */,
 				8252CCDC2C40396100690D75 /* Calendar.swift in Sources */,
+				477017832C63C405003F3702 /* FirebaseService.swift in Sources */,
 				8252CCE02C404A7300690D75 /* Day.swift in Sources */,
 				47E0A8C72C511B72009F1BA9 /* CalendarViewModel.swift in Sources */,
 				82B1FE7B2C3BC567002D9163 /* Quote.swift in Sources */,
@@ -617,6 +624,7 @@
 				8252CCDE2C40440600690D75 /* CalendarCell.swift in Sources */,
 				5E89D79A2C35855F00C9CB71 /* Font+.swift in Sources */,
 				82B1FE812C3C1755002D9163 /* CustomButton2.swift in Sources */,
+				477017852C63C9D8003F3702 /* UserRepository.swift in Sources */,
 				5E5B0BD32C3289D500936435 /* UIColor+.swift in Sources */,
 				5EE304942C4015880002C49E /* LoginViewModel.swift in Sources */,
 				8274CF332C33D59400FBFA9D /* Scene.swift in Sources */,
