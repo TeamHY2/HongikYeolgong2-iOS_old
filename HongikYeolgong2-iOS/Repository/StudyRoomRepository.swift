@@ -25,7 +25,7 @@ final class StudyRoomRepository: StudyRoomRepositoryType {
             Task {
                 do {
                    let studyRoomUsageList = try await FirebaseService.shared.getMany(of: StudyRoomUsage.self, with: query)
-                    promise(.success(studyRoomUsageList))
+                    promise(.success(studyRoomUsageList))                    
                 }
             }
         }.eraseToAnyPublisher()

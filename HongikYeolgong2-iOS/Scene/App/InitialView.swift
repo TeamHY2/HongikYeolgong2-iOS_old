@@ -30,8 +30,7 @@ struct InitialView: View {
             }
         }
         .onAppear {
-            authViewModel.send(action: .checkAuthenticationState)
-            calendarViewModel.send(action: .viewOnAppear)
+            authViewModel.send(action: .checkAuthenticationState)            
         }
        
     }

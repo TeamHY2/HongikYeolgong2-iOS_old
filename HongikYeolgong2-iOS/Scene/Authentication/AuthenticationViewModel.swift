@@ -45,13 +45,21 @@ class AuthenticationViewModel: ObservableObject {
 extension AuthenticationViewModel {
     
     func checkAuthenticationState() {
-        // db에서 유저정보를 가져와서 뷰모델에 저장
-        guard let email = authService.checkAuthenticationState() else { return }
+        guard let email = authService.checkAuthenticationState() else {
+            authenticationState = .unauthenticated
+            return
+        }
         
         userRepository.fetchUser(with: email)
             .receive(on: DispatchQueue.main)
-            .sink { _ in
-                
+            .sink { [weak self] completion in                
+                guard let self = self else { return }
+                switch completion {
+                case .finished:
+                    break
+                case .failure( _):
+                    authenticationState = .unauthenticated
+                }
             } receiveValue: { [weak self] user in
                 guard let self = self else { return }
                 self.user = user

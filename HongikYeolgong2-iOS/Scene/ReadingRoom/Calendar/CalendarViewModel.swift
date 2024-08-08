@@ -14,7 +14,7 @@ final class CalendarViewModel: ViewModelType {
     enum Action {
         case saveButtonTap(StudyRoomUsage, String)
         case moveButtonTap(MoveType)
-        case viewOnAppear
+        case getCalendar(String)
     }
     
     // MARK: - Action
@@ -46,8 +46,8 @@ extension CalendarViewModel {
      */
     func send(action: Action) {
         switch action {
-        case .viewOnAppear:
-            fetchStudyRoomRecords(for: seletedDate)
+        case .getCalendar(let email):
+            fetchStudyRoomRecords(for: seletedDate, email: email)
         case .moveButtonTap(let moveType):
             changeMonth(moveType)
         case .saveButtonTap(let data, let email):
@@ -94,8 +94,8 @@ extension CalendarViewModel {
      캘린더에 표시될 데이터를 새롭게 요청한다
      새롭게 받아온 데이터를 studyRoomUsageList에 저장한다
      */
-    func fetchStudyRoomRecords(for date: Date) {
-       studyRoomRepository.fetchStudyRoomUsageRecords(with: "68m7kk7nqt@privaterelay.appleid.com")
+    func fetchStudyRoomRecords(for date: Date, email: String) {
+       studyRoomRepository.fetchStudyRoomUsageRecords(with: email)
             .receive(on: DispatchQueue.main)
             .withUnretained(self)
             .sink(receiveValue: { (owner, roomUsageInfo) in

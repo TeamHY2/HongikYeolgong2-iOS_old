@@ -16,14 +16,7 @@ struct HongikYeolgong2_iOSApp: App {
                 .environmentObject(AuthenticationViewModel())
                 .environmentObject(TimerViewModel())
                 .environmentObject(CalendarViewModel())
-                .onAppear {
-                    checkPermission()                    
-                }
         }
-    }
-    
-    func checkPermission() {
-        LocalNotificationService.shared.requestPermission()
     }
 }
 

@@ -10,7 +10,7 @@ import FirebaseFirestoreSwift
 import Firebase
 
 enum FIrebaseError: Error {
-    case someError
+    case documentNotFount
 }
 
 protocol FirebaseIdentifiable: Hashable, Codable {
@@ -43,7 +43,7 @@ extension FirebaseService {
                    return data
                } else {
                    print("Warning: \(#function) document not found")
-                   throw FIrebaseError.someError
+                   throw FIrebaseError.documentNotFount
                }
            } catch let error {
                print("Error: \(#function) couldn't access snapshot, \(error)")
@@ -53,7 +53,6 @@ extension FirebaseService {
     
     func getMany<T: Decodable>(of type: T.Type,with query: Query) async throws -> [T] {
         do {
-            
             var response: [T] = []
             let querySnapshot = try await query.getDocuments()
             
@@ -78,9 +77,10 @@ extension FirebaseService {
 
 // MARK: - POST
 extension FirebaseService {
+    
     @discardableResult
     func post<T: FirebaseIdentifiable>(_ value: T, with ref: CollectionReference) async throws -> T {
-        var valueToWrite: T = value
+        let valueToWrite: T = value
         do {
             try ref.addDocument(from: valueToWrite)
             return valueToWrite
@@ -124,15 +124,14 @@ extension FirebaseService {
 
 // MARK: - DELETE
 extension FirebaseService {
-    func delete<T: FirebaseIdentifiable>(_ value: T, in collection: String) async -> Result<Void, Error> {
+    func delete<T: FirebaseIdentifiable>(_ value: T, in collection: String) async throws {
         let ref = database.collection(collection).document(value.id)
         do {
             // 1.
             try await ref.delete()
-            return .success(())
         } catch let error {
             print("Error: \(#function) in \(collection) for id: \(value.id), \(error)")
-            return .failure(error)
+            throw error
         }
     }
 }

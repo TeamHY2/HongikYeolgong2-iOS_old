@@ -87,7 +87,7 @@ struct CalendarView: View {
                 ForEach(viewModel.currentMonth, id: \.id) {
                     CalendarCell(dayInfo: $0)
                 }
-            }       
+            }
         }
     }
 }
