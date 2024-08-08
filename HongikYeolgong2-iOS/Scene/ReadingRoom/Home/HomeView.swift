@@ -85,13 +85,13 @@ struct HomeView: View {
                 currentDate: $timerViewModel.startTime) {
             timerViewModel.send(action: .startButtonTap)
         }
-                .alert(title: "열람실을 다 이용하셨나요?", 
+                .alert(title: "열람실을 다 이용하셨나요?",
                        confirmButtonText: "네",
                        cancleButtonText: "더 이용하기",
                        isPresented: $showCompleteAlert) {
                     saveData()
                 }
-                       .alert(title: "열람실 이용 시간을 연장할까요?", 
+                       .alert(title: "열람실 이용 시간을 연장할까요?",
                               confirmButtonText: "연장하기",
                               cancleButtonText: "아니오",
                               isPresented: $showTimeExtensionAlert) {

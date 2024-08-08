@@ -6,6 +6,7 @@ struct InitialView: View {
     @EnvironmentObject private var appCoordinator: AppCoordinator
     @EnvironmentObject private var authCoordinator: AuthCoordinator
     @EnvironmentObject private var authViewModel: AuthenticationViewModel
+    @EnvironmentObject private var calendarViewModel: CalendarViewModel
     
     var body: some View {
         VStack {
@@ -30,6 +31,7 @@ struct InitialView: View {
         }
         .onAppear {
             authViewModel.send(action: .checkAuthenticationState)
+            calendarViewModel.send(action: .viewOnAppear)
         }
        
     }

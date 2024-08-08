@@ -19,19 +19,12 @@ struct CalendarCell: View {
     
     let dayInfo: Day
     
-    private var todayUsageCount: Int {
-        guard let studyRecords = dayInfo.usageRecord else {
-            return 0
-        }
-        return studyRecords.count
-    }
-
     private var cellStyle: CellStyle {
-        if todayUsageCount >= 3 {
+        if dayInfo.todayUsageCount >= 3 {
             return .dayCount03
-        } else if todayUsageCount >= 2 {
+        } else if dayInfo.todayUsageCount >= 2 {
             return .dayCount02
-        } else if todayUsageCount >= 1 {
+        } else if dayInfo.todayUsageCount >= 1 {
             return .dayCount01
         } else {
             return .dayCount00
