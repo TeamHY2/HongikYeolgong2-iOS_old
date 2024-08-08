@@ -9,7 +9,7 @@ import Combine
 
 protocol UserRepositoryType {
     func createUser(_ user: User) -> AnyPublisher<User, Never>
-    func fetchUser(with uid: String)
+    func fetchUser(with uid: String) -> AnyPublisher<User, Never>
 }
 
 final class UserRepository: UserRepositoryType {
@@ -27,7 +27,17 @@ final class UserRepository: UserRepositoryType {
         }.eraseToAnyPublisher()
     }
     
-    func fetchUser(with uid: String) {
+    func fetchUser(with uid: String) -> AnyPublisher<User, Never> {
+        let query = FirebaseService.shared.database
+            .collection(FirebaseService.Collections.userCollection.rawValue)
         
+        return Future<User, Never> { promise in
+            Task {
+                do {
+                    let user = try await FirebaseService.shared.getOne(of: User.self , with: query)    
+                    promise(.success(user))
+                }
+            }
+        }.eraseToAnyPublisher()
     }
 }

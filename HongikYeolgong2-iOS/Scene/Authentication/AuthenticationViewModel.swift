@@ -47,11 +47,18 @@ extension AuthenticationViewModel {
     
     func checkAuthenticationState() {
         // db에서 유저정보를 가져와서 뷰모델에 저장
-        if let uid = authService.checkAuthenticationState() {
-            self.userId = uid
-            self.authenticationState = .authenticated
-            userRepository.fetchUser(with: uid)
-        }
+        guard let uid = authService.checkAuthenticationState() else { return }
+        
+        userRepository.fetchUser(with: uid)
+            .receive(on: DispatchQueue.main)
+            .sink { _ in
+                
+            } receiveValue: { [weak self] user in
+                guard let self = self else { return }
+                self.user = user
+                self.authenticationState = .authenticated
+            }
+            .store(in: &subscriptions)
     }
     
     func setCurrentNonce(_ asAuthorizationAppleIDRequest: ASAuthorizationAppleIDRequest) {
