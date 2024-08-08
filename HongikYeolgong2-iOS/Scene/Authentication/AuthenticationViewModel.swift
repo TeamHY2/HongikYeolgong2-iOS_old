@@ -45,6 +45,7 @@ class AuthenticationViewModel: ObservableObject {
 extension AuthenticationViewModel {
     
     func checkAuthenticationState() {
+        print("유저정보 확인")
         guard let email = authService.checkAuthenticationState() else {
             authenticationState = .unauthenticated
             return
