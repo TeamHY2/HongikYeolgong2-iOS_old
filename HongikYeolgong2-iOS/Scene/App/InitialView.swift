@@ -2,14 +2,16 @@
 
 import SwiftUI
 
-struct AuthenticationView: View {
+struct InitialView: View {
     @EnvironmentObject private var appCoordinator: AppCoordinator
     @EnvironmentObject private var authCoordinator: AuthCoordinator
-    @EnvironmentObject private var viewModel: AuthenticationViewModel
+    @EnvironmentObject private var authViewModel: AuthenticationViewModel
     
     var body: some View {
         VStack {
-            switch viewModel.authenticationState {
+            switch authViewModel.authenticationState {
+            case .none:
+                SplashView()
             case .unauthenticated:
                 NavigationStack(path: $authCoordinator.paths) {
                     LoginView()
@@ -27,8 +29,8 @@ struct AuthenticationView: View {
             }
         }
         .onAppear {
-            // 화면이 나타나면 로그인상태를 체크
-                        viewModel.send(action: .checkAuthenticationState)
+            authViewModel.send(action: .checkAuthenticationState)
         }
+       
     }
 }

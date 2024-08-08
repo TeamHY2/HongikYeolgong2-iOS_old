@@ -7,19 +7,17 @@ import Firebase
 struct HongikYeolgong2_iOSApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    let appCoorinator = AppCoordinator()
-    let authCoordinator = AuthCoordinator()
     
     var body: some Scene {
         WindowGroup {
-            AuthenticationView()
-                .environmentObject(appCoorinator)
-                .environmentObject(authCoordinator)
+            InitialView()
+                .environmentObject(AppCoordinator())
+                .environmentObject(AuthCoordinator())
                 .environmentObject(AuthenticationViewModel())
                 .environmentObject(TimerViewModel())
                 .environmentObject(CalendarViewModel())
                 .onAppear {
-                    checkPermission()
+                    checkPermission()                    
                 }
         }
     }

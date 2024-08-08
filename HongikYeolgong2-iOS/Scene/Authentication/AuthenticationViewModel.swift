@@ -7,6 +7,7 @@ import AuthenticationServices
 enum AuthenticationState {
     case unauthenticated
     case authenticated
+    case none
 }
 
 class AuthenticationViewModel: ObservableObject {
@@ -17,7 +18,7 @@ class AuthenticationViewModel: ObservableObject {
         case appleLoginCompletion(Result<ASAuthorization, Error>)
     }
     
-    @Published var authenticationState: AuthenticationState = .unauthenticated
+    @Published var authenticationState: AuthenticationState = .none
     @Published var user: User?
     
     var userId: String?
