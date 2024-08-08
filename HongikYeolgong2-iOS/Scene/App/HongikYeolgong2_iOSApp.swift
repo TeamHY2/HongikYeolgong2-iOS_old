@@ -7,11 +7,14 @@ import Firebase
 struct HongikYeolgong2_iOSApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    let appCoorinator = AppCoordinator()
+    let authCoordinator = AuthCoordinator()
     
     var body: some Scene {
         WindowGroup {
             AuthenticationView()
-                .environmentObject(SceneCoordinator())
+                .environmentObject(appCoorinator)
+                .environmentObject(authCoordinator)
                 .environmentObject(AuthenticationViewModel())
                 .environmentObject(TimerViewModel())
                 .environmentObject(CalendarViewModel())

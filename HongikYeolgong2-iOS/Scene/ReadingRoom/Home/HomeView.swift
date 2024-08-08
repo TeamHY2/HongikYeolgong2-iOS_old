@@ -13,7 +13,7 @@ struct HomeView: View {
     @State private var showTimeExtensionAlert = false
     @State private var showingDialog = false
     
-    @EnvironmentObject private var coordinator: SceneCoordinator
+    @EnvironmentObject private var coordinator: AppCoordinator
     @EnvironmentObject private var timerViewModel: TimerViewModel
     @EnvironmentObject private var calendarViewModel: CalendarViewModel
     @EnvironmentObject private var authViewModel: AuthenticationViewModel

@@ -31,6 +31,10 @@
 		4790ECDE2C57F9E5002FCCAF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4790ECDD2C57F9E5002FCCAF /* HomeView.swift */; };
 		47A004742C594376000AC842 /* Publisher+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A004732C594376000AC842 /* Publisher+.swift */; };
 		47A7EA772C6276330025594F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 47A7EA762C6276330025594F /* GoogleService-Info.plist */; };
+		47D07F8E2C64472400F6109F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D07F8D2C64472400F6109F /* Coordinator.swift */; };
+		47D07F902C645AB700F6109F /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D07F8F2C645AB700F6109F /* AppCoordinator.swift */; };
+		47D07F922C645B0D00F6109F /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D07F912C645B0D00F6109F /* AuthCoordinator.swift */; };
+		47D07F942C6461E100F6109F /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D07F932C6461E100F6109F /* SignUpView.swift */; };
 		47E0A8C52C51177B009F1BA9 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E0A8C42C51177B009F1BA9 /* TimerViewModel.swift */; };
 		47E0A8C72C511B72009F1BA9 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E0A8C62C511B72009F1BA9 /* CalendarViewModel.swift */; };
 		5E029B5A2C4157C20091249A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E029B592C4157C20091249A /* User.swift */; };
@@ -83,8 +87,6 @@
 		825668A92C36855A0066B216 /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825668A82C36855A0066B216 /* UINavigationController+.swift */; };
 		8270C9912C4D48A0000EB06A /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8270C9902C4D48A0000EB06A /* ServiceError.swift */; };
 		8270C9962C4D4AAE000EB06A /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8270C9952C4D4AAE000EB06A /* ViewModelType.swift */; };
-		8274CF332C33D59400FBFA9D /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8274CF322C33D59400FBFA9D /* Scene.swift */; };
-		8274CF352C33D6C200FBFA9D /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8274CF342C33D6C200FBFA9D /* SceneCoordinator.swift */; };
 		8274CF3B2C33DBC800FBFA9D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8274CF3A2C33DBC800FBFA9D /* LoginView.swift */; };
 		8274CF3D2C33DE2300FBFA9D /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8274CF3C2C33DE2300FBFA9D /* MenuView.swift */; };
 		827C18C72C48FC5100B4AAEA /* CustomPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827C18C62C48FC5100B4AAEA /* CustomPicker.swift */; };
@@ -125,6 +127,10 @@
 		4790ECDD2C57F9E5002FCCAF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		47A004732C594376000AC842 /* Publisher+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+.swift"; sourceTree = "<group>"; };
 		47A7EA762C6276330025594F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		47D07F8D2C64472400F6109F /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		47D07F8F2C645AB700F6109F /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		47D07F912C645B0D00F6109F /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+		47D07F932C6461E100F6109F /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		47E0A8C42C51177B009F1BA9 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		47E0A8C62C511B72009F1BA9 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		5E029B592C4157C20091249A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -152,8 +158,6 @@
 		825668A82C36855A0066B216 /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
 		8270C9902C4D48A0000EB06A /* ServiceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		8270C9952C4D4AAE000EB06A /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
-		8274CF322C33D59400FBFA9D /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
-		8274CF342C33D6C200FBFA9D /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
 		8274CF3A2C33DBC800FBFA9D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8274CF3C2C33DE2300FBFA9D /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		827C18C62C48FC5100B4AAEA /* CustomPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPicker.swift; sourceTree = "<group>"; };
@@ -292,6 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				8274CF3A2C33DBC800FBFA9D /* LoginView.swift */,
+				47D07F932C6461E100F6109F /* SignUpView.swift */,
 				5EE304932C4015880002C49E /* LoginViewModel.swift */,
 			);
 			path = Login;
@@ -414,8 +419,9 @@
 		8274CF2F2C33D3DB00FBFA9D /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				8274CF322C33D59400FBFA9D /* Scene.swift */,
-				8274CF342C33D6C200FBFA9D /* SceneCoordinator.swift */,
+				47D07F8D2C64472400F6109F /* Coordinator.swift */,
+				47D07F8F2C645AB700F6109F /* AppCoordinator.swift */,
+				47D07F912C645B0D00F6109F /* AuthCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -608,6 +614,7 @@
 				8252CCDC2C40396100690D75 /* Calendar.swift in Sources */,
 				477017832C63C405003F3702 /* FirebaseService.swift in Sources */,
 				8252CCE02C404A7300690D75 /* Day.swift in Sources */,
+				47D07F902C645AB700F6109F /* AppCoordinator.swift in Sources */,
 				47E0A8C72C511B72009F1BA9 /* CalendarViewModel.swift in Sources */,
 				82B1FE7B2C3BC567002D9163 /* Quote.swift in Sources */,
 				5EE304A22C4023A40002C49E /* AuthenticationViewModel.swift in Sources */,
@@ -619,7 +626,9 @@
 				825668A52C367ED30066B216 /* CustomNavBarModifier.swift in Sources */,
 				825668A72C367F130066B216 /* View+.swift in Sources */,
 				4790ECDE2C57F9E5002FCCAF /* HomeView.swift in Sources */,
+				47D07F8E2C64472400F6109F /* Coordinator.swift in Sources */,
 				47E0A8C52C51177B009F1BA9 /* TimerViewModel.swift in Sources */,
+				47D07F922C645B0D00F6109F /* AuthCoordinator.swift in Sources */,
 				825665792C35202E0018C799 /* MenuViewModel.swift in Sources */,
 				8252CCDE2C40440600690D75 /* CalendarCell.swift in Sources */,
 				5E89D79A2C35855F00C9CB71 /* Font+.swift in Sources */,
@@ -627,13 +636,12 @@
 				477017852C63C9D8003F3702 /* UserRepository.swift in Sources */,
 				5E5B0BD32C3289D500936435 /* UIColor+.swift in Sources */,
 				5EE304942C4015880002C49E /* LoginViewModel.swift in Sources */,
-				8274CF332C33D59400FBFA9D /* Scene.swift in Sources */,
+				47D07F942C6461E100F6109F /* SignUpView.swift in Sources */,
 				82D4D6142C327BDC00A92327 /* HongikYeolgong2_iOSApp.swift in Sources */,
 				82AB4F232C3EEE6D00787B3B /* Date+.swift in Sources */,
 				5E5CD4412C369994002CE244 /* UIScreen+.swift in Sources */,
 				8274CF3D2C33DE2300FBFA9D /* MenuView.swift in Sources */,
 				8270C9962C4D4AAE000EB06A /* ViewModelType.swift in Sources */,
-				8274CF352C33D6C200FBFA9D /* SceneCoordinator.swift in Sources */,
 				47A004742C594376000AC842 /* Publisher+.swift in Sources */,
 				5EE304A02C4023960002C49E /* AuthenticationView.swift in Sources */,
 				5E029B5F2C4159EC0091249A /* RandomNonceString.swift in Sources */,
