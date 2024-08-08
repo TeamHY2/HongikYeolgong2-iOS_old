@@ -13,6 +13,10 @@ protocol Coordinator: AnyObject {
     
     func push(_ scene: Scene)
     func pop()
+    func popToRoot()    
+    
+    associatedtype ViewType = View
+    @ViewBuilder func buildScreen(scene: Scene) -> ViewType
 }
 
 extension Coordinator {
@@ -22,6 +26,10 @@ extension Coordinator {
     
     func pop() {
         _ = paths.popLast()
+    }
+    
+    func popToRoot() {
+        paths.removeAll()
     }
 }
 

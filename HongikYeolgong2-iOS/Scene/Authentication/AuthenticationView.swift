@@ -13,7 +13,6 @@ struct AuthenticationView: View {
             case .unauthenticated:
                 NavigationStack(path: $authCoordinator.paths) {
                     LoginView()
-                        .foregroundStyle(.white)
                         .navigationDestination(for: AuthCoordinator.Scene.self) { scene in
                             authCoordinator.buildScreen(scene: scene)
                         }
@@ -21,7 +20,6 @@ struct AuthenticationView: View {
             case .authenticated:
                 NavigationStack(path: $appCoordinator.paths) {
                     HomeView()
-                        .foregroundStyle(.white)
                         .navigationDestination(for: AppCoordinator.Scene.self) { scene in
                             appCoordinator.buildScreen(scene: scene)
                         }
