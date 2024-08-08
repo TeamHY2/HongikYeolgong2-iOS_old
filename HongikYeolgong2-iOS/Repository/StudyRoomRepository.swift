@@ -22,7 +22,7 @@ class MockStudyRoomRepository: StudyRoomRepositoryType {
     }
     
     func updateStudyRoomUsageRecord(_ data: StudyRoomUsage) -> AnyPublisher<[StudyRoomUsage], Never> {
-        mockData.send(mockData.value + [data])
+        
         return Just(mockData.value).eraseToAnyPublisher()
     }
 }

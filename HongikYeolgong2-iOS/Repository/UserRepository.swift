@@ -30,6 +30,7 @@ final class UserRepository: UserRepositoryType {
     func fetchUser(with uid: String) -> AnyPublisher<User, Never> {
         let query = FirebaseService.shared.database
             .collection(FirebaseService.Collections.userCollection.rawValue)
+            .whereField("id", isEqualTo: uid)
         
         return Future<User, Never> { promise in
             Task {

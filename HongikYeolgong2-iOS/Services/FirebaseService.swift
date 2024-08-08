@@ -31,7 +31,7 @@ final class FirebaseService {
 }
 
 // MARK: - GET
-extension FirebaseService {
+extension FirebaseService {    
     
     func getOne<T: Decodable>(of type: T.Type, with query: Query) async throws -> T {
            do {

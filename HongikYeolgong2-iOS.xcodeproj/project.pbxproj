@@ -74,7 +74,6 @@
 		5EE304632C3FDCE40002C49E /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 5EE304622C3FDCE40002C49E /* FirebaseStorage */; };
 		5EE304652C3FDCE40002C49E /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 5EE304642C3FDCE40002C49E /* FirebaseStorageCombine-Community */; };
 		5EE304672C3FDCE40002C49E /* FirebaseVertexAI-Preview in Frameworks */ = {isa = PBXBuildFile; productRef = 5EE304662C3FDCE40002C49E /* FirebaseVertexAI-Preview */; };
-		5EE304942C4015880002C49E /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE304932C4015880002C49E /* LoginViewModel.swift */; };
 		5EE304982C40204E0002C49E /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE304972C40204E0002C49E /* DIContainer.swift */; };
 		5EE3049D2C4022990002C49E /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE3049C2C4022990002C49E /* AuthenticationService.swift */; };
 		5EE304A02C4023960002C49E /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE3049F2C4023960002C49E /* InitialView.swift */; };
@@ -145,7 +144,6 @@
 		5E89D7712C356E5500C9CB71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5E89D7992C35855F00C9CB71 /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
 		5E8F934C2C416DF300ECE6C5 /* HongikYeolgong2-iOSDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "HongikYeolgong2-iOSDebug.entitlements"; sourceTree = "<group>"; };
-		5EE304932C4015880002C49E /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		5EE304952C401A160002C49E /* HongikYeolgong2-iOSRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "HongikYeolgong2-iOSRelease.entitlements"; sourceTree = "<group>"; };
 		5EE304972C40204E0002C49E /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		5EE3049C2C4022990002C49E /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
@@ -299,7 +297,6 @@
 			children = (
 				8274CF3A2C33DBC800FBFA9D /* LoginView.swift */,
 				47D07F932C6461E100F6109F /* SignUpView.swift */,
-				5EE304932C4015880002C49E /* LoginViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -639,7 +636,6 @@
 				82B1FE812C3C1755002D9163 /* CustomButton2.swift in Sources */,
 				477017852C63C9D8003F3702 /* UserRepository.swift in Sources */,
 				5E5B0BD32C3289D500936435 /* UIColor+.swift in Sources */,
-				5EE304942C4015880002C49E /* LoginViewModel.swift in Sources */,
 				47D07F942C6461E100F6109F /* SignUpView.swift in Sources */,
 				82D4D6142C327BDC00A92327 /* HongikYeolgong2_iOSApp.swift in Sources */,
 				82AB4F232C3EEE6D00787B3B /* Date+.swift in Sources */,
