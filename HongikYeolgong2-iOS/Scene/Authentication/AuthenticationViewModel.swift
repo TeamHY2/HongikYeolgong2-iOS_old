@@ -44,8 +44,7 @@ class AuthenticationViewModel: ObservableObject {
 
 extension AuthenticationViewModel {
     
-    func checkAuthenticationState() {
-        print("유저정보 확인")
+    func checkAuthenticationState() {    
         guard let email = authService.checkAuthenticationState() else {
             authenticationState = .unauthenticated
             return
@@ -95,7 +94,7 @@ extension AuthenticationViewModel {
                     // 성공, 실패 분기처리
                 } receiveValue: { [weak self] userInfo in
                     guard let self = self else { return }
-                    self.user = user
+                    self.user = userInfo
                     self.authenticationState = .authenticated
                 }
                 .store(in: &subscriptions)

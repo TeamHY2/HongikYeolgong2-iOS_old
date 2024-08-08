@@ -110,7 +110,6 @@ struct HomeView: View {
                               })
                               .onAppear {
                                   LocalNotificationService.shared.requestPermission()
-                                  
                                   guard let email = authViewModel.user?.email else { return }
                                   calendarViewModel.send(action: .getCalendar(email))
                               }

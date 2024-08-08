@@ -18,7 +18,7 @@ final class UserRepository: UserRepositoryType {
         return Future<User, Never> { promise in
             Task {
                 do {
-                    let user = try await FirebaseService.shared.post(user, docId: user.email, to: .userCollection)
+                    let user = try await FirebaseService.shared.post(user, docId: user.email, to: .userCollection)                    
                     promise(.success(user))
                 } catch {
                     
