@@ -21,8 +21,6 @@ class AuthenticationViewModel: ObservableObject {
     @Published var authenticationState: AuthenticationState = .none
     @Published var user: User?
     
-    var userId: String?
-    
     private var currentNonce: String?
     private var subscriptions = Set<AnyCancellable>()
     
@@ -48,9 +46,9 @@ extension AuthenticationViewModel {
     
     func checkAuthenticationState() {
         // db에서 유저정보를 가져와서 뷰모델에 저장
-        guard let uid = authService.checkAuthenticationState() else { return }
+        guard let email = authService.checkAuthenticationState() else { return }
         
-        userRepository.fetchUser(with: uid)
+        userRepository.fetchUser(with: email)
             .receive(on: DispatchQueue.main)
             .sink { _ in
                 

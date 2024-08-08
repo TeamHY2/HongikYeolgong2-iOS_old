@@ -51,7 +51,7 @@ extension FirebaseService {
            }
        }
     
-    func getMany<T: Decodable>(of type: T,with query: Query) async -> Result<[T], Error> {
+    func getMany<T: Decodable>(of type: T.Type,with query: Query) async throws -> [T] {
         do {
             
             var response: [T] = []
@@ -64,14 +64,14 @@ extension FirebaseService {
                     response.append(data)
                 } catch let error {
                     print("Error: \(#function) document(s) not decoded from data, \(error)")
-                    return .failure(error)
+                    throw error
                 }
             }
             
-            return .success(response)
+            return response
         } catch let error {
             print("Error: couldn't access snapshot, \(error)")
-            return .failure(error)
+            throw error
         }
     }
 }

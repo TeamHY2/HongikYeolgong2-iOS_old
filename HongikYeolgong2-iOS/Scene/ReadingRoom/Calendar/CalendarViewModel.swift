@@ -29,6 +29,7 @@ final class CalendarViewModel: ViewModelType {
     @Published var seletedDate = Date() // 선택된 날짜
     @Published var currentMonth = [Day]() // 캘린더에 표시할 날짜정보
     @Published var todayStudyRoomUsageCount = 0 // 열람실 이용횟수
+    @Published var studyRoomUsageList = [StudyRoomUsage]() // 서버에서 받아온 캘린더데이터
     
     @Inject private var studyRoomRepository: StudyRoomRepositoryType
     
@@ -80,27 +81,31 @@ extension CalendarViewModel {
         
         seletedDate = currentDate
         
-        fetchStudyRoomRecords(for: seletedDate)
+        currentMonth = makeMonth(date: seletedDate, roomUsageInfo: studyRoomUsageList)
     }
     
-    // 캘린더에 데이터 가져오기
+    // 캘린더에 표시될 데이터를 새롭게 요청
     func fetchStudyRoomRecords(for date: Date) {
-       studyRoomRepository.fetchStudyRoomUsageRecords()
+       studyRoomRepository.fetchStudyRoomUsageRecords(with: "68m7kk7nqt@privaterelay.appleid.com")
+            .receive(on: DispatchQueue.main)
             .withUnretained(self)
             .sink(receiveValue: { (owner, roomUsageInfo) in
                 owner.currentMonth = owner.makeMonth(date: date, roomUsageInfo: roomUsageInfo)
+                owner.studyRoomUsageList = roomUsageInfo
             })
             .store(in: &subscriptions)
     }
     
-    // 캘린더 데이터 저장
+    // 이용정보를 서버에 반영하고 새로운 데이터를 받아옴
     func updateStudyRoomRecord(_ studyRoomInfo: StudyRoomUsage, email: String) {
         studyRoomRepository.updateStudyRoomUsageRecord(studyRoomInfo, with: email)
+            .receive(on: DispatchQueue.main)
             .withUnretained(self)
             .sink(receiveValue: { (owner, roomUsageInfo) in
-                let StudyRoomUsageCount = roomUsageInfo.filter { owner.calendar.isDate($0.date, equalTo: Date(), toGranularity: .day)}.count
+                let studyRoomUsageCount = roomUsageInfo.filter { owner.calendar.isDate($0.date, equalTo: Date(), toGranularity: .day)}.count                
                 owner.currentMonth = owner.makeMonth(date: owner.seletedDate, roomUsageInfo: roomUsageInfo)
-                owner.todayStudyRoomUsageCount = StudyRoomUsageCount
+                owner.studyRoomUsageList = roomUsageInfo
+                owner.todayStudyRoomUsageCount = studyRoomUsageCount
             })
             .store(in: &subscriptions)    
     }

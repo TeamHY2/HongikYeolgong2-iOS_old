@@ -16,6 +16,7 @@ enum CellStyle: CaseIterable {
 }
 
 struct CalendarCell: View {
+    
     let dayInfo: Day
     
     private var todayUsageCount: Int {

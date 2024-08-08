@@ -23,7 +23,7 @@ class AuthenticationService: AuthenticationServiceType {
     
     func checkAuthenticationState() -> String? {
         if let user = Auth.auth().currentUser {
-            return user.uid
+            return user.email
         } else {
             return nil
         }
