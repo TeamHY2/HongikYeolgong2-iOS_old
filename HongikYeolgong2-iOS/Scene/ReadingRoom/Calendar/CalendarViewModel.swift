@@ -14,7 +14,7 @@ final class CalendarViewModel: ViewModelType {
     
     // INPUT
     enum Action {
-        case saveButtonTap(StudyRoomUsage)
+        case saveButtonTap(StudyRoomUsage, String)
         case moveButtonTap(MoveType)
         case viewOnAppear
     }
@@ -43,8 +43,8 @@ final class CalendarViewModel: ViewModelType {
             fetchStudyRoomRecords(for: seletedDate)
         case .moveButtonTap(let moveType):
             changeMonth(moveType)
-        case .saveButtonTap(let data):
-            updateStudyRoomRecord(data)
+        case .saveButtonTap(let data, let email):
+            updateStudyRoomRecord(data, email: email)
         }
     }
 }
@@ -94,8 +94,8 @@ extension CalendarViewModel {
     }
     
     // 캘린더 데이터 저장
-    func updateStudyRoomRecord(_ data: StudyRoomUsage) {
-        studyRoomRepository.updateStudyRoomUsageRecord(data)
+    func updateStudyRoomRecord(_ studyRoomInfo: StudyRoomUsage, email: String) {
+        studyRoomRepository.updateStudyRoomUsageRecord(studyRoomInfo, with: email)
             .withUnretained(self)
             .sink(receiveValue: { (owner, roomUsageInfo) in
                 let StudyRoomUsageCount = roomUsageInfo.filter { owner.calendar.isDate($0.date, equalTo: Date(), toGranularity: .day)}.count

@@ -10,19 +10,27 @@ import Combine
 
 protocol StudyRoomRepositoryType {
     func fetchStudyRoomUsageRecords() -> AnyPublisher<[StudyRoomUsage], Never>
-    func updateStudyRoomUsageRecord(_: StudyRoomUsage) -> AnyPublisher<[StudyRoomUsage], Never>
+    func updateStudyRoomUsageRecord(_ studyRoomUsage: StudyRoomUsage, with email: String) -> AnyPublisher<[StudyRoomUsage], Never>
 }
 
-// 테스트용 데이터
-class MockStudyRoomRepository: StudyRoomRepositoryType {
-    let mockData = CurrentValueSubject<[StudyRoomUsage], Never>([])
+final class StudyRoomRepository: StudyRoomRepositoryType {
     
     func fetchStudyRoomUsageRecords() -> AnyPublisher<[StudyRoomUsage], Never> {
-        return Just(mockData.value).eraseToAnyPublisher()
+        return Empty().eraseToAnyPublisher()
     }
     
-    func updateStudyRoomUsageRecord(_ data: StudyRoomUsage) -> AnyPublisher<[StudyRoomUsage], Never> {
-        
-        return Just(mockData.value).eraseToAnyPublisher()
+    func updateStudyRoomUsageRecord(_ studyRoomUsage: StudyRoomUsage, with email: String) -> AnyPublisher<[StudyRoomUsage], Never> {
+        let ref = FirebaseService.shared.database
+            .collection(FirebaseService.Collections.userCollection.rawValue)
+            .document(email)
+            .collection(FirebaseService.Collections.studyDayCollection.rawValue)
+            
+       return Future<[StudyRoomUsage], Never> { promise in
+            Task {
+                do {
+                    try await FirebaseService.shared.post(studyRoomUsage, with: ref)
+                }
+            }
+       }.eraseToAnyPublisher()
     }
 }

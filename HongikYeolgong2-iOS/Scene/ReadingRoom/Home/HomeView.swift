@@ -119,7 +119,7 @@ struct HomeView: View {
         let data = StudyRoomUsage(date: Date(), duration: totalTime)
         
         // 캘린더 업데이트
-        calendarViewModel.send(action: .saveButtonTap(data))
+        calendarViewModel.send(action: .saveButtonTap(data, authViewModel.user?.email ?? ""))
     }
 }
 

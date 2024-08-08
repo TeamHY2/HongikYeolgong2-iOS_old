@@ -79,13 +79,23 @@ extension FirebaseService {
 // MARK: - POST
 extension FirebaseService {
     @discardableResult
+    func post<T: FirebaseIdentifiable>(_ value: T, with ref: CollectionReference) async throws -> T {
+        var valueToWrite: T = value
+        do {
+            try ref.addDocument(from: valueToWrite)
+            return valueToWrite
+        } catch let error {            
+            throw error
+        }
+    }
+    @discardableResult
     func post<T: FirebaseIdentifiable>(_ value: T, to collection: Collections) async throws -> T {
         
         let ref = database.collection(collection.rawValue).document()
         var valueToWrite: T = value
         valueToWrite.id = ref.documentID
         do {
-        
+            
             try ref.setData(from: valueToWrite)
             return valueToWrite
         } catch let error {

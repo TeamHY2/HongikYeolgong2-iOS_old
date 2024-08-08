@@ -18,7 +18,8 @@ struct Day: Identifiable {
     }
 }
 
-struct StudyRoomUsage {
+struct StudyRoomUsage: FirebaseIdentifiable {
+    var id: String = UUID().uuidString
     let date: Date
     let duration: Double
 }
