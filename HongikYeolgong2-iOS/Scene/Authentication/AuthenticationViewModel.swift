@@ -16,6 +16,8 @@ class AuthenticationViewModel: ObservableObject {
         case checkAuthenticationState
         case appleLogin(ASAuthorizationAppleIDRequest)
         case appleLoginCompletion(Result<ASAuthorization, Error>)
+        case logOut
+        case deleteAccount
     }
     
     @Published var authenticationState: AuthenticationState = .none
@@ -38,6 +40,10 @@ class AuthenticationViewModel: ObservableObject {
             setCurrentNonce(asAuthorizationAppleIDRequest)
         case .appleLoginCompletion(let result):
             setUser(result)
+        case .logOut:
+            logoutUser()
+        case .deleteAccount:
+            deleteUser()
         }
     }
 }
@@ -102,5 +108,27 @@ extension AuthenticationViewModel {
         } else if case let .failure(error) = result {
             print(error.localizedDescription)
         }
+    }
+    
+    func logoutUser() {
+        authService.logOut()
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                
+            } receiveValue: { [weak self] user in
+                guard let self = self else { return }
+                self.authenticationState = .unauthenticated
+            }.store(in: &subscriptions)
+    }
+    
+    func deleteUser() {
+        authService.deleteAccount()
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                
+            } receiveValue: { [weak self] user in
+                guard let self = self else { return }
+                self.authenticationState = .unauthenticated
+            }.store(in: &subscriptions)
     }
 }
