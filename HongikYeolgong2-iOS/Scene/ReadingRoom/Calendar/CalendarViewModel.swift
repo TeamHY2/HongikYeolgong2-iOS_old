@@ -29,7 +29,7 @@ final class CalendarViewModel: ViewModelType {
     @Published var currentMonth = [Day]() // 캘린더에 표시할 날짜정보
     @Published var todayStudyRoomUsageCount = 0 // 열람실 이용횟수
     @Published var studyRoomUsageList = [StudyRoomUsage]() // 서버에서 받아온 캘린더데이터
-    
+
     // MARK: - Properties
     @Inject private var studyRoomRepository: StudyRoomRepositoryType
     
