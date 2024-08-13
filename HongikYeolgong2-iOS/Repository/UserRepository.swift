@@ -9,7 +9,7 @@ import Combine
 
 protocol UserRepositoryType {
     func createUser(_ user: User) -> AnyPublisher<User, Never>
-    func fetchUser(with email: String) -> AnyPublisher<User, Error>
+    func fetchUser(with uid: String) -> AnyPublisher<User, Error>
 }
 
 final class UserRepository: UserRepositoryType {
@@ -28,11 +28,11 @@ final class UserRepository: UserRepositoryType {
         }.eraseToAnyPublisher()
     }
     
-    func fetchUser(with email: String) -> AnyPublisher<User, Error> {
+    func fetchUser(with uid: String) -> AnyPublisher<User, Error> {
         return Future<User, Error> { promise in
             Task {
                 do {
-                    let user: User = try await FirestoreService.request(Endpoint.fetchUser(email: email))
+                    let user: User = try await FirestoreService.request(Endpoint.fetchUser(uid: uid))
                     promise(.success(user))
                 } catch let error {
                     promise(.failure(error))

@@ -8,21 +8,21 @@
 import Foundation
 
 enum Endpoint: FirestoreEndpoint {
-    case fetchUser(email: String)
+    case fetchUser(uid: String)
     case createUser(User)
-    case fetchStudyDay(email: String)
-    case updateStudyDay(email: String, StudyRoomUsage)
+    case fetchStudyDay(uid: String)
+    case updateStudyDay(uid: String, StudyRoomUsage)
     
     var path: FirestoreReference {
         switch self {
-        case .fetchUser(let email):
-            return firestore.collection("User").document(email)
+        case .fetchUser(let uid):
+            return firestore.collection("User").document(uid)
         case .createUser(let user):
-            return firestore.collection("User").document(user.email)
-        case .fetchStudyDay(let email):
-            return firestore.collection("User").document(email).collection("StudyDay")
-        case .updateStudyDay(let email, _):
-            return firestore.collection("User").document(email).collection("StudyDay").document()
+            return firestore.collection("User").document(user.id)
+        case .fetchStudyDay(let uid):
+            return firestore.collection("User").document(uid).collection("StudyDay")
+        case .updateStudyDay(let uid, _):
+            return firestore.collection("User").document(uid).collection("StudyDay").document()
         }
     }
     

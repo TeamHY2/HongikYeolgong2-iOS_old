@@ -46,12 +46,12 @@ extension CalendarViewModel {
      */
     func send(action: Action) {
         switch action {
-        case .getCalendar(let email):
-            fetchStudyRoomRecords(for: seletedDate, email: email)
+        case .getCalendar(let uid):
+            fetchStudyRoomRecords(for: seletedDate, uid: uid)
         case .moveButtonTap(let moveType):
             changeMonth(moveType)
-        case .saveButtonTap(let data, let email):
-            updateStudyRoomRecord(data, email: email)
+        case .saveButtonTap(let data, let uid):
+            updateStudyRoomRecord(data, uid: uid)
         }
     }
     
@@ -94,8 +94,8 @@ extension CalendarViewModel {
      캘린더에 표시될 데이터를 새롭게 요청한다
      새롭게 받아온 데이터를 studyRoomUsageList에 저장한다
      */
-    func fetchStudyRoomRecords(for date: Date, email: String) {
-       studyRoomRepository.fetchStudyRoomUsageRecords(with: email)
+    func fetchStudyRoomRecords(for date: Date, uid: String) {
+       studyRoomRepository.fetchStudyRoomUsageRecords(with: uid)
             .receive(on: DispatchQueue.main)
             .withUnretained(self)
             .sink(receiveValue: { (owner, roomUsageInfo) in
@@ -109,8 +109,8 @@ extension CalendarViewModel {
      새로운 캘린더데이터를(studyRoomUsage)를 서버에 업로드한다
      새롭게 받아온 데이터를 studyRoomUsageList에 저장한다
      */
-    func updateStudyRoomRecord(_ studyRoomInfo: StudyRoomUsage, email: String) {
-        studyRoomRepository.updateStudyRoomUsageRecord(studyRoomInfo, with: email)
+    func updateStudyRoomRecord(_ studyRoomInfo: StudyRoomUsage, uid: String) {
+        studyRoomRepository.updateStudyRoomUsageRecord(studyRoomInfo, with: uid)
             .receive(on: DispatchQueue.main)
             .withUnretained(self)
             .sink(receiveValue: { (owner, roomUsageInfo) in

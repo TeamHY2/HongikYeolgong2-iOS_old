@@ -32,9 +32,9 @@ struct InitialView: View {
         .onAppear {
             authViewModel.send(action: .checkAuthenticationState)
         }.onReceive(authViewModel.$user, perform: { user in
-            if let email = user?.email {
-                calendarViewModel.send(action: .getCalendar(email))
-            }
-        })       
+            if let uid = user?.id {
+                calendarViewModel.send(action: .getCalendar(uid))
+            }            
+        })
     }
 }

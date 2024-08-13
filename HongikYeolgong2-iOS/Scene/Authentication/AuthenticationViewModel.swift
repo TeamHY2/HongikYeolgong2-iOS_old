@@ -51,12 +51,12 @@ class AuthenticationViewModel: ObservableObject {
 extension AuthenticationViewModel {
     
     func checkAuthenticationState() {    
-        guard let email = authService.checkAuthenticationState() else {
+        guard let uid = authService.checkAuthenticationState() else {
             authenticationState = .unauthenticated
             return
         }
         
-        userRepository.fetchUser(with: email)
+        userRepository.fetchUser(with: uid)
             .receive(on: DispatchQueue.main)
             .sink { [weak self] completion in                
                 guard let self = self else { return }

@@ -126,8 +126,8 @@ struct HomeView: View {
         let data = StudyRoomUsage(date: Date(), duration: totalTime)
         
         // 캘린더 업데이트
-        if let email = authViewModel.user?.email {
-            calendarViewModel.send(action: .saveButtonTap(data, email))
+        if let uid = authViewModel.user?.id {
+            calendarViewModel.send(action: .saveButtonTap(data, uid))
         }
     }
 }
