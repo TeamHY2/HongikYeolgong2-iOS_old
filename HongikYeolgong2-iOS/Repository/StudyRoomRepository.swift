@@ -16,33 +16,29 @@ protocol StudyRoomRepositoryType {
 final class StudyRoomRepository: StudyRoomRepositoryType {
     
     func fetchStudyRoomUsageRecords(with email: String) -> AnyPublisher<[StudyRoomUsage], Never> {
-        let query = FirebaseService.shared.database
-            .collection(FirebaseService.Collections.userCollection.rawValue)
-            .document(email)
-            .collection(FirebaseService.Collections.studyDayCollection.rawValue)
         
         return Future<[StudyRoomUsage], Never> { promise in
             Task {
                 do {
-                   let studyRoomUsageList = try await FirebaseService.shared.getMany(of: StudyRoomUsage.self, with: query)
-                    promise(.success(studyRoomUsageList))                    
+                    let studyRoomUsageList: [StudyRoomUsage] = try await FirestoreService.request(Endpoint.fetchStudyDay(email: email))
+                    promise(.success(studyRoomUsageList))
+                } catch {
+                    
                 }
             }
         }.eraseToAnyPublisher()
     }
     
-    func updateStudyRoomUsageRecord(_ studyRoomUsage: StudyRoomUsage, with email: String) -> AnyPublisher<[StudyRoomUsage], Never> {
-        let ref = FirebaseService.shared.database
-            .collection(FirebaseService.Collections.userCollection.rawValue)
-            .document(email)
-            .collection(FirebaseService.Collections.studyDayCollection.rawValue)
+    func updateStudyRoomUsageRecord(_ studyRoomUsage: StudyRoomUsage, with email: String) -> AnyPublisher<[StudyRoomUsage], Never> {   
             
        return Future<[StudyRoomUsage], Never> { promise in
             Task {
                 do {
-                    try await FirebaseService.shared.post(studyRoomUsage, with: ref)
-                    let studyRoomUsageList = try await FirebaseService.shared.getMany(of: StudyRoomUsage.self, with: ref)
+                    try await FirestoreService.request(Endpoint.updateStudyDay(email: email, studyRoomUsage))
+                    let studyRoomUsageList: [StudyRoomUsage] = try await FirestoreService.request(Endpoint.fetchStudyDay(email: email))
                     promise(.success(studyRoomUsageList))
+                } catch {
+                    
                 }
             }
        }.eraseToAnyPublisher()

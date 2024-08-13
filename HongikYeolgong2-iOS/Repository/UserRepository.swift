@@ -15,27 +15,24 @@ protocol UserRepositoryType {
 final class UserRepository: UserRepositoryType {
     
     func createUser(_ user: User) -> AnyPublisher<User, Never> {
+        
         return Future<User, Never> { promise in
             Task {
                 do {
-                    let user = try await FirebaseService.shared.post(user, docId: user.email, to: .userCollection)                    
+                    try await FirestoreService.request(Endpoint.createUser(user))
                     promise(.success(user))
                 } catch {
-                    
+                    print(error.localizedDescription)
                 }
             }
         }.eraseToAnyPublisher()
     }
     
     func fetchUser(with email: String) -> AnyPublisher<User, Error> {
-        let query = FirebaseService.shared.database
-            .collection(FirebaseService.Collections.userCollection.rawValue)
-            .whereField("email", isEqualTo: email)
-        
         return Future<User, Error> { promise in
             Task {
                 do {
-                    let user = try await FirebaseService.shared.getOne(of: User.self , with: query)    
+                    let user: User = try await FirestoreService.request(Endpoint.fetchUser(email: email))
                     promise(.success(user))
                 } catch let error {
                     promise(.failure(error))

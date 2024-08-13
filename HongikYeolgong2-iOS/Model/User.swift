@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct User: FirebaseIdentifiable, Decodable {
+struct User: FirestoreIdentifiable, Decodable {
     var id: String
     var nickname: String
     let email: String
