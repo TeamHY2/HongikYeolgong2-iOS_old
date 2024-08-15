@@ -9,36 +9,33 @@ import Combine
 
 protocol UserRepositoryType {
     func createUser(_ user: User) -> AnyPublisher<User, Never>
-    func fetchUser(with email: String) -> AnyPublisher<User, Error>
+    func fetchUser(with uid: String) -> AnyPublisher<User, Error>
 }
 
 final class UserRepository: UserRepositoryType {
     
     func createUser(_ user: User) -> AnyPublisher<User, Never> {
+        
         return Future<User, Never> { promise in
             Task {
                 do {
-                    let user = try await FirebaseService.shared.post(user, docId: user.email, to: .userCollection)                    
+                    try await FirestoreService.request(Endpoint.createUser(user))
                     promise(.success(user))
                 } catch {
-                    
+                    print(error.localizedDescription)
                 }
             }
         }.eraseToAnyPublisher()
     }
     
-    func fetchUser(with email: String) -> AnyPublisher<User, Error> {
-        let query = FirebaseService.shared.database
-            .collection(FirebaseService.Collections.userCollection.rawValue)
-            .whereField("email", isEqualTo: email)
-        
+    func fetchUser(with uid: String) -> AnyPublisher<User, Error> {
         return Future<User, Error> { promise in
             Task {
                 do {
-                    let user = try await FirebaseService.shared.getOne(of: User.self , with: query)    
+                    let user: User = try await FirestoreService.request(Endpoint.fetchUser(uid: uid))
                     promise(.success(user))
                 } catch let error {
-                    promise(.failure(error))
+//                    promise(.failure(error))
                 }
             }
         }.eraseToAnyPublisher()

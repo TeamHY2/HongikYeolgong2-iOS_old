@@ -25,7 +25,7 @@ class AuthenticationService: AuthenticationServiceType {
     
     func checkAuthenticationState() -> String? {
         if let user = Auth.auth().currentUser {
-            return user.email
+            return user.uid
         } else {
             return nil
         }

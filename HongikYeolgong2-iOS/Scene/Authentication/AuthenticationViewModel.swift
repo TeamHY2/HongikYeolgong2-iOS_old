@@ -22,6 +22,8 @@ class AuthenticationViewModel: ObservableObject {
     
     @Published var authenticationState: AuthenticationState = .none
     @Published var user: User?
+    @Published var errorMessage = ""
+    @Published var showingErrorAlert = false
     
     private var currentNonce: String?
     private var subscriptions = Set<AnyCancellable>()
@@ -51,19 +53,21 @@ class AuthenticationViewModel: ObservableObject {
 extension AuthenticationViewModel {
     
     func checkAuthenticationState() {    
-        guard let email = authService.checkAuthenticationState() else {
+        guard let uid = authService.checkAuthenticationState() else {
             authenticationState = .unauthenticated
             return
         }
         
-        userRepository.fetchUser(with: email)
+        userRepository.fetchUser(with: uid)
             .receive(on: DispatchQueue.main)
             .sink { [weak self] completion in                
                 guard let self = self else { return }
                 switch completion {
                 case .finished:
                     break
-                case .failure( _):
+                case .failure(let error):
+                    showingErrorAlert = true
+                    errorMessage = "문제가 발생했습니다 다시 시도해주세요. \n \(error.localizedDescription)"
                     authenticationState = .unauthenticated
                 }
             } receiveValue: { [weak self] user in

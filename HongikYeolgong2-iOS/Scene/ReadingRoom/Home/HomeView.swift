@@ -64,8 +64,12 @@ struct HomeView: View {
             
             Spacer()
             
-            CalendarView()
             
+            if !calendarViewModel.currentMonth.isEmpty {
+                CalendarView()
+            } else {
+                ProgressView()
+            }
         }
         .background(
             Image(.iOSBackground)
@@ -110,8 +114,6 @@ struct HomeView: View {
                               })
                               .onAppear {
                                   LocalNotificationService.shared.requestPermission()
-                                  guard let email = authViewModel.user?.email else { return }
-                                  calendarViewModel.send(action: .getCalendar(email))
                               }
     }
     
@@ -124,7 +126,9 @@ struct HomeView: View {
         let data = StudyRoomUsage(date: Date(), duration: totalTime)
         
         // 캘린더 업데이트
-        calendarViewModel.send(action: .saveButtonTap(data, authViewModel.user?.email ?? ""))
+        if let uid = authViewModel.user?.id {
+            calendarViewModel.send(action: .saveButtonTap(data, uid))
+        }
     }
 }
 

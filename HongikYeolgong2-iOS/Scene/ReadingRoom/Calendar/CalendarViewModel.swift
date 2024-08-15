@@ -29,6 +29,8 @@ final class CalendarViewModel: ViewModelType {
     @Published var currentMonth = [Day]() // 캘린더에 표시할 날짜정보
     @Published var todayStudyRoomUsageCount = 0 // 열람실 이용횟수
     @Published var studyRoomUsageList = [StudyRoomUsage]() // 서버에서 받아온 캘린더데이터
+    @Published var errorMessage = ""
+    @Published var showingErrorAlert = false
     
     // MARK: - Properties
     @Inject private var studyRoomRepository: StudyRoomRepositoryType
@@ -46,12 +48,12 @@ extension CalendarViewModel {
      */
     func send(action: Action) {
         switch action {
-        case .getCalendar(let email):
-            fetchStudyRoomRecords(for: seletedDate, email: email)
+        case .getCalendar(let uid):
+            fetchStudyRoomRecords(for: seletedDate, uid: uid)
         case .moveButtonTap(let moveType):
             changeMonth(moveType)
-        case .saveButtonTap(let data, let email):
-            updateStudyRoomRecord(data, email: email)
+        case .saveButtonTap(let data, let uid):
+            updateStudyRoomRecord(data, uid: uid)
         }
     }
     
@@ -94,32 +96,49 @@ extension CalendarViewModel {
      캘린더에 표시될 데이터를 새롭게 요청한다
      새롭게 받아온 데이터를 studyRoomUsageList에 저장한다
      */
-    func fetchStudyRoomRecords(for date: Date, email: String) {
-       studyRoomRepository.fetchStudyRoomUsageRecords(with: email)
+    func fetchStudyRoomRecords(for date: Date, uid: String) {
+        studyRoomRepository.fetchStudyRoomUsageRecords(with: uid)
             .receive(on: DispatchQueue.main)
-            .withUnretained(self)
-            .sink(receiveValue: { (owner, roomUsageInfo) in
-                owner.currentMonth = owner.makeMonth(date: date, roomUsageInfo: roomUsageInfo)
-                owner.studyRoomUsageList = roomUsageInfo
+            .sink(receiveCompletion: { [weak self] (completion) in
+                guard let self = self else { return }
+                switch completion {
+                case .finished: break
+                case .failure(let error):
+                    showingErrorAlert = true
+                    errorMessage = "문제가 발생했습니다 다시 시도해주세요. \n \(error.localizedDescription)"
+                }
+            }, receiveValue: { [weak self] roomUsageInfo in
+                guard let self = self else { return }
+                currentMonth = makeMonth(date: date, roomUsageInfo: roomUsageInfo)
+                studyRoomUsageList = roomUsageInfo
             })
             .store(in: &subscriptions)
     }
-
+    
     /*
      새로운 캘린더데이터를(studyRoomUsage)를 서버에 업로드한다
      새롭게 받아온 데이터를 studyRoomUsageList에 저장한다
      */
-    func updateStudyRoomRecord(_ studyRoomInfo: StudyRoomUsage, email: String) {
-        studyRoomRepository.updateStudyRoomUsageRecord(studyRoomInfo, with: email)
+    func updateStudyRoomRecord(_ studyRoomInfo: StudyRoomUsage, uid: String) {
+        studyRoomRepository.updateStudyRoomUsageRecord(studyRoomInfo, with: uid)
             .receive(on: DispatchQueue.main)
-            .withUnretained(self)
-            .sink(receiveValue: { (owner, roomUsageInfo) in
-                let studyRoomUsageCount = roomUsageInfo.filter { owner.calendar.isDate($0.date, equalTo: Date(), toGranularity: .day)}.count                
-                owner.currentMonth = owner.makeMonth(date: owner.seletedDate, roomUsageInfo: roomUsageInfo)
-                owner.studyRoomUsageList = roomUsageInfo
-                owner.todayStudyRoomUsageCount = studyRoomUsageCount
+            .sink(receiveCompletion: { [weak self] (completion) in
+                guard let self = self else { return }
+                switch completion {                    
+                case .finished: break
+                case .failure(let error):
+                    showingErrorAlert = true
+                    errorMessage = "문제가 발생했습니다 다시 시도해주세요. \n \(error.localizedDescription)"
+                }
+            }, receiveValue: { [weak self] roomUsageInfo in
+                guard let self = self else { return }
+                let studyRoomUsageCount = roomUsageInfo.filter { self.calendar.isDate($0.date, equalTo: Date(), toGranularity: .day)}.count
+                currentMonth = makeMonth(date: seletedDate, roomUsageInfo: roomUsageInfo)
+                studyRoomUsageList = roomUsageInfo
+                todayStudyRoomUsageCount = studyRoomUsageCount
+                
             })
-            .store(in: &subscriptions)    
+            .store(in: &subscriptions)
     }
 }
 
