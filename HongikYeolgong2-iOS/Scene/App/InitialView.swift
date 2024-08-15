@@ -29,6 +29,7 @@ struct InitialView: View {
                 }
             }
         }
+        .alert(title: authViewModel.errorMessage, isPresented: $authViewModel.showingErrorAlert, confirmAction: {})
         .onAppear {
             authViewModel.send(action: .checkAuthenticationState)
         }.onReceive(authViewModel.$user, perform: { user in

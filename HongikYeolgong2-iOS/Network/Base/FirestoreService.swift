@@ -42,12 +42,14 @@ final class FirestoreService: FirestoreServiceProtocol {
     }
 
     static func request<T>(_ endpoint: FirestoreEndpoint) async throws -> [T] where T: FirestoreIdentifiable {
-        guard let ref = endpoint.path as? CollectionReference else {
+        guard let ref = endpoint.path as? CollectionReference else {            
             throw FirestoreServiceError.collectionNotFound
         }
         switch endpoint.method {
         case .get:
-            let querySnapshot = try await ref.getDocuments()
+            guard let querySnapshot = try? await ref.getDocuments() else {
+                throw FirestoreServiceError.invalidPath
+            }
             var response: [T] = []
             for document in querySnapshot.documents {
                 let data = try document.data(as: T.self)

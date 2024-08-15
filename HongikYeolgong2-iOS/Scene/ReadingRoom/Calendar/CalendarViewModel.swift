@@ -29,7 +29,9 @@ final class CalendarViewModel: ViewModelType {
     @Published var currentMonth = [Day]() // 캘린더에 표시할 날짜정보
     @Published var todayStudyRoomUsageCount = 0 // 열람실 이용횟수
     @Published var studyRoomUsageList = [StudyRoomUsage]() // 서버에서 받아온 캘린더데이터
-
+    @Published var errorMessage = ""
+    @Published var showingErrorAlert = false
+    
     // MARK: - Properties
     @Inject private var studyRoomRepository: StudyRoomRepositoryType
     
@@ -95,16 +97,24 @@ extension CalendarViewModel {
      새롭게 받아온 데이터를 studyRoomUsageList에 저장한다
      */
     func fetchStudyRoomRecords(for date: Date, uid: String) {
-       studyRoomRepository.fetchStudyRoomUsageRecords(with: uid)
+        studyRoomRepository.fetchStudyRoomUsageRecords(with: uid)
             .receive(on: DispatchQueue.main)
-            .withUnretained(self)
-            .sink(receiveValue: { (owner, roomUsageInfo) in
-                owner.currentMonth = owner.makeMonth(date: date, roomUsageInfo: roomUsageInfo)
-                owner.studyRoomUsageList = roomUsageInfo
+            .sink(receiveCompletion: { [weak self] (completion) in
+                guard let self = self else { return }
+                switch completion {
+                case .finished: break
+                case .failure(let error):
+                    showingErrorAlert = true
+                    errorMessage = "문제가 발생했습니다 다시 시도해주세요. \n \(error.localizedDescription)"
+                }
+            }, receiveValue: { [weak self] roomUsageInfo in
+                guard let self = self else { return }
+                currentMonth = makeMonth(date: date, roomUsageInfo: roomUsageInfo)
+                studyRoomUsageList = roomUsageInfo
             })
             .store(in: &subscriptions)
     }
-
+    
     /*
      새로운 캘린더데이터를(studyRoomUsage)를 서버에 업로드한다
      새롭게 받아온 데이터를 studyRoomUsageList에 저장한다
@@ -112,14 +122,23 @@ extension CalendarViewModel {
     func updateStudyRoomRecord(_ studyRoomInfo: StudyRoomUsage, uid: String) {
         studyRoomRepository.updateStudyRoomUsageRecord(studyRoomInfo, with: uid)
             .receive(on: DispatchQueue.main)
-            .withUnretained(self)
-            .sink(receiveValue: { (owner, roomUsageInfo) in
-                let studyRoomUsageCount = roomUsageInfo.filter { owner.calendar.isDate($0.date, equalTo: Date(), toGranularity: .day)}.count                
-                owner.currentMonth = owner.makeMonth(date: owner.seletedDate, roomUsageInfo: roomUsageInfo)
-                owner.studyRoomUsageList = roomUsageInfo
-                owner.todayStudyRoomUsageCount = studyRoomUsageCount
+            .sink(receiveCompletion: { [weak self] (completion) in
+                guard let self = self else { return }
+                switch completion {                    
+                case .finished: break
+                case .failure(let error):
+                    showingErrorAlert = true
+                    errorMessage = "문제가 발생했습니다 다시 시도해주세요. \n \(error.localizedDescription)"
+                }
+            }, receiveValue: { [weak self] roomUsageInfo in
+                guard let self = self else { return }
+                let studyRoomUsageCount = roomUsageInfo.filter { self.calendar.isDate($0.date, equalTo: Date(), toGranularity: .day)}.count
+                currentMonth = makeMonth(date: seletedDate, roomUsageInfo: roomUsageInfo)
+                studyRoomUsageList = roomUsageInfo
+                todayStudyRoomUsageCount = studyRoomUsageCount
+                
             })
-            .store(in: &subscriptions)    
+            .store(in: &subscriptions)
     }
 }
 

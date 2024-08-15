@@ -35,7 +35,7 @@ final class UserRepository: UserRepositoryType {
                     let user: User = try await FirestoreService.request(Endpoint.fetchUser(uid: uid))
                     promise(.success(user))
                 } catch let error {
-                    promise(.failure(error))
+//                    promise(.failure(error))
                 }
             }
         }.eraseToAnyPublisher()

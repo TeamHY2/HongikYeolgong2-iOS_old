@@ -9,21 +9,21 @@ import Foundation
 import Combine
 
 protocol StudyRoomRepositoryType {
-    func fetchStudyRoomUsageRecords(with uid: String) -> AnyPublisher<[StudyRoomUsage], Never>
+    func fetchStudyRoomUsageRecords(with uid: String) -> AnyPublisher<[StudyRoomUsage], Error>
     func updateStudyRoomUsageRecord(_ studyRoomUsage: StudyRoomUsage, with uid: String) -> AnyPublisher<[StudyRoomUsage], Never>
 }
 
 final class StudyRoomRepository: StudyRoomRepositoryType {
     
-    func fetchStudyRoomUsageRecords(with uid: String) -> AnyPublisher<[StudyRoomUsage], Never> {
+    func fetchStudyRoomUsageRecords(with uid: String) -> AnyPublisher<[StudyRoomUsage], Error> {
         
-        return Future<[StudyRoomUsage], Never> { promise in
+        return Future<[StudyRoomUsage], Error> { promise in
             Task {
                 do {
                     let studyRoomUsageList: [StudyRoomUsage] = try await FirestoreService.request(Endpoint.fetchStudyDay(uid: uid))
                     promise(.success(studyRoomUsageList))
-                } catch {
-                    
+                } catch {                    
+                    promise(.failure(error))
                 }
             }
         }.eraseToAnyPublisher()
