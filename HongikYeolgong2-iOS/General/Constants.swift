@@ -18,9 +18,4 @@ enum Constants {
         static let starRatingCount01 = TimeInterval(20)
         static let starRatingCount02 = TimeInterval(30)
     }
-    
-    struct FirestoreCollection {
-        static let user = Firestore.firestore().collection("User")
-        static let stduyDay = Firestore.firestore().collection("StudyDay")
-    }
 }

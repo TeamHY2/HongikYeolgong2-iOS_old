@@ -36,6 +36,7 @@
 		4790ECDE2C57F9E5002FCCAF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4790ECDD2C57F9E5002FCCAF /* HomeView.swift */; };
 		47A004742C594376000AC842 /* Publisher+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A004732C594376000AC842 /* Publisher+.swift */; };
 		47A7EA772C6276330025594F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 47A7EA762C6276330025594F /* GoogleService-Info.plist */; };
+		47AA66FB2C6E2FCE007CDD2B /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AA66FA2C6E2FCE007CDD2B /* WebView.swift */; };
 		47D07F8E2C64472400F6109F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D07F8D2C64472400F6109F /* Coordinator.swift */; };
 		47D07F902C645AB700F6109F /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D07F8F2C645AB700F6109F /* AppCoordinator.swift */; };
 		47D07F922C645B0D00F6109F /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D07F912C645B0D00F6109F /* AuthCoordinator.swift */; };
@@ -137,6 +138,7 @@
 		4790ECDD2C57F9E5002FCCAF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		47A004732C594376000AC842 /* Publisher+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+.swift"; sourceTree = "<group>"; };
 		47A7EA762C6276330025594F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		47AA66FA2C6E2FCE007CDD2B /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		47D07F8D2C64472400F6109F /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		47D07F8F2C645AB700F6109F /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		47D07F912C645B0D00F6109F /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
@@ -372,6 +374,7 @@
 			children = (
 				82D4D6132C327BDC00A92327 /* HongikYeolgong2_iOSApp.swift */,
 				5EE3049F2C4023960002C49E /* InitialView.swift */,
+				47AA66FA2C6E2FCE007CDD2B /* WebView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -688,6 +691,7 @@
 				47A004742C594376000AC842 /* Publisher+.swift in Sources */,
 				5EE304A02C4023960002C49E /* InitialView.swift in Sources */,
 				5E029B5F2C4159EC0091249A /* RandomNonceString.swift in Sources */,
+				47AA66FB2C6E2FCE007CDD2B /* WebView.swift in Sources */,
 				473E03782C6AF20B00F3E0FC /* Endpoint.swift in Sources */,
 				828FF2B32C3E71F1001A4ADE /* DialogModifier.swift in Sources */,
 				5E029B612C415A2D0091249A /* SHA256.swift in Sources */,
