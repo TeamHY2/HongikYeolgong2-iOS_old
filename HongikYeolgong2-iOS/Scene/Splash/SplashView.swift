@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SplashView: View {
+    @EnvironmentObject private var coordinator: AuthCoordinator
+    @EnvironmentObject var authViewModel: AuthenticationViewModel
     var body: some View {
         ZStack {
             Color(.customBackground)
@@ -16,6 +18,15 @@ struct SplashView: View {
                 .foregroundStyle(.white)
                 .font(.title)
         }
+        .customNavigation(right: {
+            Button(action: {
+                coordinator.push(.loginOnboarding)
+                print(authViewModel.authenticationState)
+            }, label: {
+                Image("ic_back")
+            })
+        })
+
     }
 }
 

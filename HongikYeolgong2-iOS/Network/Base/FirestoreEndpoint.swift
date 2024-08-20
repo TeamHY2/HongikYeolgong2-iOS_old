@@ -24,6 +24,7 @@ enum FirestoreMethod {
     case post(any FirestoreIdentifiable)
     case put(any FirestoreIdentifiable)
     case delete
+    case deleteCollection
 }
 
 protocol FirestoreReference {}

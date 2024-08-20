@@ -14,6 +14,7 @@ final class AppCoordinator: AppCoordinatorType {
     enum Scene: Hashable {
         case home
         case menu
+        case login
     }
     
     @Published var paths: [Scene] = []
@@ -25,6 +26,8 @@ final class AppCoordinator: AppCoordinatorType {
             HomeView()
         case .menu:
             MenuView()
+        case .login:
+            LoginView()
         }
     }
 }
