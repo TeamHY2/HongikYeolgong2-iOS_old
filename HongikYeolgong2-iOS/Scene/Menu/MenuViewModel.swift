@@ -40,8 +40,7 @@ struct WebViewWithCloseButton: View {
                 .navigationBarItems(leading: Button(action: {
                     presentationMode.wrappedValue.dismiss()
                 }) {
-                    Text("닫기")
-                        .foregroundColor(.black)
+                    Image("ic_back")
                 })
                 .navigationBarTitleDisplayMode(.inline)
         }
