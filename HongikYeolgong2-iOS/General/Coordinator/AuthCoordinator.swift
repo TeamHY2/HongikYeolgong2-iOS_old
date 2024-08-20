@@ -10,7 +10,7 @@ import SwiftUI
 protocol AuthCoordinatorType: Coordinator, ObservableObject {}
 
 final class AuthCoordinator: AuthCoordinatorType {
-    @Published var paths: [Scene] = []
+    var paths: [Scene] = []
     
     enum Scene: Hashable {
         case loginOnboarding

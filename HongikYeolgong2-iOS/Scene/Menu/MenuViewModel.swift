@@ -6,7 +6,44 @@
 //
 
 import SwiftUI
+import WebKit
 
 class MenuViewModel: ObservableObject {
     @Published var title = "Menu ViewModel"
+}
+
+struct WebView: UIViewRepresentable {
+    
+    var url: URL?
+    
+    func makeUIView(context: Context) -> WKWebView {
+        return WKWebView()
+    }
+    
+    func updateUIView(_ uiView: WKWebView, context: Context) {
+        if let url = url {
+            
+            let request = URLRequest(url: url)
+            uiView.load(request)
+            
+        }
+    }
+}
+
+struct WebViewWithCloseButton: View {
+    @Environment(\.presentationMode) var presentationMode
+    let url: URL
+    
+    var body: some View {
+        NavigationView {
+            WebView(url: url)
+                .navigationBarItems(leading: Button(action: {
+                    presentationMode.wrappedValue.dismiss()
+                }) {
+                    Text("닫기")
+                        .foregroundColor(.black)
+                })
+                .navigationBarTitleDisplayMode(.inline)
+        }
+    }
 }

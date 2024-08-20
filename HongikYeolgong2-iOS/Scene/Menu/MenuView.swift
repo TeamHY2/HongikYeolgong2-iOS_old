@@ -7,11 +7,13 @@ struct MenuView: View {
     @State var isOn: Bool = false
     @State private var logoutAlert = false
     @State private var deleteAccountAlert = false
+    @State private var noticeWebView = false
+    @State private var questionWebView = false
     
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
-                Button(action: {}
+                Button(action: {noticeWebView.toggle()}
                        , label: {
                     CustomText(font: .pretendard, title: "공지사항", textColor: .customGray200, textWeight: .regular, textSize: 16, textAlignment: .leading)
                         .minimumScaleFactor(0.2)
@@ -23,8 +25,11 @@ struct MenuView: View {
                 .background(Color(UIColor.customGray800))
                 .cornerRadius(8)
                 .padding(.bottom, UIScreen.UIHeight(20))
+                .fullScreenCover(isPresented: $noticeWebView) {
+                    WebViewWithCloseButton(url: URL(string: "https://url.kr/elogg8")!)
+                }
                 
-                Button(action: {}
+                Button(action: {questionWebView.toggle()}
                        , label: {
                     CustomText(font: .pretendard, title: "문의사항", textColor: .customGray200, textWeight: .regular, textSize: 16, textAlignment: .leading)
                         .minimumScaleFactor(0.2)
@@ -36,6 +41,9 @@ struct MenuView: View {
                 .background(Color(UIColor.customGray800))
                 .cornerRadius(8)
                 .padding(.bottom, UIScreen.UIHeight(20))
+                .fullScreenCover(isPresented: $questionWebView) {
+                    WebViewWithCloseButton(url: URL(string: "https://forms.gle/J1CtFrySdwTYcixk9")!)
+                }
                 
                 HStack(spacing: 0) {
                     CustomText(font: .pretendard, title: "열람실 종료 시간 알림", textColor: .customGray200, textWeight: .regular, textSize: 16, textAlignment: .leading)

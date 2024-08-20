@@ -150,7 +150,7 @@ extension AuthenticationViewModel {
                 }
             } receiveValue: { [weak self] _ in
                 guard let self = self else { return }
-                self.authenticationState = .none
+                self.authenticationState = .unauthenticated
             }
             .store(in: &subscriptions)
     }
