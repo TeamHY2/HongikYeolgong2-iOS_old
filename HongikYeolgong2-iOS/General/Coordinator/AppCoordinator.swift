@@ -30,7 +30,7 @@ final class AppCoordinator: AppCoordinatorType {
             VStack {
                 WebViewUIKit(url: url)
                     .customNavigation(center: {
-                        CustomText(font: .pretendard, title: "좌석", textColor: .customGray100, textWeight: .bold, textSize: 18)
+                        CustomText(font: .pretendard, title: "좌석", textColor: .customGray100, textWeight: .semibold, textSize: 18)
                     }, right: {
                         Button(action: {
                             self.pop()
