@@ -14,7 +14,7 @@ final class AppCoordinator: AppCoordinatorType {
     enum Scene: Hashable {
         case home
         case menu
-        case login
+        case webView(url: String)
     }
     
     @Published var paths: [Scene] = []
@@ -26,8 +26,19 @@ final class AppCoordinator: AppCoordinatorType {
             HomeView()
         case .menu:
             MenuView()
-        case .login:
-            LoginView()
+        case .webView(let url):
+            VStack {
+                WebViewUIKit(url: url)
+                    .customNavigation(center: {
+                        CustomText(font: .pretendard, title: "좌석", textColor: .customGray100, textWeight: .semibold, textSize: 18)
+                    }, right: {
+                        Button(action: {
+                            self.pop()
+                        }, label: {
+                            Image(.icClose)
+                        })
+                    })                    
+            }
         }
     }
 }

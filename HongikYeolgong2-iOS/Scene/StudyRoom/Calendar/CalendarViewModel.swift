@@ -109,8 +109,10 @@ extension CalendarViewModel {
                 }
             }, receiveValue: { [weak self] roomUsageInfo in
                 guard let self = self else { return }
+                let studyRoomUsageCount = roomUsageInfo.filter { self.calendar.isDate($0.date, equalTo: Date(), toGranularity: .day)}.count
                 currentMonth = makeMonth(date: date, roomUsageInfo: roomUsageInfo)
                 studyRoomUsageList = roomUsageInfo
+                todayStudyRoomUsageCount = studyRoomUsageCount
             })
             .store(in: &subscriptions)
     }
@@ -136,7 +138,6 @@ extension CalendarViewModel {
                 currentMonth = makeMonth(date: seletedDate, roomUsageInfo: roomUsageInfo)
                 studyRoomUsageList = roomUsageInfo
                 todayStudyRoomUsageCount = studyRoomUsageCount
-                
             })
             .store(in: &subscriptions)
     }
@@ -209,7 +210,7 @@ extension CalendarViewModel {
                 
             }
             count += 1
-        }
+        }        
         return days
     }
 }

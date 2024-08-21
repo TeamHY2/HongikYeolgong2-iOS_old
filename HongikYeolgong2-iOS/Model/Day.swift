@@ -14,7 +14,7 @@ struct Day: Identifiable {
     
     var todayUsageCount: Int {
         guard let usageRecord = usageRecord else { return 0 }
-        return usageRecord.filter { Calendar.current.isDate($0.date, equalTo: Date(), toGranularity: .day)}.count
+        return usageRecord.count
     }
 }
 

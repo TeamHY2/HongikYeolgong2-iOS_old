@@ -13,8 +13,9 @@ final class TimerViewModel: ViewModelType {
     @Published var isStart = false
     @Published var startTime = Date()
     @Published var endTime: Date!
-    @Published var remainingTime = 123456.0
+    @Published var remainingTime: TimeInterval = 123456
     @Published var totalTime = 0.0
+    
     
     private let timer = Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()
     
@@ -53,6 +54,7 @@ final class TimerViewModel: ViewModelType {
         
         // Notification에 추가
         LocalNotificationService.shared.addNotification(interval: TimeInterval(remainingTime))
+        
         startTimer()
     }
     

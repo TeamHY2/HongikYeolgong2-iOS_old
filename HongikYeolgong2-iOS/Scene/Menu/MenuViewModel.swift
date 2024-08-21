@@ -12,7 +12,7 @@ class MenuViewModel: ObservableObject {
     @Published var title = "Menu ViewModel"
 }
 
-struct WebView: UIViewRepresentable {
+struct WebView2: UIViewRepresentable {
     
     var url: URL?
     
@@ -36,7 +36,7 @@ struct WebViewWithCloseButton: View {
     
     var body: some View {
         NavigationView {
-            WebView(url: url)
+            WebView2(url: url)
                 .navigationBarItems(leading: Button(action: {
                     presentationMode.wrappedValue.dismiss()
                 }) {

@@ -51,7 +51,9 @@ struct HomeView: View {
                 }, font: .suite, title: "열람실 이용 종료", titleColor: .customGray100, backgroundColor: .customGray600, leading: 0, trailing: 0)
             } else {
                 HStack {
-                    CustomButton2(action: {}, title: "좌석", image: .angularButton01, maxWidth: 69, minHeight: 52)
+                    CustomButton2(action: {
+                        coordinator.push(.webView(url: Constants.Url.roomStatus))
+                    }, title: "좌석", image: .angularButton01, maxWidth: 69, minHeight: 52)
                     
                     Spacer().frame(width: UIScreen.UIWidth(12))
                     
@@ -71,6 +73,7 @@ struct HomeView: View {
                 ProgressView()
             }
         }
+        .padding(.horizontal, 28)
         .background(
             Image(.iOSBackground)
                 .ignoresSafeArea(.all)
@@ -85,6 +88,7 @@ struct HomeView: View {
                 Image(.icHamburger)
             })
         })
+    
         .dialog(isPresented: $showingDialog,
                 currentDate: $timerViewModel.startTime) {
             timerViewModel.send(action: .startButtonTap)
@@ -113,7 +117,7 @@ struct HomeView: View {
                                   }
                               })
                               .onAppear {
-                                  LocalNotificationService.shared.requestPermission()
+                                  LocalNotificationService.shared.requestPermission()                                  
                               }
     }
     
@@ -131,6 +135,7 @@ struct HomeView: View {
         }
     }
 }
+
 
 
 //#Preview {

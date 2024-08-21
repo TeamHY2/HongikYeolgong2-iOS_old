@@ -11,8 +11,7 @@ enum CellStyle: CaseIterable {
     case dayCount00
     case dayCount01
     case dayCount02
-    case dayCount03
-    
+    case dayCount03    
 }
 
 struct CalendarCell: View {
