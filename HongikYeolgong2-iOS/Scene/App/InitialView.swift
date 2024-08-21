@@ -12,7 +12,7 @@ struct InitialView: View {
         VStack {
             switch authViewModel.authenticationState {
             case .none:
-                SplashView()
+               SplashView()
             case .unauthenticated:
                 NavigationStack(path: $authCoordinator.paths) {
                     LoginView()

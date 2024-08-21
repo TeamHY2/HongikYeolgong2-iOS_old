@@ -10,6 +10,8 @@ import Combine
 protocol UserRepositoryType {
     func createUser(_ user: User) -> AnyPublisher<User, Never>
     func fetchUser(with uid: String) -> AnyPublisher<User, Error>
+    func deleteUser(_ user: User) -> AnyPublisher<Void, Error>
+    func deleteCollection(_ user: User) -> AnyPublisher<Void, Error>
 }
 
 final class UserRepository: UserRepositoryType {
@@ -36,6 +38,32 @@ final class UserRepository: UserRepositoryType {
                     promise(.success(user))
                 } catch let error {
 //                    promise(.failure(error))
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
+    
+    func deleteUser(_ user: User) -> AnyPublisher<Void, Error> {
+            return Future<Void, Error> { promise in
+                Task {
+                    do {
+                        try await FirestoreService.request(Endpoint.deleteUser(user))
+                        promise(.success(()))
+                    } catch let error {
+                        promise(.failure(error))
+                    }
+                }
+            }.eraseToAnyPublisher()
+        }
+    
+    func deleteCollection(_ user: User) -> AnyPublisher<Void, Error> {
+        return Future<Void, Error> { promise in
+            Task {
+                do {
+                    try await FirestoreService.request(Endpoint.deleteUser(user))
+                    promise(.success(()))
+                } catch let error {
+                    promise(.failure(error))
                 }
             }
         }.eraseToAnyPublisher()

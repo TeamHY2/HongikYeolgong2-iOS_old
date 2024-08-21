@@ -125,14 +125,33 @@ extension AuthenticationViewModel {
             }.store(in: &subscriptions)
     }
     
+    
     func deleteUser() {
+        guard let userInfo = user else { return }
+        
         authService.deleteAccount()
+            .flatMap { _ -> AnyPublisher<Void, Error> in
+                // authService.deleteAccount()가 성공한 후 실행
+                return self.userRepository.deleteUser(userInfo)
+                    .catch { error -> AnyPublisher<Void, Error> in
+                        // 에러 처리
+                        print("userRepository를 지우는데 실패했습니다.: \(error)")
+                        return Fail(error: error).eraseToAnyPublisher()
+                    }
+                    .eraseToAnyPublisher()
+            }
             .receive(on: DispatchQueue.main)
             .sink { completion in
-                
-            } receiveValue: { [weak self] user in
+                switch completion {
+                case .finished:
+                    print("성공적으로 appleToken을 삭제하였습니다.")
+                case .failure(let error):
+                    print("appleToken을 삭제하는데 실패했습니다. \(error)")
+                }
+            } receiveValue: { [weak self] _ in
                 guard let self = self else { return }
                 self.authenticationState = .unauthenticated
-            }.store(in: &subscriptions)
+            }
+            .store(in: &subscriptions)
     }
 }

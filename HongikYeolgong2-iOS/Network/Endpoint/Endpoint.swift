@@ -12,6 +12,8 @@ enum Endpoint: FirestoreEndpoint {
     case createUser(User)
     case fetchStudyDay(uid: String)
     case updateStudyDay(uid: String, StudyRoomUsage)
+    case deleteUser(User)
+    case deleteCollection(User)
     
     var path: FirestoreReference {
         switch self {
@@ -23,6 +25,10 @@ enum Endpoint: FirestoreEndpoint {
             return firestore.collection("User").document(uid).collection("StudyDay")
         case .updateStudyDay(let uid, _):
             return firestore.collection("User").document(uid).collection("StudyDay").document()
+        case .deleteUser(let user):
+            return firestore.collection("User").document(user.id)
+        case .deleteCollection(let user):
+            return firestore.collection("User").document(user.id).collection("StudyDay").document()
         }
     }
     
@@ -36,6 +42,10 @@ enum Endpoint: FirestoreEndpoint {
             return .get
         case .updateStudyDay(_, let studyRoomUsage):
             return .post(studyRoomUsage)
+        case .deleteUser(_):
+            return .delete
+        case .deleteCollection(_):
+            return.deleteCollection
         }
     }
 }
