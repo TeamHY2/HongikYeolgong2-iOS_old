@@ -1,13 +1,14 @@
-
-
 import SwiftUI
 import AuthenticationServices
+
 struct LoginView: View {
     @EnvironmentObject var authViewModel: AuthenticationViewModel
     
     var body: some View {
         VStack{
-            SignInWithAppleButton(onRequest: { request in                
+            OnBoardingView()
+            
+            SignInWithAppleButton(onRequest: { request in
                 authViewModel.send(action: .appleLogin(request))
             }, onCompletion: { result in
                 
