@@ -7,6 +7,7 @@ struct MenuView: View {
     @State var isOn: Bool = false
     @State private var logoutAlert = false
     @State private var deleteAccountAlert = false
+    @State private var isOnAlarm = UserDefaults.standard.bool(forKey: "isOnAlarm")
     
     var body: some View {
         ZStack {
@@ -42,7 +43,13 @@ struct MenuView: View {
                         .minimumScaleFactor(0.2)
                         .frame(maxWidth: UIScreen.UIWidth(311), minHeight: UIScreen.UIHeight(52), alignment: .leading)
                         .padding(.leading, UIScreen.UIWidth(16))
-                    Toggle("", isOn: $isOn)
+                    Toggle("", isOn: Binding(
+                        get: { isOnAlarm },
+                        set: {
+                            isOnAlarm = $0
+                            UserDefaults.standard.set($0, forKey: "isOnAlarm")
+                        }
+                    ))
                         .toggleStyle(ColoredToggleStyle(onColor:Color(UIColor.customBlue100)))
                 }
                 .background(Color(UIColor.customGray800))

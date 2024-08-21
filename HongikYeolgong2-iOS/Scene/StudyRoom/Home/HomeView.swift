@@ -52,7 +52,7 @@ struct HomeView: View {
             } else {
                 HStack {
                     CustomButton2(action: {
-                        coordinator.push(.webView(url: "http://203.249.65.81/RoomStatus.aspx"))
+                        coordinator.push(.webView(url: Constants.Url.roomStatus))
                     }, title: "좌석", image: .angularButton01, maxWidth: 69, minHeight: 52)
                     
                     Spacer().frame(width: UIScreen.UIWidth(12))
@@ -117,7 +117,7 @@ struct HomeView: View {
                                   }
                               })
                               .onAppear {
-                                  LocalNotificationService.shared.requestPermission()
+                                  LocalNotificationService.shared.requestPermission()                                  
                               }
     }
     

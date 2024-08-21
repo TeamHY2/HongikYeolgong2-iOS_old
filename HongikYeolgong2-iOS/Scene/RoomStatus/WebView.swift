@@ -46,15 +46,22 @@ struct MyWebView: UIViewRepresentable {
         
         // 페이지가 로드 완료되면 호출되는 델리게이트 메서드
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-            let jsCode = """
-            document.body.style.backgroundColor = '#0C0D11';  // 배경색 변경
-            """
-            
-            webView.evaluateJavaScript(jsCode) { (result, error) in
-                if let error = error {
-                    print("JavaScript Error: \(error)")
-                } else {
-                    print("Style change applied successfully")
+            if parent.url == Constants.Url.roomStatus {
+                let jsCode = """
+                document.body.style.backgroundColor = '#0C0D11';  // 배경색 변경        
+                let trElements = document.querySelectorAll('tr');
+                let firstTrElement = trElements[0];
+                
+                firstTrElement.style.color = '#ffffff';
+                
+                """
+                
+                webView.evaluateJavaScript(jsCode) { (result, error) in
+                    if let error = error {
+                        print("JavaScript Error: \(error)")
+                    } else {
+                        print("Style change applied successfully")
+                    }
                 }
             }
         }

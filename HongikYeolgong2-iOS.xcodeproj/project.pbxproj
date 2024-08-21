@@ -254,6 +254,14 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		47D4CEC02C757748005C126B /* RoomStatus */ = {
+			isa = PBXGroup;
+			children = (
+				47AA66FA2C6E2FCE007CDD2B /* WebView.swift */,
+			);
+			path = RoomStatus;
+			sourceTree = "<group>";
+		};
 		5E029B5D2C4159680091249A /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,9 +331,10 @@
 		5E5B0BC82C3286EB00936435 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				47D4CEC02C757748005C126B /* RoomStatus */,
 				5E8964E52C47C2E900F342CE /* App */,
 				5EE3049E2C40236F0002C49E /* Authentication */,
-				5E5B0BCB2C3287A900936435 /* ReadingRoom */,
+				5E5B0BCB2C3287A900936435 /* StudyRoom */,
 				5E5B0BCE2C32890300936435 /* Menu */,
 				5E5B0BC92C32877100936435 /* Login */,
 				5E5B0BCA2C32878100936435 /* Splash */,
@@ -350,14 +359,14 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
-		5E5B0BCB2C3287A900936435 /* ReadingRoom */ = {
+		5E5B0BCB2C3287A900936435 /* StudyRoom */ = {
 			isa = PBXGroup;
 			children = (
 				825665772C351B5A0018C799 /* Calendar */,
 				825665762C351B540018C799 /* Ready */,
 				825665752C351B170018C799 /* Home */,
 			);
-			path = ReadingRoom;
+			path = StudyRoom;
 			sourceTree = "<group>";
 		};
 		5E5B0BCE2C32890300936435 /* Menu */ = {
@@ -374,7 +383,6 @@
 			children = (
 				82D4D6132C327BDC00A92327 /* HongikYeolgong2_iOSApp.swift */,
 				5EE3049F2C4023960002C49E /* InitialView.swift */,
-				47AA66FA2C6E2FCE007CDD2B /* WebView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";

@@ -18,4 +18,8 @@ enum Constants {
         static let starRatingCount01 = TimeInterval(20)
         static let starRatingCount02 = TimeInterval(30)
     }
+    
+    struct Url {
+        static let roomStatus = "http://203.249.65.81/RoomStatus.aspx"
+    }
 }

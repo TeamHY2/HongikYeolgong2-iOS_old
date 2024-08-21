@@ -21,6 +21,7 @@ class LocalNotificationService {
                 if granted == true && error == nil {
                     #if DEBUG
                     print("Notification permission granted!")
+                    UserDefaults.standard.set(true, forKey: "isOnAlarm")
                     #endif
                 }
             }
