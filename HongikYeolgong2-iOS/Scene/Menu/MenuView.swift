@@ -4,10 +4,13 @@ import AuthenticationServices
 struct MenuView: View {
     @EnvironmentObject private var coordinator: AppCoordinator
     @EnvironmentObject var authViewModel: AuthenticationViewModel
+    
     @State var isOn: Bool = false
     @State private var logoutAlert = false
     @State private var deleteAccountAlert = false
     @State private var isOnAlarm = UserDefaults.standard.bool(forKey: "isOnAlarm")
+    
+    @Environment(\.scenePhase) var scenePhase
     
     var body: some View {
         ZStack {
@@ -46,11 +49,17 @@ struct MenuView: View {
                     Toggle("", isOn: Binding(
                         get: { isOnAlarm },
                         set: {
-                            isOnAlarm = $0
-                            UserDefaults.standard.set($0, forKey: "isOnAlarm")
+                            if LocalNotificationService.shared.authStatus == .authorized {
+                                isOnAlarm = $0
+                                UserDefaults.standard.set($0, forKey: "isOnAlarm")
+                            } else {
+                                if let url = URL(string: UIApplication.openNotificationSettingsURLString) {
+                                    UIApplication.shared.open(url)
+                                }
+                            }                            
                         }
                     ))
-                        .toggleStyle(ColoredToggleStyle(onColor:Color(UIColor.customBlue100)))
+                    .toggleStyle(ColoredToggleStyle(onColor:Color(UIColor.customBlue100)))
                 }
                 .background(Color(UIColor.customGray800))
                 .cornerRadius(8)
@@ -91,7 +100,17 @@ struct MenuView: View {
                 })
             })
         }
-        
+        .onChange(of: scenePhase) { phase in
+            // 설정이 바뀌고나서 권한체크
+            if phase == .active {
+                Task {
+                    await LocalNotificationService.shared.checkPermission()
+                    if LocalNotificationService.shared.authStatus != .authorized {
+                        isOnAlarm = false
+                    }
+                }
+            }
+        }
         .alert(title: "로그아웃 하실 건가요?", confirmButtonText: "돌아가기", cancleButtonText: "로그아웃하기", isPresented: $logoutAlert, confirmAction: {}, cancelAction: {authViewModel.send(action: .logOut)})
         .alert(title: "정말 탈퇴하실 건가요?", confirmButtonText: "돌아가기", cancleButtonText: "탈퇴하기", isPresented: $deleteAccountAlert, confirmAction: {}, cancelAction: {authViewModel.send(action: .deleteAccount)})
     }

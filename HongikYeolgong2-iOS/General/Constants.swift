@@ -10,13 +10,9 @@ import Firebase
 
 enum Constants {
     struct StudyRoomService {
-        static let additionalTime = TimeInterval(60)
-        static let firstNotificationTime = TimeInterval(30)
-        static let secondNotificationTime = TimeInterval(10)
-        
-        static let starRatingCount00 = TimeInterval(10)
-        static let starRatingCount01 = TimeInterval(20)
-        static let starRatingCount02 = TimeInterval(30)
+        static let additionalTime: TimeInterval = .hours(6)
+        static let firstNotificationTime: TimeInterval = .minutes(30)
+        static let secondNotificationTime: TimeInterval = .minutes(10)
     }
     
     struct Url {

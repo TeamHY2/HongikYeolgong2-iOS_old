@@ -74,9 +74,6 @@ struct TimeLapse: View {
                 Spacer()
                 
                 HStack {
-//                    Image(totalTime >= Constants.StudyRoomService.starRatingCount00 ? .shineCount01 : .shineCount00)
-//                    Image(totalTime >= Constants.StudyRoomService.starRatingCount01 ? .shineCount02 : .shineCount00)
-//                    Image(totalTime >= Constants.StudyRoomService.starRatingCount02 ? .shineCount03 : .shineCount00)
                     Image(.shineCount01)
                     Image(usageCount >= 1 ? .shineCount02 : .shineCount00)
                     Image(usageCount >= 2 ? .shineCount03 : .shineCount00)
