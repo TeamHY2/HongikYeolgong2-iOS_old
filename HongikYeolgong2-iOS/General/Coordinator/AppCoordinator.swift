@@ -28,7 +28,7 @@ final class AppCoordinator: AppCoordinatorType {
             MenuView()
         case .webView(let url):
             VStack {
-                MyWebView(url: url)
+                WebViewUIKit(url: url)
                     .customNavigation(center: {
                         CustomText(font: .pretendard, title: "좌석", textColor: .customGray100, textWeight: .bold, textSize: 18)
                     }, right: {
