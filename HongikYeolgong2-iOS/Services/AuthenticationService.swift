@@ -17,7 +17,7 @@ protocol AuthenticationServiceType {
     func handleSignInWithAppleRequest(_ request: ASAuthorizationAppleIDRequest) -> String
     func handleSignInWithAppleCompletion(_ authorization: ASAuthorization, none: String) -> AnyPublisher<User, ServiceError>
     func logOut() -> AnyPublisher<Void, ServiceError>
-    func deleteAccount() -> AnyPublisher<Void, ServiceError>
+    func deleteAccount() -> AnyPublisher<Void, Error>
 }
 
 
@@ -62,14 +62,14 @@ class AuthenticationService: AuthenticationServiceType {
         }.eraseToAnyPublisher()
     }
     
-    func deleteAccount() -> AnyPublisher<Void, ServiceError> {
+    func deleteAccount() -> AnyPublisher<Void, Error> {
         Future { promise in
             Task {
                 do {
-                    try await self.deleteAccount()
+                   let result =  try await self.deleteAccount()
                     promise(.success(()))
                 } catch {
-                    promise(.failure(.error(error)))
+                    promise(.failure(error))
                 }
             }
         }
@@ -239,7 +239,7 @@ class StubAuthenticationService: AuthenticationServiceType {
         Empty().eraseToAnyPublisher()
     }
     
-    func deleteAccount() -> AnyPublisher<Void, ServiceError> {
+    func deleteAccount() -> AnyPublisher<Void, Error> {
         Empty().eraseToAnyPublisher()
     }
 

@@ -16,9 +16,9 @@ protocol FirestoreServiceProtocol {
 }
 
 final class FirestoreService: FirestoreServiceProtocol {
-
+    
     private init() {}
-
+    
     static func request<T>(_ endpoint: FirestoreEndpoint) async throws -> T where T: FirestoreIdentifiable {
         guard let ref = endpoint.path as? DocumentReference else {
             throw FirestoreServiceError.documentNotFound
@@ -28,21 +28,21 @@ final class FirestoreService: FirestoreServiceProtocol {
             guard let documentSnapshot = try? await ref.getDocument() else {
                 throw FirestoreServiceError.invalidPath
             }
-
+            
             guard let documentData = documentSnapshot.data() else {
                 throw FirestoreServiceError.parseError
             }
-
+            
             let singleResponse = try FirestoreParser.parse(documentData, type: T.self)
             return singleResponse
         default:
             throw FirestoreServiceError.invalidRequest
         }
-
+        
     }
-
+    
     static func request<T>(_ endpoint: FirestoreEndpoint) async throws -> [T] where T: FirestoreIdentifiable {
-        guard let ref = endpoint.path as? CollectionReference else {            
+        guard let ref = endpoint.path as? CollectionReference else {
             throw FirestoreServiceError.collectionNotFound
         }
         switch endpoint.method {
@@ -56,11 +56,11 @@ final class FirestoreService: FirestoreServiceProtocol {
                 response.append(data)
             }
             return response
-        case .post, .put, .delete:
+        case .post, .put, .delete, .deleteCollection:
             throw FirestoreServiceError.operationNotSupported
         }
     }
-
+    
     static func request(_ endpoint: FirestoreEndpoint) async throws -> Void {
         guard let ref = endpoint.path as? DocumentReference else {
             throw FirestoreServiceError.documentNotFound
@@ -75,6 +75,8 @@ final class FirestoreService: FirestoreServiceProtocol {
             try ref.setData(from: model)
         case .delete:
             try await ref.delete()
+        case .deleteCollection:
+            throw FirestoreServiceError.invalidRequest
         }
     }
 }
