@@ -15,13 +15,15 @@ struct OnBoardingPageView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
             Image(imageName)
-                .padding(.bottom, 73)
+                .padding(.bottom, UIScreen.UIHeight(74))
             
             CustomText(font: .suite, title: title, textColor: .white, textWeight: .bold, textSize: 21, textAlignment: .center)
-                .padding(.bottom, 13)
+                .padding(.bottom, UIScreen.UIHeight(13))
+                .opacity(0.9)
             
             CustomText(font: .suite, title: subTitle, textColor: .customGray200, textWeight: .medium, textSize: 15, textAlignment: .center)
                 .lineSpacing(3)
+                .opacity(0.6)
         }
     }
 }

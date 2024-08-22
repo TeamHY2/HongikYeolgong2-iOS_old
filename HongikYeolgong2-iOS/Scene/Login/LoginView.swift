@@ -11,7 +11,8 @@ struct LoginView: View {
             CustomButton2(action: {
                 
             }, title: "", image: .snsLogin, maxWidth: UIScreen.UIWidth(320), minHeight: UIScreen.UIHeight(50))
-                .padding(.vertical, UIScreen.UIHeight(32))
+                .padding(.top, UIScreen.UIHeight(32))
+                .padding(.bottom, UIScreen.UIHeight(20))
                 .overlay(
                     SignInWithAppleButton(onRequest: { request in
                                     authViewModel.send(action: .appleLogin(request))
