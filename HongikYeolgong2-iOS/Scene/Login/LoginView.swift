@@ -8,13 +8,19 @@ struct LoginView: View {
         VStack{
             OnBoardingView()
             
-            SignInWithAppleButton(onRequest: { request in
-                authViewModel.send(action: .appleLogin(request))
-            }, onCompletion: { result in
+            CustomButton2(action: {
                 
-                authViewModel.send(action: .appleLoginCompletion(result))
-            })
-            .frame(width: UIScreen.UIWidth(320), height: UIScreen.UIHeight(90))
+            }, title: "", image: .snsLogin, maxWidth: UIScreen.UIWidth(320), minHeight: UIScreen.UIHeight(50))
+                .padding(.vertical, UIScreen.UIHeight(32))
+                .overlay(
+                    SignInWithAppleButton(onRequest: { request in
+                                    authViewModel.send(action: .appleLogin(request))
+                                }, onCompletion: { result in
+                                    
+                                    authViewModel.send(action: .appleLoginCompletion(result))
+                                })
+                    .blendMode(.destinationOver)
+                )
         }
     }
 }

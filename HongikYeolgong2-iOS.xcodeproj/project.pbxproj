@@ -34,6 +34,7 @@
 		478442C92C76264300C62E89 /* SUITE-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 478442B92C76264300C62E89 /* SUITE-Light.otf */; };
 		478442CC2C76344000C62E89 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478442CB2C76344000C62E89 /* OnBoardingView.swift */; };
 		478442CE2C7634A200C62E89 /* OnBoardingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478442CD2C7634A200C62E89 /* OnBoardingPageView.swift */; };
+		478442D02C764C3E00C62E89 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478442CF2C764C3E00C62E89 /* LoginButton.swift */; };
 		4790ECDC2C57EDC9002FCCAF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4790ECDB2C57EDC9002FCCAF /* Constants.swift */; };
 		4790ECDE2C57F9E5002FCCAF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4790ECDD2C57F9E5002FCCAF /* HomeView.swift */; };
 		47A004742C594376000AC842 /* Publisher+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A004732C594376000AC842 /* Publisher+.swift */; };
@@ -139,6 +140,7 @@
 		478442B92C76264300C62E89 /* SUITE-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SUITE-Light.otf"; path = "../../../../Font/SUITE-Light.otf"; sourceTree = "<group>"; };
 		478442CB2C76344000C62E89 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
 		478442CD2C7634A200C62E89 /* OnBoardingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingPageView.swift; sourceTree = "<group>"; };
+		478442CF2C764C3E00C62E89 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		4790ECDB2C57EDC9002FCCAF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4790ECDD2C57F9E5002FCCAF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		47A004732C594376000AC842 /* Publisher+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+.swift"; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				5E5CD43E2C3698A4002CE244 /* CustomButton.swift */,
 				82B1FE802C3C1755002D9163 /* CustomButton2.swift */,
 				827C18C62C48FC5100B4AAEA /* CustomPicker.swift */,
+				478442CF2C764C3E00C62E89 /* LoginButton.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -684,6 +687,7 @@
 				8252CCE02C404A7300690D75 /* Day.swift in Sources */,
 				47D07F902C645AB700F6109F /* AppCoordinator.swift in Sources */,
 				47E0A8C72C511B72009F1BA9 /* CalendarViewModel.swift in Sources */,
+				478442D02C764C3E00C62E89 /* LoginButton.swift in Sources */,
 				82B1FE7B2C3BC567002D9163 /* Quote.swift in Sources */,
 				5EE304A22C4023A40002C49E /* AuthenticationViewModel.swift in Sources */,
 				47D07F982C64A8B500F6109F /* SplashView.swift in Sources */,
