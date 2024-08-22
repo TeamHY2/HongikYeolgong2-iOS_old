@@ -11,7 +11,8 @@ struct InitialView: View {
     var body: some View {
         VStack {
             switch authViewModel.authenticationState {
-            case .none:
+                // 유저정보를 확인중인 상태
+            case .pending:
                SplashView()
             case .unauthenticated:
                 NavigationStack(path: $authCoordinator.paths) {
