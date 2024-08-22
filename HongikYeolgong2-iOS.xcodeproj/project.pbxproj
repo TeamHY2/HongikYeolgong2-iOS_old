@@ -86,7 +86,7 @@
 		5EE304982C40204E0002C49E /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE304972C40204E0002C49E /* DIContainer.swift */; };
 		5EE3049D2C4022990002C49E /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE3049C2C4022990002C49E /* AuthenticationService.swift */; };
 		5EE304A02C4023960002C49E /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE3049F2C4023960002C49E /* InitialView.swift */; };
-		5EE304A22C4023A40002C49E /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE304A12C4023A40002C49E /* AuthenticationViewModel.swift */; };
+		5EE304A22C4023A40002C49E /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE304A12C4023A40002C49E /* AuthViewModel.swift */; };
 		8252CCDC2C40396100690D75 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8252CCDB2C40396100690D75 /* Calendar.swift */; };
 		8252CCDE2C40440600690D75 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8252CCDD2C40440600690D75 /* CalendarCell.swift */; };
 		8252CCE02C404A7300690D75 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8252CCDF2C404A7300690D75 /* Day.swift */; };
@@ -166,7 +166,7 @@
 		5EE304972C40204E0002C49E /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		5EE3049C2C4022990002C49E /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		5EE3049F2C4023960002C49E /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
-		5EE304A12C4023A40002C49E /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		5EE304A12C4023A40002C49E /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		8252CCDB2C40396100690D75 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		8252CCDD2C40440600690D75 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		8252CCDF2C404A7300690D75 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
@@ -430,7 +430,7 @@
 		5EE3049E2C40236F0002C49E /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				5EE304A12C4023A40002C49E /* AuthenticationViewModel.swift */,
+				5EE304A12C4023A40002C49E /* AuthViewModel.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -685,7 +685,7 @@
 				47D07F902C645AB700F6109F /* AppCoordinator.swift in Sources */,
 				47E0A8C72C511B72009F1BA9 /* CalendarViewModel.swift in Sources */,
 				82B1FE7B2C3BC567002D9163 /* Quote.swift in Sources */,
-				5EE304A22C4023A40002C49E /* AuthenticationViewModel.swift in Sources */,
+				5EE304A22C4023A40002C49E /* AuthViewModel.swift in Sources */,
 				47D07F982C64A8B500F6109F /* SplashView.swift in Sources */,
 				5EE304982C40204E0002C49E /* DIContainer.swift in Sources */,
 				473E03712C6AE25900F3E0FC /* FirestoreParser.swift in Sources */,

@@ -10,7 +10,7 @@ enum AuthenticationState {
     case pending
 }
 
-class AuthenticationViewModel: ObservableObject {
+class AuthViewModel: ObservableObject {
     
     enum Action {
         case checkAuthenticationState
@@ -50,7 +50,7 @@ class AuthenticationViewModel: ObservableObject {
     }
 }
 
-extension AuthenticationViewModel {
+extension AuthViewModel {
     
     func checkAuthenticationState() {    
         guard let uid = authService.checkAuthenticationState() else {

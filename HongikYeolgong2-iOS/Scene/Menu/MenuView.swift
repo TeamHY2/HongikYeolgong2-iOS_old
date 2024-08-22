@@ -3,7 +3,7 @@ import AuthenticationServices
 
 struct MenuView: View {
     @EnvironmentObject private var coordinator: AppCoordinator
-    @EnvironmentObject var authViewModel: AuthenticationViewModel
+    @EnvironmentObject var authViewModel: AuthViewModel
     
     @State var isOn: Bool = false
     @State private var logoutAlert = false

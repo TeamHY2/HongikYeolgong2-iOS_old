@@ -31,6 +31,7 @@ final class CalendarViewModel: ViewModelType {
     @Published var studyRoomUsageList = [StudyRoomUsage]() // 서버에서 받아온 캘린더데이터
     @Published var errorMessage = ""
     @Published var showingErrorAlert = false
+    @Published var isLoading = true
     
     // MARK: - Properties
     @Inject private var studyRoomRepository: StudyRoomRepositoryType
@@ -113,6 +114,7 @@ extension CalendarViewModel {
                 currentMonth = makeMonth(date: date, roomUsageInfo: roomUsageInfo)
                 studyRoomUsageList = roomUsageInfo
                 todayStudyRoomUsageCount = studyRoomUsageCount
+                isLoading = false
             })
             .store(in: &subscriptions)
     }
