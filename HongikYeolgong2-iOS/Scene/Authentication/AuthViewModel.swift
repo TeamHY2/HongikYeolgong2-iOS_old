@@ -7,10 +7,10 @@ import AuthenticationServices
 enum AuthenticationState {
     case unauthenticated
     case authenticated
-    case none
+    case pending
 }
 
-class AuthenticationViewModel: ObservableObject {
+class AuthViewModel: ObservableObject {
     
     enum Action {
         case checkAuthenticationState
@@ -20,7 +20,7 @@ class AuthenticationViewModel: ObservableObject {
         case deleteAccount
     }
     
-    @Published var authenticationState: AuthenticationState = .none
+    @Published var authenticationState: AuthenticationState = .pending
     @Published var user: User?
     @Published var errorMessage = ""
     @Published var showingErrorAlert = false
@@ -50,7 +50,7 @@ class AuthenticationViewModel: ObservableObject {
     }
 }
 
-extension AuthenticationViewModel {
+extension AuthViewModel {
     
     func checkAuthenticationState() {    
         guard let uid = authService.checkAuthenticationState() else {

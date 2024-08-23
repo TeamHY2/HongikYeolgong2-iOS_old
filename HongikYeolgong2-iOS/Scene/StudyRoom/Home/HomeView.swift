@@ -16,7 +16,7 @@ struct HomeView: View {
     @EnvironmentObject private var coordinator: AppCoordinator
     @EnvironmentObject private var timerViewModel: TimerViewModel
     @EnvironmentObject private var calendarViewModel: CalendarViewModel
-    @EnvironmentObject private var authViewModel: AuthenticationViewModel
+    @EnvironmentObject private var authViewModel: AuthViewModel
     
     @Environment(\.scenePhase) var scenePhase
     

@@ -1,19 +1,29 @@
-
-
 import SwiftUI
 import AuthenticationServices
+
 struct LoginView: View {
-    @EnvironmentObject var authViewModel: AuthenticationViewModel
+    @EnvironmentObject var authViewModel: AuthViewModel
     
     var body: some View {
         VStack{
-            SignInWithAppleButton(onRequest: { request in                
-                authViewModel.send(action: .appleLogin(request))
-            }, onCompletion: { result in
-                
-                authViewModel.send(action: .appleLoginCompletion(result))
-            })
-            .frame(width: UIScreen.UIWidth(320), height: UIScreen.UIHeight(90))
+            OnBoardingView()
+            
+            CustomButton2(action: {},
+                          title: "",
+                          image: .snsLogin,
+                          maxWidth: UIScreen.UIWidth(320),
+                          minHeight: UIScreen.UIHeight(50))
+            .padding(.top, UIScreen.UIHeight(32))
+            .padding(.bottom, UIScreen.UIHeight(20))
+            .overlay(
+                SignInWithAppleButton(onRequest: { request in
+                    authViewModel.send(action: .appleLogin(request))
+                }, onCompletion: { result in
+                    
+                    authViewModel.send(action: .appleLoginCompletion(result))
+                })
+                .blendMode(.destinationOver)
+            )
         }
     }
 }
