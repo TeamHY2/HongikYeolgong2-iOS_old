@@ -8,10 +8,12 @@ struct InitialView: View {
     @EnvironmentObject private var authViewModel: AuthViewModel
     @EnvironmentObject private var calendarViewModel: CalendarViewModel
     
-    var appInitCompleted: AuthenticationState {        
+    @State private var isFirstLaunch = true    
+    
+    var appInitCompleted: AuthenticationState {
         if authViewModel.authenticationState == .authenticated && !calendarViewModel.isLoading {
             return .authenticated
-        } else if authViewModel.authenticationState == .unauthenticated {
+        } else if authViewModel.authenticationState == .unauthenticated && !isFirstLaunch {
             return .unauthenticated
         } else {
             return .pending
@@ -24,7 +26,7 @@ struct InitialView: View {
             switch appInitCompleted {
                 // 유저정보를 확인중인 상태
             case .pending:
-                SplashView()
+                    SplashView()
             case .unauthenticated:
                 NavigationStack(path: $authCoordinator.paths) {
                     LoginView()
@@ -46,6 +48,7 @@ struct InitialView: View {
         }.onReceive(authViewModel.$user, perform: { user in
             if let uid = user?.id {
                 calendarViewModel.send(action: .getCalendar(uid))
+                isFirstLaunch = false
             }
         })
     }
