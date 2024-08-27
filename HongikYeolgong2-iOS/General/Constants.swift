@@ -17,5 +17,7 @@ enum Constants {
     
     struct Url {
         static let roomStatus = "http://203.249.65.81/RoomStatus.aspx"
+        static let notice = "https://url.kr/elogg8"
+        static let Qna = "https://forms.gle/J1CtFrySdwTYcixk9"
     }
 }

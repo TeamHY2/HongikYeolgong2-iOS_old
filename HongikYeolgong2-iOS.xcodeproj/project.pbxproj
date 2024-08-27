@@ -263,12 +263,12 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		47D4CEC02C757748005C126B /* RoomStatus */ = {
+		47D4CEC02C757748005C126B /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				47AA66FA2C6E2FCE007CDD2B /* WebView.swift */,
 			);
-			path = RoomStatus;
+			path = Common;
 			sourceTree = "<group>";
 		};
 		5E029B5D2C4159680091249A /* Util */ = {
@@ -341,7 +341,7 @@
 		5E5B0BC82C3286EB00936435 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				47D4CEC02C757748005C126B /* RoomStatus */,
+				47D4CEC02C757748005C126B /* Common */,
 				5E8964E52C47C2E900F342CE /* App */,
 				5EE3049E2C40236F0002C49E /* Authentication */,
 				5E5B0BCB2C3287A900936435 /* StudyRoom */,

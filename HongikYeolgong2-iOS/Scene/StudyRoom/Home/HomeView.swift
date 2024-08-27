@@ -75,8 +75,7 @@ struct HomeView: View {
                     CustomButton2(action: {
                         showingDialog = true
                     }, title: "열람실 이용 시작", image: .angularButton02, maxWidth: .infinity, minHeight: 52)
-                }
-                
+                }                
             }
             
             Spacer()

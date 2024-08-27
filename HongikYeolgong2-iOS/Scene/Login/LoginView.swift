@@ -25,6 +25,7 @@ struct LoginView: View {
                 .blendMode(.destinationOver)
             )
         }
+        .background(Color(.customBackground))
     }
 }
 

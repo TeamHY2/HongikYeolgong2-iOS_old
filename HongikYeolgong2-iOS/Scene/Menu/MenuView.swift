@@ -10,6 +10,7 @@ struct MenuView: View {
     @State private var isOnAlarm = UserDefaults.standard.bool(forKey: "isOnAlarm")
     
     @Environment(\.scenePhase) var scenePhase
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var noticeWebView = false
     @State private var questionWebView = false
     
@@ -29,7 +30,7 @@ struct MenuView: View {
                 .cornerRadius(8)
                 .padding(.bottom, UIScreen.UIHeight(20))
                 .fullScreenCover(isPresented: $noticeWebView) {
-                    WebViewWithCloseButton(url: URL(string: "https://url.kr/elogg8")!)
+                    WebViewWithCloseButton(url: URL(string: Constants.Url.notice)!)
                 }
                 
                 Button(action: {questionWebView.toggle()}
@@ -45,7 +46,7 @@ struct MenuView: View {
                 .cornerRadius(8)
                 .padding(.bottom, UIScreen.UIHeight(20))
                 .fullScreenCover(isPresented: $questionWebView) {
-                    WebViewWithCloseButton(url: URL(string: "https://forms.gle/J1CtFrySdwTYcixk9")!)
+                    WebViewWithCloseButton(url: URL(string: Constants.Url.Qna)!)
                 }
                 
                 HStack(spacing: 0) {
@@ -101,7 +102,7 @@ struct MenuView: View {
             .padding(.horizontal, 28)
             .customNavigation(left: {
                 Button(action: {
-                    
+                    presentationMode.wrappedValue.dismiss()
                 }, label: {
                     Image("ic_back")
                 })
