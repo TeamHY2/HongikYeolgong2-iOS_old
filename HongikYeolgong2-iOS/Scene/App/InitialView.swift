@@ -9,9 +9,10 @@ struct InitialView: View {
     @State private var isFirstLaunch = true
     // 앱이 모든데이터를 받아왔을때 메인화면을 보여줌
     var body: some View {
-        VStack {
+        Group {
             if authViewModel.authenticationState == .pending && isFirstLaunch {
-                SplashView()
+                LaunchScreenRepresentable()
+                    .edgesIgnoringSafeArea(.all)
             }
             else if authViewModel.authenticationState == .authenticated {
                 NavigationView {

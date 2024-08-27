@@ -45,7 +45,7 @@ struct CustomNavBarModifier<C, L, R>: ViewModifier where C: View, L: View, R: Vi
             
             Spacer()
         }
-        .background(Color(.customBackground))
+        .background(.bgcolor)
         .navigationBarHidden(true)
     }
 }

@@ -24,6 +24,9 @@
 		<string>Pretendard-Light.otf</string>
 	</array>
 	<key>UILaunchScreen</key>
-	<dict/>
+	<dict>
+		<key>UIImageName</key>
+		<string></string>
+	</dict>
 </dict>
 </plist>

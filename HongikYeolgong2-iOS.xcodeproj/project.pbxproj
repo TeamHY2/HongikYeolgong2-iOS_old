@@ -15,6 +15,7 @@
 		473E03712C6AE25900F3E0FC /* FirestoreParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473E03702C6AE25900F3E0FC /* FirestoreParser.swift */; };
 		473E03782C6AF20B00F3E0FC /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473E03772C6AF20B00F3E0FC /* Endpoint.swift */; };
 		475C01142C526D2500FB5556 /* LocalNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475C01132C526D2500FB5556 /* LocalNotificationService.swift */; };
+		4768F20D2C7DA3CC009815FC /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4768F20C2C7DA3CC009815FC /* Color+.swift */; };
 		477017852C63C9D8003F3702 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477017842C63C9D8003F3702 /* UserRepository.swift */; };
 		478442BA2C76264300C62E89 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 478442AA2C76264200C62E89 /* Pretendard-Regular.otf */; };
 		478442BB2C76264300C62E89 /* SUITE-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 478442AB2C76264200C62E89 /* SUITE-ExtraBold.otf */; };
@@ -42,6 +43,7 @@
 		47D07F942C6461E100F6109F /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D07F932C6461E100F6109F /* SignUpView.swift */; };
 		47D07F982C64A8B500F6109F /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D07F972C64A8B500F6109F /* SplashView.swift */; };
 		47D4CEC22C75C8F7005C126B /* TimeInterval+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D4CEC12C75C8F7005C126B /* TimeInterval+.swift */; };
+		47D72F642C7D76C2001B514D /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47D72F632C7D76C2001B514D /* Launch Screen.storyboard */; };
 		47E0A8C52C51177B009F1BA9 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E0A8C42C51177B009F1BA9 /* TimerViewModel.swift */; };
 		47E0A8C72C511B72009F1BA9 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E0A8C62C511B72009F1BA9 /* CalendarViewModel.swift */; };
 		5E029B5A2C4157C20091249A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E029B592C4157C20091249A /* User.swift */; };
@@ -117,6 +119,7 @@
 		473E03702C6AE25900F3E0FC /* FirestoreParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreParser.swift; sourceTree = "<group>"; };
 		473E03772C6AF20B00F3E0FC /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		475C01132C526D2500FB5556 /* LocalNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationService.swift; sourceTree = "<group>"; };
+		4768F20C2C7DA3CC009815FC /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		477017842C63C9D8003F3702 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		478442AA2C76264200C62E89 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Pretendard-Regular.otf"; path = "../../../../Font/Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		478442AB2C76264200C62E89 /* SUITE-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SUITE-ExtraBold.otf"; path = "../../../../Font/SUITE-ExtraBold.otf"; sourceTree = "<group>"; };
@@ -144,6 +147,7 @@
 		47D07F932C6461E100F6109F /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		47D07F972C64A8B500F6109F /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		47D4CEC12C75C8F7005C126B /* TimeInterval+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+.swift"; sourceTree = "<group>"; };
+		47D72F632C7D76C2001B514D /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		47E0A8C42C51177B009F1BA9 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		47E0A8C62C511B72009F1BA9 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		5E029B592C4157C20091249A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -311,6 +315,7 @@
 				82AB4F222C3EEE6D00787B3B /* Date+.swift */,
 				47A004732C594376000AC842 /* Publisher+.swift */,
 				47D4CEC12C75C8F7005C126B /* TimeInterval+.swift */,
+				4768F20C2C7DA3CC009815FC /* Color+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -507,6 +512,7 @@
 				5E5B0BC82C3286EB00936435 /* Scene */,
 				5E029B5D2C4159680091249A /* Util */,
 				5E5B0BC52C32868200936435 /* DesignSystem */,
+				47D72F632C7D76C2001B514D /* Launch Screen.storyboard */,
 			);
 			path = "HongikYeolgong2-iOS";
 			sourceTree = "<group>";
@@ -647,6 +653,7 @@
 				478442BE2C76264300C62E89 /* SUITE-SemiBold.otf in Resources */,
 				478442C72C76264300C62E89 /* Pretendard-ExtraLight.otf in Resources */,
 				478442BF2C76264300C62E89 /* Pretendard-Medium.otf in Resources */,
+				47D72F642C7D76C2001B514D /* Launch Screen.storyboard in Resources */,
 				478442C82C76264300C62E89 /* Pretendard-Light.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -702,6 +709,7 @@
 				47AA66FB2C6E2FCE007CDD2B /* WebView.swift in Sources */,
 				473E03782C6AF20B00F3E0FC /* Endpoint.swift in Sources */,
 				828FF2B32C3E71F1001A4ADE /* DialogModifier.swift in Sources */,
+				4768F20D2C7DA3CC009815FC /* Color+.swift in Sources */,
 				5E029B612C415A2D0091249A /* SHA256.swift in Sources */,
 				8274CF3B2C33DBC800FBFA9D /* LoginView.swift in Sources */,
 				82AB4F1D2C3EBF5400787B3B /* AlertModifier.swift in Sources */,
@@ -855,6 +863,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "홍익열공이";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -898,6 +907,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "홍익열공이";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";

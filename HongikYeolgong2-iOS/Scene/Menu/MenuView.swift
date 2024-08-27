@@ -84,7 +84,9 @@ struct MenuView: View {
                 Spacer()
                 
                 HStack(spacing: 0) {
-                    Button(action: {logoutAlert = true}, label: {
+                    Button(action: {
+                        logoutAlert = true
+                    }, label: {
                         CustomText(font: .pretendard, title: "로그아웃", textColor: .customGray300, textWeight: .regular, textSize: 16)
                             .frame(width: UIScreen.UIWidth(56), height: UIScreen.UIHeight(26))
                     })
@@ -92,7 +94,9 @@ struct MenuView: View {
                     CustomText(font: .pretendard, title: "|", textColor: .customGray300, textWeight: .regular, textSize: 16)
                         .padding(.horizontal, UIScreen.UIWidth(24))
                     
-                    Button(action: {deleteAccountAlert = true}, label: {
+                    Button(action: {
+                        deleteAccountAlert = true
+                    }, label: {
                         CustomText(font: .pretendard, title: "회원탈퇴", textColor: .customGray300, textWeight: .regular, textSize: 16)
                             .frame(width: UIScreen.UIWidth(56), height: UIScreen.UIHeight(26))
                     })
@@ -119,11 +123,15 @@ struct MenuView: View {
                 }
             }
         }
-        .alert(title: "로그아웃 하실 건가요?", confirmButtonText: "돌아가기", cancleButtonText: "로그아웃하기", isPresented: $logoutAlert, confirmAction: {}, cancelAction: {
+        .alert(title: "로그아웃 하실 건가요?", confirmButtonText: "돌아가기", cancleButtonText: "로그아웃하기", isPresented: $logoutAlert, confirmAction: {
+            
+        }, cancelAction: {
             authViewModel.send(action: .logOut)
             
         })
-        .alert(title: "정말 탈퇴하실 건가요?", confirmButtonText: "돌아가기", cancleButtonText: "탈퇴하기", isPresented: $deleteAccountAlert, confirmAction: {}, cancelAction: {
+        .alert(title: "정말 탈퇴하실 건가요?", confirmButtonText: "돌아가기", cancleButtonText: "탈퇴하기", isPresented: $deleteAccountAlert, confirmAction: {
+            
+        }, cancelAction: {
             authViewModel.send(action: .deleteAccount)            
         })
     }
