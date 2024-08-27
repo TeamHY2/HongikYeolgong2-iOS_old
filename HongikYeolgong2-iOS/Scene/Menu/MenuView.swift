@@ -61,7 +61,7 @@ struct MenuView: View {
                                 isOnAlarm = $0
                                 UserDefaults.standard.set($0, forKey: "isOnAlarm")
                             } else {
-                                if let url = URL(string: UIApplication.openSettingsURLString) {
+                                if let url = URL(string: UIApplication.openNotificationSettingsURLString) {
                                     UIApplication.shared.open(url)
                                 }
                             }
@@ -111,6 +111,11 @@ struct MenuView: View {
                     Image("ic_back")
                 })
             })
+        }
+        .onAppear {
+            Task {
+                await LocalNotificationService.shared.checkPermission()
+            }
         }
         .onChange(of: scenePhase) { phase in
             // 설정이 바뀌고나서 권한체크
