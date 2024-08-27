@@ -39,7 +39,6 @@ final class CalendarViewModel: ViewModelType {
     private let calendar = Calendar.current
     
     private var subscriptions = Set<AnyCancellable>()
-    
 }
 
 // MARK: - Binding

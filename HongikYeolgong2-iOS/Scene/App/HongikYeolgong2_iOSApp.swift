@@ -7,13 +7,16 @@ import Firebase
 struct HongikYeolgong2_iOSApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject private var authViewModel = AuthViewModel()
+    @StateObject private var timerViewModel = TimerViewModel()
+    @StateObject private var calendarViewModel = CalendarViewModel()
     
     var body: some Scene {
         WindowGroup {
             InitialView()                
-                .environmentObject(AuthViewModel())
-                .environmentObject(TimerViewModel())
-                .environmentObject(CalendarViewModel())
+                .environmentObject(authViewModel)
+                .environmentObject(timerViewModel)
+                .environmentObject(calendarViewModel)
                 .onAppear {
                     Task {
                         await LocalNotificationService.shared.checkPermission()
@@ -28,8 +31,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
         FirebaseApp.configure()
-        setupDependency()
-        
+        setupDependency()        
         return true
     }
     

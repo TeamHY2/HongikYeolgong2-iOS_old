@@ -32,7 +32,6 @@ class AuthViewModel: ObservableObject {
     @Inject private var authService: AuthenticationServiceType
     @Inject private var userRepository: UserRepositoryType
     
-    init() {}
     
     func send(action: Action) {
         switch action {
@@ -68,6 +67,7 @@ extension AuthViewModel {
                 case .failure(let error):
                     showingErrorAlert = true
                     errorMessage = "문제가 발생했습니다 다시 시도해주세요."
+                    print("유저정보를 가져오는데 실패했습니다. \(error.localizedDescription)")
                     authenticationState = .unauthenticated
                 }
             } receiveValue: { [weak self] user in
@@ -120,7 +120,7 @@ extension AuthViewModel {
             .sink { completion in
                 
             } receiveValue: { [weak self] user in
-                guard let self = self else { return }
+                guard let self = self else { return }                
                 self.authenticationState = .unauthenticated
                 self.user = nil
             }.store(in: &subscriptions)

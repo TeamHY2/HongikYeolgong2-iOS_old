@@ -125,10 +125,9 @@ struct MenuView: View {
         }
         .alert(title: "로그아웃 하실 건가요?", confirmButtonText: "돌아가기", cancleButtonText: "로그아웃하기", isPresented: $logoutAlert, confirmAction: {
             
-        }, cancelAction: {
-            authViewModel.send(action: .logOut)
-            
-        })
+        }, cancelAction: {           
+                authViewModel.send(action: .logOut)
+        })        
         .alert(title: "정말 탈퇴하실 건가요?", confirmButtonText: "돌아가기", cancleButtonText: "탈퇴하기", isPresented: $deleteAccountAlert, confirmAction: {
             
         }, cancelAction: {
