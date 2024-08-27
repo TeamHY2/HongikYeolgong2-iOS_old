@@ -12,8 +12,9 @@ struct HomeView: View {
     @State private var showCompleteAlert = false
     @State private var showTimeExtensionAlert = false
     @State private var showingDialog = false
+    @State private var showingMenuView = false
+    @State private var showingWebView = false
     
-    @EnvironmentObject private var coordinator: AppCoordinator
     @EnvironmentObject private var timerViewModel: TimerViewModel
     @EnvironmentObject private var calendarViewModel: CalendarViewModel
     @EnvironmentObject private var authViewModel: AuthViewModel
@@ -22,6 +23,20 @@ struct HomeView: View {
     
     var body: some View {
         VStack(spacing: 0) {
+            NavigationLink(destination: MenuView(), isActive: $showingMenuView) { EmptyView() }
+            NavigationLink(destination: VStack {
+                WebViewUIKit(url: Constants.Url.roomStatus)
+                    .customNavigation(center: {
+                        CustomText(font: .pretendard, title: "좌석", textColor: .customGray100, textWeight: .semibold, textSize: 18)
+                    }, right: {
+                        Button(action: {
+                            showingWebView = false
+                        }, label: {
+                            Image(.icClose)
+                        })
+                    })
+            }, isActive: $showingWebView) { EmptyView() }
+            
             Spacer()
                 .frame(height: timerViewModel.isStart ? UIScreen.UIHeight(11) : UIScreen.UIHeight(43))
             
@@ -52,7 +67,7 @@ struct HomeView: View {
             } else {
                 HStack {
                     CustomButton2(action: {
-                        coordinator.push(.webView(url: Constants.Url.roomStatus))
+                        showingWebView = true
                     }, title: "좌석", image: .angularButton01, maxWidth: 69, minHeight: 52)
                     
                     Spacer().frame(width: UIScreen.UIWidth(12))
@@ -83,12 +98,11 @@ struct HomeView: View {
             CustomText(font: .suite, title: "홍익열공이", textColor: .customGray100, textWeight: .semibold, textSize: 18)
         }, right: {
             Button(action: {
-                coordinator.push(.menu)
+                showingMenuView = true
             }, label: {
                 Image(.icHamburger)
             })
         })
-    
         .dialog(isPresented: $showingDialog,
                 currentDate: $timerViewModel.startTime) {
             timerViewModel.send(action: .startButtonTap)
@@ -117,7 +131,7 @@ struct HomeView: View {
                                   }
                               })
                               .onAppear {
-                                  LocalNotificationService.shared.requestPermission()                                  
+                                  LocalNotificationService.shared.requestPermission()
                               }
     }
     

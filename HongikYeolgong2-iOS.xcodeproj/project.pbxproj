@@ -39,9 +39,6 @@
 		47A004742C594376000AC842 /* Publisher+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A004732C594376000AC842 /* Publisher+.swift */; };
 		47A7EA772C6276330025594F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 47A7EA762C6276330025594F /* GoogleService-Info.plist */; };
 		47AA66FB2C6E2FCE007CDD2B /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AA66FA2C6E2FCE007CDD2B /* WebView.swift */; };
-		47D07F8E2C64472400F6109F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D07F8D2C64472400F6109F /* Coordinator.swift */; };
-		47D07F902C645AB700F6109F /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D07F8F2C645AB700F6109F /* AppCoordinator.swift */; };
-		47D07F922C645B0D00F6109F /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D07F912C645B0D00F6109F /* AuthCoordinator.swift */; };
 		47D07F942C6461E100F6109F /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D07F932C6461E100F6109F /* SignUpView.swift */; };
 		47D07F982C64A8B500F6109F /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D07F972C64A8B500F6109F /* SplashView.swift */; };
 		47D4CEC22C75C8F7005C126B /* TimeInterval+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D4CEC12C75C8F7005C126B /* TimeInterval+.swift */; };
@@ -144,9 +141,6 @@
 		47A004732C594376000AC842 /* Publisher+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+.swift"; sourceTree = "<group>"; };
 		47A7EA762C6276330025594F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		47AA66FA2C6E2FCE007CDD2B /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
-		47D07F8D2C64472400F6109F /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		47D07F8F2C645AB700F6109F /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		47D07F912C645B0D00F6109F /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		47D07F932C6461E100F6109F /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		47D07F972C64A8B500F6109F /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		47D4CEC12C75C8F7005C126B /* TimeInterval+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+.swift"; sourceTree = "<group>"; };
@@ -408,7 +402,6 @@
 			isa = PBXGroup;
 			children = (
 				82E15A6F2C48216E004951BE /* DIContainer */,
-				8274CF2F2C33D3DB00FBFA9D /* Coordinator */,
 				5E5B0BC62C3286A600936435 /* Extension */,
 				825668A12C3672C80066B216 /* Modifiers */,
 				8270C9952C4D4AAE000EB06A /* ViewModelType.swift */,
@@ -480,16 +473,6 @@
 				477017842C63C9D8003F3702 /* UserRepository.swift */,
 			);
 			path = Repository;
-			sourceTree = "<group>";
-		};
-		8274CF2F2C33D3DB00FBFA9D /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				47D07F8D2C64472400F6109F /* Coordinator.swift */,
-				47D07F8F2C645AB700F6109F /* AppCoordinator.swift */,
-				47D07F912C645B0D00F6109F /* AuthCoordinator.swift */,
-			);
-			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		82D4D6072C327BDC00A92327 = {
@@ -682,7 +665,6 @@
 				5E029B5A2C4157C20091249A /* User.swift in Sources */,
 				8252CCDC2C40396100690D75 /* Calendar.swift in Sources */,
 				8252CCE02C404A7300690D75 /* Day.swift in Sources */,
-				47D07F902C645AB700F6109F /* AppCoordinator.swift in Sources */,
 				47E0A8C72C511B72009F1BA9 /* CalendarViewModel.swift in Sources */,
 				82B1FE7B2C3BC567002D9163 /* Quote.swift in Sources */,
 				5EE304A22C4023A40002C49E /* AuthViewModel.swift in Sources */,
@@ -697,9 +679,7 @@
 				825668A52C367ED30066B216 /* CustomNavBarModifier.swift in Sources */,
 				825668A72C367F130066B216 /* View+.swift in Sources */,
 				4790ECDE2C57F9E5002FCCAF /* HomeView.swift in Sources */,
-				47D07F8E2C64472400F6109F /* Coordinator.swift in Sources */,
 				47E0A8C52C51177B009F1BA9 /* TimerViewModel.swift in Sources */,
-				47D07F922C645B0D00F6109F /* AuthCoordinator.swift in Sources */,
 				825665792C35202E0018C799 /* MenuViewModel.swift in Sources */,
 				8252CCDE2C40440600690D75 /* CalendarCell.swift in Sources */,
 				5E89D79A2C35855F00C9CB71 /* Font+.swift in Sources */,
@@ -878,7 +858,7 @@
 				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -921,7 +901,7 @@
 				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

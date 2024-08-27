@@ -67,7 +67,7 @@ extension AuthViewModel {
                     break
                 case .failure(let error):
                     showingErrorAlert = true
-                    errorMessage = "문제가 발생했습니다 다시 시도해주세요. \n \(error.localizedDescription)"
+                    errorMessage = "문제가 발생했습니다 다시 시도해주세요."
                     authenticationState = .unauthenticated
                 }
             } receiveValue: { [weak self] user in
@@ -122,6 +122,7 @@ extension AuthViewModel {
             } receiveValue: { [weak self] user in
                 guard let self = self else { return }
                 self.authenticationState = .unauthenticated
+                self.user = nil
             }.store(in: &subscriptions)
     }
     

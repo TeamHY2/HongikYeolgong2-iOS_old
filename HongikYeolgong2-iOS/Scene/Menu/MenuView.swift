@@ -2,7 +2,6 @@ import SwiftUI
 import AuthenticationServices
 
 struct MenuView: View {
-    @EnvironmentObject private var coordinator: AppCoordinator
     @EnvironmentObject var authViewModel: AuthViewModel
     
     @State var isOn: Bool = false
@@ -61,10 +60,10 @@ struct MenuView: View {
                                 isOnAlarm = $0
                                 UserDefaults.standard.set($0, forKey: "isOnAlarm")
                             } else {
-                                if let url = URL(string: UIApplication.openNotificationSettingsURLString) {
+                                if let url = URL(string: UIApplication.openSettingsURLString) {
                                     UIApplication.shared.open(url)
                                 }
-                            }                            
+                            }
                         }
                     ))
                     .toggleStyle(ColoredToggleStyle(onColor:Color(UIColor.customBlue100)))
@@ -102,7 +101,7 @@ struct MenuView: View {
             .padding(.horizontal, 28)
             .customNavigation(left: {
                 Button(action: {
-                    coordinator.pop()
+                    
                 }, label: {
                     Image("ic_back")
                 })
@@ -119,8 +118,13 @@ struct MenuView: View {
                 }
             }
         }
-        .alert(title: "로그아웃 하실 건가요?", confirmButtonText: "돌아가기", cancleButtonText: "로그아웃하기", isPresented: $logoutAlert, confirmAction: {}, cancelAction: {authViewModel.send(action: .logOut)})
-        .alert(title: "정말 탈퇴하실 건가요?", confirmButtonText: "돌아가기", cancleButtonText: "탈퇴하기", isPresented: $deleteAccountAlert, confirmAction: {}, cancelAction: {authViewModel.send(action: .deleteAccount)})
+        .alert(title: "로그아웃 하실 건가요?", confirmButtonText: "돌아가기", cancleButtonText: "로그아웃하기", isPresented: $logoutAlert, confirmAction: {}, cancelAction: {
+            authViewModel.send(action: .logOut)
+            
+        })
+        .alert(title: "정말 탈퇴하실 건가요?", confirmButtonText: "돌아가기", cancleButtonText: "탈퇴하기", isPresented: $deleteAccountAlert, confirmAction: {}, cancelAction: {
+            authViewModel.send(action: .deleteAccount)            
+        })
     }
 }
 

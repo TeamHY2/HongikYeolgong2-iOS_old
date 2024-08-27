@@ -10,9 +10,7 @@ struct HongikYeolgong2_iOSApp: App {
     
     var body: some Scene {
         WindowGroup {
-            InitialView()
-                .environmentObject(AppCoordinator())
-                .environmentObject(AuthCoordinator())
+            InitialView()                
                 .environmentObject(AuthViewModel())
                 .environmentObject(TimerViewModel())
                 .environmentObject(CalendarViewModel())

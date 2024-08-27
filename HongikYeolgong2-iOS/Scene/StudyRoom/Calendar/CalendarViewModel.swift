@@ -98,11 +98,13 @@ extension CalendarViewModel {
      새롭게 받아온 데이터를 studyRoomUsageList에 저장한다
      */
     func fetchStudyRoomRecords(for date: Date, uid: String) {
+        isLoading = true
         studyRoomRepository.fetchStudyRoomUsageRecords(with: uid)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] (completion) in
                 guard let self = self else { return }
-                switch completion {
+                isLoading = false
+                switch completion {                
                 case .finished: break
                 case .failure(let error):
                     showingErrorAlert = true

@@ -2,18 +2,16 @@
 
 import SwiftUI
 
-struct InitialView: View {
-    @EnvironmentObject private var appCoordinator: AppCoordinator
-    @EnvironmentObject private var authCoordinator: AuthCoordinator
+struct InitialView: View {    
     @EnvironmentObject private var authViewModel: AuthViewModel
     @EnvironmentObject private var calendarViewModel: CalendarViewModel
     
-    @State private var isFirstLaunch = true    
+    @State private var isFirstLaunch = true
     
     var appInitCompleted: AuthenticationState {
         if authViewModel.authenticationState == .authenticated && !calendarViewModel.isLoading {
             return .authenticated
-        } else if authViewModel.authenticationState == .unauthenticated && !isFirstLaunch {
+        } else if (authViewModel.authenticationState == .unauthenticated && !isFirstLaunch) || (authViewModel.authenticationState == .unauthenticated && isFirstLaunch) {
             return .unauthenticated
         } else {
             return .pending
@@ -28,18 +26,12 @@ struct InitialView: View {
             case .pending:
                     SplashView()
             case .unauthenticated:
-                NavigationStack(path: $authCoordinator.paths) {
+                NavigationView {
                     LoginView()
-                        .navigationDestination(for: AuthCoordinator.Scene.self) { scene in
-                            authCoordinator.buildScreen(scene: scene)
-                        }
                 }
             case .authenticated:
-                NavigationStack(path: $appCoordinator.paths) {
+                NavigationView {
                     HomeView()
-                        .navigationDestination(for: AppCoordinator.Scene.self) { scene in
-                            appCoordinator.buildScreen(scene: scene)
-                        }
                 }
             }
         }
