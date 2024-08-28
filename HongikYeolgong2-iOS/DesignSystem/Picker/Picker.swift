@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Picker: View {
+    @State private var contentSize: CGFloat = 0
     
     @Binding var text: String
     @Binding var seletedItem: String
@@ -19,6 +20,19 @@ struct Picker: View {
     var filterdItem: [String] {
         items.filter { $0.contains(text)}
     }
+    
+    var isEmpty: Bool {
+        !text.isEmpty && filterdItem.count > 0
+    }
+    
+    var contentHeight: CGFloat {
+        (contentSize + 1) * CGFloat(filterdItem.count)
+    }
+    
+    var maxHeight: CGFloat {
+        (contentSize + 1) * 3
+    }
+    
     var body: some View {
         VStack(spacing: 8) {
             ZStack {
@@ -53,25 +67,35 @@ struct Picker: View {
                     .opacity(isFocused ? 1 : 0)
             )
             
-            if !text.isEmpty && isFocused {
+            // scrollView
+            if (isFocused && isEmpty) || (isFocused && text.isEmpty) {
                 ScrollView {
-                    LazyVStack(alignment: .leading) {
-                        ForEach(filterdItem, id: \.self) { item in
-                            Text("\(item)")
-                                .font(.pretendard(size: 16, weight: .regular))
-                                .foregroundStyle(.gray200)
-                                .padding(.leading, 12)
-                                .padding(.vertical, 12)
-                                .onTapGesture {
-                                    seletedItem = item
-                                    text = item
-                                    isFocused = false
+                    LazyVStack(alignment: .leading, spacing: 0) {
+                        ForEach(isFocused && text.isEmpty ? items : filterdItem, id: \.self) { item in
+                            Button(action: {
+                                seletedItem = item
+                                text = item
+                                isFocused = false
+                            }, label: {
+                                Text("\(item)")
+                                    .font(.pretendard(size: 16, weight: .regular))
+                                    .foregroundStyle(.gray200)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(12)
+                            })
+                            .overlay (
+                                GeometryReader { g in
+                                    Color.clear.onAppear {
+                                        contentSize = g.size.height
+                                    }
                                 }
+                            )
                         }
                     }
-                    .background(.gray800)
-                    .cornerRadius(8)
                 }
+                .frame(maxHeight: filterdItem.count > 0 ? min(contentHeight, maxHeight) : maxHeight)
+                .background(.gray800)
+                .cornerRadius(8)
             }
         }
         

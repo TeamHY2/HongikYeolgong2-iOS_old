@@ -9,7 +9,7 @@ struct JoinView: View {
     @StateObject private var joinViewModel = JoinViewModel()
     
     var body: some View {
-        VStack(spacing: 10) {
+        VStack(spacing: 0) {
             Spacer().frame(height: 23)
             
             // 닉네임
@@ -19,6 +19,8 @@ struct JoinView: View {
                     .foregroundStyle(.gray200)
                 Spacer()
             }
+            
+            Spacer().frame(height: 8)
         
             VStack(alignment: .leading, spacing: 4) {
                 HStack(alignment: .top, spacing: 10) {
@@ -29,13 +31,18 @@ struct JoinView: View {
                             .frame(width: 213)
                     }
                     
-                    CustomButton(title: "중복확인") {}
+                    CustomButton(title: "중복확인",
+                                 style: .rounded) {
+                        
+                    }
                 }
                 
                 Text("*특수문자와 띄어쓰기를 사용할 수 없어요.")
                     .font(.pretendard(size: 12, weight: .regular))
                     .foregroundStyle(.yellow300)
             }
+            
+            Spacer().frame(height: 12)
             
             // 학과
             HStack {
@@ -45,6 +52,8 @@ struct JoinView: View {
                 Spacer()
             }
             
+            Spacer().frame(height: 8)
+            
             Picker(text: $text2,
                    seletedItem: $seletedItem,
                    placeholder: "학과를 입력해주세요.",
@@ -52,6 +61,8 @@ struct JoinView: View {
                   )
         
             Spacer()
+            
+            
         }
         .padding(.horizontal, 28)
         .customNavigation(left: {
