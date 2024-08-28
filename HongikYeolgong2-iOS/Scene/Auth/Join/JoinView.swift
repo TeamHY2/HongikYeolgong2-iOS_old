@@ -33,7 +33,6 @@ struct JoinView: View {
                     
                     CustomButton(title: "중복확인",
                                  style: .rounded) {
-                        
                     }
                 }
                 
@@ -62,10 +61,12 @@ struct JoinView: View {
         
             Spacer()
             
-            
+            CustomButton(title: "가입하기",
+                         style: .background(image: .angularButton02)) {
+            }
         }
         .padding(.horizontal, 28)
-        .customNavigation(left: {
+        .customNavigation(left: {            
             Text("회원가입")
                 .font(.suite(size: 18, weight: .semibold))
                 .foregroundStyle(.gray100)

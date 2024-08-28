@@ -12,7 +12,7 @@ struct CustomButton: View {
     enum ButtonStyle {
         case rounded
         case rectangle
-        case background(resource: String)
+        case background(image: ImageResource)
     }
     
     let title: String
@@ -40,16 +40,25 @@ struct CustomButton: View {
             .cornerRadius(8)
         case .rectangle:
             EmptyView()
-        case .background(let resource):
+        case .background(let image):
             Button(action: {
                 action()
             }, label: {
                 Text(title)
-                    .font(.pretendard(size: 16, weight: .regular))
-                    .frame(maxWidth: .infinity, maxHeight: 48)
+                    .font(.suite(size: 16, weight: .semibold))
+                    .frame(maxWidth: .infinity, maxHeight: 50)
                     .foregroundColor(.white)
             })
-            .background(.blue100)
+            .background(
+                Image(image)
+                    .resizable()
+                    .frame(maxWidth: .infinity, minHeight: 50)
+                    .cornerRadius(8)
+                    .background(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(.blue400, lineWidth: 1)
+                    )
+            )
             .cornerRadius(8)
         }
     }
