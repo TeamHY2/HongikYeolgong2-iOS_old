@@ -113,12 +113,12 @@ extension HomeView {
             
             
             if timerViewModel.remainingTime <= Constants.StudyRoomService.firstNotificationTime {
-                CustomButton(action: {
+                CustomButtonOld(action: {
                     showTimeExtensionAlert = true
                 }, font: .suite, title: "열람실 이용 연장", titleColor: .white, backgroundColor: .customBlue100, leading: 0, trailing: 0)
             }
             
-            CustomButton(action: {
+            CustomButtonOld(action: {
                 showCompleteAlert = true
             }, font: .suite, title: "열람실 이용 종료", titleColor: .customGray100, backgroundColor: .customGray600, leading: 0, trailing: 0)
             .padding(.top, 28)

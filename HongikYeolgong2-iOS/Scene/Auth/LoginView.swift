@@ -3,6 +3,7 @@ import AuthenticationServices
 
 struct LoginView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
+    @State private var showJoinView = false
     
     var body: some View {
             VStack{
@@ -18,14 +19,16 @@ struct LoginView: View {
                 .overlay(
                     SignInWithAppleButton(onRequest: { request in
                         authViewModel.send(action: .appleLogin(request))
-                    }, onCompletion: { result in
-                        
-                        authViewModel.send(action: .appleLoginCompletion(result))
+                    }, onCompletion: { result in                        
+                        showJoinView = true
                     })
                     .blendMode(.destinationOver)
                 )
             }
-            .background(.bgcolor)        
+            .navigationDestination(isPresented: $showJoinView, destination: {
+                JoinView()
+            })
+            .background(.bgcolor)
     }
 }
 
