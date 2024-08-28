@@ -8,16 +8,28 @@
 import SwiftUI
 import WebKit
 
-struct WebViewUIKit: View {
+struct WebView: View {
     @ObservedObject var model: WebViewModel
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     init(url: String) {
         self.model = WebViewModel(url: url)
     }
     var body: some View {
         LoadingView(isShowing: self.$model.isLoading) {
-            WebView(viewModel: self.model)
+            WebViewReresentable(viewModel: self.model)
         }
+        .customNavigation(center: {
+            Text("좌석")
+                .font(.pretendard(size: 18, weight: .semibold))
+                .foregroundStyle(.gray100)
+        }, right: {
+            Button(action: {
+                presentationMode.wrappedValue.dismiss()
+            }, label: {
+                Image(.icClose)
+            })
+        })
     }
 }
 
@@ -30,7 +42,7 @@ class WebViewModel: ObservableObject {
     }
 }
 
-struct WebView: UIViewRepresentable {
+struct WebViewReresentable: UIViewRepresentable {
     @ObservedObject var viewModel: WebViewModel
     let webView = WKWebView()
     
@@ -50,7 +62,7 @@ struct WebView: UIViewRepresentable {
         }
     }
     
-    func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<WebView>) { }
+    func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<WebViewReresentable>) { }
     
     func makeUIView(context: Context) -> UIView {
         self.webView.navigationDelegate = context.coordinator

@@ -22,10 +22,7 @@ struct HomeView: View {
     @EnvironmentObject private var homeViewModel: HomeViewModel
     
     @Environment(\.scenePhase) var scenePhase
-}
-
-// MARK: - MainView
-extension HomeView {
+    
     var body: some View {
         VStack(spacing: 0) {
             Spacer()
@@ -52,7 +49,9 @@ extension HomeView {
                 .allowsHitTesting(false)
         )
         .customNavigation(left: {
-            CustomText(font: .suite, title: "홍익열공이", textColor: .customGray100, textWeight: .semibold, textSize: 18)
+            Text("홍익열공이")
+                .font(.suite(size: 18, weight: .semibold))
+                .foregroundStyle(.gray100)
         }, right: {
             Button(action: {
                 showingMenuView = true
@@ -84,7 +83,7 @@ extension HomeView {
                                   MenuView()
                               })
                               .navigationDestination(isPresented: $showingWebView, destination: {
-                                  WebViewUIKit(url: Constants.Url.roomStatus)
+                                  WebView(url: Constants.Url.roomStatus)                                  
                               })
                               .onReceive(timerViewModel.$remainingTime.filter { $0 <= 0 }) { _ in
                                   saveData()
@@ -130,7 +129,7 @@ extension HomeView {
     
     private var readyView: some View {
         Group {
-            Quote(wiseSaying: homeViewModel.wiseSaying.randomElement()!)
+            Quote(wiseSaying: homeViewModel.randomSaying)
             
             Spacer()
             

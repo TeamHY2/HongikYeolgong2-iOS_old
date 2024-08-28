@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WiseSaying: Decodable {
+struct WiseSaying: Decodable, Equatable {
     let quote: String
     let author: String
 }

@@ -10,7 +10,7 @@ import SwiftUI
 final class HomeViewModel: ViewModelType {
     @Published var isSuccess = false
     @Published var wiseSaying: [WiseSaying] = []
-    
+    @Published var randomSaying: WiseSaying = WiseSaying(quote: "", author: "")
     enum Action {
         case getWiseSaying
     }
@@ -28,8 +28,9 @@ final class HomeViewModel: ViewModelType {
         guard let wiseSaying = await RemoteConfigManager.shared.getWiseSaying() else {
             return
         }
-        self.wiseSaying = wiseSaying
-        DispatchQueue.main.async {            
+        self.wiseSaying = wiseSaying    
+        randomSaying = wiseSaying.randomElement()!
+        DispatchQueue.main.async {
             self.isSuccess = true
         }
     }

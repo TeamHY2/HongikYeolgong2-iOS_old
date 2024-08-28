@@ -27,7 +27,7 @@ struct Quote: View {
             
             Spacer().frame(height: 12)
             
-            Text(wiseSaying.author)
+            Text("- \(wiseSaying.author)")
                 .font(.pretendard(size: 12, weight: .regular))
                 .multilineTextAlignment(.center)
                 .foregroundColor(.gray200)
@@ -37,6 +37,8 @@ struct Quote: View {
         .frame(height: 150)        
     }
 }
+
+
 
 //#Preview {
 //    Quote()
