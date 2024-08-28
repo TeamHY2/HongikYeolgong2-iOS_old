@@ -25,7 +25,7 @@ struct HongikYeolgong2_iOSApp: App {
                     Task {
                         await LocalNotificationService.shared.checkPermission()
                     }
-                }
+                }            
         }
     }
 }

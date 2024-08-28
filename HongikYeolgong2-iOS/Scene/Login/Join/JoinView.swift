@@ -59,7 +59,6 @@ struct JoinView: View {
                     .font(Font.pretendard(size: 16, weight: .bold))
                     .foregroundStyle(Color(UIColor.customGray200))
                 
-                
                 HStack(spacing: 0) {
                     TextField("", text: $joinViewModel.nickName,
                               prompt: Text("닉네임을 입력해주세요")
