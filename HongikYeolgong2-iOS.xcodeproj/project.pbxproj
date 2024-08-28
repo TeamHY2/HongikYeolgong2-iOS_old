@@ -73,6 +73,8 @@
 		5EE304A22C4023A40002C49E /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE304A12C4023A40002C49E /* AuthViewModel.swift */; };
 		5EE959BA2C7F1151002CD2A2 /* JoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE959B92C7F1151002CD2A2 /* JoinView.swift */; };
 		5EE959BC2C7F115D002CD2A2 /* JoinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE959BB2C7F115D002CD2A2 /* JoinViewModel.swift */; };
+		5EE959BE2C7F39D5002CD2A2 /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE959BD2C7F39D5002CD2A2 /* UIApplication+.swift */; };
+		5EE959C02C7F3A6E002CD2A2 /* TextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE959BF2C7F3A6E002CD2A2 /* TextField+.swift */; };
 		8252CCDC2C40396100690D75 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8252CCDB2C40396100690D75 /* Calendar.swift */; };
 		8252CCDE2C40440600690D75 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8252CCDD2C40440600690D75 /* CalendarCell.swift */; };
 		8252CCE02C404A7300690D75 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8252CCDF2C404A7300690D75 /* Day.swift */; };
@@ -155,6 +157,8 @@
 		5EE959B72C7F1095002CD2A2 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Pretendard-SemiBold.otf"; path = "../../../../../Downloads/Pretendard-1.3.9 (1)/public/static/Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		5EE959B92C7F1151002CD2A2 /* JoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinView.swift; sourceTree = "<group>"; };
 		5EE959BB2C7F115D002CD2A2 /* JoinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewModel.swift; sourceTree = "<group>"; };
+		5EE959BD2C7F39D5002CD2A2 /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
+		5EE959BF2C7F3A6E002CD2A2 /* TextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+.swift"; sourceTree = "<group>"; };
 		8252CCDB2C40396100690D75 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		8252CCDD2C40440600690D75 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		8252CCDF2C404A7300690D75 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
@@ -305,6 +309,8 @@
 				82AB4F222C3EEE6D00787B3B /* Date+.swift */,
 				47A004732C594376000AC842 /* Publisher+.swift */,
 				47D4CEC12C75C8F7005C126B /* TimeInterval+.swift */,
+				5EE959BD2C7F39D5002CD2A2 /* UIApplication+.swift */,
+				5EE959BF2C7F3A6E002CD2A2 /* TextField+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -675,6 +681,7 @@
 				473812372C5E622700C86215 /* StudyRoomRepository.swift in Sources */,
 				4790ECDC2C57EDC9002FCCAF /* Constants.swift in Sources */,
 				827C18C72C48FC5100B4AAEA /* CustomPicker.swift in Sources */,
+				5EE959BE2C7F39D5002CD2A2 /* UIApplication+.swift in Sources */,
 				47D4CEC22C75C8F7005C126B /* TimeInterval+.swift in Sources */,
 				8270C9912C4D48A0000EB06A /* ServiceError.swift in Sources */,
 				825668A52C367ED30066B216 /* CustomNavBarModifier.swift in Sources */,
@@ -683,6 +690,7 @@
 				47D07F8E2C64472400F6109F /* Coordinator.swift in Sources */,
 				47E0A8C52C51177B009F1BA9 /* TimerViewModel.swift in Sources */,
 				47D07F922C645B0D00F6109F /* AuthCoordinator.swift in Sources */,
+				5EE959C02C7F3A6E002CD2A2 /* TextField+.swift in Sources */,
 				825665792C35202E0018C799 /* MenuViewModel.swift in Sources */,
 				8252CCDE2C40440600690D75 /* CalendarCell.swift in Sources */,
 				5E89D79A2C35855F00C9CB71 /* Font+.swift in Sources */,

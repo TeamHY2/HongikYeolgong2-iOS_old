@@ -55,10 +55,35 @@ enum NicknameStatus {
 }
 
 
-class NicknameViewModel: ObservableObject {
+class JoinViewModel: ObservableObject {
     @Published var nicknameStatus: NicknameStatus = .none
+    @Published var nickName: String = ""
+    @Published var departmentName: String = ""
     
-    func duplicateConfirmation(_ nickName: String) -> Void {
+    init() {}
+    
+    enum Action {
+        case duplicateConfirmation
+        case updateUser
+        case updateNicknameStatus(String)
+    }
+    
+    func send(action: Action) {
+        switch action {
+        case .duplicateConfirmation:
+            duplicateConfirmation()
+        case .updateUser:
+            Task {
+                await updateUser()
+            }
+        case .updateNicknameStatus(let nickName):
+            updateNicknameStatus(nickName)
+        }
+    }
+}
+
+extension JoinViewModel {
+    func duplicateConfirmation(/*_ nickName: String*/) -> Void {
         
         if nickName.isEmpty {
             print("닉네임 입력 필요")
@@ -78,7 +103,7 @@ class NicknameViewModel: ObservableObject {
         }
     }
     
-    func updateUser(_ nickname: String, _ department: String) async -> Void {
+    func updateUser() async -> Void {
         guard let user = Auth.auth().currentUser?.uid else {
             return
         }
@@ -86,56 +111,32 @@ class NicknameViewModel: ObservableObject {
         
         do {
             try await documentRef.updateData([
-                "nickname" : nickname,
-                "department" : department
+                "nickname" : nickName,
+                "department" : departmentName
             ])
             print("닉네임과 학과가 성공적으로 업데이트 되었습니다.")
         } catch {
             print("닉네임과 학과 업데이트가 실패하였습니다.")
         }
     }
-}
-
-
-extension View {
-    func loginTextFieldModifier(width: CGFloat, height: CGFloat, text: Binding<String>) -> some View {
-        modifier(LoginTextFieldModifier(width: width, height: height, text: text))
-    }
-    func limitText(_ text: Binding<String>, to characterLimit: Int) -> some View {
-        self
-            .onChange(of: text.wrappedValue) { _ in
-                text.wrappedValue = String(text.wrappedValue.prefix(characterLimit))
-            }
-    }
-    func endTextEditing() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
-}
-
-extension UIApplication {
-    func hideKeyboard() {
-        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let window = windowScene.windows.first else {
-            return
+    
+    func updateNicknameStatus(_ nickname: String) {
+        if koreaLangCheck(nickname) {
+            self.nicknameStatus = .none
+        } else {
+            self.nicknameStatus = .error
         }
-        let tapRecognizer = UITapGestureRecognizer(target: window, action: #selector(UIView.endEditing))
-        tapRecognizer.cancelsTouchesInView = false
-        tapRecognizer.delegate = self
-        window.addGestureRecognizer(tapRecognizer)
+        if nickname.count > 11  {
+            self.nicknameStatus = .long
+        } else if (nickname.count < 2) {
+            self.nicknameStatus = .short
+        } else {
+            self.nicknameStatus = .none
+        }
     }
 }
 
-extension UIApplication: UIGestureRecognizerDelegate {
-    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return false
-    }
-}
 
-extension TextField {
-    func addLeftPadding(_ width: CGFloat) -> some View {
-        return self.padding(.leading, width)
-    }
-}
 
 func koreaLangCheck(_ input: String) -> Bool {
     let pattern = "^[가-힣a-zA-Z\\s]*$"
