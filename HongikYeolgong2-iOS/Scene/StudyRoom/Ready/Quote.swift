@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct Quote: View {
+    let wiseSaying: WiseSaying
+    
     var body: some View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
@@ -18,15 +20,15 @@ struct Quote: View {
             
             .padding(.bottom, UIScreen.UIHeight(16))
             
-            CustomText(font: .pretendard, title: "행동보다 빠르게 불안감을 \n 없앨 수 있는 것은 없습니다.", textColor: .customGray100, textWeight: .regular, textSize: 18, textAlignment: .center)
+            CustomText(font: .pretendard, title: wiseSaying.quote, textColor: .customGray100, textWeight: .regular, textSize: 18, textAlignment: .center)
                 .padding(.bottom, UIScreen.UIHeight(12))
                 .lineSpacing(3)
                 
-            CustomText(font: .pretendard, title: "- 윌터 앤더슨", textColor: .customGray200, textWeight: .regular, textSize: 12)
+            CustomText(font: .pretendard, title: wiseSaying.author, textColor: .customGray200, textWeight: .regular, textSize: 12)
         }
     }
 }
 
-#Preview {
-    Quote()
-}
+//#Preview {
+//    Quote()
+//}

@@ -31,7 +31,8 @@ final class CalendarViewModel: ViewModelType {
     @Published var studyRoomUsageList = [StudyRoomUsage]() // 서버에서 받아온 캘린더데이터
     @Published var errorMessage = ""
     @Published var showingErrorAlert = false
-    @Published var isLoading = true
+    @Published var isSuccess = false
+    
     
     // MARK: - Properties
     @Inject private var studyRoomRepository: StudyRoomRepositoryType
@@ -97,25 +98,26 @@ extension CalendarViewModel {
      새롭게 받아온 데이터를 studyRoomUsageList에 저장한다
      */
     func fetchStudyRoomRecords(for date: Date, uid: String) {
-        isLoading = true
+        
         studyRoomRepository.fetchStudyRoomUsageRecords(with: uid)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] (completion) in
                 guard let self = self else { return }
-                isLoading = false
+                
                 switch completion {                
-                case .finished: break
+                case .finished:
+                    isSuccess = true
                 case .failure(let error):
                     showingErrorAlert = true
                     errorMessage = "문제가 발생했습니다 다시 시도해주세요. \n \(error.localizedDescription)"
+                    isSuccess = false
                 }
             }, receiveValue: { [weak self] roomUsageInfo in
                 guard let self = self else { return }
                 let studyRoomUsageCount = roomUsageInfo.filter { self.calendar.isDate($0.date, equalTo: Date(), toGranularity: .day)}.count
                 currentMonth = makeMonth(date: date, roomUsageInfo: roomUsageInfo)
                 studyRoomUsageList = roomUsageInfo
-                todayStudyRoomUsageCount = studyRoomUsageCount
-                isLoading = false
+                todayStudyRoomUsageCount = studyRoomUsageCount                
             })
             .store(in: &subscriptions)
     }

@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		473812372C5E622700C86215 /* StudyRoomRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473812362C5E622700C86215 /* StudyRoomRepository.swift */; };
+		473BF76F2C7E9C17002B7242 /* Haptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473BF76E2C7E9C17002B7242 /* Haptic.swift */; };
+		473BF7712C7EB4D0002B7242 /* RemoteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473BF7702C7EB4D0002B7242 /* RemoteConfig.swift */; };
+		473BF7732C7EC1DF002B7242 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473BF7722C7EC1DF002B7242 /* HomeViewModel.swift */; };
+		473BF7752C7EC277002B7242 /* WiseSaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473BF7742C7EC277002B7242 /* WiseSaying.swift */; };
 		473E03692C6AE0B700F3E0FC /* FirestoreEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473E03682C6AE0B700F3E0FC /* FirestoreEndpoint.swift */; };
 		473E036B2C6AE17E00F3E0FC /* FirestoreIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473E036A2C6AE17E00F3E0FC /* FirestoreIdentifiable.swift */; };
 		473E036D2C6AE1B900F3E0FC /* FirestoreServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473E036C2C6AE1B900F3E0FC /* FirestoreServiceError.swift */; };
@@ -112,6 +116,10 @@
 
 /* Begin PBXFileReference section */
 		473812362C5E622700C86215 /* StudyRoomRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomRepository.swift; sourceTree = "<group>"; };
+		473BF76E2C7E9C17002B7242 /* Haptic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptic.swift; sourceTree = "<group>"; };
+		473BF7702C7EB4D0002B7242 /* RemoteConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfig.swift; sourceTree = "<group>"; };
+		473BF7722C7EC1DF002B7242 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		473BF7742C7EC277002B7242 /* WiseSaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiseSaying.swift; sourceTree = "<group>"; };
 		473E03682C6AE0B700F3E0FC /* FirestoreEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreEndpoint.swift; sourceTree = "<group>"; };
 		473E036A2C6AE17E00F3E0FC /* FirestoreIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreIdentifiable.swift; sourceTree = "<group>"; };
 		473E036C2C6AE1B900F3E0FC /* FirestoreServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreServiceError.swift; sourceTree = "<group>"; };
@@ -289,6 +297,7 @@
 			children = (
 				5E029B592C4157C20091249A /* User.swift */,
 				8252CCDF2C404A7300690D75 /* Day.swift */,
+				473BF7742C7EC277002B7242 /* WiseSaying.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -421,6 +430,8 @@
 				5EE3049C2C4022990002C49E /* AuthenticationService.swift */,
 				475C01132C526D2500FB5556 /* LocalNotificationService.swift */,
 				8270C9902C4D48A0000EB06A /* ServiceError.swift */,
+				473BF76E2C7E9C17002B7242 /* Haptic.swift */,
+				473BF7702C7EB4D0002B7242 /* RemoteConfig.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -438,6 +449,7 @@
 			children = (
 				47E0A8C42C51177B009F1BA9 /* TimerViewModel.swift */,
 				4790ECDD2C57F9E5002FCCAF /* HomeView.swift */,
+				473BF7722C7EC1DF002B7242 /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -695,8 +707,11 @@
 				477017852C63C9D8003F3702 /* UserRepository.swift in Sources */,
 				5E5B0BD32C3289D500936435 /* UIColor+.swift in Sources */,
 				47D07F942C6461E100F6109F /* SignUpView.swift in Sources */,
+				473BF76F2C7E9C17002B7242 /* Haptic.swift in Sources */,
+				473BF7712C7EB4D0002B7242 /* RemoteConfig.swift in Sources */,
 				82D4D6142C327BDC00A92327 /* HongikYeolgong2_iOSApp.swift in Sources */,
 				473E036D2C6AE1B900F3E0FC /* FirestoreServiceError.swift in Sources */,
+				473BF7752C7EC277002B7242 /* WiseSaying.swift in Sources */,
 				82AB4F232C3EEE6D00787B3B /* Date+.swift in Sources */,
 				473E03692C6AE0B700F3E0FC /* FirestoreEndpoint.swift in Sources */,
 				5E5CD4412C369994002CE244 /* UIScreen+.swift in Sources */,
@@ -714,6 +729,7 @@
 				8274CF3B2C33DBC800FBFA9D /* LoginView.swift in Sources */,
 				82AB4F1D2C3EBF5400787B3B /* AlertModifier.swift in Sources */,
 				475C01142C526D2500FB5556 /* LocalNotificationService.swift in Sources */,
+				473BF7732C7EC1DF002B7242 /* HomeViewModel.swift in Sources */,
 				82B1FE832C3C1BCD002D9163 /* TimeLapse.swift in Sources */,
 				5E5B0BD52C328A1000936435 /* CustomText.swift in Sources */,
 				82E15A712C48218B004951BE /* DependencyWrapper.swift in Sources */,

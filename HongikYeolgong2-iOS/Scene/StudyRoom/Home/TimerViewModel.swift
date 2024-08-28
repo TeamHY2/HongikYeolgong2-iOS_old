@@ -16,11 +16,12 @@ final class TimerViewModel: ViewModelType {
     @Published var remainingTime: TimeInterval = 123456
     @Published var totalTime = 0.0
     
-    
     private let timer = Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()
     
     private var checkTime: Date?
     private var subscription: AnyCancellable?
+    
+    var studyTime: TimeInterval = .init(hours: 6)
     
     // Input
     enum Action {
@@ -29,11 +30,14 @@ final class TimerViewModel: ViewModelType {
         case addTimeButtonTap
         case enterBackground
         case enterFoureground
+        case setTime(Int)
     }
     
     // Binding
     func send(action: Action) {
         switch action {
+        case .setTime(let studyTime):
+            setStudyTime(studyTime: studyTime)
         case .startButtonTap:
             startStudy()
         case .completeButtonTap:
@@ -47,9 +51,13 @@ final class TimerViewModel: ViewModelType {
         }
     }
     
+    func setStudyTime(studyTime: Int) {
+        self.studyTime = .init(hours: studyTime)
+    }
+    
     func startStudy() {
         isStart = true
-        endTime = startTime + Constants.StudyRoomService.additionalTime
+        endTime = startTime + studyTime
         remainingTime = endTime.timeIntervalSince(startTime)
         
         // Notification에 추가
@@ -74,7 +82,7 @@ final class TimerViewModel: ViewModelType {
     
     func addTime() {
         totalTime = endTime.timeIntervalSince(startTime) - remainingTime
-        endTime = endTime + Constants.StudyRoomService.additionalTime
+        endTime = endTime + studyTime
         remainingTime = endTime.timeIntervalSince(startTime) - totalTime
         
         // Notification 제거하고 다시 등록

@@ -18,6 +18,8 @@ struct HomeView: View {
     @EnvironmentObject private var timerViewModel: TimerViewModel
     @EnvironmentObject private var calendarViewModel: CalendarViewModel
     @EnvironmentObject private var authViewModel: AuthViewModel
+    @EnvironmentObject private var remoteConfigManager: RemoteConfigManager    
+    @EnvironmentObject private var homeViewModel: HomeViewModel
     
     @Environment(\.scenePhase) var scenePhase
     
@@ -46,7 +48,7 @@ struct HomeView: View {
                           timeRemaining: timerViewModel.remainingTime,
                           usageCount: calendarViewModel.todayStudyRoomUsageCount)
             } else {
-                Quote()
+                Quote(wiseSaying: homeViewModel.wiseSaying.randomElement()!)
             }
             
             Spacer()
@@ -75,7 +77,7 @@ struct HomeView: View {
                     CustomButton2(action: {
                         showingDialog = true
                     }, title: "열람실 이용 시작", image: .angularButton02, maxWidth: .infinity, minHeight: 52)
-                }                
+                }
             }
             
             Spacer()
@@ -104,7 +106,11 @@ struct HomeView: View {
         })
         .dialog(isPresented: $showingDialog,
                 currentDate: $timerViewModel.startTime) {
-            timerViewModel.send(action: .startButtonTap)
+            Task {
+                guard let studyTime = await remoteConfigManager.getStudyTime() else { return }
+                timerViewModel.send(action: .setTime(studyTime))
+                timerViewModel.send(action: .startButtonTap)
+            }
         }
                 .alert(title: "열람실을 다 이용하셨나요?",
                        confirmButtonText: "네",

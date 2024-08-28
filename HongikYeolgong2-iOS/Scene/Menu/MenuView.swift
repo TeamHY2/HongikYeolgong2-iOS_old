@@ -60,6 +60,7 @@ struct MenuView: View {
                             if LocalNotificationService.shared.authStatus == .authorized {
                                 isOnAlarm = $0
                                 UserDefaults.standard.set($0, forKey: "isOnAlarm")
+                                HapticManager.shared.hapticImpact(style: .light)
                             } else {
                                 if let url = URL(string: UIApplication.openNotificationSettingsURLString) {
                                     UIApplication.shared.open(url)
