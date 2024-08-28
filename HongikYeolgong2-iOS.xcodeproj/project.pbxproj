@@ -12,6 +12,7 @@
 		473BF7712C7EB4D0002B7242 /* RemoteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473BF7702C7EB4D0002B7242 /* RemoteConfig.swift */; };
 		473BF7732C7EC1DF002B7242 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473BF7722C7EC1DF002B7242 /* HomeViewModel.swift */; };
 		473BF7752C7EC277002B7242 /* WiseSaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473BF7742C7EC277002B7242 /* WiseSaying.swift */; };
+		473BF7772C7F141B002B7242 /* GoogleService-Info-dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 473BF7762C7F141B002B7242 /* GoogleService-Info-dev.plist */; };
 		473E03692C6AE0B700F3E0FC /* FirestoreEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473E03682C6AE0B700F3E0FC /* FirestoreEndpoint.swift */; };
 		473E036B2C6AE17E00F3E0FC /* FirestoreIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473E036A2C6AE17E00F3E0FC /* FirestoreIdentifiable.swift */; };
 		473E036D2C6AE1B900F3E0FC /* FirestoreServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473E036C2C6AE1B900F3E0FC /* FirestoreServiceError.swift */; };
@@ -120,6 +121,7 @@
 		473BF7702C7EB4D0002B7242 /* RemoteConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfig.swift; sourceTree = "<group>"; };
 		473BF7722C7EC1DF002B7242 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		473BF7742C7EC277002B7242 /* WiseSaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiseSaying.swift; sourceTree = "<group>"; };
+		473BF7762C7F141B002B7242 /* GoogleService-Info-dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-dev.plist"; sourceTree = "<group>"; };
 		473E03682C6AE0B700F3E0FC /* FirestoreEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreEndpoint.swift; sourceTree = "<group>"; };
 		473E036A2C6AE17E00F3E0FC /* FirestoreIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreIdentifiable.swift; sourceTree = "<group>"; };
 		473E036C2C6AE1B900F3E0FC /* FirestoreServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreServiceError.swift; sourceTree = "<group>"; };
@@ -513,6 +515,7 @@
 			children = (
 				5E89D7712C356E5500C9CB71 /* Info.plist */,
 				47A7EA762C6276330025594F /* GoogleService-Info.plist */,
+				473BF7762C7F141B002B7242 /* GoogleService-Info-dev.plist */,
 				5E8F934C2C416DF300ECE6C5 /* HongikYeolgong2-iOSDebug.entitlements */,
 				5EE304952C401A160002C49E /* HongikYeolgong2-iOSRelease.entitlements */,
 				82E15A4E2C481D02004951BE /* Resources */,
@@ -648,6 +651,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				478442C12C76264300C62E89 /* Pretendard-Bold.otf in Resources */,
+				473BF7772C7F141B002B7242 /* GoogleService-Info-dev.plist in Resources */,
 				82D4D61B2C327BDF00A92327 /* Preview Assets.xcassets in Resources */,
 				478442C92C76264300C62E89 /* SUITE-Light.otf in Resources */,
 				478442C02C76264300C62E89 /* Pretendard-Thin.otf in Resources */,

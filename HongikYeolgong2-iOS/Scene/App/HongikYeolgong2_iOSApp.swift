@@ -33,8 +33,14 @@ struct HongikYeolgong2_iOSApp: App {
 class AppDelegate: NSObject, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        #if DEBUG
+        let filePath = Bundle.main.path(forResource: "GoogleService-Info-dev", ofType: "plist")!
+        #else
+        let filePath = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist")!
+        #endif
+        let options: FirebaseOptions? = FirebaseOptions.init(contentsOfFile: filePath)
         
-        FirebaseApp.configure()       
+        FirebaseApp.configure(options: options!)
         setupDependency()
         return true
     }
