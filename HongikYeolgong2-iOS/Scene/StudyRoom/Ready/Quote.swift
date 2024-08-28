@@ -18,14 +18,23 @@ struct Quote: View {
                 Image(.shineCount03)
             }
             
-            .padding(.bottom, UIScreen.UIHeight(16))
+            Spacer().frame(height: 16)
+                    
+            Text(wiseSaying.quote)
+                .font(.pretendard(size: 18, weight: .regular))
+                .multilineTextAlignment(.center)
+                .foregroundColor(.gray100)
             
-            CustomText(font: .pretendard, title: wiseSaying.quote, textColor: .customGray100, textWeight: .regular, textSize: 18, textAlignment: .center)
-                .padding(.bottom, UIScreen.UIHeight(12))
-                .lineSpacing(3)
-                
-            CustomText(font: .pretendard, title: wiseSaying.author, textColor: .customGray200, textWeight: .regular, textSize: 12)
+            Spacer().frame(height: 12)
+            
+            Text(wiseSaying.author)
+                .font(.pretendard(size: 12, weight: .regular))
+                .multilineTextAlignment(.center)
+                .foregroundColor(.gray200)
+            
+            Spacer()
         }
+        .frame(height: 150)        
     }
 }
 

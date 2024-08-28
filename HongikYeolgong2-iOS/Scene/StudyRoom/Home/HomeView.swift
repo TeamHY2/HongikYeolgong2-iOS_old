@@ -18,70 +18,25 @@ struct HomeView: View {
     @EnvironmentObject private var timerViewModel: TimerViewModel
     @EnvironmentObject private var calendarViewModel: CalendarViewModel
     @EnvironmentObject private var authViewModel: AuthViewModel
-    @EnvironmentObject private var remoteConfigManager: RemoteConfigManager    
+    @EnvironmentObject private var remoteConfigManager: RemoteConfigManager
     @EnvironmentObject private var homeViewModel: HomeViewModel
     
     @Environment(\.scenePhase) var scenePhase
-    
+}
+
+// MARK: - MainView
+extension HomeView {
     var body: some View {
         VStack(spacing: 0) {
-            NavigationLink(destination: MenuView(), isActive: $showingMenuView) { EmptyView() }
-            NavigationLink(destination: VStack {
-                WebViewUIKit(url: Constants.Url.roomStatus)
-                    .customNavigation(center: {
-                        CustomText(font: .pretendard, title: "좌석", textColor: .customGray100, textWeight: .semibold, textSize: 18)
-                    }, right: {
-                        Button(action: {
-                            showingWebView = false
-                        }, label: {
-                            Image(.icClose)
-                        })
-                    })
-            }, isActive: $showingWebView) { EmptyView() }
-            
             Spacer()
-                .frame(height: timerViewModel.isStart ? UIScreen.UIHeight(11) : UIScreen.UIHeight(43))
+                .frame(height: timerViewModel.isStart ? 11 : 43)
             
+            // 타이머 시작
             if timerViewModel.isStart {
-                TimeLapse(startTime: timerViewModel.startTime,
-                          endTime: timerViewModel.endTime,
-                          timeRemaining: timerViewModel.remainingTime,
-                          usageCount: calendarViewModel.todayStudyRoomUsageCount)
+                timerView
             } else {
-                Quote(wiseSaying: homeViewModel.wiseSaying.randomElement()!)
+                readyView
             }
-            
-            Spacer()
-                .frame(height: timerViewModel.isStart ? UIScreen.UIHeight(28) : UIScreen.UIHeight(120))
-            
-            if timerViewModel.isStart {
-                if TimeInterval(timerViewModel.remainingTime) <= Constants.StudyRoomService.firstNotificationTime {
-                    CustomButton(action: {
-                        showTimeExtensionAlert = true
-                    }, font: .suite, title: "열람실 이용 연장", titleColor: .white, backgroundColor: .customBlue100, leading: 0, trailing: 0)
-                    
-                    Spacer().frame(height: UIScreen.UIHeight(12))
-                }
-                
-                CustomButton(action: {
-                    showCompleteAlert = true
-                }, font: .suite, title: "열람실 이용 종료", titleColor: .customGray100, backgroundColor: .customGray600, leading: 0, trailing: 0)
-            } else {
-                HStack {
-                    CustomButton2(action: {
-                        showingWebView = true
-                    }, title: "좌석", image: .angularButton01, maxWidth: 69, minHeight: 52)
-                    
-                    Spacer().frame(width: UIScreen.UIWidth(12))
-                    
-                    CustomButton2(action: {
-                        showingDialog = true
-                    }, title: "열람실 이용 시작", image: .angularButton02, maxWidth: .infinity, minHeight: 52)
-                }
-            }
-            
-            Spacer()
-            
             
             if !calendarViewModel.currentMonth.isEmpty {
                 CalendarView()
@@ -90,6 +45,7 @@ struct HomeView: View {
             }
         }
         .padding(.horizontal, 28)
+        
         .background(
             Image(.iOSBackground)
                 .ignoresSafeArea(.all)
@@ -124,6 +80,12 @@ struct HomeView: View {
                               isPresented: $showTimeExtensionAlert) {
                            timerViewModel.send(action: .addTimeButtonTap)
                        }
+                              .navigationDestination(isPresented: $showingMenuView, destination: {
+                                  MenuView()
+                              })
+                              .navigationDestination(isPresented: $showingWebView, destination: {
+                                  WebViewUIKit(url: Constants.Url.roomStatus)
+                              })
                               .onReceive(timerViewModel.$remainingTime.filter { $0 <= 0 }) { _ in
                                   saveData()
                               }.onChange(of: scenePhase, perform: { value in
@@ -139,7 +101,58 @@ struct HomeView: View {
                                   LocalNotificationService.shared.requestPermission()
                               }
     }
+}
+
+// MARK: - SubView
+extension HomeView {
+    private var timerView: some View {
+        Group {
+            TimeLapse(startTime: timerViewModel.startTime,
+                      endTime: timerViewModel.endTime,
+                      timeRemaining: timerViewModel.remainingTime,
+                      usageCount: calendarViewModel.todayStudyRoomUsageCount)
+            
+            
+            if timerViewModel.remainingTime <= Constants.StudyRoomService.firstNotificationTime {
+                CustomButton(action: {
+                    showTimeExtensionAlert = true
+                }, font: .suite, title: "열람실 이용 연장", titleColor: .white, backgroundColor: .customBlue100, leading: 0, trailing: 0)
+            }
+            
+            CustomButton(action: {
+                showCompleteAlert = true
+            }, font: .suite, title: "열람실 이용 종료", titleColor: .customGray100, backgroundColor: .customGray600, leading: 0, trailing: 0)
+            .padding(.top, 28)
+            
+            Spacer()
+        }
+    }
     
+    private var readyView: some View {
+        Group {
+            Quote(wiseSaying: homeViewModel.wiseSaying.randomElement()!)
+            
+            Spacer()
+            
+            HStack {
+                CustomButton2(action: {
+                    showingWebView = true
+                }, title: "좌석", image: .angularButton01, maxWidth: 69, minHeight: 52)
+                
+                Spacer().frame(width: 12)
+                
+                CustomButton2(action: {
+                    showingDialog = true
+                }, title: "열람실 이용 시작", image: .angularButton02, maxWidth: .infinity, minHeight: 52)
+            }
+            
+            Spacer().frame(height: 40)
+        }
+    }
+}
+
+// MARK: - Helpers
+extension HomeView {
     func saveData() {
         // 타이머 중지
         timerViewModel.send(action: .completeButtonTap)
@@ -154,9 +167,3 @@ struct HomeView: View {
         }
     }
 }
-
-
-
-//#Preview {
-//    HomeView()
-//}

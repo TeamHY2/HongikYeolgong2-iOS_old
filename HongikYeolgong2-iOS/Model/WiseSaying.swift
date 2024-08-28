@@ -7,10 +7,6 @@
 
 import Foundation
 
-struct Response: Decodable {
-    let result: [WiseSaying]
-}
-
 struct WiseSaying: Decodable {
     let quote: String
     let author: String

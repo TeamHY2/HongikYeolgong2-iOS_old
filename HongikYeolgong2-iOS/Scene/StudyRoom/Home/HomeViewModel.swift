@@ -29,7 +29,7 @@ final class HomeViewModel: ViewModelType {
             return
         }
         self.wiseSaying = wiseSaying
-        DispatchQueue.main.async {
+        DispatchQueue.main.async {            
             self.isSuccess = true
         }
     }
