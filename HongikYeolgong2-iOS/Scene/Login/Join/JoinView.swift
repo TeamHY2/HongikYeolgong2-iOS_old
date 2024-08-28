@@ -2,7 +2,7 @@
 import SwiftUI
 
 struct JoinView: View {
-    @StateObject private var joinVM = JoinViewModel()
+    @StateObject private var joinViewModel = JoinViewModel()
     @EnvironmentObject private var authViewModel: AuthViewModel
     
     @State var suggestions = [
@@ -61,21 +61,21 @@ struct JoinView: View {
                 
                 
                 HStack(spacing: 0) {
-                    TextField("", text: $joinVM.nickName,
+                    TextField("", text: $joinViewModel.nickName,
                               prompt: Text("닉네임을 입력해주세요")
                         .foregroundColor(Color(UIColor.customGray400)),
                               axis: .vertical)
                     .addLeftPadding(UIScreen.UIWidth(16))
-                    .modifier(LoginTextFieldModifier(width: UIScreen.UIWidth(213), height: UIScreen.UIHeight(48), text: $joinVM.nickName))
-                    .limitText($joinVM.nickName, to: 10)
+                    .modifier(LoginTextFieldModifier(width: UIScreen.UIWidth(213), height: UIScreen.UIHeight(48), text: $joinViewModel.nickName))
+                    .limitText($joinViewModel.nickName, to: 10)
                     .onAppear(perform : UIApplication.shared.hideKeyboard)
-                    .onChange(of: joinVM.nickName) { newValue in
-                        joinVM.send(action: .updateNicknameStatus(newValue))
+                    .onChange(of: joinViewModel.nickName) { newValue in
+                        joinViewModel.send(action: .updateNicknameStatus(newValue))
                     }
                     .padding(.trailing, UIScreen.UIWidth(10))
                     
                     
-                    Button(action: {joinVM.send(action: .duplicateConfirmation)}
+                    Button(action: {joinViewModel.send(action: .duplicateConfirmation)}
                            , label: {
                         CustomText(font: .pretendard, title: "중복확인", textColor: .white, textWeight: .regular, textSize: 16, textAlignment: .leading)
                             .minimumScaleFactor(0.2)
@@ -86,7 +86,7 @@ struct JoinView: View {
                 }
                 .padding(.top, UIScreen.UIHeight(8))
                 
-                CustomText(font: .pretendard, title: joinVM.nicknameStatus.message, textColor: joinVM.nicknameStatus.color, textWeight: .regular, textSize: 12)
+                CustomText(font: .pretendard, title: joinViewModel.nicknameStatus.message, textColor: joinViewModel.nicknameStatus.color, textWeight: .regular, textSize: 12)
                     .padding(.top, UIScreen.UIHeight(4))
                 
                 Text("학과")
@@ -94,25 +94,25 @@ struct JoinView: View {
                     .foregroundStyle(Color(UIColor.customGray200))
                     .padding(.top, UIScreen.UIHeight(34))
                 
-                TextField("", text: $joinVM.departmentName,
+                TextField("", text: $joinViewModel.departmentName,
                           prompt: Text("학과를 입력해주세요")
                     .foregroundColor(Color(UIColor.customGray400)),
                           axis: .vertical)
                 .addLeftPadding(UIScreen.UIWidth(16))
-                .modifier(LoginTextFieldModifier(width: UIScreen.UIWidth(311), height: UIScreen.UIHeight(48), text: $joinVM.departmentName))
+                .modifier(LoginTextFieldModifier(width: UIScreen.UIWidth(311), height: UIScreen.UIHeight(48), text: $joinViewModel.departmentName))
                 .onAppear(perform : UIApplication.shared.hideKeyboard)
-                .onChange(of: joinVM.departmentName) { newValue in
+                .onChange(of: joinViewModel.departmentName) { newValue in
                     showSuggestions = true
                 }
                 .padding(.top, UIScreen.UIHeight(8))
                 
-                if showSuggestions && !joinVM.departmentName.isEmpty {
+                if showSuggestions && !joinViewModel.departmentName.isEmpty {
                     ScrollView {
                         LazyVStack(alignment:.leading) {
-                            ForEach(suggestions.filter({ $0.localizedCaseInsensitiveContains(joinVM.departmentName) }), id: \.self) { suggestion in
+                            ForEach(suggestions.filter({ $0.localizedCaseInsensitiveContains(joinViewModel.departmentName) }), id: \.self) { suggestion in
                                 ZStack {
                                     Button(action: {
-                                        joinVM.departmentName = suggestion
+                                        joinViewModel.departmentName = suggestion
                                         showSuggestions = false
                                     }) {
                                         CustomText(font: .pretendard, title: suggestion, textColor: .customGray200, textWeight: .regular, textSize: 16)
@@ -134,15 +134,15 @@ struct JoinView: View {
                 Spacer()
                     
                 Button(action: {
-                    joinVM.send(action: .updateUser)
+                    joinViewModel.send(action: .updateUser); authViewModel.authenticationState = .authenticated
                 },label: {
                     CustomText(font: .pretendard, title: "가입하기", textColor: .customGray100, textWeight: .bold, textSize: 18, textAlignment: .leading)
                         .minimumScaleFactor(0.2)
                         .frame(maxWidth: UIScreen.UIWidth(311), minHeight: UIScreen.UIHeight(50))
-                        .opacity(allClear ? 1 : 0.5)
+                        .opacity(joinViewModel.nicknameStatus == .available && !joinViewModel.departmentName.isEmpty ? 1 : 0.5)
                 })
                 .background(
-                    Image(allClear ? .icClearButton: .icButton)
+                    Image(joinViewModel.nicknameStatus == .available && !joinViewModel.departmentName.isEmpty ? .icClearButton: .icButton)
                         .resizable()
                         .cornerRadius(8)
                         .background(
@@ -151,7 +151,7 @@ struct JoinView: View {
                         )
                 )
                 .cornerRadius(8.8)
-                .disabled(joinVM.nicknameStatus == .available && !joinVM.departmentName.isEmpty ? false : true )
+                .disabled(joinViewModel.nicknameStatus == .available && !joinViewModel.departmentName.isEmpty ? false : true )
                 .padding(.bottom, UIScreen.UIHeight(20))
             }
             .padding(.top, UIScreen.UIHeight(23))
