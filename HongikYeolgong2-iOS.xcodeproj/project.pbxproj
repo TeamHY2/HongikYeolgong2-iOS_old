@@ -447,8 +447,8 @@
 		825665752C351B170018C799 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				47E0A8C42C51177B009F1BA9 /* TimerViewModel.swift */,
 				4790ECDD2C57F9E5002FCCAF /* HomeView.swift */,
+				47E0A8C42C51177B009F1BA9 /* TimerViewModel.swift */,
 				473BF7722C7EC1DF002B7242 /* HomeViewModel.swift */,
 			);
 			path = Home;

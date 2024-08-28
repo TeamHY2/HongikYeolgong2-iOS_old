@@ -7,21 +7,7 @@
 
 import SwiftUI
 
-//struct SplashView: View {
-//    var body: some View {
-//        ZStack {
-//            Color(.bgcolor)
-//                .ignoresSafeArea(.all)
-//            Image(.shine)
-//        }
-//    }
-//}
-//
-//#Preview {
-//    SplashView()
-//}
-
-struct LaunchScreenRepresentable: UIViewControllerRepresentable {
+struct SplashView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
         let storyboard = UIStoryboard(name: "Launch Screen", bundle: nil)
         let viewController = storyboard.instantiateInitialViewController()!

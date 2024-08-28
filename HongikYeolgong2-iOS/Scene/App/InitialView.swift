@@ -26,7 +26,7 @@ struct InitialView: View {
     var body: some View {
         Group {
             if (isFetch && isFirstLaunch) || (isSignIn && !isDataLoaded && isFirstLaunch) {
-                LaunchScreenRepresentable()
+                SplashView()
                     .ignoresSafeArea(.all)
             } else if isSignIn && isDataLoaded {
                 NavigationStack {
