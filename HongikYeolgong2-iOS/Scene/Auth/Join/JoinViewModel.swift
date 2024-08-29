@@ -12,9 +12,16 @@ final class JoinViewModel: ViewModelType {
     @Published var departmentName = ""
     @Published var nicknameStatus: NicknameStatus = .none
     
-    var buttonDisable: Bool {
+    @Inject var userRepository: UserRepositoryType
+    
+    var nicknameCheckDisable: Bool {
         nicknameStatus.isError ||
         nickname.isEmpty
+    }
+    
+    var submitButtonDisable: Bool {
+        nicknameCheckDisable ||
+        departmentName.isEmpty
     }
     
     let suggestions = [
@@ -62,6 +69,7 @@ final class JoinViewModel: ViewModelType {
         case none // 기본상태
         case specialCharactersAndSpaces // 특수문자, 공백
         case notAllowedLength // 글자수 오류
+        case available // 사용가능
         
         var message: String {
             switch self {
@@ -71,6 +79,8 @@ final class JoinViewModel: ViewModelType {
                 "*특수문자와 띄어쓰기를 사용할 수 없어요."
             case .notAllowedLength:
                 "한글, 영어, 숫자를 포함하여 2~8자를 입력해 주세요."
+            case .available:
+                "*닉네임을 사용할 수 있습니다."
             }
         }
         
@@ -78,6 +88,8 @@ final class JoinViewModel: ViewModelType {
             switch self {
             case .none:
                 .gray400
+            case .available:
+                .green
             default:
                 .yellow300
             }
@@ -86,6 +98,8 @@ final class JoinViewModel: ViewModelType {
         var isError: Bool {
             switch self {
             case .none:
+                false
+            case .available:
                 false
             default:
                 true
@@ -97,7 +111,6 @@ final class JoinViewModel: ViewModelType {
         case inputNickname(String)
         case seletedDepartment(String)
         case nicknameCheck
-        case submitButtonTap
     }
     
     func send(action: Action) {
@@ -107,11 +120,9 @@ final class JoinViewModel: ViewModelType {
             validateNickname(text)
             break
         case .seletedDepartment(let department):
-            departmentName = department            
+            departmentName = department
             break
         case .nicknameCheck:
-            break
-        case .submitButtonTap:
             break
         }
     }
@@ -121,8 +132,7 @@ final class JoinViewModel: ViewModelType {
      2 ~ 8글자
      닉네임 중복확인 필요
      */
-    private func validateNickname(_ nickname: String) {
-        print(nickname)
+    private func validateNickname(_ nickname: String) {        
         if (!nickname.isEmpty && nickname.count < 2) || (!nickname.isEmpty && nickname.count > 8) {
             nicknameStatus = .notAllowedLength
         } else if nickname.contains(" ") {

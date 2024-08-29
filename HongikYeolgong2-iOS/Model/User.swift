@@ -9,6 +9,7 @@ import Foundation
 
 struct User: FirestoreIdentifiable, Decodable {
     var id: String
-    var nickname: String
     let email: String
+    var nickname: String?
+    var department: String?
 }

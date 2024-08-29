@@ -125,7 +125,6 @@ extension AuthenticationService {
             
             let firebaseUser = result.user
             let user: User = .init(id: firebaseUser.uid,
-                                   nickname: "열공이",
                                    email: firebaseUser.email ?? "")
             
             completion(.success(user))

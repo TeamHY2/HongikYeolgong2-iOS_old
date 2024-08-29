@@ -18,11 +18,21 @@ struct CustomButton: View {
     let title: String
     let action: () -> ()
     let style: ButtonStyle
+    var textColor: Color = .white
+    var fontSize: CGFloat = 16
+    
+    init(title: String, textColor: Color, fontSize: CGFloat, style: ButtonStyle, action: @escaping () -> Void) {
+        self.title = title
+        self.action = action
+        self.style = style
+        self.textColor = textColor
+        self.fontSize = fontSize
+    }
     
     init(title: String, style: ButtonStyle, action: @escaping () -> Void) {
         self.title = title
         self.action = action
-        self.style = style
+        self.style = style        
     }
     
     var body: some View {
@@ -32,7 +42,7 @@ struct CustomButton: View {
                 action()
             }, label: {
                 Text(title)
-                    .font(.pretendard(size: 16, weight: .regular))
+                    .font(.pretendard(size: fontSize, weight: .regular))
                     .frame(maxWidth: .infinity, maxHeight: 48)
                     .foregroundColor(.white)
             })
@@ -45,9 +55,9 @@ struct CustomButton: View {
                 action()
             }, label: {
                 Text(title)
-                    .font(.suite(size: 16, weight: .semibold))
+                    .font(.suite(size: fontSize, weight: .semibold))
                     .frame(maxWidth: .infinity, maxHeight: 50)
-                    .foregroundColor(.white)
+                    .foregroundColor(textColor)
             })
             .background(
                 Image(image)

@@ -19,19 +19,20 @@ struct LoginView: View {
                 .overlay(
                     SignInWithAppleButton(onRequest: { request in
                         authViewModel.send(action: .appleLogin(request))
-                    }, onCompletion: { result in                        
+                    }, onCompletion: { result in
                         authViewModel.send(action: .appleLoginCompletion(result))
                     })
                     .blendMode(.destinationOver)
                 )
             }
+            .onChange(of: authViewModel.authStatus, perform: { authStatus in                
+                if authStatus == .signUp {
+                    showJoinView = true
+                }
+            })
             .navigationDestination(isPresented: $showJoinView, destination: {
                 JoinView()
             })
             .background(.bgcolor)
     }
-}
-
-#Preview {
-    LoginView()
 }

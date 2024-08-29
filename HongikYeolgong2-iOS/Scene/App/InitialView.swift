@@ -15,11 +15,11 @@ struct InitialView: View {
     }
     
     var isSignIn: Bool {
-        authViewModel.authenticationState == .authenticated
+        authViewModel.authStatus == .signIn
     }
     
     var isFetch: Bool {
-        authViewModel.authenticationState == .pending
+        authViewModel.authStatus == .none
     }
     
     // 앱이 모든데이터를 받아왔을때 메인화면을 보여줌
@@ -39,8 +39,7 @@ struct InitialView: View {
             }
         }
         .onAppear {
-            authViewModel.send(action: .checkAuthenticationState)
-
+            authViewModel.send(action: .checkAuthStatus)
         }.onReceive(authViewModel.$user) { user in
             guard let uid = user?.id else { return }
             calendarViewModel.send(action: .getCalendar(uid))

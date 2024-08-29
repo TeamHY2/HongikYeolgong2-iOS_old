@@ -2,10 +2,9 @@
 import SwiftUI
 
 struct JoinView: View {
-    @State private var text = ""
-    @State private var text2 = ""
-    @State private var seletedItem = ""
     @StateObject private var joinViewModel = JoinViewModel()
+    
+    @EnvironmentObject private var authViewModel: AuthViewModel
     
     var body: some View {
         let nicknameBinding = Binding<String>(get: {
@@ -45,8 +44,8 @@ struct JoinView: View {
                     CustomButton(title: "중복확인",
                                  style: .rounded) {
                     }
-                    .disabled(joinViewModel.buttonDisable)
-                    .opacity(joinViewModel.buttonDisable ? 0.7 : 1)
+                                 .disabled(joinViewModel.nicknameCheckDisable)
+                                 .opacity(joinViewModel.nicknameCheckDisable ? 0.7 : 1)
                 }
                 
                 Text(joinViewModel.nicknameStatus.message)
@@ -75,8 +74,14 @@ struct JoinView: View {
             Spacer()
             
             CustomButton(title: "가입하기",
-                         style: .background(image: .angularButton02)) {
+                         textColor: .gray100,
+                         fontSize: 18,
+                         style: .background(image: joinViewModel.submitButtonDisable ? .icButton : .icClearButton)) {
+                
+                authViewModel.send(action: .createUser(nickname: joinViewModel.nickname, department: joinViewModel.departmentName))
             }
+                         .opacity(joinViewModel.submitButtonDisable ? 0.6 : 1)
+                         .disabled(joinViewModel.submitButtonDisable)
         }
         .onTapGesture {
             UIApplication.shared.hideKeyboard()
