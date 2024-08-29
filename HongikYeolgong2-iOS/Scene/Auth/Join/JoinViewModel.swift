@@ -7,7 +7,15 @@ import Combine
 import FirebaseAuth
 import FirebaseFirestore
 
-class JoinViewModel: ViewModelType {
+final class JoinViewModel: ViewModelType {
+    @Published var nickname = ""
+    @Published var departmentName = ""
+    @Published var nicknameStatus: NicknameStatus = .none
+    
+    var buttonDisable: Bool {
+        nicknameStatus.isError ||
+        nickname.isEmpty
+    }
     
     let suggestions = [
         "건설도시공학부",
@@ -50,9 +58,77 @@ class JoinViewModel: ViewModelType {
         "회화과"
     ]
     
-    enum Action {}
+    enum NicknameStatus {
+        case none // 기본상태
+        case specialCharactersAndSpaces // 특수문자, 공백
+        case notAllowedLength // 글자수 오류
+        
+        var message: String {
+            switch self {
+            case .none:
+                "*한글, 영어, 숫자를 포함하여 2~8자를 입력해 주세요."
+            case .specialCharactersAndSpaces:
+                "*특수문자와 띄어쓰기를 사용할 수 없어요."
+            case .notAllowedLength:
+                "한글, 영어, 숫자를 포함하여 2~8자를 입력해 주세요."
+            }
+        }
+        
+        var textColor: Color {
+            switch self {
+            case .none:
+                .gray400
+            default:
+                .yellow300
+            }
+        }
+        
+        var isError: Bool {
+            switch self {
+            case .none:
+                false
+            default:
+                true
+            }
+        }
+    }
+    
+    enum Action {
+        case inputNickname(String)
+        case seletedDepartment(String)
+        case nicknameCheck
+        case submitButtonTap
+    }
     
     func send(action: Action) {
-        
+        switch action {
+        case .inputNickname(let text):
+            nickname = text
+            validateNickname(text)
+            break
+        case .seletedDepartment(let department):
+            departmentName = department            
+            break
+        case .nicknameCheck:
+            break
+        case .submitButtonTap:
+            break
+        }
+    }
+    
+    /*
+     한글/영어 특수문자 없이, 띄어쓰기 없이
+     2 ~ 8글자
+     닉네임 중복확인 필요
+     */
+    private func validateNickname(_ nickname: String) {
+        print(nickname)
+        if (!nickname.isEmpty && nickname.count < 2) || (!nickname.isEmpty && nickname.count > 8) {
+            nicknameStatus = .notAllowedLength
+        } else if nickname.contains(" ") {
+            nicknameStatus = .specialCharactersAndSpaces
+        } else {
+            nicknameStatus = .none
+        }
     }
 }

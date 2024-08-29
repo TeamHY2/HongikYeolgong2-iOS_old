@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CustomTextField: View {
+struct CustomTextField: View {    
     @Binding var text: String
     @FocusState var isFocused: Bool
     
@@ -25,7 +25,7 @@ struct CustomTextField: View {
                 TextField(text: $text) {
                     Text(placeholder)
                         .font(.pretendard(size: 16, weight: .regular))
-                        .foregroundStyle(.gray400)
+                        .foregroundStyle(.gray400)                        
                 }
                 .focused($isFocused)
                 .foregroundColor(.gray200)

@@ -20,7 +20,7 @@ struct LoginView: View {
                     SignInWithAppleButton(onRequest: { request in
                         authViewModel.send(action: .appleLogin(request))
                     }, onCompletion: { result in                        
-                        showJoinView = true
+                        authViewModel.send(action: .appleLoginCompletion(result))
                     })
                     .blendMode(.destinationOver)
                 )

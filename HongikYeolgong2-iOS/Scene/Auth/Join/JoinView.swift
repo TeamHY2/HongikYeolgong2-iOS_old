@@ -4,11 +4,22 @@ import SwiftUI
 struct JoinView: View {
     @State private var text = ""
     @State private var text2 = ""
-    @State private var isError = true
     @State private var seletedItem = ""
     @StateObject private var joinViewModel = JoinViewModel()
     
     var body: some View {
+        let nicknameBinding = Binding<String>(get: {
+            joinViewModel.nickname
+        }, set: {
+            joinViewModel.send(action: .inputNickname($0))
+        })
+        
+        let pickerBinding = Binding<String>(get: {
+            joinViewModel.departmentName
+        }, set: {
+            joinViewModel.send(action: .seletedDepartment($0))
+        })
+        
         VStack(spacing: 0) {
             Spacer().frame(height: 23)
             
@@ -21,24 +32,26 @@ struct JoinView: View {
             }
             
             Spacer().frame(height: 8)
-        
+            
             VStack(alignment: .leading, spacing: 4) {
                 HStack(alignment: .top, spacing: 10) {
                     VStack {
-                        CustomTextField(text: $text,
+                        CustomTextField(text: nicknameBinding,
                                         placeholder: "닉네임을 입력해주세요.",
-                                        isError: isError)
-                            .frame(width: 213)
+                                        isError: joinViewModel.nicknameStatus.isError)
+                        .frame(width: 213)
                     }
                     
                     CustomButton(title: "중복확인",
                                  style: .rounded) {
                     }
+                    .disabled(joinViewModel.buttonDisable)
+                    .opacity(joinViewModel.buttonDisable ? 0.7 : 1)
                 }
                 
-                Text("*특수문자와 띄어쓰기를 사용할 수 없어요.")
+                Text(joinViewModel.nicknameStatus.message)
                     .font(.pretendard(size: 12, weight: .regular))
-                    .foregroundStyle(.yellow300)
+                    .foregroundStyle(joinViewModel.nicknameStatus.textColor)
             }
             
             Spacer().frame(height: 12)
@@ -53,20 +66,24 @@ struct JoinView: View {
             
             Spacer().frame(height: 8)
             
-            Picker(text: $text2,
-                   seletedItem: $seletedItem,
+            Picker(text: $joinViewModel.departmentName,
+                   seletedItem: pickerBinding,
                    placeholder: "학과를 입력해주세요.",
                    items: joinViewModel.suggestions
-                  )
-        
+            )
+            
             Spacer()
             
             CustomButton(title: "가입하기",
                          style: .background(image: .angularButton02)) {
             }
         }
+        .onTapGesture {
+            UIApplication.shared.hideKeyboard()
+        }
+        
         .padding(.horizontal, 28)
-        .customNavigation(left: {            
+        .customNavigation(left: {
             Text("회원가입")
                 .font(.suite(size: 18, weight: .semibold))
                 .foregroundStyle(.gray100)

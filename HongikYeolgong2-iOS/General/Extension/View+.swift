@@ -135,17 +135,14 @@ extension View {
     }
 }
 
-extension View {
-//    func loginTextFieldModifier(width: CGFloat, height: CGFloat, text: Binding<String>) -> some View {
-//        modifier(LoginTextFieldModifier(width: width, height: height, text: text))
-//    }
-//    func limitText(_ text: Binding<String>, to characterLimit: Int) -> some View {
-//        self
-//            .onChange(of: text.wrappedValue) { _ in
-//                text.wrappedValue = String(text.wrappedValue.prefix(characterLimit))
-//            }
-//    }
-//    func endTextEditing() {
-//        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-//    }
+extension View {   
+    func limitText(_ text: Binding<String>, to characterLimit: Int) -> some View {
+        self
+            .onChange(of: text.wrappedValue) { _ in
+                text.wrappedValue = String(text.wrappedValue.prefix(characterLimit))
+            }
+    }
+    func endTextEditing() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
 }
