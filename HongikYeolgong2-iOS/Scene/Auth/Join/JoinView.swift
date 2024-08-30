@@ -78,7 +78,8 @@ struct JoinView: View {
                          fontSize: 18,
                          style: .background(image: joinViewModel.submitButtonDisable ? .icButton : .icClearButton)) {
                 
-                authViewModel.send(action: .createUser(nickname: joinViewModel.nickname, department: joinViewModel.departmentName))
+                authViewModel.send(action: .createAccount(nickname: joinViewModel.nickname, 
+                                                          department: joinViewModel.departmentName))
             }
                          .opacity(joinViewModel.submitButtonDisable ? 0.6 : 1)
                          .disabled(joinViewModel.submitButtonDisable)

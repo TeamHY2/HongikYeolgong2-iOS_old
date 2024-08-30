@@ -6,33 +6,33 @@ struct LoginView: View {
     @State private var showJoinView = false
     
     var body: some View {
-            VStack{
-                OnBoardingView()
-                
-                CustomButton2(action: {},
-                              title: "",
-                              image: .snsLogin,
-                              maxWidth: UIScreen.UIWidth(320),
-                              minHeight: UIScreen.UIHeight(50))
-                .padding(.top, UIScreen.UIHeight(32))
-                .padding(.bottom, UIScreen.UIHeight(20))
-                .overlay(
-                    SignInWithAppleButton(onRequest: { request in
-                        authViewModel.send(action: .appleLogin(request))
-                    }, onCompletion: { result in
-                        authViewModel.send(action: .appleLoginCompletion(result))
-                    })
-                    .blendMode(.destinationOver)
-                )
+        VStack{
+            OnBoardingView()
+            
+            CustomButton(title: "",
+                         style: .background(image: .snsLogin),
+                         action: {})
+            .padding(.top, 32)
+            .padding(.bottom, 20)
+            .padding(.horizontal, 28)
+            .overlay(
+                SignInWithAppleButton(onRequest: { request in
+                    authViewModel.send(action: .appleLogin(request))
+                }, onCompletion: { result in
+                    authViewModel.send(action: .appleLoginCompletion(result))
+                })
+                .blendMode(.destinationOver)
+            )
+        }
+        
+        .onReceive(authViewModel.$authStatus, perform: { status in
+            if status == .signUp {
+                showJoinView = true
             }
-            .onChange(of: authViewModel.authStatus, perform: { authStatus in                
-                if authStatus == .signUp {
-                    showJoinView = true
-                }
-            })
-            .navigationDestination(isPresented: $showJoinView, destination: {
-                JoinView()
-            })
-            .background(.bgcolor)
+        })
+        .navigationDestination(isPresented: $showJoinView, destination: {
+            JoinView()
+        })
+        .background(.bgcolor)
     }
 }

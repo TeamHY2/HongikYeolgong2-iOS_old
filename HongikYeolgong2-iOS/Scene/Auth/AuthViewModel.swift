@@ -17,17 +17,16 @@ class AuthViewModel: ObservableObject {
         case checkAuthStatus
         case appleLogin(ASAuthorizationAppleIDRequest)
         case appleLoginCompletion(Result<ASAuthorization, Error>)
-        case logOut
         case deleteAccount
-        case createUser(nickname: String, department: String)
+        case createAccount(nickname: String, department: String)
+        case logOut
     }
     
     @Published var authStatus: AuthenticationState = .none
     @Published var user: User?
     @Published var errorMessage = ""
     @Published var showingErrorAlert = false
-        
-    private var authentication: ASAuthorization?
+    
     private var currentNonce: String?
     private var subscriptions = Set<AnyCancellable>()
     
@@ -43,12 +42,12 @@ class AuthViewModel: ObservableObject {
         case .appleLogin(let asAuthorizationAppleIDRequest):
             setCurrentNonce(asAuthorizationAppleIDRequest)
         case .appleLoginCompletion(let result):
-            setUser(result)
+            checkUser(result)
         case .logOut:
-            logoutUser()
+            logout()
         case .deleteAccount:
             deleteUser()
-        case .createUser(let nickname, let department):
+        case .createAccount(let nickname, let department):
             signUp(nickname, department)
         }
     }
@@ -56,8 +55,7 @@ class AuthViewModel: ObservableObject {
 
 extension AuthViewModel {
     
-    /// 로그인 여부를 확인하고 유저정보를 가져옴
-    /// 앱이 처음 실행됬을떄 호출
+    /// 인증상태를 체크하고 유저정보를 가져옵니다.
     func checkAuthStatus() {
         guard let uid = authService.checkAuthenticationState() else {
             authStatus = .unSignin
@@ -66,7 +64,7 @@ extension AuthViewModel {
         
         userRepository.fetchUser(with: uid)
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] completion in                
+            .sink { [weak self] completion in
                 guard let self = self else { return }
                 switch completion {
                 case .finished:
@@ -84,17 +82,17 @@ extension AuthViewModel {
                 if user.department != nil && user.nickname != nil {
                     self.authStatus = .signIn
                 } else {
-                    self.authStatus = .signUp
+                    self.authStatus = .unSignin
                 }
             }
             .store(in: &subscriptions)
     }
     
-
-    func setUser(_ result: Result<ASAuthorization, Error>) {
+    /// 애플로그인을 진행하고 유저정보를 가져옵니다
+    /// 가입진행 단계에 따라서 상태를 업데이트 합니다
+    func checkUser(_ result: Result<ASAuthorization, Error>) {
         if case let .success(authentication) = result {
             guard let nonce = currentNonce else {return}
-            self.authentication = authentication
             self.currentNonce = nonce
             
             authService.handleSignInWithAppleCompletion(authentication, none: nonce)
@@ -107,7 +105,7 @@ extension AuthViewModel {
                     return error
                 }
                 .flatMap { (owner, user) -> AnyPublisher<User, Error> in
-                     return owner.userRepository.fetchUser(with: user.id)
+                    return owner.userRepository.fetchUser(with: user.id)
                 }
                 .receive(on: DispatchQueue.main)
                 .sink { [weak self] completion in
@@ -135,10 +133,12 @@ extension AuthViewModel {
         }
     }
     
+    /// 기본 유저정보를 생성합니다
     func signIn() {
         guard let user = user else { return }
+        
         userRepository.createUser(user)
-            .sink { [weak self] (completion) in
+            .sink { [weak self] completion in
                 guard let self = self else { return }
                 switch completion {
                 case .finished:
@@ -149,12 +149,12 @@ extension AuthViewModel {
             } receiveValue: { _ in
             }
             .store(in: &subscriptions)
-
     }
     
+    /// 닉네임과, 학과를 입력받고 가입을 완료합니다.
     func signUp(_ nickname: String, _ department: String) {
         guard let user = user else { return }
-        let updateUser = User(id: user.id, 
+        let updateUser = User(id: user.id,
                               email: user.email,
                               nickname: nickname,
                               department: department)
@@ -174,18 +174,20 @@ extension AuthViewModel {
             .store(in: &subscriptions)
     }
     
-    func logoutUser() {
+    /// 로그아웃
+    func logout() {
         authService.logOut()
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 
             } receiveValue: { [weak self] user in
-                guard let self = self else { return }                
+                guard let self = self else { return }
                 self.authStatus = .unSignin
                 self.user = nil
             }.store(in: &subscriptions)
     }
     
+    /// 유저 삭제
     func deleteUser() {
         guard let userInfo = user else { return }
         
