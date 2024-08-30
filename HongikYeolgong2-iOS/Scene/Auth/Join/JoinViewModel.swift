@@ -73,8 +73,8 @@ final class JoinViewModel: ViewModelType {
         case specialCharactersAndSpaces // 특수문자, 공백
         case notAllowedLength // 글자수 오류
         case available // 사용가능
-        case alreadyUse
-        case unknown
+        case alreadyUse // 사용중인 닉네임
+        case unknown // 그외
         
         var message: String {
             switch self {
@@ -124,7 +124,7 @@ final class JoinViewModel: ViewModelType {
     
     func send(action: Action) {
         switch action {
-        case .inputNickname(let text):            
+        case .inputNickname(let text):
             nickname = text
             validateNickname(text)
             break

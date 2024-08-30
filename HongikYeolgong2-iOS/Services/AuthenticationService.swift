@@ -39,7 +39,7 @@ class AuthenticationService: AuthenticationServiceType {
     }
     
     func handleSignInWithAppleCompletion(_ authorization: ASAuthorization, none: String) -> AnyPublisher<User, ServiceError> {
-        Future { [weak self] promise in
+        Future { [weak self] promise in            
             self?.handleSignInWithAppleCompletion(authorization, nonce: none) { result in
                 switch result {
                 case let .success(user):

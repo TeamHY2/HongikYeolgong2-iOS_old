@@ -26,6 +26,7 @@ class AuthViewModel: ObservableObject {
     @Published var user: User?
     @Published var errorMessage = ""
     @Published var showingErrorAlert = false
+    @Published var isLoading = false
     
     private var currentNonce: String?
     private var subscriptions = Set<AnyCancellable>()
@@ -91,18 +92,20 @@ extension AuthViewModel {
     /// 애플로그인을 진행하고 유저정보를 가져옵니다
     /// 가입진행 단계에 따라서 상태를 업데이트 합니다
     func checkUser(_ result: Result<ASAuthorization, Error>) {
+        isLoading = true
+        
         if case let .success(authentication) = result {
             guard let nonce = currentNonce else {return}
             self.currentNonce = nonce
             
             authService.handleSignInWithAppleCompletion(authentication, none: nonce)
                 .withUnretained(self)
+                .mapError { error in
+                    return error
+                }
                 .map { (owner, user) in
                     owner.user = user
                     return (owner, user)
-                }
-                .mapError { error in
-                    return error
                 }
                 .flatMap { (owner, user) -> AnyPublisher<User, Error> in
                     return owner.userRepository.fetchUser(with: user.id)
@@ -121,14 +124,15 @@ extension AuthViewModel {
                     self.user = userInfo
                     if userInfo.nickname != nil && userInfo.department != nil {
                         self.authStatus = .signIn
-                        
                     } else {
                         self.authStatus = .signUp
                     }
+                    isLoading = false
                 }
                 .store(in: &subscriptions)
             
         } else if case let .failure(error) = result {
+            isLoading = false
             print(error.localizedDescription)
         }
     }
@@ -143,8 +147,9 @@ extension AuthViewModel {
                 switch completion {
                 case .finished:
                     self.authStatus = .signUp
+                    isLoading = false
                 case .failure(_):
-                    break
+                    isLoading = false
                 }
             } receiveValue: { _ in
             }

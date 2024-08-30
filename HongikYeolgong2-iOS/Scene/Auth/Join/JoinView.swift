@@ -5,6 +5,7 @@ struct JoinView: View {
     @StateObject private var joinViewModel = JoinViewModel()
     
     @EnvironmentObject private var authViewModel: AuthViewModel
+    @FocusState var isFocused: Bool
     
     var body: some View {
         let nicknameBinding = Binding<String>(get: {
@@ -36,6 +37,7 @@ struct JoinView: View {
                 HStack(alignment: .top, spacing: 10) {
                     VStack {
                         CustomTextField(text: nicknameBinding,
+                                        isFocused: _isFocused,
                                         placeholder: "닉네임을 입력해주세요.",
                                         isError: joinViewModel.nicknameStatus.isError)
                         .frame(width: 213)
