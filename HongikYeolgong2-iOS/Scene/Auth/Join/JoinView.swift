@@ -5,7 +5,8 @@ struct JoinView: View {
     @StateObject private var joinViewModel = JoinViewModel()
     
     @EnvironmentObject private var authViewModel: AuthViewModel
-    @FocusState private var isFocused: Bool
+    @FocusState private var textFieldFocused: Bool
+    @FocusState private var pickerFocused: Bool
     
     private var nicknameBinding: Binding<String> {
         Binding<String>(get: {
@@ -13,7 +14,7 @@ struct JoinView: View {
         }, set: {
             if joinViewModel.nickname != $0 {
                 joinViewModel.send(action: .inputNickname($0))
-            }            
+            }
         })
     }
     
@@ -43,7 +44,7 @@ struct JoinView: View {
                 HStack(alignment: .top, spacing: 10) {
                     VStack {
                         CustomTextField(text: nicknameBinding,
-                                        isFocused: _isFocused,
+                                        isFocused: _textFieldFocused,
                                         placeholder: "닉네임을 입력해주세요.",
                                         isError: joinViewModel.nicknameStatus.isError)
                         .frame(width: 213)
@@ -76,6 +77,7 @@ struct JoinView: View {
             
             Picker(text: $joinViewModel.departmentName,
                    seletedItem: pickerBinding,
+                   isFocused: _pickerFocused,
                    placeholder: "학과를 입력해주세요.",
                    items: joinViewModel.suggestions
             )

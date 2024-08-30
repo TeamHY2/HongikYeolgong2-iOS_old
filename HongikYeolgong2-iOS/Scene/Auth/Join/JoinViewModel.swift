@@ -16,6 +16,7 @@ final class JoinViewModel: ViewModelType {
     
     private var subscription = Set<AnyCancellable>()
     
+    
     var nicknameCheckDisable: Bool {
         nicknameStatus.isError ||
         nickname.isEmpty
@@ -24,7 +25,8 @@ final class JoinViewModel: ViewModelType {
     var submitButtonDisable: Bool {
         nicknameCheckDisable ||
         departmentName.isEmpty ||
-        nicknameStatus != .available
+        nicknameStatus != .available ||
+        !suggestions.contains(departmentName)
     }
     
     let suggestions = [
