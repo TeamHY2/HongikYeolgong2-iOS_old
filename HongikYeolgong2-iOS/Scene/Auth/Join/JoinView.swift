@@ -5,21 +5,27 @@ struct JoinView: View {
     @StateObject private var joinViewModel = JoinViewModel()
     
     @EnvironmentObject private var authViewModel: AuthViewModel
-    @FocusState var isFocused: Bool
+    @FocusState private var isFocused: Bool
     
-    var body: some View {
-        let nicknameBinding = Binding<String>(get: {
+    private var nicknameBinding: Binding<String> {
+        Binding<String>(get: {
             joinViewModel.nickname
         }, set: {
-            joinViewModel.send(action: .inputNickname($0))
+            if joinViewModel.nickname != $0 {
+                joinViewModel.send(action: .inputNickname($0))
+            }            
         })
-        
-        let pickerBinding = Binding<String>(get: {
+    }
+    
+    private var pickerBinding: Binding<String> {
+        Binding<String>(get: {
             joinViewModel.departmentName
         }, set: {
             joinViewModel.send(action: .seletedDepartment($0))
         })
-        
+    }
+       
+    var body: some View {
         VStack(spacing: 0) {
             Spacer().frame(height: 23)
             
