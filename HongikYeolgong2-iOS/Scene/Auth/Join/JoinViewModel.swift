@@ -14,6 +14,8 @@ final class JoinViewModel: ViewModelType {
     
     @Inject var userRepository: UserRepositoryType
     
+    private var subscription = Set<AnyCancellable>()
+    
     var nicknameCheckDisable: Bool {
         nicknameStatus.isError ||
         nickname.isEmpty
@@ -21,7 +23,8 @@ final class JoinViewModel: ViewModelType {
     
     var submitButtonDisable: Bool {
         nicknameCheckDisable ||
-        departmentName.isEmpty
+        departmentName.isEmpty ||
+        nicknameStatus != .available
     }
     
     let suggestions = [
@@ -70,6 +73,7 @@ final class JoinViewModel: ViewModelType {
         case specialCharactersAndSpaces // 특수문자, 공백
         case notAllowedLength // 글자수 오류
         case available // 사용가능
+        case alreadyUse
         
         var message: String {
             switch self {
@@ -81,6 +85,8 @@ final class JoinViewModel: ViewModelType {
                 "한글, 영어, 숫자를 포함하여 2~8자를 입력해 주세요."
             case .available:
                 "*닉네임을 사용할 수 있습니다."
+            case .alreadyUse:
+                "이미 사용중인 닉네임 입니다."
             }
         }
         
@@ -123,7 +129,7 @@ final class JoinViewModel: ViewModelType {
             departmentName = department
             break
         case .nicknameCheck:
-            break
+            checkNickname()
         }
     }
     
@@ -140,5 +146,21 @@ final class JoinViewModel: ViewModelType {
         } else {
             nicknameStatus = .none
         }
+    }
+    
+    /// 닉네임 중복체크
+    private func checkNickname() {
+        userRepository.checkUserNickname(nickname)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] completion in
+                guard let self = self else { return }
+                switch completion {
+                case .finished:
+                    nicknameStatus = .available
+                case .failure(_):
+                    nicknameStatus = .alreadyUse
+                }
+            } receiveValue: { _ in }
+            .store(in: &subscription)
     }
 }

@@ -45,11 +45,24 @@ final class FirestoreService: FirestoreServiceProtocol {
         guard let ref = endpoint.path as? CollectionReference else {
             throw FirestoreServiceError.collectionNotFound
         }
+        
         switch endpoint.method {
         case .get:
             guard let querySnapshot = try? await ref.getDocuments() else {
                 throw FirestoreServiceError.invalidPath
             }
+            var response: [T] = []
+            for document in querySnapshot.documents {
+                let data = try document.data(as: T.self)
+                response.append(data)
+            }
+            return response
+        case .query(let field, let isEqualTo):
+            
+            guard let querySnapshot = try? await ref.whereField(field, isEqualTo: isEqualTo).getDocuments() else {
+                throw FirestoreServiceError.invalidPath
+            }
+            
             var response: [T] = []
             for document in querySnapshot.documents {
                 let data = try document.data(as: T.self)
@@ -66,7 +79,7 @@ final class FirestoreService: FirestoreServiceProtocol {
             throw FirestoreServiceError.documentNotFound
         }
         switch endpoint.method {
-        case .get:
+        case .get, .query(_):
             throw FirestoreServiceError.invalidRequest
         case .post(var model):
             model.id = ref.documentID

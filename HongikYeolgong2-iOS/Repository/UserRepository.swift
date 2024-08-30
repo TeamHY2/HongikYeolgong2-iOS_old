@@ -72,7 +72,18 @@ final class UserRepository: UserRepositoryType {
     
     func checkUserNickname(_ nickname: String) -> AnyPublisher<Void, Error> {
         return Future<Void, Error> { promise in
-            
+            Task {
+                do {
+                    let user: [User] = try await FirestoreService.request(Endpoint.checkUserNickname(nickname))
+                    if user.count > 0 {
+                        promise(.failure(FirestoreServiceError.unknownError))
+                    } else {
+                        promise(.success(()))
+                    }
+                } catch let error {
+                    promise(.failure(error))
+                }
+            }
         }.eraseToAnyPublisher()
     }
 }

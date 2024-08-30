@@ -20,6 +20,7 @@ extension FirestoreEndpoint {
 }
 
 enum FirestoreMethod {    
+    case query(field: String, isEqaulTo: String)
     case get
     case post(any FirestoreIdentifiable)
     case put(any FirestoreIdentifiable)

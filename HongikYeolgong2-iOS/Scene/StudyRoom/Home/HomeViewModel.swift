@@ -11,6 +11,7 @@ final class HomeViewModel: ViewModelType {
     @Published var isSuccess = false
     @Published var wiseSaying: [WiseSaying] = []
     @Published var randomSaying: WiseSaying = WiseSaying(quote: "", author: "")
+    
     enum Action {
         case getWiseSaying
     }

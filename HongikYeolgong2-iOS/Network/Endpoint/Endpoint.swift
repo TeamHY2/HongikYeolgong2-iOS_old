@@ -13,7 +13,7 @@ enum Endpoint: FirestoreEndpoint {
     case fetchStudyDay(uid: String)
     case updateStudyDay(uid: String, StudyRoomUsage)
     case deleteUser(User)
-//    case checkUserNickname(String)
+    case checkUserNickname(String)
     case deleteCollection(User)
     
     var path: FirestoreReference {
@@ -30,7 +30,8 @@ enum Endpoint: FirestoreEndpoint {
             return firestore.collection("User").document(user.id)
         case .deleteCollection(let user):
             return firestore.collection("User").document(user.id).collection("StudyDay").document()
-//        case .checkUserNickname(let nickname):            
+        case .checkUserNickname(_):
+            return firestore.collection("User")
         }
     }
     
@@ -48,6 +49,8 @@ enum Endpoint: FirestoreEndpoint {
             return .delete
         case .deleteCollection(_):
             return.deleteCollection
+        case .checkUserNickname(let nickname):
+            return .query(field: "nickname", isEqaulTo: nickname)
         }
     }
 }

@@ -19,7 +19,7 @@ class AuthViewModel: ObservableObject {
         case appleLoginCompletion(Result<ASAuthorization, Error>)
         case deleteAccount
         case createAccount(nickname: String, department: String)
-        case logOut
+        case logOut        
     }
     
     @Published var authStatus: AuthenticationState = .none

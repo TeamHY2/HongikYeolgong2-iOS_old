@@ -43,6 +43,7 @@ struct JoinView: View {
                     
                     CustomButton(title: "중복확인",
                                  style: .rounded) {
+                        joinViewModel.send(action: .nicknameCheck)
                     }
                                  .disabled(joinViewModel.nicknameCheckDisable)
                                  .opacity(joinViewModel.nicknameCheckDisable ? 0.7 : 1)

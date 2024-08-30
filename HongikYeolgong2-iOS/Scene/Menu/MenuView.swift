@@ -1,7 +1,7 @@
 import SwiftUI
 import AuthenticationServices
 
-struct MenuView: View {
+struct MenuView: View {    
     @EnvironmentObject var authViewModel: AuthViewModel
     
     @State var isOn: Bool = false
@@ -129,9 +129,13 @@ struct MenuView: View {
                 }
             }
         }
-        .alert(title: "로그아웃 하실 건가요?", confirmButtonText: "돌아가기", cancleButtonText: "로그아웃하기", isPresented: $logoutAlert, confirmAction: {
+        .alert(title: "로그아웃 하실 건가요?", 
+               confirmButtonText: "돌아가기",
+               cancleButtonText: "로그아웃하기",
+               isPresented: $logoutAlert,
+               confirmAction: {
             
-        }, cancelAction: {           
+        }, cancelAction: {
                 authViewModel.send(action: .logOut)
         })        
         .alert(title: "정말 탈퇴하실 건가요?", confirmButtonText: "돌아가기", cancleButtonText: "탈퇴하기", isPresented: $deleteAccountAlert, confirmAction: {

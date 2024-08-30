@@ -15,17 +15,19 @@ struct HongikYeolgong2_iOSApp: App {
     
     var body: some Scene {
         WindowGroup {
-            InitialView()
+            //            InitialView()
+            //                .environmentObject(authViewModel)
+            //                .environmentObject(timerViewModel)
+            //                .environmentObject(calendarViewModel)
+            //                .environmentObject(remoteConfigManager)
+            //                .environmentObject(homeViewModel)
+            //                .onAppear {
+            //                    Task {
+            //                        await LocalNotificationService.shared.checkPermission()
+            //                    }
+            //                }
+            JoinView()
                 .environmentObject(authViewModel)
-                .environmentObject(timerViewModel)
-                .environmentObject(calendarViewModel)
-                .environmentObject(remoteConfigManager)
-                .environmentObject(homeViewModel)
-                .onAppear {
-                    Task {
-                        await LocalNotificationService.shared.checkPermission()
-                    }
-                }            
         }
     }
 }
