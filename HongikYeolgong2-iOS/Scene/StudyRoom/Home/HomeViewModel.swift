@@ -25,6 +25,7 @@ final class HomeViewModel: ViewModelType {
         }
     }
     
+    @MainActor
     func getWiseSaying() async {
         guard let wiseSaying = await RemoteConfigManager.shared.getWiseSaying() else {
             return

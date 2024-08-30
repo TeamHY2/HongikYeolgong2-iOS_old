@@ -142,6 +142,7 @@ extension AuthViewModel {
         guard let user = user else { return }
         
         userRepository.createUser(user)
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] completion in
                 guard let self = self else { return }
                 switch completion {
