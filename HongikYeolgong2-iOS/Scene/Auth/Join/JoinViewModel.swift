@@ -74,6 +74,7 @@ final class JoinViewModel: ViewModelType {
         case notAllowedLength // 글자수 오류
         case available // 사용가능
         case alreadyUse
+        case unknown
         
         var message: String {
             switch self {
@@ -87,17 +88,19 @@ final class JoinViewModel: ViewModelType {
                 "*닉네임을 사용할 수 있습니다."
             case .alreadyUse:
                 "이미 사용중인 닉네임 입니다."
+            case .unknown:
+                "올바른 형식의 닉네임이 아닙니다."
             }
         }
         
         var textColor: Color {
             switch self {
             case .none:
-                .gray400
+                    .gray400
             case .available:
-                .green
+                    .green
             default:
-                .yellow300
+                    .yellow300
             }
         }
         
@@ -121,7 +124,7 @@ final class JoinViewModel: ViewModelType {
     
     func send(action: Action) {
         switch action {
-        case .inputNickname(let text):
+        case .inputNickname(let text):            
             nickname = text
             validateNickname(text)
             break
@@ -138,13 +141,17 @@ final class JoinViewModel: ViewModelType {
      2 ~ 8글자
      닉네임 중복확인 필요
      */
-    private func validateNickname(_ nickname: String) {        
+    private func validateNickname(_ nickname: String) {
         if (!nickname.isEmpty && nickname.count < 2) || (!nickname.isEmpty && nickname.count > 8) {
             nicknameStatus = .notAllowedLength
         } else if nickname.contains(" ") {
             nicknameStatus = .specialCharactersAndSpaces
-        } else {
+        } else if checkSpecialCharacter(nickname) {
+            nicknameStatus = .specialCharactersAndSpaces
+        } else if checkKoreanLang(nickname) {
             nicknameStatus = .none
+        } else {
+            nicknameStatus = .unknown
         }
     }
     
@@ -162,5 +169,25 @@ final class JoinViewModel: ViewModelType {
                 }
             } receiveValue: { _ in }
             .store(in: &subscription)
+    }
+    
+    private func checkSpecialCharacter(_ input: String) -> Bool {
+        let pattern: String = "[!\"#$%&'()*+,-./:;<=>?@[\\\\]^_`{|}~€£¥₩¢₹©®™§¶°•※≡∞≠≈‽✓✔✕✖←→↑↓↔↕↩↪↖↗↘↙ñ¡¿éèêëçäöüßàìòùåøæ]"
+        
+        if let _ = input.range(of: pattern, options: .regularExpression)  {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    private func checkKoreanLang(_ input: String) -> Bool {
+        let pattern = "^[가-힣a-zA-Z\\s]*$"
+        
+        if let _ = input.range(of: pattern, options: .regularExpression)  {
+            return true
+        } else {
+            return false
+        }
     }
 }
