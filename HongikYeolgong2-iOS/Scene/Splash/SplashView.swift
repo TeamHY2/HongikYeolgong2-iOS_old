@@ -7,18 +7,13 @@
 
 import SwiftUI
 
-struct SplashView: View {
-    var body: some View {
-        ZStack {
-            Color(.customBackground)
-                .ignoresSafeArea()
-            Text("스플래쉬뷰")
-                .foregroundStyle(.white)
-                .font(.title)
-        }
+struct SplashView: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> UIViewController {
+        let storyboard = UIStoryboard(name: "Launch Screen", bundle: nil)
+        let viewController = storyboard.instantiateInitialViewController()!
+        return viewController
     }
+
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
 }
 
-#Preview {
-    SplashView()
-}

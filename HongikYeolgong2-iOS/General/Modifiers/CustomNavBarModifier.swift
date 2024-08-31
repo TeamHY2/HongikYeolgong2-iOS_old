@@ -28,7 +28,6 @@ struct CustomNavBarModifier<C, L, R>: ViewModifier where C: View, L: View, R: Vi
                     right?()
                 }
                 .padding(.horizontal, 28)
-                .frame(height: UIScreen.UIHeight(52))
                 .frame(maxWidth: .infinity)
                 
                 HStack {
@@ -37,7 +36,7 @@ struct CustomNavBarModifier<C, L, R>: ViewModifier where C: View, L: View, R: Vi
                     Spacer()
                 }
             }
-           
+            .frame(height: 52)            
             
             Spacer()
             
@@ -45,7 +44,7 @@ struct CustomNavBarModifier<C, L, R>: ViewModifier where C: View, L: View, R: Vi
             
             Spacer()
         }
-        .background(Color(.customBackground))
+        .background(.bgcolor)
         .navigationBarHidden(true)
     }
 }

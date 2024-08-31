@@ -100,11 +100,11 @@ extension UIColor {
         alpha: 1.0
     )
     
-    //hexcode: 4164E2
+    //hexcode: 0C0D11
     static let customBackground = UIColor(
         red: 0.047,
-        green: 0.051,
-        blue: 0.067,
+        green: 0.050,
+        blue: 0.066,
         alpha: 1.0
     )
 }

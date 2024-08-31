@@ -1,8 +1,7 @@
 import SwiftUI
 import AuthenticationServices
 
-struct MenuView: View {
-    @EnvironmentObject private var coordinator: AppCoordinator
+struct MenuView: View {    
     @EnvironmentObject var authViewModel: AuthViewModel
     
     @State var isOn: Bool = false
@@ -11,6 +10,7 @@ struct MenuView: View {
     @State private var isOnAlarm = UserDefaults.standard.bool(forKey: "isOnAlarm")
     
     @Environment(\.scenePhase) var scenePhase
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var noticeWebView = false
     @State private var questionWebView = false
     
@@ -30,7 +30,7 @@ struct MenuView: View {
                 .cornerRadius(8)
                 .padding(.bottom, UIScreen.UIHeight(20))
                 .fullScreenCover(isPresented: $noticeWebView) {
-                    WebViewWithCloseButton(url: URL(string: "https://url.kr/elogg8")!)
+                    WebViewWithCloseButton(url: URL(string: Constants.Url.notice)!)
                 }
                 
                 Button(action: {questionWebView.toggle()}
@@ -46,7 +46,7 @@ struct MenuView: View {
                 .cornerRadius(8)
                 .padding(.bottom, UIScreen.UIHeight(20))
                 .fullScreenCover(isPresented: $questionWebView) {
-                    WebViewWithCloseButton(url: URL(string: "https://forms.gle/J1CtFrySdwTYcixk9")!)
+                    WebViewWithCloseButton(url: URL(string: Constants.Url.Qna)!)
                 }
                 
                 HStack(spacing: 0) {
@@ -60,11 +60,12 @@ struct MenuView: View {
                             if LocalNotificationService.shared.authStatus == .authorized {
                                 isOnAlarm = $0
                                 UserDefaults.standard.set($0, forKey: "isOnAlarm")
+                                HapticManager.shared.hapticImpact(style: .light)
                             } else {
                                 if let url = URL(string: UIApplication.openNotificationSettingsURLString) {
                                     UIApplication.shared.open(url)
                                 }
-                            }                            
+                            }
                         }
                     ))
                     .toggleStyle(ColoredToggleStyle(onColor:Color(UIColor.customBlue100)))
@@ -84,7 +85,9 @@ struct MenuView: View {
                 Spacer()
                 
                 HStack(spacing: 0) {
-                    Button(action: {logoutAlert = true}, label: {
+                    Button(action: {
+                        logoutAlert = true
+                    }, label: {
                         CustomText(font: .pretendard, title: "로그아웃", textColor: .customGray300, textWeight: .regular, textSize: 16)
                             .frame(width: UIScreen.UIWidth(56), height: UIScreen.UIHeight(26))
                     })
@@ -92,7 +95,9 @@ struct MenuView: View {
                     CustomText(font: .pretendard, title: "|", textColor: .customGray300, textWeight: .regular, textSize: 16)
                         .padding(.horizontal, UIScreen.UIWidth(24))
                     
-                    Button(action: {deleteAccountAlert = true}, label: {
+                    Button(action: {
+                        deleteAccountAlert = true
+                    }, label: {
                         CustomText(font: .pretendard, title: "회원탈퇴", textColor: .customGray300, textWeight: .regular, textSize: 16)
                             .frame(width: UIScreen.UIWidth(56), height: UIScreen.UIHeight(26))
                     })
@@ -102,11 +107,16 @@ struct MenuView: View {
             .padding(.horizontal, 28)
             .customNavigation(left: {
                 Button(action: {
-                    coordinator.pop()
+                    presentationMode.wrappedValue.dismiss()
                 }, label: {
                     Image("ic_back")
                 })
             })
+        }
+        .onAppear {
+            Task {
+                await LocalNotificationService.shared.checkPermission()
+            }
         }
         .onChange(of: scenePhase) { phase in
             // 설정이 바뀌고나서 권한체크
@@ -119,8 +129,20 @@ struct MenuView: View {
                 }
             }
         }
-        .alert(title: "로그아웃 하실 건가요?", confirmButtonText: "돌아가기", cancleButtonText: "로그아웃하기", isPresented: $logoutAlert, confirmAction: {}, cancelAction: {authViewModel.send(action: .logOut)})
-        .alert(title: "정말 탈퇴하실 건가요?", confirmButtonText: "돌아가기", cancleButtonText: "탈퇴하기", isPresented: $deleteAccountAlert, confirmAction: {}, cancelAction: {authViewModel.send(action: .deleteAccount)})
+        .alert(title: "로그아웃 하실 건가요?", 
+               confirmButtonText: "돌아가기",
+               cancleButtonText: "로그아웃하기",
+               isPresented: $logoutAlert,
+               confirmAction: {
+            
+        }, cancelAction: {
+                authViewModel.send(action: .logOut)
+        })        
+        .alert(title: "정말 탈퇴하실 건가요?", confirmButtonText: "돌아가기", cancleButtonText: "탈퇴하기", isPresented: $deleteAccountAlert, confirmAction: {
+            
+        }, cancelAction: {
+            authViewModel.send(action: .deleteAccount)            
+        })
     }
 }
 

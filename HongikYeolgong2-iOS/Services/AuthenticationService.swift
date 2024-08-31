@@ -39,7 +39,7 @@ class AuthenticationService: AuthenticationServiceType {
     }
     
     func handleSignInWithAppleCompletion(_ authorization: ASAuthorization, none: String) -> AnyPublisher<User, ServiceError> {
-        Future { [weak self] promise in
+        Future { [weak self] promise in            
             self?.handleSignInWithAppleCompletion(authorization, nonce: none) { result in
                 switch result {
                 case let .success(user):
@@ -125,7 +125,6 @@ extension AuthenticationService {
             
             let firebaseUser = result.user
             let user: User = .init(id: firebaseUser.uid,
-                                   nickname: "열공이",
                                    email: firebaseUser.email ?? "")
             
             completion(.success(user))

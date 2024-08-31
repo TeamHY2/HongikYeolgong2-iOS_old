@@ -30,7 +30,7 @@ struct CustomText: View {
             .font(.custom(font.rawValue, fixedSize: textSize))            
             .fontWeight(textWeight)
             .foregroundStyle(Color(textColor))
-//            .minimumScaleFactor(0.2)
+//            .minimumScaleFactor(0.2)            
             .multilineTextAlignment(textAlignment)
             .lineLimit(nil)
     }

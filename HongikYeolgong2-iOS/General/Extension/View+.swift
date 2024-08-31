@@ -135,10 +135,7 @@ extension View {
     }
 }
 
-extension View {
-    func loginTextFieldModifier(width: CGFloat, height: CGFloat, text: Binding<String>) -> some View {
-        modifier(LoginTextFieldModifier(width: width, height: height, text: text))
-    }
+extension View {   
     func limitText(_ text: Binding<String>, to characterLimit: Int) -> some View {
         self
             .onChange(of: text.wrappedValue) { _ in

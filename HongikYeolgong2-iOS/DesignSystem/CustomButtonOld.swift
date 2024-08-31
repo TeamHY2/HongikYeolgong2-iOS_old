@@ -3,7 +3,7 @@ import SwiftUI
 
 
 
-struct CustomButton: View {
+struct CustomButtonOld: View {
     
     let font: fontOption
     let action: () -> Void
@@ -42,5 +42,5 @@ struct CustomButton: View {
 }
 
 #Preview {
-    CustomButton(action: {}, font:.pretendard, title: "123", titleColor: UIColor.white, backgroundColor: UIColor.black, leading: 24, trailing: 24)
+    CustomButtonOld(action: {}, font:.pretendard, title: "123", titleColor: UIColor.white, backgroundColor: UIColor.black, leading: 24, trailing: 24)
 }
