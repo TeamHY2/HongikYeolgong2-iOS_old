@@ -13,7 +13,7 @@ struct OnBoardingView: View {
     var body: some View {
         VStack {
             Spacer()
-                
+            
             // OnBoardingPage
             TabView(selection: $seletedIndex) {
                 OnBoardingPageView(imageName: "onboarding01")
@@ -24,8 +24,6 @@ struct OnBoardingView: View {
                     .tag(2)
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-            
-            Spacer()
             
             // Indicator
             HStack(spacing: 16) {
@@ -45,6 +43,7 @@ struct OnBoardingView: View {
                 }
             }
         }
+        .customNavigation(left: {EmptyView()})
     }
 }
 

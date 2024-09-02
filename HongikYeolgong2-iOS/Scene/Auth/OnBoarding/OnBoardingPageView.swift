@@ -13,7 +13,7 @@ struct OnBoardingPageView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
             Image(imageName)                
-        }
+        }        
     }
 }
 
