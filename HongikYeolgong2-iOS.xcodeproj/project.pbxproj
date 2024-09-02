@@ -48,8 +48,8 @@
 		47DA068C2C7F5BF800CC7B92 /* SUITE-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 47DA067C2C7F5BF800CC7B92 /* SUITE-SemiBold.otf */; };
 		47DA068D2C7F5BF800CC7B92 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 47DA067D2C7F5BF800CC7B92 /* Pretendard-SemiBold.otf */; };
 		47DA068E2C7F5BF800CC7B92 /* Pretendard-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 47DA067E2C7F5BF800CC7B92 /* Pretendard-ExtraLight.otf */; };
-		47DA06962C7F686500CC7B92 /* HyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DA06952C7F686500CC7B92 /* HyTextField.swift */; };
-		47DA06982C7F68DC00CC7B92 /* HYButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DA06972C7F68DC00CC7B92 /* HYButton.swift */; };
+		47DA06962C7F686500CC7B92 /* HY2TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DA06952C7F686500CC7B92 /* HY2TextField.swift */; };
+		47DA06982C7F68DC00CC7B92 /* HY2Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DA06972C7F68DC00CC7B92 /* HY2Button.swift */; };
 		47DA069A2C7F6D7200CC7B92 /* Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DA06992C7F6D7200CC7B92 /* Picker.swift */; };
 		47E0A8C52C51177B009F1BA9 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E0A8C42C51177B009F1BA9 /* TimerViewModel.swift */; };
 		47E0A8C72C511B72009F1BA9 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E0A8C62C511B72009F1BA9 /* CalendarViewModel.swift */; };
@@ -105,7 +105,7 @@
 		8270C9962C4D4AAE000EB06A /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8270C9952C4D4AAE000EB06A /* ViewModelType.swift */; };
 		8274CF3B2C33DBC800FBFA9D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8274CF3A2C33DBC800FBFA9D /* LoginView.swift */; };
 		8274CF3D2C33DE2300FBFA9D /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8274CF3C2C33DE2300FBFA9D /* MenuView.swift */; };
-		827C18C72C48FC5100B4AAEA /* CustomPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827C18C62C48FC5100B4AAEA /* CustomPicker.swift */; };
+		827C18C72C48FC5100B4AAEA /* HY2TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827C18C62C48FC5100B4AAEA /* HY2TimePicker.swift */; };
 		828FF2B32C3E71F1001A4ADE /* DialogModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828FF2B22C3E71F1001A4ADE /* DialogModifier.swift */; };
 		82AB4F1D2C3EBF5400787B3B /* AlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AB4F1C2C3EBF5400787B3B /* AlertModifier.swift */; };
 		82AB4F232C3EEE6D00787B3B /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AB4F222C3EEE6D00787B3B /* Date+.swift */; };
@@ -159,8 +159,8 @@
 		47DA067C2C7F5BF800CC7B92 /* SUITE-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SUITE-SemiBold.otf"; path = "../../../../Font/SUITE-SemiBold.otf"; sourceTree = "<group>"; };
 		47DA067D2C7F5BF800CC7B92 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Pretendard-SemiBold.otf"; path = "../../../../Font/Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		47DA067E2C7F5BF800CC7B92 /* Pretendard-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Pretendard-ExtraLight.otf"; path = "../../../../Font/Pretendard-ExtraLight.otf"; sourceTree = "<group>"; };
-		47DA06952C7F686500CC7B92 /* HyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyTextField.swift; sourceTree = "<group>"; };
-		47DA06972C7F68DC00CC7B92 /* HYButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HYButton.swift; sourceTree = "<group>"; };
+		47DA06952C7F686500CC7B92 /* HY2TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HY2TextField.swift; sourceTree = "<group>"; };
+		47DA06972C7F68DC00CC7B92 /* HY2Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HY2Button.swift; sourceTree = "<group>"; };
 		47DA06992C7F6D7200CC7B92 /* Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picker.swift; sourceTree = "<group>"; };
 		47E0A8C42C51177B009F1BA9 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		47E0A8C62C511B72009F1BA9 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
@@ -191,7 +191,7 @@
 		8270C9952C4D4AAE000EB06A /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		8274CF3A2C33DBC800FBFA9D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8274CF3C2C33DE2300FBFA9D /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
-		827C18C62C48FC5100B4AAEA /* CustomPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPicker.swift; sourceTree = "<group>"; };
+		827C18C62C48FC5100B4AAEA /* HY2TimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HY2TimePicker.swift; sourceTree = "<group>"; };
 		828FF2B22C3E71F1001A4ADE /* DialogModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogModifier.swift; sourceTree = "<group>"; };
 		82AB4F1C2C3EBF5400787B3B /* AlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModifier.swift; sourceTree = "<group>"; };
 		82AB4F222C3EEE6D00787B3B /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
@@ -292,7 +292,7 @@
 		47DA06912C7F680C00CC7B92 /* TextField */ = {
 			isa = PBXGroup;
 			children = (
-				47DA06952C7F686500CC7B92 /* HyTextField.swift */,
+				47DA06952C7F686500CC7B92 /* HY2TextField.swift */,
 			);
 			path = TextField;
 			sourceTree = "<group>";
@@ -300,7 +300,7 @@
 		47DA06922C7F681900CC7B92 /* Button */ = {
 			isa = PBXGroup;
 			children = (
-				47DA06972C7F68DC00CC7B92 /* HYButton.swift */,
+				47DA06972C7F68DC00CC7B92 /* HY2Button.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -308,7 +308,7 @@
 		47DA069B2C7F6D7900CC7B92 /* Picker */ = {
 			isa = PBXGroup;
 			children = (
-				827C18C62C48FC5100B4AAEA /* CustomPicker.swift */,
+				827C18C62C48FC5100B4AAEA /* HY2TimePicker.swift */,
 				47DA06992C7F6D7200CC7B92 /* Picker.swift */,
 			);
 			path = Picker;
@@ -727,7 +727,7 @@
 				473812372C5E622700C86215 /* StudyRoomRepository.swift in Sources */,
 				4790ECDC2C57EDC9002FCCAF /* Constants.swift in Sources */,
 				47DA069A2C7F6D7200CC7B92 /* Picker.swift in Sources */,
-				827C18C72C48FC5100B4AAEA /* CustomPicker.swift in Sources */,
+				827C18C72C48FC5100B4AAEA /* HY2TimePicker.swift in Sources */,
 				5EE959BE2C7F39D5002CD2A2 /* UIApplication+.swift in Sources */,
 				47D4CEC22C75C8F7005C126B /* TimeInterval+.swift in Sources */,
 				8270C9912C4D48A0000EB06A /* ServiceError.swift in Sources */,
@@ -744,7 +744,7 @@
 				473BF76F2C7E9C17002B7242 /* Haptic.swift in Sources */,
 				473BF7712C7EB4D0002B7242 /* RemoteConfig.swift in Sources */,
 				82D4D6142C327BDC00A92327 /* HongikYeolgong2_iOSApp.swift in Sources */,
-				47DA06962C7F686500CC7B92 /* HyTextField.swift in Sources */,
+				47DA06962C7F686500CC7B92 /* HY2TextField.swift in Sources */,
 				473E036D2C6AE1B900F3E0FC /* FirestoreServiceError.swift in Sources */,
 				473BF7752C7EC277002B7242 /* WiseSaying.swift in Sources */,
 				82AB4F232C3EEE6D00787B3B /* Date+.swift in Sources */,
@@ -757,7 +757,7 @@
 				5EE304A02C4023960002C49E /* InitialView.swift in Sources */,
 				5E029B5F2C4159EC0091249A /* RandomNonceString.swift in Sources */,
 				47AA66FB2C6E2FCE007CDD2B /* WebView.swift in Sources */,
-				47DA06982C7F68DC00CC7B92 /* HYButton.swift in Sources */,
+				47DA06982C7F68DC00CC7B92 /* HY2Button.swift in Sources */,
 				473E03782C6AF20B00F3E0FC /* Endpoint.swift in Sources */,
 				828FF2B32C3E71F1001A4ADE /* DialogModifier.swift in Sources */,
 				4768F20D2C7DA3CC009815FC /* Color+.swift in Sources */,

@@ -123,7 +123,7 @@ extension HomeView {
             
             
             if timerViewModel.remainingTime <= Constants.StudyRoomService.firstNotificationTime {
-                HYButton(title: "열람실 이용 연장",
+                HY2Button(title: "열람실 이용 연장",
                          textColor: Color.Primary.blue100,
                          fontSize: 16,
                          style: .roundedSmall) {
@@ -131,7 +131,7 @@ extension HomeView {
                 }
             }
             
-            HYButton(title: "열람실 이용 종료",
+            HY2Button(title: "열람실 이용 종료",
                      textColor: Color.GrayScale.gray100,
                      fontSize: 16,
                      style: .roundedSmall,
@@ -152,7 +152,7 @@ extension HomeView {
             
             HStack {
                 
-                HYButton(title: "좌석", 
+                HY2Button(title: "좌석",
                          style: .background(image: .angularButton01)) {
                     showingWebView = true
                 }
@@ -160,7 +160,7 @@ extension HomeView {
                 
                 Spacer().frame(width: 12)
                 
-                HYButton(title: "열람실 이용 시작",
+                HY2Button(title: "열람실 이용 시작",
                          style: .background(image: .angularButton02)) {
                     showingDialog = true
                 }

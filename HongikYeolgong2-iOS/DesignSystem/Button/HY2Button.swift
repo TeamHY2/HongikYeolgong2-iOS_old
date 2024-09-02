@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HYButton: View {
+struct HY2Button: View {
     
     enum ButtonStyle {
         case roundedMedium

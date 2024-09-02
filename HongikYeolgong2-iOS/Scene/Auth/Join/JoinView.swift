@@ -43,14 +43,14 @@ struct JoinView: View {
             VStack(alignment: .leading, spacing: 4) {
                 HStack(alignment: .top, spacing: 10) {
                     VStack {
-                        HyTextField(text: nicknameBinding,
+                        HY2TextField(text: nicknameBinding,
                                         isFocused: _textFieldFocused,
                                         placeholder: "닉네임을 입력해주세요.",
                                         isError: joinViewModel.nicknameStatus.isError)
                         .frame(width: 213)
                     }
                     
-                    HYButton(title: "중복확인",
+                    HY2Button(title: "중복확인",
                                  style: .roundedMedium) {
                         joinViewModel.send(action: .nicknameCheck)
                     }
@@ -84,7 +84,7 @@ struct JoinView: View {
             
             Spacer()
             
-            HYButton(title: "가입하기",
+            HY2Button(title: "가입하기",
                          textColor: .gray100,
                          fontSize: 18,
                          style: .background(image: joinViewModel.submitButtonDisable ? .icButton : .icClearButton)) {

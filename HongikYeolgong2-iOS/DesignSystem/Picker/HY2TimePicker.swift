@@ -9,14 +9,14 @@ import Foundation
 import SwiftUI
 import UIKit
 
-struct CustomPicker<T: Equatable>: UIViewRepresentable {
+struct HY2TimePicker<T: Equatable>: UIViewRepresentable {
     
     @Binding var selected: T
     
     let data: [T]
     
     func makeCoordinator() -> Coordinator {
-        return CustomPicker.Coordinator(parent: self)
+        return HY2TimePicker.Coordinator(parent: self)
     }
     
     func makeUIView(context: Context) -> UIPickerView {
@@ -38,14 +38,14 @@ struct CustomPicker<T: Equatable>: UIViewRepresentable {
         return picker
     }
     
-    func updateUIView(_ uiView: UIPickerView, context: UIViewRepresentableContext<CustomPicker>) {
+    func updateUIView(_ uiView: UIPickerView, context: UIViewRepresentableContext<HY2TimePicker>) {
         
     }
     
     class Coordinator: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
-        var parent: CustomPicker
+        var parent: HY2TimePicker
         
-        init(parent: CustomPicker) {
+        init(parent: HY2TimePicker) {
             self.parent = parent
         }
         

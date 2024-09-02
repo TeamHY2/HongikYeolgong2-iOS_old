@@ -53,15 +53,15 @@ struct DialogModifier: ViewModifier {
                         
                         // picker
                             HStack {
-                                CustomPicker(selected: $selectedHour.value, data: hours)
+                                HY2TimePicker(selected: $selectedHour.value, data: hours)
                                                                     
                                 Text(":")
                                     .font(.suite(size: 24, weight: .bold))
                                     .foregroundStyle(.white)
                                 
-                                CustomPicker(selected: $selectedMinute.value, data: minutes)
+                                HY2TimePicker(selected: $selectedMinute.value, data: minutes)
                                 
-                                CustomPicker(selected: $daypart.value, data: dayParts)
+                                HY2TimePicker(selected: $daypart.value, data: dayParts)
                             }
                             .frame(height: UIScreen.UIHeight(131))
                             .frame(width: UIScreen.UIWidth(166))
