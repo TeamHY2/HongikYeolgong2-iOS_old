@@ -66,7 +66,7 @@ class AuthenticationService: AuthenticationServiceType {
         Future { promise in
             Task {
                 do {
-                   let result =  try await self.deleteAccount()
+                   let _ =  try await self.deleteAccount()
                     promise(.success(()))
                 } catch {
                     promise(.failure(error))

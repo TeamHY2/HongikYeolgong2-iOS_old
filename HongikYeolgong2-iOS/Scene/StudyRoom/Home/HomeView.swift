@@ -97,7 +97,9 @@ struct HomeView: View {
                                   }
                               })
                               .onAppear {
-                                  LocalNotificationService.shared.requestPermission()
+                                  if LocalNotificationService.shared.authStatus == .notDetermined {
+                                      LocalNotificationService.shared.requestPermission()
+                                  }
                               }
     }
 }

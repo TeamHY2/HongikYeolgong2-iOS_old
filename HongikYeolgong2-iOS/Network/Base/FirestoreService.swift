@@ -79,7 +79,7 @@ final class FirestoreService: FirestoreServiceProtocol {
             throw FirestoreServiceError.documentNotFound
         }
         switch endpoint.method {
-        case .get, .query(_):
+        case .get, .query:
             throw FirestoreServiceError.invalidRequest
         case .post(var model):
             model.id = ref.documentID
