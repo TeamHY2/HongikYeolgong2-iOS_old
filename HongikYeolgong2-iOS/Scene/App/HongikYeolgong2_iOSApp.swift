@@ -43,6 +43,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         let options: FirebaseOptions? = FirebaseOptions.init(contentsOfFile: filePath)
         
         FirebaseApp.configure(options: options!)
+                
         setupDependency()
         return true
     }

@@ -12,13 +12,14 @@
 		473BF7712C7EB4D0002B7242 /* RemoteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473BF7702C7EB4D0002B7242 /* RemoteConfig.swift */; };
 		473BF7732C7EC1DF002B7242 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473BF7722C7EC1DF002B7242 /* HomeViewModel.swift */; };
 		473BF7752C7EC277002B7242 /* WiseSaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473BF7742C7EC277002B7242 /* WiseSaying.swift */; };
-		473BF7772C7F141B002B7242 /* GoogleService-Info-dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 473BF7762C7F141B002B7242 /* GoogleService-Info-dev.plist */; };
 		473E03692C6AE0B700F3E0FC /* FirestoreEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473E03682C6AE0B700F3E0FC /* FirestoreEndpoint.swift */; };
 		473E036B2C6AE17E00F3E0FC /* FirestoreIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473E036A2C6AE17E00F3E0FC /* FirestoreIdentifiable.swift */; };
 		473E036D2C6AE1B900F3E0FC /* FirestoreServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473E036C2C6AE1B900F3E0FC /* FirestoreServiceError.swift */; };
 		473E036F2C6AE1F100F3E0FC /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473E036E2C6AE1F100F3E0FC /* FirestoreService.swift */; };
 		473E03712C6AE25900F3E0FC /* FirestoreParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473E03702C6AE25900F3E0FC /* FirestoreParser.swift */; };
 		473E03782C6AF20B00F3E0FC /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473E03772C6AF20B00F3E0FC /* Endpoint.swift */; };
+		475237312C8545BD001963B5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4752372F2C8545BD001963B5 /* GoogleService-Info.plist */; };
+		475237332C8547C2001963B5 /* GoogleService-Info-dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 475237322C8547C2001963B5 /* GoogleService-Info-dev.plist */; };
 		475C01142C526D2500FB5556 /* LocalNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475C01132C526D2500FB5556 /* LocalNotificationService.swift */; };
 		4768F20D2C7DA3CC009815FC /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4768F20C2C7DA3CC009815FC /* Color+.swift */; };
 		477017852C63C9D8003F3702 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477017842C63C9D8003F3702 /* UserRepository.swift */; };
@@ -27,7 +28,6 @@
 		4790ECDC2C57EDC9002FCCAF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4790ECDB2C57EDC9002FCCAF /* Constants.swift */; };
 		4790ECDE2C57F9E5002FCCAF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4790ECDD2C57F9E5002FCCAF /* HomeView.swift */; };
 		47A004742C594376000AC842 /* Publisher+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A004732C594376000AC842 /* Publisher+.swift */; };
-		47A7EA772C6276330025594F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 47A7EA762C6276330025594F /* GoogleService-Info.plist */; };
 		47AA66FB2C6E2FCE007CDD2B /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AA66FA2C6E2FCE007CDD2B /* WebView.swift */; };
 		47D07F982C64A8B500F6109F /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D07F972C64A8B500F6109F /* SplashView.swift */; };
 		47D4CEC22C75C8F7005C126B /* TimeInterval+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D4CEC12C75C8F7005C126B /* TimeInterval+.swift */; };
@@ -127,13 +127,14 @@
 		473BF7702C7EB4D0002B7242 /* RemoteConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfig.swift; sourceTree = "<group>"; };
 		473BF7722C7EC1DF002B7242 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		473BF7742C7EC277002B7242 /* WiseSaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiseSaying.swift; sourceTree = "<group>"; };
-		473BF7762C7F141B002B7242 /* GoogleService-Info-dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-dev.plist"; sourceTree = "<group>"; };
 		473E03682C6AE0B700F3E0FC /* FirestoreEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreEndpoint.swift; sourceTree = "<group>"; };
 		473E036A2C6AE17E00F3E0FC /* FirestoreIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreIdentifiable.swift; sourceTree = "<group>"; };
 		473E036C2C6AE1B900F3E0FC /* FirestoreServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreServiceError.swift; sourceTree = "<group>"; };
 		473E036E2C6AE1F100F3E0FC /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
 		473E03702C6AE25900F3E0FC /* FirestoreParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreParser.swift; sourceTree = "<group>"; };
 		473E03772C6AF20B00F3E0FC /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		4752372F2C8545BD001963B5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		475237322C8547C2001963B5 /* GoogleService-Info-dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info-dev.plist"; path = "../../../Downloads/GoogleService-Info-dev.plist"; sourceTree = "<group>"; };
 		475C01132C526D2500FB5556 /* LocalNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationService.swift; sourceTree = "<group>"; };
 		4768F20C2C7DA3CC009815FC /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		477017842C63C9D8003F3702 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
@@ -142,7 +143,6 @@
 		4790ECDB2C57EDC9002FCCAF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4790ECDD2C57F9E5002FCCAF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		47A004732C594376000AC842 /* Publisher+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+.swift"; sourceTree = "<group>"; };
-		47A7EA762C6276330025594F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		47AA66FA2C6E2FCE007CDD2B /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		47D07F972C64A8B500F6109F /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		47D4CEC12C75C8F7005C126B /* TimeInterval+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+.swift"; sourceTree = "<group>"; };
@@ -556,8 +556,8 @@
 			isa = PBXGroup;
 			children = (
 				5E89D7712C356E5500C9CB71 /* Info.plist */,
-				47A7EA762C6276330025594F /* GoogleService-Info.plist */,
-				473BF7762C7F141B002B7242 /* GoogleService-Info-dev.plist */,
+				4752372F2C8545BD001963B5 /* GoogleService-Info.plist */,
+				475237322C8547C2001963B5 /* GoogleService-Info-dev.plist */,
 				5E8F934C2C416DF300ECE6C5 /* HongikYeolgong2-iOSDebug.entitlements */,
 				5EE304952C401A160002C49E /* HongikYeolgong2-iOSRelease.entitlements */,
 				82E15A4E2C481D02004951BE /* Resources */,
@@ -693,15 +693,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				47DA068E2C7F5BF800CC7B92 /* Pretendard-ExtraLight.otf in Resources */,
-				473BF7772C7F141B002B7242 /* GoogleService-Info-dev.plist in Resources */,
 				82D4D61B2C327BDF00A92327 /* Preview Assets.xcassets in Resources */,
 				47DA06832C7F5BF800CC7B92 /* Pretendard-ExtraBold.otf in Resources */,
 				47DA06892C7F5BF800CC7B92 /* Pretendard-Medium.otf in Resources */,
 				47DA06802C7F5BF800CC7B92 /* Pretendard-Bold.otf in Resources */,
-				47A7EA772C6276330025594F /* GoogleService-Info.plist in Resources */,
 				82D4D6182C327BDF00A92327 /* Assets.xcassets in Resources */,
 				47DA068D2C7F5BF800CC7B92 /* Pretendard-SemiBold.otf in Resources */,
 				47DA06812C7F5BF800CC7B92 /* SUITE-Light.otf in Resources */,
+				475237332C8547C2001963B5 /* GoogleService-Info-dev.plist in Resources */,
 				47D72F642C7D76C2001B514D /* Launch Screen.storyboard in Resources */,
 				47DA06882C7F5BF800CC7B92 /* SUITE-Bold.otf in Resources */,
 				47DA06862C7F5BF800CC7B92 /* SUITE-Medium.otf in Resources */,
@@ -713,6 +712,7 @@
 				47DA068A2C7F5BF800CC7B92 /* SUITE-Heavy.otf in Resources */,
 				47DA06852C7F5BF800CC7B92 /* Pretendard-Black.otf in Resources */,
 				47DA067F2C7F5BF800CC7B92 /* Pretendard-Light.otf in Resources */,
+				475237312C8545BD001963B5 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -935,6 +935,7 @@
 				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -979,6 +980,7 @@
 				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

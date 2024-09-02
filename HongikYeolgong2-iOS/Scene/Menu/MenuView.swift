@@ -15,7 +15,7 @@ struct MenuView: View {
     @State private var questionWebView = false
     
     var body: some View {
-        ZStack {
+        ZStack {            
             VStack(spacing: 0) {
                 Button(action: {noticeWebView.toggle()}
                        , label: {
