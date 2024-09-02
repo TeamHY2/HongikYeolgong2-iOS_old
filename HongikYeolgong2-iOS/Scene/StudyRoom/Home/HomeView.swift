@@ -151,15 +151,19 @@ extension HomeView {
             Spacer()
             
             HStack {
-                CustomButton2(action: {
+                
+                HYButton(title: "좌석", 
+                         style: .background(image: .angularButton01)) {
                     showingWebView = true
-                }, title: "좌석", image: .angularButton01, maxWidth: 69, minHeight: 52)
+                }
+                .frame(maxWidth: 69)
                 
                 Spacer().frame(width: 12)
                 
-                CustomButton2(action: {
+                HYButton(title: "열람실 이용 시작",
+                         style: .background(image: .angularButton02)) {
                     showingDialog = true
-                }, title: "열람실 이용 시작", image: .angularButton02, maxWidth: .infinity, minHeight: 52)
+                }
             }
             
             Spacer().frame(height: 40)
