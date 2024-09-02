@@ -10,10 +10,9 @@ import Foundation
 struct Day: Identifiable {
     var id = UUID().uuidString
     let dayOfNumber: String
-    var usageRecord: [StudyRoomUsage]?
+    var usageRecord: [StudyRoomUsage] = []
     
     var todayUsageCount: Int {
-        guard let usageRecord = usageRecord else { return 0 }
         return usageRecord.count
     }
 }

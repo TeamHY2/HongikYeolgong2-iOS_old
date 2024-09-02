@@ -13,7 +13,6 @@ struct TimeLapse: View {
     let endTime: Date
     let timeRemaining: Double
     let usageCount: Int
-//    let totalTime: Double
     
     var body: some View {
         VStack(spacing: 0) {
@@ -91,10 +90,5 @@ extension Double {
         formatter.zeroFormattingBehavior = .pad
         let formattedString = formatter.string(from: TimeInterval(self))!
         return formattedString
-    }
-    
-}
-
-#Preview {
-    TimeLapse(startTime: Date(), endTime: Date(), timeRemaining: 0, usageCount: 0)
+    }    
 }

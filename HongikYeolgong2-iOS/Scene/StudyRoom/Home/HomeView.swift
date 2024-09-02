@@ -65,6 +65,7 @@ struct HomeView: View {
                 guard let studyTime = await remoteConfigManager.getStudyTime() else { return }
                 timerViewModel.send(action: .setTime(studyTime))
                 timerViewModel.send(action: .startButtonTap)
+                calendarViewModel.send(action: .startStudy)
             }
         }
                 .alert(title: "열람실을 다 이용하셨나요?",
@@ -95,6 +96,13 @@ struct HomeView: View {
                                   } else if value == .background {
                                       timerViewModel.send(action: .enterBackground)
                                   }
+                              })
+                              .onChange(of: calendarViewModel.seletedDate, perform: { value in
+                                  guard timerViewModel.isStart == true &&
+                                        Calendar.current.isDateInToday(value)
+                                  else { return }
+                                  
+                                  calendarViewModel.send(action: .startStudy)
                               })
                               .onAppear {
                                   if LocalNotificationService.shared.authStatus == .notDetermined {
