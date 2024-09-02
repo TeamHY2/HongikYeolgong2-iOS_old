@@ -49,7 +49,9 @@ struct AlertModifier: ViewModifier {
                         Spacer().frame(height: UIScreen.UIHeight(40))
                         
                         // title
-                        CustomText(font: .pretendard, title: title, textColor: .customGray100, textWeight: .semibold, textSize: 18)
+                        Text(title)
+                            .font(.pretendard(size: 18, weight: .semibold))
+                            .foregroundStyle(Color.GrayScale.gray100)
                         
                         Spacer().frame(height: UIScreen.UIHeight(30))
                         
@@ -58,7 +60,9 @@ struct AlertModifier: ViewModifier {
                                 cancleAction?()
                                 isPresented = false
                             }) {
-                                CustomText(font: .pretendard, title: cancleButtonText, textColor: .customGray200, textWeight: .semibold, textSize: 16)
+                                Text(cancleButtonText)
+                                    .font(.pretendard(size: 16, weight: .semibold))
+                                    .foregroundStyle(Color.GrayScale.gray200)
                                     .frame(maxWidth: .infinity, minHeight: 46)
                             }
                             .background(Color(.customGray600))
@@ -69,8 +73,10 @@ struct AlertModifier: ViewModifier {
                             Button(action: {
                                 confirmAction?()
                                 isPresented = false
-                            }) {
-                                CustomText(font: .pretendard, title: confirmButtonText, textColor: .white, textWeight: .semibold, textSize: 16)
+                            }) {                                
+                                Text(confirmButtonText)
+                                    .font(.pretendard(size: 16, weight: .semibold))
+                                    .foregroundStyle(.white)
                                     .frame(maxWidth: .infinity, minHeight: 46)
                             }
                             .background(Color(.customBlue100))

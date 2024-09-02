@@ -15,8 +15,10 @@ struct CustomButton2: View {
     let minHeight: CGFloat
     
     var body: some View {
-        Button(action: action, label: {
-            CustomText(font: .suite, title: title, textColor: .white, textWeight: .semibold, textSize: 16)
+        Button(action: action, label: {            
+            Text(title)
+                .font(.suite(size: 16, weight: .semibold))
+                .foregroundStyle(.white)
                 .frame(maxWidth: UIScreen.UIWidth(maxWidth), minHeight: UIScreen.UIHeight(minHeight))
         })
         .background(

@@ -44,16 +44,20 @@ struct DialogModifier: ViewModifier {
                     VStack(spacing: 0) {
                         Spacer().frame(height: UIScreen.UIHeight(40))
                         
-                        // title
-                        CustomText(font: .pretendard, title: "열람실 이용 시작 시간", textColor: .customGray100, textWeight: .semibold, textSize: 18)
+                        // title                        
+                        Text("열람실 이용 시작 시간")
+                            .font(.pretendard(size: 18, weight: .semibold))
+                            .foregroundStyle(.gray100)
                         
                         Spacer().frame(height: UIScreen.UIHeight(30))
                         
                         // picker
                             HStack {
                                 CustomPicker(selected: $selectedHour.value, data: hours)
-                                    
-                                CustomText(font: .suite, title: ":", textColor: .white, textWeight: .bold, textSize: 24)
+                                                                    
+                                Text(":")
+                                    .font(.suite(size: 24, weight: .bold))
+                                    .foregroundStyle(.white)
                                 
                                 CustomPicker(selected: $selectedMinute.value, data: minutes)
                                 
@@ -92,7 +96,9 @@ struct DialogModifier: ViewModifier {
                                 cancleAction?()
                                 isPresented = false
                             }) {
-                                CustomText(font: .pretendard, title: "취소", textColor: .customGray200, textWeight: .semibold, textSize: 16)
+                                Text("취소")
+                                    .font(.pretendard(size: 16, weight: .semibold))
+                                    .foregroundStyle(Color.GrayScale.gray200)
                                     .frame(maxWidth: .infinity, minHeight: 46)
                             }
                             .background(Color(.customGray600))
@@ -103,8 +109,10 @@ struct DialogModifier: ViewModifier {
                             Button(action: {
                                 confirmAction?()
                                 isPresented = false
-                            }) {
-                                CustomText(font: .pretendard, title: "확인", textColor: .white, textWeight: .semibold, textSize: 16)
+                            }) {                                
+                                Text("확인")
+                                    .font(.pretendard(size: 16, weight: .semibold))
+                                    .foregroundStyle(.white)
                                     .frame(maxWidth: .infinity, minHeight: 46)
                             }
                             .background(Color(.customBlue100))

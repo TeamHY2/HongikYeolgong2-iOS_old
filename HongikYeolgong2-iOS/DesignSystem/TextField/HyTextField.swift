@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CustomTextField: View {    
+struct HyTextField: View {    
     @Binding var text: String
     @FocusState var isFocused: Bool
     

@@ -11,7 +11,7 @@ enum CellStyle: CaseIterable {
     case dayCount00
     case dayCount01
     case dayCount02
-    case dayCount03    
+    case dayCount03
 }
 
 struct CalendarCell: View {
@@ -38,7 +38,9 @@ struct CalendarCell: View {
         switch cellStyle {
         case .dayCount00:
             VStack {
-                CustomText(font: .suite, title: dayInfo.dayOfNumber, textColor: .customGray300, textWeight: .medium, textSize: 14)
+                Text(dayInfo.dayOfNumber)
+                    .font(.suite(size: 14, weight: .medium))
+                    .foregroundStyle(Color.GrayScale.gray300)
             }
             .frame(maxWidth: .infinity)
             .frame(height: UIScreen.UIHeight(33))
@@ -47,7 +49,9 @@ struct CalendarCell: View {
             .opacity(isVisible ? 0 : 1)
         case .dayCount01:
             VStack {
-                CustomText(font: .suite, title: dayInfo.dayOfNumber, textColor: .customGray100, textWeight: .medium, textSize: 14)
+                Text(dayInfo.dayOfNumber)
+                    .font(.suite(size: 14, weight: .medium))
+                    .foregroundStyle(Color.GrayScale.gray100)
             }
             .frame(maxWidth: .infinity)
             .frame(height: UIScreen.UIHeight(33))
@@ -56,7 +60,9 @@ struct CalendarCell: View {
             .opacity(isVisible ? 0 : 1)
         case .dayCount02:
             VStack {
-                CustomText(font: .suite, title: dayInfo.dayOfNumber, textColor: .white, textWeight: .medium, textSize: 14)
+                Text(dayInfo.dayOfNumber)
+                    .font(.suite(size: 14, weight: .medium))
+                    .foregroundStyle(Color.white)
             }
             .frame(maxWidth: .infinity)
             .frame(height: UIScreen.UIHeight(33))
@@ -65,7 +71,9 @@ struct CalendarCell: View {
             .opacity(isVisible ? 0 : 1)
         case .dayCount03:
             VStack {
-                CustomText(font: .suite, title: dayInfo.dayOfNumber, textColor: .customGray600, textWeight: .medium, textSize: 14)
+                Text(dayInfo.dayOfNumber)
+                    .font(.suite(size: 14, weight: .medium))
+                    .foregroundStyle(Color.GrayScale.gray600)
             }
             .frame(maxWidth: .infinity)
             .frame(height: UIScreen.UIHeight(33))

@@ -19,10 +19,13 @@ struct MenuView: View {
             VStack(spacing: 0) {
                 Button(action: {noticeWebView.toggle()}
                        , label: {
-                    CustomText(font: .pretendard, title: "공지사항", textColor: .customGray200, textWeight: .regular, textSize: 16, textAlignment: .leading)
+                    Text("공지사항")
+                        .font(.pretendard(size: 16, weight: .regular))
+                        .foregroundStyle(Color.GrayScale.gray200)
                         .minimumScaleFactor(0.2)
                         .frame(maxWidth: UIScreen.UIWidth(311), minHeight: UIScreen.UIHeight(52), alignment: .leading)
                         .padding(.leading, UIScreen.UIWidth(16))
+                    
                     Image("ic_arrowRight")
                         .padding(.trailing, UIScreen.UIWidth(11))
                 })
@@ -35,7 +38,9 @@ struct MenuView: View {
                 
                 Button(action: {questionWebView.toggle()}
                        , label: {
-                    CustomText(font: .pretendard, title: "문의사항", textColor: .customGray200, textWeight: .regular, textSize: 16, textAlignment: .leading)
+                    Text("문의사항")
+                        .font(.pretendard(size: 16, weight: .regular))
+                        .foregroundStyle(Color.GrayScale.gray200)
                         .minimumScaleFactor(0.2)
                         .frame(maxWidth: UIScreen.UIWidth(311), minHeight: UIScreen.UIHeight(52), alignment: .leading)
                         .padding(.leading, UIScreen.UIWidth(16))
@@ -50,7 +55,9 @@ struct MenuView: View {
                 }
                 
                 HStack(spacing: 0) {
-                    CustomText(font: .pretendard, title: "열람실 종료 시간 알림", textColor: .customGray200, textWeight: .regular, textSize: 16, textAlignment: .leading)
+                    Text("열람실 종료 시간 알림")
+                        .font(.pretendard(size: 16, weight: .regular))
+                        .foregroundStyle(Color.GrayScale.gray200)
                         .minimumScaleFactor(0.2)
                         .frame(maxWidth: UIScreen.UIWidth(311), minHeight: UIScreen.UIHeight(52), alignment: .leading)
                         .padding(.leading, UIScreen.UIWidth(16))
@@ -77,8 +84,9 @@ struct MenuView: View {
                 HStack(spacing: 0){
                     Image("ic_information")
                         .padding(.trailing, UIScreen.UIWidth(6))
-                    CustomText(font: .pretendard, title: "열람실 종료 10분, 30분 전에 알림을 보내 연장을 돕습니다.", textColor: .customGray200, textWeight: .regular, textSize: 12)
-                    
+                    Text("열람실 종료 10분, 30분 전에 알림을 보내 연장을 돕습니다.")
+                        .font(.pretendard(size: 12, weight: .regular))
+                        .foregroundColor(Color.GrayScale.gray200)
                     Spacer()
                 }
                 
@@ -88,17 +96,23 @@ struct MenuView: View {
                     Button(action: {
                         logoutAlert = true
                     }, label: {
-                        CustomText(font: .pretendard, title: "로그아웃", textColor: .customGray300, textWeight: .regular, textSize: 16)
+                        Text("로그아웃")
+                            .font(.pretendard(size: 16, weight: .regular))
+                            .foregroundStyle(Color.GrayScale.gray300)
                             .frame(width: UIScreen.UIWidth(56), height: UIScreen.UIHeight(26))
                     })
                     
-                    CustomText(font: .pretendard, title: "|", textColor: .customGray300, textWeight: .regular, textSize: 16)
+                    Text("|")
+                        .font(.pretendard(size: 16, weight: .regular))
+                        .foregroundStyle(Color.GrayScale.gray300)
                         .padding(.horizontal, UIScreen.UIWidth(24))
                     
                     Button(action: {
                         deleteAccountAlert = true
                     }, label: {
-                        CustomText(font: .pretendard, title: "회원탈퇴", textColor: .customGray300, textWeight: .regular, textSize: 16)
+                        Text("회원탈퇴")
+                            .font(.pretendard(size: 16, weight: .regular))
+                            .foregroundStyle(Color.GrayScale.gray300)
                             .frame(width: UIScreen.UIWidth(56), height: UIScreen.UIHeight(26))
                     })
                 }

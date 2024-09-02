@@ -84,7 +84,7 @@ struct HomeView: View {
                                   MenuView()
                               })
                               .navigationDestination(isPresented: $showingWebView, destination: {
-                                  WebView(url: Constants.Url.roomStatus)                                  
+                                  WebView(url: Constants.Url.roomStatus)
                               })
                               .onReceive(timerViewModel.$remainingTime.filter { $0 <= 0 }) { _ in
                                   saveData()
@@ -99,7 +99,7 @@ struct HomeView: View {
                               })
                               .onChange(of: calendarViewModel.seletedDate, perform: { value in
                                   guard timerViewModel.isStart == true &&
-                                        Calendar.current.isDateInToday(value)
+                                            Calendar.current.isDateInToday(value)
                                   else { return }
                                   
                                   calendarViewModel.send(action: .startStudy)
@@ -123,15 +123,22 @@ extension HomeView {
             
             
             if timerViewModel.remainingTime <= Constants.StudyRoomService.firstNotificationTime {
-                CustomButtonOld(action: {
+                HYButton(title: "열람실 이용 연장",
+                         textColor: Color.Primary.blue100,
+                         fontSize: 16,
+                         style: .roundedSmall) {
                     showTimeExtensionAlert = true
-                }, font: .suite, title: "열람실 이용 연장", titleColor: .white, backgroundColor: .customBlue100, leading: 0, trailing: 0)
+                }
             }
             
-            CustomButtonOld(action: {
+            HYButton(title: "열람실 이용 종료",
+                     textColor: Color.GrayScale.gray100,
+                     fontSize: 16,
+                     style: .roundedSmall,
+                     backgroundColor: Color.GrayScale.gray600) {
                 showCompleteAlert = true
-            }, font: .suite, title: "열람실 이용 종료", titleColor: .customGray100, backgroundColor: .customGray600, leading: 0, trailing: 0)
-            .padding(.top, 28)
+            }
+                     .padding(.top, 28)
             
             Spacer()
         }
