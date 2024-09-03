@@ -11,28 +11,33 @@ import Combine
 
 struct DialogModifier: ViewModifier {
     
-    @State private var hours = Array(repeating: Array(1...12), count: 100).flatMap { $0 }
-    @State private var minutes = Array(repeating: Array(0...59), count: 100).flatMap { $0 }
-    @State private var dayParts = ["AM", "PM"]
-    @State private var selectedHour = CurrentValueSubject<Int, Never>(0)
-    @State private var selectedMinute = CurrentValueSubject<Int, Never>(0)
-    @State private var daypart = CurrentValueSubject<String, Never>("AM")
-    @State private var minumumHours = 0
-    @State private var minumumMinutes = 0
-    @State private var seletedDaypart = "AM"
+    enum DayPart {
+        case am
+        case pm
+    }
+    
+    private let calendar = Calendar(identifier: .gregorian)
+    private let hours = Array(repeating: Array(1...12), count: 100).flatMap { $0 }
+    private let minutes = Array(repeating: Array(0...59), count: 100).flatMap { $0 }
+    private let dayParts: [DayPart] = [.am, .pm]
+    
+    private var cancelablles = Set<AnyCancellable>()
+    
+    @State private var currentHour = CurrentValueSubject<Int, Never>(0)
+    @State private var currentMinutes = CurrentValueSubject<Int, Never>(0)
+    @State private var currentDaypart = CurrentValueSubject<DayPart, Never>(.am)
+    
+    @State private var seletedHour = 0
+    @State private var seletedMinutes = 0
+    @State private var seletedDaypart: DayPart = .am
     
     @Binding var isPresented: Bool
     @Binding var currentDate: Date
     
-    private var cancelablles = Set<AnyCancellable>()
-    
     let confirmAction: (() -> ())?
     let cancleAction: (() -> ())?
     
-    init(isPresented: Binding<Bool>,
-         currentDate: Binding<Date>,
-         confirmAction: @escaping () -> (),
-         cancelAction: (() -> ())? = nil) {
+    init(isPresented: Binding<Bool>, currentDate: Binding<Date>, confirmAction: @escaping () -> (), cancelAction: (() -> ())? = nil) {
         self._isPresented = isPresented
         self._currentDate = currentDate
         self.confirmAction = confirmAction
@@ -58,21 +63,18 @@ struct DialogModifier: ViewModifier {
                         
                         // picker
                         HStack {
-                            HY2Picker(data: $hours,
-                                      selectedValue: $selectedHour.value,
-                                      minimumValue: $minumumHours)
+                            HY2Picker(selected: $currentHour.value,
+                                          items: hours)
                             
                             Text(":")
                                 .font(.suite(size: 24, weight: .bold))
                                 .foregroundStyle(.white)
                             
-                            HY2Picker(data: $minutes,
-                                      selectedValue: $selectedMinute.value,
-                                      minimumValue: $minumumMinutes)
+                            HY2Picker(selected: $currentMinutes.value,
+                                          items: minutes)
                             
-                            HY2Picker(data: $dayParts,
-                                      selectedValue: $daypart.value,
-                                      minimumValue: $seletedDaypart)
+                            HY2Picker(selected: $currentDaypart.value,
+                                          items: dayParts)
                         }
                         .frame(height: 131)
                         .frame(width: 166)
@@ -98,7 +100,6 @@ struct DialogModifier: ViewModifier {
                             )
                         )
                         
-                        
                         Spacer().frame(height: 32)
                         
                         // button
@@ -112,7 +113,7 @@ struct DialogModifier: ViewModifier {
                                     .foregroundStyle(Color.GrayScale.gray200)
                                     .frame(maxWidth: .infinity, minHeight: 46)
                             }
-                            .background(Color(.customGray600))
+                            .background(Color.GrayScale.gray600)
                             .cornerRadius(8)
                             
                             Spacer().frame(width: 12)
@@ -126,7 +127,7 @@ struct DialogModifier: ViewModifier {
                                     .foregroundStyle(.white)
                                     .frame(maxWidth: .infinity, minHeight: 46)
                             }
-                            .background(Color(.customBlue100))
+                            .background(Color.Primary.blue100)
                             .cornerRadius(8)
                             
                         }
@@ -136,74 +137,57 @@ struct DialogModifier: ViewModifier {
                         
                     }
                     .frame(maxWidth: 316, maxHeight: 336)
-                    .background(Color(.customGray800))
+                    .background(Color.GrayScale.gray800)
                     .cornerRadius(8)
                 }
                     .isHidden(!isPresented)
                     .onAppear {
-                        setCurrentDate()
+                        let hour = calendar.component(.hour, from: currentDate)
+                        let minutes = calendar.component(.minute, from: currentDate)
+                        let hour12 = hour % 12 == 0 ? 12 : hour % 12
+                        let dayPart: DayPart = hour < 12 ? .am : .pm
+                        
+                        currentHour.send(hour12)
+                        currentMinutes.send(minutes)
+                        currentDaypart.send(dayPart)
                     }
-                    .onReceive(Publishers.CombineLatest3(selectedHour, selectedMinute, daypart), perform: { hour, minutes, dayPart in
-                        let currentHour = Calendar.current.component(.hour, from: .now)
-                        let currentMinutes = Calendar.current.component(.minute, from: .now)
+                    .onReceive(Publishers.CombineLatest3(currentHour, currentMinutes, currentDaypart), perform: { newHour, newMinutes, newDaypart in
                         
-                        let hour12 = currentHour % 12 == 0 ? 12 : currentHour % 12
-                        if daypart.value.uppercased() == "AM" {
-                            minumumHours = min(11, currentHour)
-                        } else {
-                            minumumHours = hour12
+                        let currentDateComponets = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: .now)
+                        var newDateComponets = currentDateComponets
+                        
+                        var adjustedHour = newHour
+                        
+                        if newDaypart == .pm && newHour < 12 {
+                            adjustedHour += 12
+                        } else if newDaypart == .am && newHour == 12 {
+                            adjustedHour = 0
                         }
                         
-                        if selectedHour.value < minumumHours {
-                            minumumMinutes = 59
-                        } else {
-                            minumumMinutes = currentMinutes
-                        }
-                          
-                        currentDate = createDate(hour, minutes, dayPart) ?? Date()
+                        newDateComponets.hour = adjustedHour
+                        newDateComponets.minute = newMinutes
                         
+                        var hour, minutes: Int
+                        var daypart: DayPart
+                        
+                        guard let seletedDate = calendar.date(from: newDateComponets) else { return }
+                        
+                        if seletedDate <= Date() {
+                            hour = adjustedHour
+                            minutes = newMinutes
+                            daypart = newDaypart
+                        } else {
+                            hour = currentDateComponets.hour!
+                            minutes = currentDateComponets.minute!
+                            daypart = hour < 12 ? .am : .pm
+                        }
+
+                        seletedHour = hour
+                        seletedMinutes = minutes
+                        seletedDaypart = daypart
                     })
+                
             )
     }
-    
-    private func setCurrentDate() {
-        let calendar = Calendar.current
-        
-        let hour = calendar.component(.hour, from: currentDate)
-        let minutes = calendar.component(.minute, from: currentDate)
-        let hour12 = hour % 12 == 0 ? 12 : hour % 12
-        let daypart = hour < 12 ? "AM" : "PM"
-        
-        self.selectedHour.send(hour12)
-        self.selectedMinute.send(minutes)
-        self.daypart.send(daypart)
-    }
-    
-    
-    func createDate(_ hour: Int, _ minute: Int, _ period: String) -> Date? {
-        var adjustedHour = hour
-        
-        if period.uppercased() == "PM" && hour != 12 {
-            adjustedHour += 12
-        }
-        
-        if period.uppercased() == "AM" && hour == 12 {
-            adjustedHour = 0
-        }
-        
-        let now = Date()
-        let calendar = Calendar.current
-        let year = calendar.component(.year, from: now)
-        let month = calendar.component(.month, from: now)
-        let day = calendar.component(.day, from: now)
-        
-        var dateComponents = DateComponents()
-        dateComponents.year = year
-        dateComponents.month = month
-        dateComponents.day = day
-        dateComponents.hour = adjustedHour
-        dateComponents.minute = minute
-        
-        return calendar.date(from: dateComponents)
-    }
 }
+
