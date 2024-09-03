@@ -21,11 +21,9 @@ struct HongikYeolgong2_iOSApp: App {
                 .environmentObject(calendarViewModel)
                 .environmentObject(remoteConfigManager)
                 .environmentObject(homeViewModel)
-                .onAppear {
-                    Task {
-                        await LocalNotificationService.shared.checkPermission()
-                    }
-                }   
+                .task {
+                    await LocalNotificationService.shared.checkPermission()
+                }            
         }
     }
 }

@@ -9,14 +9,15 @@ import Foundation
 import SwiftUI
 import UIKit
 
-struct HY2TimePicker<T: Equatable>: UIViewRepresentable {
+struct HY2Picker<T: Comparable>: UIViewRepresentable {
     
-    @Binding var selected: T
-    
-    let data: [T]
+    @Binding var data: [T]
+    @Binding var selectedValue: T
+
+    @Binding var minimumValue: T
     
     func makeCoordinator() -> Coordinator {
-        return HY2TimePicker.Coordinator(parent: self)
+        return HY2Picker.Coordinator(parent: self)
     }
     
     func makeUIView(context: Context) -> UIPickerView {
@@ -27,25 +28,25 @@ struct HY2TimePicker<T: Equatable>: UIViewRepresentable {
         
         // 처음 Picker가 나타날때 현재시간으로 설정
         if data.randomElement() as? Int != nil,
-            let findIndex = data.enumerated().map({ $0 }).firstIndex(where: ({$0.element == selected && $0.offset >= data.count / 2})) {
+            let findIndex = data.enumerated().map({ $0 }).firstIndex(where: ({$0.element == selectedValue && $0.offset >= data.count / 2})) {
             
             picker.selectRow(findIndex, inComponent: 0, animated: false)
             
-        } else if let seleted = selected as? String {
+        } else if let seleted = selectedValue as? String {
             picker.selectRow(seleted == "AM" ? 0 : 1, inComponent: 0, animated: false)
         }
         
         return picker
     }
     
-    func updateUIView(_ uiView: UIPickerView, context: UIViewRepresentableContext<HY2TimePicker>) {
+    func updateUIView(_ uiView: UIPickerView, context: UIViewRepresentableContext<HY2Picker>) {
         
     }
     
     class Coordinator: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
-        var parent: HY2TimePicker
+        var parent: HY2Picker
         
-        init(parent: HY2TimePicker) {
+        init(parent: HY2Picker) {
             self.parent = parent
         }
         
@@ -64,7 +65,7 @@ struct HY2TimePicker<T: Equatable>: UIViewRepresentable {
             pickerView.subviews[1].alpha = 0
             
             // label을 감싸는 view
-            let view = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.UIWidth(42), height: UIScreen.UIHeight(35)))
+            let view = UIView(frame: CGRect(x: 0, y: 0, width: 42, height: 35))
             
             let label = UILabel(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height))
             
@@ -84,11 +85,23 @@ struct HY2TimePicker<T: Equatable>: UIViewRepresentable {
         }
         
         func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-            self.parent.selected = parent.data[row]
+            let mimimumValue = parent.minimumValue           
+            
+            guard let findIndex = parent.data.firstIndex(where: { $0 == mimimumValue }) else {
+                return
+            }
+            let seletedValue = parent.data[row]
+            
+            if seletedValue > mimimumValue {
+                self.parent.selectedValue = mimimumValue
+                pickerView.selectRow(findIndex, inComponent: 0, animated: true)
+            } else {
+                self.parent.selectedValue = parent.data[row]
+            }
         }
         
         func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {            
-            return UIScreen.UIHeight(43)
+            return 43
         }
     }
 }

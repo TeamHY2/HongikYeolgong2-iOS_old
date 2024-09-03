@@ -72,7 +72,7 @@ struct HomeView: View {
                        confirmButtonText: "네",
                        cancleButtonText: "더 이용하기",
                        isPresented: $showCompleteAlert) {
-                    saveData()
+                    saveStudyRecord()
                 }
                        .alert(title: "열람실 이용 시간을 연장할까요?",
                               confirmButtonText: "연장하기",
@@ -87,7 +87,7 @@ struct HomeView: View {
                                   WebView(url: Constants.Url.roomStatus)
                               })
                               .onReceive(timerViewModel.$remainingTime.filter { $0 <= 0 }) { _ in
-                                  saveData()
+                                  saveStudyRecord()
                               }.onChange(of: scenePhase, perform: { value in
                                   guard timerViewModel.isStart == true else { return }
                                   
@@ -173,17 +173,17 @@ extension HomeView {
 
 // MARK: - Helpers
 extension HomeView {
-    func saveData() {
+    func saveStudyRecord() {
         // 타이머 중지
         timerViewModel.send(action: .completeButtonTap)
         
         // 총시간
         let totalTime = timerViewModel.totalTime
-        let data = StudyRoomUsage(date: Date(), duration: totalTime)
+        let studyRecord = StudyRoomUsage(date: Date(), duration: totalTime)
         
         // 캘린더 업데이트
         if let uid = authViewModel.user?.id {
-            calendarViewModel.send(action: .saveButtonTap(data, uid))
+            calendarViewModel.send(action: .saveButtonTap(studyRecord, uid))
         }
     }
 }

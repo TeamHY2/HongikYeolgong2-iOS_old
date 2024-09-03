@@ -105,7 +105,7 @@
 		8270C9962C4D4AAE000EB06A /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8270C9952C4D4AAE000EB06A /* ViewModelType.swift */; };
 		8274CF3B2C33DBC800FBFA9D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8274CF3A2C33DBC800FBFA9D /* LoginView.swift */; };
 		8274CF3D2C33DE2300FBFA9D /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8274CF3C2C33DE2300FBFA9D /* MenuView.swift */; };
-		827C18C72C48FC5100B4AAEA /* HY2TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827C18C62C48FC5100B4AAEA /* HY2TimePicker.swift */; };
+		827C18C72C48FC5100B4AAEA /* HY2Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827C18C62C48FC5100B4AAEA /* HY2Picker.swift */; };
 		828FF2B32C3E71F1001A4ADE /* DialogModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828FF2B22C3E71F1001A4ADE /* DialogModifier.swift */; };
 		82AB4F1D2C3EBF5400787B3B /* AlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AB4F1C2C3EBF5400787B3B /* AlertModifier.swift */; };
 		82AB4F232C3EEE6D00787B3B /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AB4F222C3EEE6D00787B3B /* Date+.swift */; };
@@ -191,7 +191,7 @@
 		8270C9952C4D4AAE000EB06A /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		8274CF3A2C33DBC800FBFA9D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8274CF3C2C33DE2300FBFA9D /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
-		827C18C62C48FC5100B4AAEA /* HY2TimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HY2TimePicker.swift; sourceTree = "<group>"; };
+		827C18C62C48FC5100B4AAEA /* HY2Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HY2Picker.swift; sourceTree = "<group>"; };
 		828FF2B22C3E71F1001A4ADE /* DialogModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogModifier.swift; sourceTree = "<group>"; };
 		82AB4F1C2C3EBF5400787B3B /* AlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModifier.swift; sourceTree = "<group>"; };
 		82AB4F222C3EEE6D00787B3B /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
@@ -308,7 +308,7 @@
 		47DA069B2C7F6D7900CC7B92 /* Picker */ = {
 			isa = PBXGroup;
 			children = (
-				827C18C62C48FC5100B4AAEA /* HY2TimePicker.swift */,
+				827C18C62C48FC5100B4AAEA /* HY2Picker.swift */,
 				47DA06992C7F6D7200CC7B92 /* Picker.swift */,
 			);
 			path = Picker;
@@ -727,7 +727,7 @@
 				473812372C5E622700C86215 /* StudyRoomRepository.swift in Sources */,
 				4790ECDC2C57EDC9002FCCAF /* Constants.swift in Sources */,
 				47DA069A2C7F6D7200CC7B92 /* Picker.swift in Sources */,
-				827C18C72C48FC5100B4AAEA /* HY2TimePicker.swift in Sources */,
+				827C18C72C48FC5100B4AAEA /* HY2Picker.swift in Sources */,
 				5EE959BE2C7F39D5002CD2A2 /* UIApplication+.swift in Sources */,
 				47D4CEC22C75C8F7005C126B /* TimeInterval+.swift in Sources */,
 				8270C9912C4D48A0000EB06A /* ServiceError.swift in Sources */,

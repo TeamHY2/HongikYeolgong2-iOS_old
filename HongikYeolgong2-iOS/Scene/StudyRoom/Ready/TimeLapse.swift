@@ -56,11 +56,11 @@ struct TimeLapse: View {
                         .frame(height: UIScreen.UIHeight(11))
                     
                     HStack(alignment: .firstTextBaseline) {
-                        Text(startTime.getHourMinutes())
+                        Text(endTime.getHourMinutes())
                             .font(.suite(size: 30, weight: .extrabold))
                             .foregroundStyle(Color.GrayScale.gray100)
                         
-                        Text(startTime.getDaypart())
+                        Text(endTime.getDaypart())
                             .font(.suite(size: 14, weight: .medium))
                             .foregroundStyle(Color.GrayScale.gray100)
                     }
