@@ -29,7 +29,7 @@ struct MenuView: View {
                     Image("ic_arrowRight")
                         .padding(.trailing, UIScreen.UIWidth(11))
                 })
-                .background(Color(UIColor.customGray800))
+                .background(Color.GrayScale.gray800)
                 .cornerRadius(8)
                 .padding(.bottom, UIScreen.UIHeight(20))
                 .fullScreenCover(isPresented: $noticeWebView) {
@@ -47,7 +47,7 @@ struct MenuView: View {
                     Image("ic_arrowRight")
                         .padding(.trailing, UIScreen.UIWidth(11))
                 })
-                .background(Color(UIColor.customGray800))
+                .background(Color.GrayScale.gray800)
                 .cornerRadius(8)
                 .padding(.bottom, UIScreen.UIHeight(20))
                 .fullScreenCover(isPresented: $questionWebView) {
@@ -75,9 +75,9 @@ struct MenuView: View {
                             }
                         }
                     ))
-                    .toggleStyle(ColoredToggleStyle(onColor:Color(UIColor.customBlue100)))
+                    .toggleStyle(ColoredToggleStyle(onColor:Color.Primary.blue100))
                 }
-                .background(Color(UIColor.customGray800))
+                .background(Color.GrayScale.gray800)
                 .cornerRadius(8)
                 .padding(.bottom, UIScreen.UIWidth(8))
                 
@@ -162,8 +162,8 @@ struct MenuView: View {
 
 struct ColoredToggleStyle: ToggleStyle {
     var label = ""
-    var onColor = Color(UIColor.green)
-    var offColor = Color(UIColor.customGray200)
+    var onColor = Color.green
+    var offColor = Color.GrayScale.gray200
     var thumbColor = Color.white
     
     func makeBody(configuration: Self.Configuration) -> some View {

@@ -56,7 +56,6 @@
 		5E029B5A2C4157C20091249A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E029B592C4157C20091249A /* User.swift */; };
 		5E029B5F2C4159EC0091249A /* RandomNonceString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E029B5E2C4159EC0091249A /* RandomNonceString.swift */; };
 		5E029B612C415A2D0091249A /* SHA256.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E029B602C415A2D0091249A /* SHA256.swift */; };
-		5E5B0BD32C3289D500936435 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5B0BD22C3289D500936435 /* UIColor+.swift */; };
 		5E5CD4412C369994002CE244 /* UIScreen+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5CD4402C369994002CE244 /* UIScreen+.swift */; };
 		5E89D79A2C35855F00C9CB71 /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E89D7992C35855F00C9CB71 /* Font+.swift */; };
 		5EE304312C3FDCE40002C49E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5EE304302C3FDCE40002C49E /* FirebaseAnalytics */; };
@@ -98,15 +97,14 @@
 		8252CCDE2C40440600690D75 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8252CCDD2C40440600690D75 /* CalendarCell.swift */; };
 		8252CCE02C404A7300690D75 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8252CCDF2C404A7300690D75 /* Day.swift */; };
 		825665792C35202E0018C799 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825665782C35202E0018C799 /* MenuViewModel.swift */; };
-		825668A52C367ED30066B216 /* CustomNavBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825668A42C367ED30066B216 /* CustomNavBarModifier.swift */; };
-		825668A72C367F130066B216 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825668A62C367F130066B216 /* View+.swift */; };
+		825668A52C367ED30066B216 /* NavBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825668A42C367ED30066B216 /* NavBarModifier.swift */; };
 		825668A92C36855A0066B216 /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825668A82C36855A0066B216 /* UINavigationController+.swift */; };
 		8270C9912C4D48A0000EB06A /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8270C9902C4D48A0000EB06A /* ServiceError.swift */; };
 		8270C9962C4D4AAE000EB06A /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8270C9952C4D4AAE000EB06A /* ViewModelType.swift */; };
 		8274CF3B2C33DBC800FBFA9D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8274CF3A2C33DBC800FBFA9D /* LoginView.swift */; };
 		8274CF3D2C33DE2300FBFA9D /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8274CF3C2C33DE2300FBFA9D /* MenuView.swift */; };
 		827C18C72C48FC5100B4AAEA /* HY2Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827C18C62C48FC5100B4AAEA /* HY2Picker.swift */; };
-		828FF2B32C3E71F1001A4ADE /* DialogModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828FF2B22C3E71F1001A4ADE /* DialogModifier.swift */; };
+		828FF2B32C3E71F1001A4ADE /* TimePickerDialogModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828FF2B22C3E71F1001A4ADE /* TimePickerDialogModifier.swift */; };
 		82AB4F1D2C3EBF5400787B3B /* AlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AB4F1C2C3EBF5400787B3B /* AlertModifier.swift */; };
 		82AB4F232C3EEE6D00787B3B /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AB4F222C3EEE6D00787B3B /* Date+.swift */; };
 		82B1FE7B2C3BC567002D9163 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B1FE7A2C3BC567002D9163 /* Quote.swift */; };
@@ -167,7 +165,6 @@
 		5E029B592C4157C20091249A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5E029B5E2C4159EC0091249A /* RandomNonceString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNonceString.swift; sourceTree = "<group>"; };
 		5E029B602C415A2D0091249A /* SHA256.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHA256.swift; sourceTree = "<group>"; };
-		5E5B0BD22C3289D500936435 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		5E5CD4402C369994002CE244 /* UIScreen+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+.swift"; sourceTree = "<group>"; };
 		5E89D7712C356E5500C9CB71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5E89D7992C35855F00C9CB71 /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
@@ -184,15 +181,14 @@
 		8252CCDD2C40440600690D75 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		8252CCDF2C404A7300690D75 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		825665782C35202E0018C799 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
-		825668A42C367ED30066B216 /* CustomNavBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBarModifier.swift; sourceTree = "<group>"; };
-		825668A62C367F130066B216 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
+		825668A42C367ED30066B216 /* NavBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarModifier.swift; sourceTree = "<group>"; };
 		825668A82C36855A0066B216 /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
 		8270C9902C4D48A0000EB06A /* ServiceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		8270C9952C4D4AAE000EB06A /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		8274CF3A2C33DBC800FBFA9D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8274CF3C2C33DE2300FBFA9D /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		827C18C62C48FC5100B4AAEA /* HY2Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HY2Picker.swift; sourceTree = "<group>"; };
-		828FF2B22C3E71F1001A4ADE /* DialogModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogModifier.swift; sourceTree = "<group>"; };
+		828FF2B22C3E71F1001A4ADE /* TimePickerDialogModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerDialogModifier.swift; sourceTree = "<group>"; };
 		82AB4F1C2C3EBF5400787B3B /* AlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModifier.swift; sourceTree = "<group>"; };
 		82AB4F222C3EEE6D00787B3B /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		82B1FE7A2C3BC567002D9163 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
@@ -281,6 +277,59 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		4795E8632C88642600363468 /* Basic */ = {
+			isa = PBXGroup;
+			children = (
+				47DA069B2C7F6D7900CC7B92 /* Picker */,
+				47DA06922C7F681900CC7B92 /* Button */,
+				47DA06912C7F680C00CC7B92 /* TextField */,
+			);
+			path = Basic;
+			sourceTree = "<group>";
+		};
+		4795E8642C88643100363468 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				4795E8672C88660900363468 /* Alert */,
+				4795E8662C88649E00363468 /* NabBar */,
+				4795E8652C88644000363468 /* TimePicker */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		4795E8652C88644000363468 /* TimePicker */ = {
+			isa = PBXGroup;
+			children = (
+				828FF2B22C3E71F1001A4ADE /* TimePickerDialogModifier.swift */,
+			);
+			path = TimePicker;
+			sourceTree = "<group>";
+		};
+		4795E8662C88649E00363468 /* NabBar */ = {
+			isa = PBXGroup;
+			children = (
+				825668A42C367ED30066B216 /* NavBarModifier.swift */,
+			);
+			path = NabBar;
+			sourceTree = "<group>";
+		};
+		4795E8672C88660900363468 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				82AB4F1C2C3EBF5400787B3B /* AlertModifier.swift */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
+		4795E8682C8866ED00363468 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				5E89D7992C35855F00C9CB71 /* Font+.swift */,
+				4768F20C2C7DA3CC009815FC /* Color+.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
 		47D4CEC02C757748005C126B /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -336,9 +385,9 @@
 		5E5B0BC52C32868200936435 /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
-				47DA069B2C7F6D7900CC7B92 /* Picker */,
-				47DA06922C7F681900CC7B92 /* Button */,
-				47DA06912C7F680C00CC7B92 /* TextField */,
+				4795E8682C8866ED00363468 /* Foundation */,
+				4795E8642C88643100363468 /* Components */,
+				4795E8632C88642600363468 /* Basic */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -346,15 +395,11 @@
 		5E5B0BC62C3286A600936435 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				5E89D7992C35855F00C9CB71 /* Font+.swift */,
-				5E5B0BD22C3289D500936435 /* UIColor+.swift */,
 				5E5CD4402C369994002CE244 /* UIScreen+.swift */,
-				825668A62C367F130066B216 /* View+.swift */,
 				825668A82C36855A0066B216 /* UINavigationController+.swift */,
 				82AB4F222C3EEE6D00787B3B /* Date+.swift */,
 				47A004732C594376000AC842 /* Publisher+.swift */,
 				47D4CEC12C75C8F7005C126B /* TimeInterval+.swift */,
-				4768F20C2C7DA3CC009815FC /* Color+.swift */,
 				5EE959BD2C7F39D5002CD2A2 /* UIApplication+.swift */,
 			);
 			path = Extension;
@@ -437,7 +482,6 @@
 			children = (
 				82E15A6F2C48216E004951BE /* DIContainer */,
 				5E5B0BC62C3286A600936435 /* Extension */,
-				825668A12C3672C80066B216 /* Modifiers */,
 				8270C9952C4D4AAE000EB06A /* ViewModelType.swift */,
 				4790ECDB2C57EDC9002FCCAF /* Constants.swift */,
 			);
@@ -503,16 +547,6 @@
 				47E0A8C62C511B72009F1BA9 /* CalendarViewModel.swift */,
 			);
 			path = Calendar;
-			sourceTree = "<group>";
-		};
-		825668A12C3672C80066B216 /* Modifiers */ = {
-			isa = PBXGroup;
-			children = (
-				825668A42C367ED30066B216 /* CustomNavBarModifier.swift */,
-				828FF2B22C3E71F1001A4ADE /* DialogModifier.swift */,
-				82AB4F1C2C3EBF5400787B3B /* AlertModifier.swift */,
-			);
-			path = Modifiers;
 			sourceTree = "<group>";
 		};
 		8270C9922C4D48B6000EB06A /* Repository */ = {
@@ -731,8 +765,7 @@
 				5EE959BE2C7F39D5002CD2A2 /* UIApplication+.swift in Sources */,
 				47D4CEC22C75C8F7005C126B /* TimeInterval+.swift in Sources */,
 				8270C9912C4D48A0000EB06A /* ServiceError.swift in Sources */,
-				825668A52C367ED30066B216 /* CustomNavBarModifier.swift in Sources */,
-				825668A72C367F130066B216 /* View+.swift in Sources */,
+				825668A52C367ED30066B216 /* NavBarModifier.swift in Sources */,
 				4790ECDE2C57F9E5002FCCAF /* HomeView.swift in Sources */,
 				47E0A8C52C51177B009F1BA9 /* TimerViewModel.swift in Sources */,
 				825665792C35202E0018C799 /* MenuViewModel.swift in Sources */,
@@ -740,7 +773,6 @@
 				5E89D79A2C35855F00C9CB71 /* Font+.swift in Sources */,
 				473E036B2C6AE17E00F3E0FC /* FirestoreIdentifiable.swift in Sources */,
 				477017852C63C9D8003F3702 /* UserRepository.swift in Sources */,
-				5E5B0BD32C3289D500936435 /* UIColor+.swift in Sources */,
 				473BF76F2C7E9C17002B7242 /* Haptic.swift in Sources */,
 				473BF7712C7EB4D0002B7242 /* RemoteConfig.swift in Sources */,
 				82D4D6142C327BDC00A92327 /* HongikYeolgong2_iOSApp.swift in Sources */,
@@ -759,7 +791,7 @@
 				47AA66FB2C6E2FCE007CDD2B /* WebView.swift in Sources */,
 				47DA06982C7F68DC00CC7B92 /* HY2Button.swift in Sources */,
 				473E03782C6AF20B00F3E0FC /* Endpoint.swift in Sources */,
-				828FF2B32C3E71F1001A4ADE /* DialogModifier.swift in Sources */,
+				828FF2B32C3E71F1001A4ADE /* TimePickerDialogModifier.swift in Sources */,
 				4768F20D2C7DA3CC009815FC /* Color+.swift in Sources */,
 				5E029B612C415A2D0091249A /* SHA256.swift in Sources */,
 				8274CF3B2C33DBC800FBFA9D /* LoginView.swift in Sources */,
@@ -905,7 +937,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1.1.0;
+				CURRENT_PROJECT_VERSION = 1.1.1;
 				DEVELOPMENT_ASSET_PATHS = "\"HongikYeolgong2-iOS/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = P4D4ZQC4YF;
@@ -950,7 +982,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1.1.0;
+				CURRENT_PROJECT_VERSION = 1.1.1;
 				DEVELOPMENT_ASSET_PATHS = "\"HongikYeolgong2-iOS/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = P4D4ZQC4YF;

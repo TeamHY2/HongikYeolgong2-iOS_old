@@ -44,7 +44,7 @@ struct CalendarCell: View {
             }
             .frame(maxWidth: .infinity)
             .frame(height: UIScreen.UIHeight(33))
-            .background(Color(.customGray800))
+            .background(Color.GrayScale.gray800)
             .cornerRadius(8)
             .opacity(isVisible ? 0 : 1)
         case .dayCount01:

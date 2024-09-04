@@ -35,7 +35,7 @@ struct OnBoardingView: View {
                         } else {
                             Circle()
                                 .frame(width: 9, height: 9)
-                                .foregroundColor(Color(.customGray600))
+                                .foregroundColor(Color.GrayScale.gray600)
                         }
                     }.onTapGesture {
                         seletedIndex = index

@@ -70,7 +70,7 @@ struct HY2Picker<T: Comparable>: UIViewRepresentable {
                 label.text = "\(parent.items[row])"
             }
             
-            label.textColor = UIColor(.white)
+            label.textColor = .white
             label.textAlignment = .center
             label.font = UIFont(name: "SUITE-Bold", size: 24)
             
