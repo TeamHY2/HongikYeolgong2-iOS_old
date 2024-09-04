@@ -57,7 +57,7 @@ struct HY2Button: View {
                     .frame(maxWidth: .infinity, maxHeight: 48)
                     .foregroundColor(.white)
             })
-            .background(.blue100)
+            .background(backgroundColor)
             .cornerRadius(8)
         case .roundedSmall:
             Button(action: {
