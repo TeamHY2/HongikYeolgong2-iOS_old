@@ -147,66 +147,67 @@ struct TimePickerDialogModifier: ViewModifier {
                         .background(Color.GrayScale.gray800)
                         .cornerRadius(8)
                     }
-                        .onChange(of: isPresented == true, perform: { isPresented in
-                            if isPresented {
-                                clearSelectedTime()
-                            }
-                        })
-                        .onAppear { clearSelectedTime() }
-                        .onReceive(Publishers.CombineLatest3(currentHour, currentMinutes, currentDaypart), perform: { newHour, newMinutes, newDaypart in
-                            
-                            let currentDateComponets = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: .now)
-                            var newDateComponets = currentDateComponets
-                            
-                            var adjustedHour = newHour
-                            
-                            if newDaypart == .PM && newHour < 12 {
-                                adjustedHour += 12
-                            } else if newDaypart == .AM && newHour == 12 {
-                                adjustedHour = 0
-                            }
-                            
-                            newDateComponets.hour = adjustedHour
-                            newDateComponets.minute = newMinutes
-                            
-                            guard let seletedDate = calendar.date(from: newDateComponets),
-                                  let currentDate = calendar.date(from: currentDateComponets) else { return }
-                            
-                            var hour, minutes: Int
-                            var daypart: DayPart
-                            
-                            if seletedDate <= currentDate {
-                                hour = adjustedHour % 12 == 0 ? 12 : adjustedHour % 12
-                                minutes = newMinutes
-                                daypart = newDaypart
-                            } else {
-                                hour = currentDateComponets.hour! % 12 == 0 ? 12 : currentDateComponets.hour! % 12
-                                minutes = currentDateComponets.minute!
-                                daypart = hour < 12 ? .AM : .PM
-                            }
-                            
-                            self.seletedHour = hour
-                            self.seletedMinutes = minutes
-                            self.seletedDaypart = daypart
-                            
-                            if daypart == .PM && hour < 12 {
-                                hour += 12
-                            } else if daypart == .AM && hour == 12 {
-                                hour = 0
-                            }
-                            
-                            var dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: .now)
-                            dateComponents.hour = hour
-                            dateComponents.minute = minutes
-                            
-                            guard let newDate = calendar.date(from: dateComponents) else {
-                                return
-                            }
-                            
-                            self.currentDate = newDate
-                        })
+                    
+                    .onReceive(Publishers.CombineLatest3(currentHour, currentMinutes, currentDaypart), perform: { newHour, newMinutes, newDaypart in
+                        
+                        let currentDateComponets = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: .now)
+                        var newDateComponets = currentDateComponets
+                        
+                        var adjustedHour = newHour
+                        
+                        if newDaypart == .PM && newHour < 12 {
+                            adjustedHour += 12
+                        } else if newDaypart == .AM && newHour == 12 {
+                            adjustedHour = 0
+                        }
+                        
+                        newDateComponets.hour = adjustedHour
+                        newDateComponets.minute = newMinutes
+                        
+                        guard let seletedDate = calendar.date(from: newDateComponets),
+                              let currentDate = calendar.date(from: currentDateComponets) else { return }
+                        
+                        var hour, minutes: Int
+                        var daypart: DayPart
+                        
+                        if seletedDate <= currentDate {
+                            hour = adjustedHour % 12 == 0 ? 12 : adjustedHour % 12
+                            minutes = newMinutes
+                            daypart = newDaypart
+                        } else {
+                            hour = currentDateComponets.hour! % 12 == 0 ? 12 : currentDateComponets.hour! % 12
+                            minutes = currentDateComponets.minute!
+                            daypart = hour < 12 ? .AM : .PM
+                        }
+                        
+                        self.seletedHour = hour
+                        self.seletedMinutes = minutes
+                        self.seletedDaypart = daypart
+                        
+                        if daypart == .PM && hour < 12 {
+                            hour += 12
+                        } else if daypart == .AM && hour == 12 {
+                            hour = 0
+                        }
+                        
+                        var dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: .now)
+                        dateComponents.hour = hour
+                        dateComponents.minute = minutes
+                        
+                        guard let newDate = calendar.date(from: dateComponents) else {
+                            return
+                        }
+                        
+                        self.currentDate = newDate
+                    })
                 }
             }
+            .onChange(of: isPresented, perform: { isPresented in
+                if isPresented {
+                    clearSelectedTime()
+                }
+            })
+            .onAppear { clearSelectedTime() }
     }
     
     private func clearSelectedTime() {

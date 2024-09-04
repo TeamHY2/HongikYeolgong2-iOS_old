@@ -85,7 +85,7 @@ final class JoinViewModel: ViewModelType {
             case .specialCharactersAndSpaces:
                 "*특수문자와 띄어쓰기를 사용할 수 없어요."
             case .notAllowedLength:
-                "한글, 영어, 숫자를 포함하여 2~8자를 입력해 주세요."
+                "*한글, 영어, 숫자를 포함하여 2~8자를 입력해 주세요."
             case .available:
                 "*닉네임을 사용할 수 있어요."
             case .alreadyUse:
