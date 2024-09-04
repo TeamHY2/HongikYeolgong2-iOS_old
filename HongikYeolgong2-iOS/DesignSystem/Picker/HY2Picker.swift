@@ -9,9 +9,10 @@ import Foundation
 import SwiftUI
 import UIKit
 
-struct HY2Picker<T: Equatable>: UIViewRepresentable {
+struct HY2Picker<T: Comparable>: UIViewRepresentable {
     
-    @Binding var selected: T
+    @Binding var selectedValue: T
+    @Binding var currentValue: T
     
     let items: [T]
     
@@ -26,19 +27,15 @@ struct HY2Picker<T: Equatable>: UIViewRepresentable {
         picker.delegate = context.coordinator
         
         // 처음 Picker가 나타날때 현재시간으로 설정
-        if items.randomElement() as? Int != nil,
-            let findIndex = items.enumerated().map({ $0 }).firstIndex(where: ({$0.element == selected && $0.offset >= items.count / 2})) {
-            
+        if let findIndex = items.enumerated().map({ $0 }).firstIndex(where: ({$0.element == selectedValue && $0.offset >= items.count / 2})) {
             picker.selectRow(findIndex, inComponent: 0, animated: false)
-            
-        } else if let seleted = selected as? String {
-            picker.selectRow(seleted == "AM" ? 0 : 1, inComponent: 0, animated: false)
         }
         
         return picker
     }
     
     func updateUIView(_ uiView: UIPickerView, context: UIViewRepresentableContext<HY2Picker>) {
+        
     }
     
     class Coordinator: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
@@ -83,7 +80,34 @@ struct HY2Picker<T: Equatable>: UIViewRepresentable {
         }
         
         func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-            self.parent.selected = parent.items[row]
+            self.parent.selectedValue = parent.items[row]
+            
+            if parent.items[row] == parent.currentValue {
+                self.parent.selectedValue = parent.items[row]
+            } else {
+                self.parent.selectedValue = parent.currentValue
+                
+                let currentIndex = pickerView.selectedRow(inComponent: 0)
+                
+                var closestIndex = currentIndex
+                var smallestDistance = Int.max
+                
+                
+                for (index, item) in parent.items.enumerated() {
+                    
+                    if item == parent.currentValue {
+                        
+                        let distance = abs(index - currentIndex)
+                        
+                        if distance < smallestDistance {
+                            smallestDistance = distance
+                            closestIndex = index
+                        }
+                    }
+                }
+                
+                pickerView.selectRow(closestIndex, inComponent: 0, animated: true)
+            }
         }
         
         func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {

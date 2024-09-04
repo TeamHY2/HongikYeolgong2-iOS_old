@@ -11,7 +11,7 @@ import Combine
 
 struct DialogModifier: ViewModifier {
     
-    enum DayPart {
+    enum DayPart: Comparable {
         case am
         case pm
     }
@@ -63,18 +63,21 @@ struct DialogModifier: ViewModifier {
                         
                         // picker
                         HStack {
-                            HY2Picker(selected: $currentHour.value,
-                                          items: hours)
+                            HY2Picker(selectedValue: $currentHour.value,
+                                      currentValue: $seletedHour,
+                                      items: hours)
                             
                             Text(":")
                                 .font(.suite(size: 24, weight: .bold))
                                 .foregroundStyle(.white)
                             
-                            HY2Picker(selected: $currentMinutes.value,
-                                          items: minutes)
+                            HY2Picker(selectedValue: $currentMinutes.value,
+                                      currentValue: $seletedMinutes,
+                                      items: minutes)
                             
-                            HY2Picker(selected: $currentDaypart.value,
-                                          items: dayParts)
+                            HY2Picker(selectedValue: $currentDaypart.value,
+                                      currentValue: $seletedDaypart,
+                                      items: dayParts)
                         }
                         .frame(height: 131)
                         .frame(width: 166)
@@ -150,6 +153,10 @@ struct DialogModifier: ViewModifier {
                         currentHour.send(hour12)
                         currentMinutes.send(minutes)
                         currentDaypart.send(dayPart)
+                        
+                        seletedDaypart = dayPart
+                        seletedHour = hour12
+                        seletedMinutes = minutes
                     }
                     .onReceive(Publishers.CombineLatest3(currentHour, currentMinutes, currentDaypart), perform: { newHour, newMinutes, newDaypart in
                         
@@ -167,21 +174,22 @@ struct DialogModifier: ViewModifier {
                         newDateComponets.hour = adjustedHour
                         newDateComponets.minute = newMinutes
                         
+                        guard let seletedDate = calendar.date(from: newDateComponets),
+                              let currentDate = calendar.date(from: currentDateComponets) else { return }
+                        
                         var hour, minutes: Int
                         var daypart: DayPart
                         
-                        guard let seletedDate = calendar.date(from: newDateComponets) else { return }
-                        
-                        if seletedDate <= Date() {
-                            hour = adjustedHour
+                        if seletedDate <= currentDate {
+                            hour = adjustedHour % 12 == 0 ? 12 : adjustedHour % 12
                             minutes = newMinutes
                             daypart = newDaypart
                         } else {
-                            hour = currentDateComponets.hour!
+                            hour = currentDateComponets.hour! % 12 == 0 ? 12 : currentDateComponets.hour! % 12
                             minutes = currentDateComponets.minute!
                             daypart = hour < 12 ? .am : .pm
                         }
-
+                        
                         seletedHour = hour
                         seletedMinutes = minutes
                         seletedDaypart = daypart
