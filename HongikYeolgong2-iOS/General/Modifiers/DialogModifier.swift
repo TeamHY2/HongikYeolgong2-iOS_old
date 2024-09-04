@@ -12,24 +12,24 @@ import Combine
 struct DialogModifier: ViewModifier {
     
     enum DayPart: Comparable {
-        case am
-        case pm
+        case AM
+        case PM
     }
     
     private let calendar = Calendar(identifier: .gregorian)
     private let hours = Array(repeating: Array(1...12), count: 100).flatMap { $0 }
     private let minutes = Array(repeating: Array(0...59), count: 100).flatMap { $0 }
-    private let dayParts: [DayPart] = [.am, .pm]
+    private let dayParts: [DayPart] = [.AM, .PM]
     
     private var cancelablles = Set<AnyCancellable>()
     
     @State private var currentHour = CurrentValueSubject<Int, Never>(0)
     @State private var currentMinutes = CurrentValueSubject<Int, Never>(0)
-    @State private var currentDaypart = CurrentValueSubject<DayPart, Never>(.am)
+    @State private var currentDaypart = CurrentValueSubject<DayPart, Never>(.AM)
     
     @State private var seletedHour = 0
     @State private var seletedMinutes = 0
-    @State private var seletedDaypart: DayPart = .am
+    @State private var seletedDaypart: DayPart = .AM
     
     @Binding var isPresented: Bool
     @Binding var currentDate: Date
@@ -37,7 +37,10 @@ struct DialogModifier: ViewModifier {
     let confirmAction: (() -> ())?
     let cancleAction: (() -> ())?
     
-    init(isPresented: Binding<Bool>, currentDate: Binding<Date>, confirmAction: @escaping () -> (), cancelAction: (() -> ())? = nil) {
+    init(isPresented: Binding<Bool>,
+         currentDate: Binding<Date>,
+         confirmAction: @escaping () -> (),
+         cancelAction: (() -> ())? = nil) {
         self._isPresented = isPresented
         self._currentDate = currentDate
         self.confirmAction = confirmAction
@@ -110,6 +113,7 @@ struct DialogModifier: ViewModifier {
                             Button(action: {
                                 cancleAction?()
                                 isPresented = false
+                                currentDate = Date()
                             }) {
                                 Text("취소")
                                     .font(.pretendard(size: 16, weight: .semibold))
@@ -144,20 +148,12 @@ struct DialogModifier: ViewModifier {
                     .cornerRadius(8)
                 }
                     .isHidden(!isPresented)
-                    .onAppear {
-                        let hour = calendar.component(.hour, from: currentDate)
-                        let minutes = calendar.component(.minute, from: currentDate)
-                        let hour12 = hour % 12 == 0 ? 12 : hour % 12
-                        let dayPart: DayPart = hour < 12 ? .am : .pm
-                        
-                        currentHour.send(hour12)
-                        currentMinutes.send(minutes)
-                        currentDaypart.send(dayPart)
-                        
-                        seletedDaypart = dayPart
-                        seletedHour = hour12
-                        seletedMinutes = minutes
-                    }
+                    .onChange(of: isPresented == true, perform: { isPresented in
+                        if isPresented {
+                            clearSelectedTime()
+                        }
+                    })
+                    .onAppear { clearSelectedTime() }
                     .onReceive(Publishers.CombineLatest3(currentHour, currentMinutes, currentDaypart), perform: { newHour, newMinutes, newDaypart in
                         
                         let currentDateComponets = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: .now)
@@ -165,9 +161,9 @@ struct DialogModifier: ViewModifier {
                         
                         var adjustedHour = newHour
                         
-                        if newDaypart == .pm && newHour < 12 {
+                        if newDaypart == .PM && newHour < 12 {
                             adjustedHour += 12
-                        } else if newDaypart == .am && newHour == 12 {
+                        } else if newDaypart == .AM && newHour == 12 {
                             adjustedHour = 0
                         }
                         
@@ -187,15 +183,46 @@ struct DialogModifier: ViewModifier {
                         } else {
                             hour = currentDateComponets.hour! % 12 == 0 ? 12 : currentDateComponets.hour! % 12
                             minutes = currentDateComponets.minute!
-                            daypart = hour < 12 ? .am : .pm
+                            daypart = hour < 12 ? .AM : .PM
                         }
                         
-                        seletedHour = hour
-                        seletedMinutes = minutes
-                        seletedDaypart = daypart
+                        self.seletedHour = hour
+                        self.seletedMinutes = minutes
+                        self.seletedDaypart = daypart
+                        
+                        if daypart == .PM && hour < 12 {
+                            hour += 12
+                        } else if daypart == .AM && hour == 12 {
+                            hour = 0
+                        }
+                        
+                        var dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: .now)
+                        dateComponents.hour = hour
+                        dateComponents.minute = minutes
+                        
+                        guard let newDate = calendar.date(from: dateComponents) else {
+                            return
+                        }
+                        
+                        self.currentDate = newDate
                     })
                 
             )
+    }
+    
+    private func clearSelectedTime() {
+        let hour = calendar.component(.hour, from: .now)
+        let minutes = calendar.component(.minute, from: .now)
+        let hour12 = hour % 12 == 0 ? 12 : hour % 12
+        let dayPart: DayPart = hour < 12 ? .AM : .PM
+        
+        currentHour.send(hour12)
+        currentMinutes.send(minutes)
+        currentDaypart.send(dayPart)
+        
+        seletedDaypart = dayPart
+        seletedHour = hour12
+        seletedMinutes = minutes
     }
 }
 

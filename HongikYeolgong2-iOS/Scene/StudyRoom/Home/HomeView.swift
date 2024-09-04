@@ -58,9 +58,9 @@ struct HomeView: View {
             }, label: {
                 Image(.icHamburger)
             })
-        })
+        })        
         .dialog(isPresented: $showingDialog,
-                currentDate: $timerViewModel.startTime) {
+                currentDate: $timerViewModel.startTime) {            
             Task {
                 guard let studyTime = await remoteConfigManager.getStudyTime() else { return }
                 timerViewModel.send(action: .setTime(studyTime))
