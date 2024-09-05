@@ -85,13 +85,13 @@ final class JoinViewModel: ViewModelType {
             case .specialCharactersAndSpaces:
                 "*특수문자와 띄어쓰기를 사용할 수 없어요."
             case .notAllowedLength:
-                "한글, 영어, 숫자를 포함하여 2~8자를 입력해 주세요."
+                "*한글, 영어, 숫자를 포함하여 2~8자를 입력해 주세요."
             case .available:
-                "*닉네임을 사용할 수 있습니다."
+                "*닉네임을 사용할 수 있어요."
             case .alreadyUse:
-                "이미 사용중인 닉네임 입니다."
+                "*이미 사용중인 닉네임 입니다."
             case .unknown:
-                "올바른 형식의 닉네임이 아닙니다."
+                "*올바른 형식의 닉네임이 아닙니다."
             }
         }
         
@@ -100,7 +100,7 @@ final class JoinViewModel: ViewModelType {
             case .none:
                     .gray400
             case .available:
-                    .green
+                    .blue100
             default:
                     .yellow300
             }

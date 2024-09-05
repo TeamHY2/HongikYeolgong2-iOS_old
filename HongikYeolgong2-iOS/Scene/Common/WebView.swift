@@ -85,7 +85,7 @@ struct LoadingView<Content>: View where Content: View {
             ZStack(alignment: .center) {
                 self.content()
                     .disabled(self.isShowing)
-                    .overlay(isShowing ? Color(.customBackground) : Color.clear)
+                    .overlay(isShowing ? Color.black : Color.clear)
                 
                 ActivityIndicatorView(isAnimating: .constant(true), style: .large)
                     .frame(width: geometry.size.width / 2, height: geometry.size.height / 5)
@@ -102,7 +102,7 @@ struct ActivityIndicatorView: UIViewRepresentable {
     
     func makeUIView(context: UIViewRepresentableContext<ActivityIndicatorView>) -> UIActivityIndicatorView {
         let activityIndicatorView = UIActivityIndicatorView(style: style)
-        activityIndicatorView.color = .customBlue100
+        activityIndicatorView.color = .blue100
         return activityIndicatorView
     }
     

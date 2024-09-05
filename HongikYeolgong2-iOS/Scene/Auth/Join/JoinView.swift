@@ -25,7 +25,7 @@ struct JoinView: View {
             joinViewModel.send(action: .seletedDepartment($0))
         })
     }
-       
+    
     var body: some View {
         VStack(spacing: 0) {
             Spacer().frame(height: 23)
@@ -43,19 +43,25 @@ struct JoinView: View {
             VStack(alignment: .leading, spacing: 4) {
                 HStack(alignment: .top, spacing: 10) {
                     VStack {
-                        CustomTextField(text: nicknameBinding,
-                                        isFocused: _textFieldFocused,
-                                        placeholder: "닉네임을 입력해주세요.",
-                                        isError: joinViewModel.nicknameStatus.isError)
+                        HY2TextField(text: nicknameBinding,
+                                     isFocused: _textFieldFocused,
+                                     placeholder: "닉네임을 입력해주세요.",
+                                     isError: joinViewModel.nicknameStatus.isError)
                         .frame(width: 213)
                     }
                     
-                    CustomButton(title: "중복확인",
-                                 style: .rounded) {
+                    Button(action: {
                         joinViewModel.send(action: .nicknameCheck)
-                    }
-                                 .disabled(joinViewModel.nicknameCheckDisable)
-                                 .opacity(joinViewModel.nicknameCheckDisable ? 0.7 : 1)
+                    }, label: {
+                        Text("중복확인")
+                            .font(.pretendard(size: 16, weight: .regular))
+                            .foregroundStyle(.white)
+                            .frame(maxWidth: .infinity, maxHeight: 48)
+                            .opacity(joinViewModel.nicknameStatus == .available ? 0.4 : 1)
+                    })                    
+                    .background(joinViewModel.nicknameStatus == .available ? .blue400 : .blue100)
+                    .disabled(joinViewModel.nicknameCheckDisable)
+                    .cornerRadius(8)
                 }
                 
                 Text(joinViewModel.nicknameStatus.message)
@@ -84,16 +90,16 @@ struct JoinView: View {
             
             Spacer()
             
-            CustomButton(title: "가입하기",
-                         textColor: .gray100,
-                         fontSize: 18,
-                         style: .background(image: joinViewModel.submitButtonDisable ? .icButton : .icClearButton)) {
+            HY2Button(title: "가입하기",
+                      textColor: .gray100,
+                      fontSize: 18,
+                      style: .background(image: joinViewModel.submitButtonDisable ? .icButton : .icClearButton)) {
                 
-                authViewModel.send(action: .createAccount(nickname: joinViewModel.nickname, 
+                authViewModel.send(action: .createAccount(nickname: joinViewModel.nickname,
                                                           department: joinViewModel.departmentName))
             }
-                         .opacity(joinViewModel.submitButtonDisable ? 0.6 : 1)
-                         .disabled(joinViewModel.submitButtonDisable)
+                      .opacity(joinViewModel.submitButtonDisable ? 0.6 : 1)
+                      .disabled(joinViewModel.submitButtonDisable)
         }
         .onTapGesture {
             UIApplication.shared.hideKeyboard()

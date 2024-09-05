@@ -58,20 +58,21 @@ struct HomeView: View {
             }, label: {
                 Image(.icHamburger)
             })
-        })
+        })        
         .dialog(isPresented: $showingDialog,
-                currentDate: $timerViewModel.startTime) {
+                currentDate: $timerViewModel.startTime) {            
             Task {
                 guard let studyTime = await remoteConfigManager.getStudyTime() else { return }
                 timerViewModel.send(action: .setTime(studyTime))
                 timerViewModel.send(action: .startButtonTap)
+                calendarViewModel.send(action: .startStudy)
             }
         }
                 .alert(title: "열람실을 다 이용하셨나요?",
                        confirmButtonText: "네",
                        cancleButtonText: "더 이용하기",
                        isPresented: $showCompleteAlert) {
-                    saveData()
+                    saveStudyRecord()
                 }
                        .alert(title: "열람실 이용 시간을 연장할까요?",
                               confirmButtonText: "연장하기",
@@ -83,10 +84,10 @@ struct HomeView: View {
                                   MenuView()
                               })
                               .navigationDestination(isPresented: $showingWebView, destination: {
-                                  WebView(url: Constants.Url.roomStatus)                                  
+                                  WebView(url: Constants.Url.roomStatus)
                               })
                               .onReceive(timerViewModel.$remainingTime.filter { $0 <= 0 }) { _ in
-                                  saveData()
+                                  saveStudyRecord()
                               }.onChange(of: scenePhase, perform: { value in
                                   guard timerViewModel.isStart == true else { return }
                                   
@@ -96,8 +97,17 @@ struct HomeView: View {
                                       timerViewModel.send(action: .enterBackground)
                                   }
                               })
+                              .onChange(of: calendarViewModel.seletedDate, perform: { value in
+                                  guard timerViewModel.isStart == true &&
+                                            Calendar.current.isDateInToday(value)
+                                  else { return }
+                                  
+                                  calendarViewModel.send(action: .startStudy)
+                              })
                               .onAppear {
-                                  LocalNotificationService.shared.requestPermission()
+                                  if LocalNotificationService.shared.authStatus == .notDetermined {
+                                      LocalNotificationService.shared.requestPermission()
+                                  }
                               }
     }
 }
@@ -113,15 +123,22 @@ extension HomeView {
             
             
             if timerViewModel.remainingTime <= Constants.StudyRoomService.firstNotificationTime {
-                CustomButtonOld(action: {
+                HY2Button(title: "열람실 이용 연장",
+                         textColor: Color.Primary.blue100,
+                         fontSize: 16,
+                         style: .roundedSmall) {
                     showTimeExtensionAlert = true
-                }, font: .suite, title: "열람실 이용 연장", titleColor: .white, backgroundColor: .customBlue100, leading: 0, trailing: 0)
+                }
             }
             
-            CustomButtonOld(action: {
+            HY2Button(title: "열람실 이용 종료",
+                     textColor: Color.GrayScale.gray100,
+                     fontSize: 16,
+                     style: .roundedSmall,
+                     backgroundColor: Color.GrayScale.gray600) {
                 showCompleteAlert = true
-            }, font: .suite, title: "열람실 이용 종료", titleColor: .customGray100, backgroundColor: .customGray600, leading: 0, trailing: 0)
-            .padding(.top, 28)
+            }
+                     .padding(.top, 28)
             
             Spacer()
         }
@@ -134,15 +151,19 @@ extension HomeView {
             Spacer()
             
             HStack {
-                CustomButton2(action: {
+                
+                HY2Button(title: "좌석",
+                         style: .background(image: .angularButton01)) {
                     showingWebView = true
-                }, title: "좌석", image: .angularButton01, maxWidth: 69, minHeight: 52)
+                }
+                .frame(maxWidth: 69)
                 
                 Spacer().frame(width: 12)
                 
-                CustomButton2(action: {
+                HY2Button(title: "열람실 이용 시작",
+                         style: .background(image: .angularButton02)) {
                     showingDialog = true
-                }, title: "열람실 이용 시작", image: .angularButton02, maxWidth: .infinity, minHeight: 52)
+                }
             }
             
             Spacer().frame(height: 40)
@@ -152,17 +173,17 @@ extension HomeView {
 
 // MARK: - Helpers
 extension HomeView {
-    func saveData() {
+    func saveStudyRecord() {
         // 타이머 중지
         timerViewModel.send(action: .completeButtonTap)
         
         // 총시간
         let totalTime = timerViewModel.totalTime
-        let data = StudyRoomUsage(date: Date(), duration: totalTime)
+        let studyRecord = StudyRoomUsage(date: Date(), duration: totalTime)
         
         // 캘린더 업데이트
         if let uid = authViewModel.user?.id {
-            calendarViewModel.send(action: .saveButtonTap(data, uid))
+            calendarViewModel.send(action: .saveButtonTap(studyRecord, uid))
         }
     }
 }

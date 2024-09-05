@@ -10,7 +10,7 @@ struct LoginView: View {
             VStack{
                 OnBoardingView()
                 
-                CustomButton(title: "",
+                HY2Button(title: "",
                              style: .background(image: .snsLogin),
                              action: {})
                 .padding(.top, 32)

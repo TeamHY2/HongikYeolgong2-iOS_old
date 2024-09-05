@@ -12,13 +12,14 @@
 		473BF7712C7EB4D0002B7242 /* RemoteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473BF7702C7EB4D0002B7242 /* RemoteConfig.swift */; };
 		473BF7732C7EC1DF002B7242 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473BF7722C7EC1DF002B7242 /* HomeViewModel.swift */; };
 		473BF7752C7EC277002B7242 /* WiseSaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473BF7742C7EC277002B7242 /* WiseSaying.swift */; };
-		473BF7772C7F141B002B7242 /* GoogleService-Info-dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 473BF7762C7F141B002B7242 /* GoogleService-Info-dev.plist */; };
 		473E03692C6AE0B700F3E0FC /* FirestoreEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473E03682C6AE0B700F3E0FC /* FirestoreEndpoint.swift */; };
 		473E036B2C6AE17E00F3E0FC /* FirestoreIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473E036A2C6AE17E00F3E0FC /* FirestoreIdentifiable.swift */; };
 		473E036D2C6AE1B900F3E0FC /* FirestoreServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473E036C2C6AE1B900F3E0FC /* FirestoreServiceError.swift */; };
 		473E036F2C6AE1F100F3E0FC /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473E036E2C6AE1F100F3E0FC /* FirestoreService.swift */; };
 		473E03712C6AE25900F3E0FC /* FirestoreParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473E03702C6AE25900F3E0FC /* FirestoreParser.swift */; };
 		473E03782C6AF20B00F3E0FC /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473E03772C6AF20B00F3E0FC /* Endpoint.swift */; };
+		475237312C8545BD001963B5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4752372F2C8545BD001963B5 /* GoogleService-Info.plist */; };
+		475237332C8547C2001963B5 /* GoogleService-Info-dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 475237322C8547C2001963B5 /* GoogleService-Info-dev.plist */; };
 		475C01142C526D2500FB5556 /* LocalNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475C01132C526D2500FB5556 /* LocalNotificationService.swift */; };
 		4768F20D2C7DA3CC009815FC /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4768F20C2C7DA3CC009815FC /* Color+.swift */; };
 		477017852C63C9D8003F3702 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477017842C63C9D8003F3702 /* UserRepository.swift */; };
@@ -27,7 +28,6 @@
 		4790ECDC2C57EDC9002FCCAF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4790ECDB2C57EDC9002FCCAF /* Constants.swift */; };
 		4790ECDE2C57F9E5002FCCAF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4790ECDD2C57F9E5002FCCAF /* HomeView.swift */; };
 		47A004742C594376000AC842 /* Publisher+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A004732C594376000AC842 /* Publisher+.swift */; };
-		47A7EA772C6276330025594F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 47A7EA762C6276330025594F /* GoogleService-Info.plist */; };
 		47AA66FB2C6E2FCE007CDD2B /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AA66FA2C6E2FCE007CDD2B /* WebView.swift */; };
 		47D07F982C64A8B500F6109F /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D07F972C64A8B500F6109F /* SplashView.swift */; };
 		47D4CEC22C75C8F7005C126B /* TimeInterval+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D4CEC12C75C8F7005C126B /* TimeInterval+.swift */; };
@@ -48,17 +48,14 @@
 		47DA068C2C7F5BF800CC7B92 /* SUITE-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 47DA067C2C7F5BF800CC7B92 /* SUITE-SemiBold.otf */; };
 		47DA068D2C7F5BF800CC7B92 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 47DA067D2C7F5BF800CC7B92 /* Pretendard-SemiBold.otf */; };
 		47DA068E2C7F5BF800CC7B92 /* Pretendard-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 47DA067E2C7F5BF800CC7B92 /* Pretendard-ExtraLight.otf */; };
-		47DA06962C7F686500CC7B92 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DA06952C7F686500CC7B92 /* CustomTextField.swift */; };
-		47DA06982C7F68DC00CC7B92 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DA06972C7F68DC00CC7B92 /* CustomButton.swift */; };
+		47DA06962C7F686500CC7B92 /* HY2TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DA06952C7F686500CC7B92 /* HY2TextField.swift */; };
+		47DA06982C7F68DC00CC7B92 /* HY2Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DA06972C7F68DC00CC7B92 /* HY2Button.swift */; };
 		47DA069A2C7F6D7200CC7B92 /* Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DA06992C7F6D7200CC7B92 /* Picker.swift */; };
 		47E0A8C52C51177B009F1BA9 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E0A8C42C51177B009F1BA9 /* TimerViewModel.swift */; };
 		47E0A8C72C511B72009F1BA9 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E0A8C62C511B72009F1BA9 /* CalendarViewModel.swift */; };
 		5E029B5A2C4157C20091249A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E029B592C4157C20091249A /* User.swift */; };
 		5E029B5F2C4159EC0091249A /* RandomNonceString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E029B5E2C4159EC0091249A /* RandomNonceString.swift */; };
 		5E029B612C415A2D0091249A /* SHA256.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E029B602C415A2D0091249A /* SHA256.swift */; };
-		5E5B0BD32C3289D500936435 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5B0BD22C3289D500936435 /* UIColor+.swift */; };
-		5E5B0BD52C328A1000936435 /* CustomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5B0BD42C328A1000936435 /* CustomText.swift */; };
-		5E5CD43F2C3698A4002CE244 /* CustomButtonOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5CD43E2C3698A4002CE244 /* CustomButtonOld.swift */; };
 		5E5CD4412C369994002CE244 /* UIScreen+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5CD4402C369994002CE244 /* UIScreen+.swift */; };
 		5E89D79A2C35855F00C9CB71 /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E89D7992C35855F00C9CB71 /* Font+.swift */; };
 		5EE304312C3FDCE40002C49E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5EE304302C3FDCE40002C49E /* FirebaseAnalytics */; };
@@ -96,24 +93,21 @@
 		5EE959BA2C7F1151002CD2A2 /* JoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE959B92C7F1151002CD2A2 /* JoinView.swift */; };
 		5EE959BC2C7F115D002CD2A2 /* JoinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE959BB2C7F115D002CD2A2 /* JoinViewModel.swift */; };
 		5EE959BE2C7F39D5002CD2A2 /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE959BD2C7F39D5002CD2A2 /* UIApplication+.swift */; };
-		5EE959C02C7F3A6E002CD2A2 /* TextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE959BF2C7F3A6E002CD2A2 /* TextField+.swift */; };
 		8252CCDC2C40396100690D75 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8252CCDB2C40396100690D75 /* Calendar.swift */; };
 		8252CCDE2C40440600690D75 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8252CCDD2C40440600690D75 /* CalendarCell.swift */; };
 		8252CCE02C404A7300690D75 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8252CCDF2C404A7300690D75 /* Day.swift */; };
 		825665792C35202E0018C799 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825665782C35202E0018C799 /* MenuViewModel.swift */; };
-		825668A52C367ED30066B216 /* CustomNavBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825668A42C367ED30066B216 /* CustomNavBarModifier.swift */; };
-		825668A72C367F130066B216 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825668A62C367F130066B216 /* View+.swift */; };
+		825668A52C367ED30066B216 /* NavBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825668A42C367ED30066B216 /* NavBarModifier.swift */; };
 		825668A92C36855A0066B216 /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825668A82C36855A0066B216 /* UINavigationController+.swift */; };
 		8270C9912C4D48A0000EB06A /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8270C9902C4D48A0000EB06A /* ServiceError.swift */; };
 		8270C9962C4D4AAE000EB06A /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8270C9952C4D4AAE000EB06A /* ViewModelType.swift */; };
 		8274CF3B2C33DBC800FBFA9D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8274CF3A2C33DBC800FBFA9D /* LoginView.swift */; };
 		8274CF3D2C33DE2300FBFA9D /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8274CF3C2C33DE2300FBFA9D /* MenuView.swift */; };
-		827C18C72C48FC5100B4AAEA /* CustomPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827C18C62C48FC5100B4AAEA /* CustomPicker.swift */; };
-		828FF2B32C3E71F1001A4ADE /* DialogModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828FF2B22C3E71F1001A4ADE /* DialogModifier.swift */; };
+		827C18C72C48FC5100B4AAEA /* HY2Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827C18C62C48FC5100B4AAEA /* HY2Picker.swift */; };
+		828FF2B32C3E71F1001A4ADE /* TimePickerDialogModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828FF2B22C3E71F1001A4ADE /* TimePickerDialogModifier.swift */; };
 		82AB4F1D2C3EBF5400787B3B /* AlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AB4F1C2C3EBF5400787B3B /* AlertModifier.swift */; };
 		82AB4F232C3EEE6D00787B3B /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AB4F222C3EEE6D00787B3B /* Date+.swift */; };
 		82B1FE7B2C3BC567002D9163 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B1FE7A2C3BC567002D9163 /* Quote.swift */; };
-		82B1FE812C3C1755002D9163 /* CustomButton2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B1FE802C3C1755002D9163 /* CustomButton2.swift */; };
 		82B1FE832C3C1BCD002D9163 /* TimeLapse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B1FE822C3C1BCD002D9163 /* TimeLapse.swift */; };
 		82D4D6142C327BDC00A92327 /* HongikYeolgong2_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D4D6132C327BDC00A92327 /* HongikYeolgong2_iOSApp.swift */; };
 		82D4D6182C327BDF00A92327 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82D4D6172C327BDF00A92327 /* Assets.xcassets */; };
@@ -127,13 +121,14 @@
 		473BF7702C7EB4D0002B7242 /* RemoteConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfig.swift; sourceTree = "<group>"; };
 		473BF7722C7EC1DF002B7242 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		473BF7742C7EC277002B7242 /* WiseSaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiseSaying.swift; sourceTree = "<group>"; };
-		473BF7762C7F141B002B7242 /* GoogleService-Info-dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-dev.plist"; sourceTree = "<group>"; };
 		473E03682C6AE0B700F3E0FC /* FirestoreEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreEndpoint.swift; sourceTree = "<group>"; };
 		473E036A2C6AE17E00F3E0FC /* FirestoreIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreIdentifiable.swift; sourceTree = "<group>"; };
 		473E036C2C6AE1B900F3E0FC /* FirestoreServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreServiceError.swift; sourceTree = "<group>"; };
 		473E036E2C6AE1F100F3E0FC /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
 		473E03702C6AE25900F3E0FC /* FirestoreParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreParser.swift; sourceTree = "<group>"; };
 		473E03772C6AF20B00F3E0FC /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		4752372F2C8545BD001963B5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		475237322C8547C2001963B5 /* GoogleService-Info-dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info-dev.plist"; path = "../../../Downloads/GoogleService-Info-dev.plist"; sourceTree = "<group>"; };
 		475C01132C526D2500FB5556 /* LocalNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationService.swift; sourceTree = "<group>"; };
 		4768F20C2C7DA3CC009815FC /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		477017842C63C9D8003F3702 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
@@ -142,7 +137,6 @@
 		4790ECDB2C57EDC9002FCCAF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4790ECDD2C57F9E5002FCCAF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		47A004732C594376000AC842 /* Publisher+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+.swift"; sourceTree = "<group>"; };
-		47A7EA762C6276330025594F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		47AA66FA2C6E2FCE007CDD2B /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		47D07F972C64A8B500F6109F /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		47D4CEC12C75C8F7005C126B /* TimeInterval+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+.swift"; sourceTree = "<group>"; };
@@ -163,17 +157,14 @@
 		47DA067C2C7F5BF800CC7B92 /* SUITE-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SUITE-SemiBold.otf"; path = "../../../../Font/SUITE-SemiBold.otf"; sourceTree = "<group>"; };
 		47DA067D2C7F5BF800CC7B92 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Pretendard-SemiBold.otf"; path = "../../../../Font/Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		47DA067E2C7F5BF800CC7B92 /* Pretendard-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Pretendard-ExtraLight.otf"; path = "../../../../Font/Pretendard-ExtraLight.otf"; sourceTree = "<group>"; };
-		47DA06952C7F686500CC7B92 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
-		47DA06972C7F68DC00CC7B92 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		47DA06952C7F686500CC7B92 /* HY2TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HY2TextField.swift; sourceTree = "<group>"; };
+		47DA06972C7F68DC00CC7B92 /* HY2Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HY2Button.swift; sourceTree = "<group>"; };
 		47DA06992C7F6D7200CC7B92 /* Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picker.swift; sourceTree = "<group>"; };
 		47E0A8C42C51177B009F1BA9 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		47E0A8C62C511B72009F1BA9 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		5E029B592C4157C20091249A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5E029B5E2C4159EC0091249A /* RandomNonceString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNonceString.swift; sourceTree = "<group>"; };
 		5E029B602C415A2D0091249A /* SHA256.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHA256.swift; sourceTree = "<group>"; };
-		5E5B0BD22C3289D500936435 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
-		5E5B0BD42C328A1000936435 /* CustomText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomText.swift; sourceTree = "<group>"; };
-		5E5CD43E2C3698A4002CE244 /* CustomButtonOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonOld.swift; sourceTree = "<group>"; };
 		5E5CD4402C369994002CE244 /* UIScreen+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+.swift"; sourceTree = "<group>"; };
 		5E89D7712C356E5500C9CB71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5E89D7992C35855F00C9CB71 /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
@@ -186,24 +177,21 @@
 		5EE959B92C7F1151002CD2A2 /* JoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinView.swift; sourceTree = "<group>"; };
 		5EE959BB2C7F115D002CD2A2 /* JoinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewModel.swift; sourceTree = "<group>"; };
 		5EE959BD2C7F39D5002CD2A2 /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
-		5EE959BF2C7F3A6E002CD2A2 /* TextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+.swift"; sourceTree = "<group>"; };
 		8252CCDB2C40396100690D75 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		8252CCDD2C40440600690D75 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		8252CCDF2C404A7300690D75 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		825665782C35202E0018C799 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
-		825668A42C367ED30066B216 /* CustomNavBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBarModifier.swift; sourceTree = "<group>"; };
-		825668A62C367F130066B216 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
+		825668A42C367ED30066B216 /* NavBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarModifier.swift; sourceTree = "<group>"; };
 		825668A82C36855A0066B216 /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
 		8270C9902C4D48A0000EB06A /* ServiceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		8270C9952C4D4AAE000EB06A /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		8274CF3A2C33DBC800FBFA9D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8274CF3C2C33DE2300FBFA9D /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
-		827C18C62C48FC5100B4AAEA /* CustomPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPicker.swift; sourceTree = "<group>"; };
-		828FF2B22C3E71F1001A4ADE /* DialogModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogModifier.swift; sourceTree = "<group>"; };
+		827C18C62C48FC5100B4AAEA /* HY2Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HY2Picker.swift; sourceTree = "<group>"; };
+		828FF2B22C3E71F1001A4ADE /* TimePickerDialogModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerDialogModifier.swift; sourceTree = "<group>"; };
 		82AB4F1C2C3EBF5400787B3B /* AlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModifier.swift; sourceTree = "<group>"; };
 		82AB4F222C3EEE6D00787B3B /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		82B1FE7A2C3BC567002D9163 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
-		82B1FE802C3C1755002D9163 /* CustomButton2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton2.swift; sourceTree = "<group>"; };
 		82B1FE822C3C1BCD002D9163 /* TimeLapse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLapse.swift; sourceTree = "<group>"; };
 		82D4D6102C327BDC00A92327 /* HongikYeolgong2-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HongikYeolgong2-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82D4D6132C327BDC00A92327 /* HongikYeolgong2_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HongikYeolgong2_iOSApp.swift; sourceTree = "<group>"; };
@@ -289,6 +277,59 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		4795E8632C88642600363468 /* Basic */ = {
+			isa = PBXGroup;
+			children = (
+				47DA069B2C7F6D7900CC7B92 /* Picker */,
+				47DA06922C7F681900CC7B92 /* Button */,
+				47DA06912C7F680C00CC7B92 /* TextField */,
+			);
+			path = Basic;
+			sourceTree = "<group>";
+		};
+		4795E8642C88643100363468 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				4795E8672C88660900363468 /* Alert */,
+				4795E8662C88649E00363468 /* NabBar */,
+				4795E8652C88644000363468 /* TimePicker */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		4795E8652C88644000363468 /* TimePicker */ = {
+			isa = PBXGroup;
+			children = (
+				828FF2B22C3E71F1001A4ADE /* TimePickerDialogModifier.swift */,
+			);
+			path = TimePicker;
+			sourceTree = "<group>";
+		};
+		4795E8662C88649E00363468 /* NabBar */ = {
+			isa = PBXGroup;
+			children = (
+				825668A42C367ED30066B216 /* NavBarModifier.swift */,
+			);
+			path = NabBar;
+			sourceTree = "<group>";
+		};
+		4795E8672C88660900363468 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				82AB4F1C2C3EBF5400787B3B /* AlertModifier.swift */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
+		4795E8682C8866ED00363468 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				5E89D7992C35855F00C9CB71 /* Font+.swift */,
+				4768F20C2C7DA3CC009815FC /* Color+.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
 		47D4CEC02C757748005C126B /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,7 +341,7 @@
 		47DA06912C7F680C00CC7B92 /* TextField */ = {
 			isa = PBXGroup;
 			children = (
-				47DA06952C7F686500CC7B92 /* CustomTextField.swift */,
+				47DA06952C7F686500CC7B92 /* HY2TextField.swift */,
 			);
 			path = TextField;
 			sourceTree = "<group>";
@@ -308,7 +349,7 @@
 		47DA06922C7F681900CC7B92 /* Button */ = {
 			isa = PBXGroup;
 			children = (
-				47DA06972C7F68DC00CC7B92 /* CustomButton.swift */,
+				47DA06972C7F68DC00CC7B92 /* HY2Button.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -316,6 +357,7 @@
 		47DA069B2C7F6D7900CC7B92 /* Picker */ = {
 			isa = PBXGroup;
 			children = (
+				827C18C62C48FC5100B4AAEA /* HY2Picker.swift */,
 				47DA06992C7F6D7200CC7B92 /* Picker.swift */,
 			);
 			path = Picker;
@@ -343,13 +385,9 @@
 		5E5B0BC52C32868200936435 /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
-				47DA069B2C7F6D7900CC7B92 /* Picker */,
-				47DA06922C7F681900CC7B92 /* Button */,
-				47DA06912C7F680C00CC7B92 /* TextField */,
-				5E5B0BD42C328A1000936435 /* CustomText.swift */,
-				5E5CD43E2C3698A4002CE244 /* CustomButtonOld.swift */,
-				82B1FE802C3C1755002D9163 /* CustomButton2.swift */,
-				827C18C62C48FC5100B4AAEA /* CustomPicker.swift */,
+				4795E8682C8866ED00363468 /* Foundation */,
+				4795E8642C88643100363468 /* Components */,
+				4795E8632C88642600363468 /* Basic */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -357,17 +395,12 @@
 		5E5B0BC62C3286A600936435 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				5E89D7992C35855F00C9CB71 /* Font+.swift */,
-				5E5B0BD22C3289D500936435 /* UIColor+.swift */,
 				5E5CD4402C369994002CE244 /* UIScreen+.swift */,
-				825668A62C367F130066B216 /* View+.swift */,
 				825668A82C36855A0066B216 /* UINavigationController+.swift */,
 				82AB4F222C3EEE6D00787B3B /* Date+.swift */,
 				47A004732C594376000AC842 /* Publisher+.swift */,
 				47D4CEC12C75C8F7005C126B /* TimeInterval+.swift */,
-				4768F20C2C7DA3CC009815FC /* Color+.swift */,
 				5EE959BD2C7F39D5002CD2A2 /* UIApplication+.swift */,
-				5EE959BF2C7F3A6E002CD2A2 /* TextField+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -449,7 +482,6 @@
 			children = (
 				82E15A6F2C48216E004951BE /* DIContainer */,
 				5E5B0BC62C3286A600936435 /* Extension */,
-				825668A12C3672C80066B216 /* Modifiers */,
 				8270C9952C4D4AAE000EB06A /* ViewModelType.swift */,
 				4790ECDB2C57EDC9002FCCAF /* Constants.swift */,
 			);
@@ -517,16 +549,6 @@
 			path = Calendar;
 			sourceTree = "<group>";
 		};
-		825668A12C3672C80066B216 /* Modifiers */ = {
-			isa = PBXGroup;
-			children = (
-				825668A42C367ED30066B216 /* CustomNavBarModifier.swift */,
-				828FF2B22C3E71F1001A4ADE /* DialogModifier.swift */,
-				82AB4F1C2C3EBF5400787B3B /* AlertModifier.swift */,
-			);
-			path = Modifiers;
-			sourceTree = "<group>";
-		};
 		8270C9922C4D48B6000EB06A /* Repository */ = {
 			isa = PBXGroup;
 			children = (
@@ -556,8 +578,8 @@
 			isa = PBXGroup;
 			children = (
 				5E89D7712C356E5500C9CB71 /* Info.plist */,
-				47A7EA762C6276330025594F /* GoogleService-Info.plist */,
-				473BF7762C7F141B002B7242 /* GoogleService-Info-dev.plist */,
+				4752372F2C8545BD001963B5 /* GoogleService-Info.plist */,
+				475237322C8547C2001963B5 /* GoogleService-Info-dev.plist */,
 				5E8F934C2C416DF300ECE6C5 /* HongikYeolgong2-iOSDebug.entitlements */,
 				5EE304952C401A160002C49E /* HongikYeolgong2-iOSRelease.entitlements */,
 				82E15A4E2C481D02004951BE /* Resources */,
@@ -693,15 +715,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				47DA068E2C7F5BF800CC7B92 /* Pretendard-ExtraLight.otf in Resources */,
-				473BF7772C7F141B002B7242 /* GoogleService-Info-dev.plist in Resources */,
 				82D4D61B2C327BDF00A92327 /* Preview Assets.xcassets in Resources */,
 				47DA06832C7F5BF800CC7B92 /* Pretendard-ExtraBold.otf in Resources */,
 				47DA06892C7F5BF800CC7B92 /* Pretendard-Medium.otf in Resources */,
 				47DA06802C7F5BF800CC7B92 /* Pretendard-Bold.otf in Resources */,
-				47A7EA772C6276330025594F /* GoogleService-Info.plist in Resources */,
 				82D4D6182C327BDF00A92327 /* Assets.xcassets in Resources */,
 				47DA068D2C7F5BF800CC7B92 /* Pretendard-SemiBold.otf in Resources */,
 				47DA06812C7F5BF800CC7B92 /* SUITE-Light.otf in Resources */,
+				475237332C8547C2001963B5 /* GoogleService-Info-dev.plist in Resources */,
 				47D72F642C7D76C2001B514D /* Launch Screen.storyboard in Resources */,
 				47DA06882C7F5BF800CC7B92 /* SUITE-Bold.otf in Resources */,
 				47DA06862C7F5BF800CC7B92 /* SUITE-Medium.otf in Resources */,
@@ -713,6 +734,7 @@
 				47DA068A2C7F5BF800CC7B92 /* SUITE-Heavy.otf in Resources */,
 				47DA06852C7F5BF800CC7B92 /* Pretendard-Black.otf in Resources */,
 				47DA067F2C7F5BF800CC7B92 /* Pretendard-Light.otf in Resources */,
+				475237312C8545BD001963B5 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -723,7 +745,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E5CD43F2C3698A4002CE244 /* CustomButtonOld.swift in Sources */,
 				473E036F2C6AE1F100F3E0FC /* FirestoreService.swift in Sources */,
 				825668A92C36855A0066B216 /* UINavigationController+.swift in Sources */,
 				478442CC2C76344000C62E89 /* OnBoardingView.swift in Sources */,
@@ -740,26 +761,22 @@
 				473812372C5E622700C86215 /* StudyRoomRepository.swift in Sources */,
 				4790ECDC2C57EDC9002FCCAF /* Constants.swift in Sources */,
 				47DA069A2C7F6D7200CC7B92 /* Picker.swift in Sources */,
-				827C18C72C48FC5100B4AAEA /* CustomPicker.swift in Sources */,
+				827C18C72C48FC5100B4AAEA /* HY2Picker.swift in Sources */,
 				5EE959BE2C7F39D5002CD2A2 /* UIApplication+.swift in Sources */,
 				47D4CEC22C75C8F7005C126B /* TimeInterval+.swift in Sources */,
 				8270C9912C4D48A0000EB06A /* ServiceError.swift in Sources */,
-				825668A52C367ED30066B216 /* CustomNavBarModifier.swift in Sources */,
-				825668A72C367F130066B216 /* View+.swift in Sources */,
+				825668A52C367ED30066B216 /* NavBarModifier.swift in Sources */,
 				4790ECDE2C57F9E5002FCCAF /* HomeView.swift in Sources */,
 				47E0A8C52C51177B009F1BA9 /* TimerViewModel.swift in Sources */,
-				5EE959C02C7F3A6E002CD2A2 /* TextField+.swift in Sources */,
 				825665792C35202E0018C799 /* MenuViewModel.swift in Sources */,
 				8252CCDE2C40440600690D75 /* CalendarCell.swift in Sources */,
 				5E89D79A2C35855F00C9CB71 /* Font+.swift in Sources */,
 				473E036B2C6AE17E00F3E0FC /* FirestoreIdentifiable.swift in Sources */,
-				82B1FE812C3C1755002D9163 /* CustomButton2.swift in Sources */,
 				477017852C63C9D8003F3702 /* UserRepository.swift in Sources */,
-				5E5B0BD32C3289D500936435 /* UIColor+.swift in Sources */,
 				473BF76F2C7E9C17002B7242 /* Haptic.swift in Sources */,
 				473BF7712C7EB4D0002B7242 /* RemoteConfig.swift in Sources */,
 				82D4D6142C327BDC00A92327 /* HongikYeolgong2_iOSApp.swift in Sources */,
-				47DA06962C7F686500CC7B92 /* CustomTextField.swift in Sources */,
+				47DA06962C7F686500CC7B92 /* HY2TextField.swift in Sources */,
 				473E036D2C6AE1B900F3E0FC /* FirestoreServiceError.swift in Sources */,
 				473BF7752C7EC277002B7242 /* WiseSaying.swift in Sources */,
 				82AB4F232C3EEE6D00787B3B /* Date+.swift in Sources */,
@@ -772,9 +789,9 @@
 				5EE304A02C4023960002C49E /* InitialView.swift in Sources */,
 				5E029B5F2C4159EC0091249A /* RandomNonceString.swift in Sources */,
 				47AA66FB2C6E2FCE007CDD2B /* WebView.swift in Sources */,
-				47DA06982C7F68DC00CC7B92 /* CustomButton.swift in Sources */,
+				47DA06982C7F68DC00CC7B92 /* HY2Button.swift in Sources */,
 				473E03782C6AF20B00F3E0FC /* Endpoint.swift in Sources */,
-				828FF2B32C3E71F1001A4ADE /* DialogModifier.swift in Sources */,
+				828FF2B32C3E71F1001A4ADE /* TimePickerDialogModifier.swift in Sources */,
 				4768F20D2C7DA3CC009815FC /* Color+.swift in Sources */,
 				5E029B612C415A2D0091249A /* SHA256.swift in Sources */,
 				8274CF3B2C33DBC800FBFA9D /* LoginView.swift in Sources */,
@@ -783,7 +800,6 @@
 				473BF7732C7EC1DF002B7242 /* HomeViewModel.swift in Sources */,
 				82B1FE832C3C1BCD002D9163 /* TimeLapse.swift in Sources */,
 				5EE959BC2C7F115D002CD2A2 /* JoinViewModel.swift in Sources */,
-				5E5B0BD52C328A1000936435 /* CustomText.swift in Sources */,
 				82E15A712C48218B004951BE /* DependencyWrapper.swift in Sources */,
 				5EE3049D2C4022990002C49E /* AuthenticationService.swift in Sources */,
 			);
@@ -921,7 +937,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1.1.0;
+				CURRENT_PROJECT_VERSION = 1.1.1;
 				DEVELOPMENT_ASSET_PATHS = "\"HongikYeolgong2-iOS/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = P4D4ZQC4YF;
@@ -935,6 +951,7 @@
 				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -965,7 +982,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1.1.0;
+				CURRENT_PROJECT_VERSION = 1.1.1;
 				DEVELOPMENT_ASSET_PATHS = "\"HongikYeolgong2-iOS/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = P4D4ZQC4YF;
@@ -979,6 +996,7 @@
 				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

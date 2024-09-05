@@ -21,13 +21,9 @@ struct HongikYeolgong2_iOSApp: App {
                 .environmentObject(calendarViewModel)
                 .environmentObject(remoteConfigManager)
                 .environmentObject(homeViewModel)
-                .onAppear {
-                    Task {
-                        await LocalNotificationService.shared.checkPermission()
-                    }
-                }
-            //            JoinView()
-            //                .environmentObject(authViewModel)
+                .task {
+                    await LocalNotificationService.shared.checkPermission()
+                }            
         }
     }
 }
@@ -43,6 +39,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         let options: FirebaseOptions? = FirebaseOptions.init(contentsOfFile: filePath)
         
         FirebaseApp.configure(options: options!)
+                
         setupDependency()
         return true
     }

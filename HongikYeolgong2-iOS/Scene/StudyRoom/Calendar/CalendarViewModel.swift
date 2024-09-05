@@ -15,6 +15,7 @@ final class CalendarViewModel: ViewModelType {
         case saveButtonTap(StudyRoomUsage, String)
         case moveButtonTap(MoveType)
         case getCalendar(String)
+        case startStudy
     }
     
     // MARK: - Action
@@ -55,6 +56,8 @@ extension CalendarViewModel {
             changeMonth(moveType)
         case .saveButtonTap(let data, let uid):
             updateStudyRoomRecord(data, uid: uid)
+        case .startStudy:
+            startStudy()
         }
     }
     
@@ -62,7 +65,7 @@ extension CalendarViewModel {
      캘린더달력 변경시 액션을 받아서 선택한달로 업데이트해준다
      캘린더데이터 리스트(studyRoomUsageList)에 저장된 데이터로 새로운 날짜데이터를 생성한다.
      */
-    func changeMonth(_ moveType: MoveType) {
+    private func changeMonth(_ moveType: MoveType) {
         var currentDate: Date!
         
         switch moveType {
@@ -97,7 +100,7 @@ extension CalendarViewModel {
      캘린더에 표시될 데이터를 새롭게 요청한다
      새롭게 받아온 데이터를 studyRoomUsageList에 저장한다
      */
-    func fetchStudyRoomRecords(for date: Date, uid: String) {
+    private func fetchStudyRoomRecords(for date: Date, uid: String) {
         
         studyRoomRepository.fetchStudyRoomUsageRecords(with: uid)
             .receive(on: DispatchQueue.main)
@@ -126,7 +129,7 @@ extension CalendarViewModel {
      새로운 캘린더데이터를(studyRoomUsage)를 서버에 업로드한다
      새롭게 받아온 데이터를 studyRoomUsageList에 저장한다
      */
-    func updateStudyRoomRecord(_ studyRoomInfo: StudyRoomUsage, uid: String) {
+    private func updateStudyRoomRecord(_ studyRoomInfo: StudyRoomUsage, uid: String) {
         studyRoomRepository.updateStudyRoomUsageRecord(studyRoomInfo, with: uid)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] (completion) in
@@ -145,6 +148,20 @@ extension CalendarViewModel {
                 todayStudyRoomUsageCount = studyRoomUsageCount
             })
             .store(in: &subscriptions)
+    }
+    
+    private func startStudy() {
+        // 공부를 시작하자마자 캘린더 색상변경
+        // 서버에서 데이터를 다시 받아오면 임시로 추가한 기록은 사라진다
+        let components = calendar.dateComponents([.year, .month, .day], from: .now)
+        guard let currentDay = components.day else { return }
+        currentMonth = currentMonth.map { day in
+            guard day.dayOfNumber == String(currentDay) else { return day }
+            
+            var newDay = day
+            newDay.usageRecord.append(.init(date: .now, duration: 0))
+            return newDay
+        }
     }
 }
 

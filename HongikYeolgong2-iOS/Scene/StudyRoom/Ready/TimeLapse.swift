@@ -13,14 +13,15 @@ struct TimeLapse: View {
     let endTime: Date
     let timeRemaining: Double
     let usageCount: Int
-//    let totalTime: Double
     
     var body: some View {
         VStack(spacing: 0) {
             HStack {
                 VStack(alignment: .leading, spacing: 0) {
                     HStack(alignment: .center) {
-                        CustomText(font: .suite, title: "Start", textColor: .customGray300, textWeight: .medium, textSize: 12)
+                        Text("Start")
+                            .font(.suite(size: 12, weight: .medium))
+                            .foregroundStyle(Color.GrayScale.gray300)
                         
                         Image(.arrow)
                             .offset(y: -4)
@@ -30,14 +31,21 @@ struct TimeLapse: View {
                         .frame(height: UIScreen.UIHeight(11))
                     
                     HStack(alignment: .firstTextBaseline)  {
-                        CustomText(font: .suite, title: startTime.getHourMinutes(), textColor: .customGray100, textWeight: .extrabold, textSize: 30)
-                        CustomText(font: .suite, title: startTime.getDaypart(), textColor: .customGray100, textWeight: .medium, textSize: 14)
+                        Text(startTime.getHourMinutes())
+                            .font(.suite(size: 30, weight: .extrabold))
+                            .foregroundStyle(Color.GrayScale.gray100)
+                        
+                        Text(startTime.getDaypart())
+                            .font(.suite(size: 14, weight: .medium))
+                            .foregroundStyle(Color.GrayScale.gray100)
                     }
                 }
                 
                 VStack(alignment: .leading, spacing: 0) {
                     HStack {
-                        CustomText(font: .suite, title: "End", textColor: .customGray300, textWeight: .medium, textSize: 12)
+                        Text("End")
+                            .font(.suite(size: 12, weight: .medium))
+                            .foregroundColor(Color.GrayScale.gray300)
                         
                         Image(.arrow)
                             .offset(y: -4)
@@ -48,8 +56,13 @@ struct TimeLapse: View {
                         .frame(height: UIScreen.UIHeight(11))
                     
                     HStack(alignment: .firstTextBaseline) {
-                        CustomText(font: .suite, title: endTime.getHourMinutes(), textColor: .customGray100, textWeight: .extrabold, textSize: 30)
-                        CustomText(font: .suite, title: endTime.getDaypart(), textColor: .customGray100, textWeight: .medium, textSize: 14)
+                        Text(endTime.getHourMinutes())
+                            .font(.suite(size: 30, weight: .extrabold))
+                            .foregroundStyle(Color.GrayScale.gray100)
+                        
+                        Text(endTime.getDaypart())
+                            .font(.suite(size: 14, weight: .medium))
+                            .foregroundStyle(Color.GrayScale.gray100)
                     }
                 }
                 
@@ -61,16 +74,19 @@ struct TimeLapse: View {
             
             // 남은 시간
             HStack {
-                CustomText(font: .suite, title: "Time Left", textColor: .customGray300, textWeight: .medium, textSize: 12)
+                Text("Time Left")
+                    .font(.suite(size: 12, weight: .medium))
+                    .foregroundStyle(Color.GrayScale.gray300)
                 Spacer()
             }
             
             Spacer()
                 .frame(height: UIScreen.UIHeight(11))
             
-            HStack {
-                CustomText(font: .suite, title: timeRemaining.getFullTimeString(), textColor: timeRemaining <= (30) ? .customYellow100 : .customGray100, textWeight: .extrabold, textSize: 30)
-                
+            HStack {                
+                Text(timeRemaining.getFullTimeString())
+                    .font(.suite(size: 30, weight: .extrabold))
+                    .foregroundStyle(timeRemaining <= (30) ? Color.Secondary.yellow100 : Color.GrayScale.gray100)
                 Spacer()
                 
                 HStack {
@@ -91,10 +107,5 @@ extension Double {
         formatter.zeroFormattingBehavior = .pad
         let formattedString = formatter.string(from: TimeInterval(self))!
         return formattedString
-    }
-    
-}
-
-#Preview {
-    TimeLapse(startTime: Date(), endTime: Date(), timeRemaining: 0, usageCount: 0)
+    }    
 }

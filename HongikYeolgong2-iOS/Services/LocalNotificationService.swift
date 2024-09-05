@@ -12,17 +12,17 @@ import UIKit
 class LocalNotificationService {
     
     static let shared = LocalNotificationService()
-    private let center = UNUserNotificationCenter.current()    
+    
+    private let center = UNUserNotificationCenter.current()
+    private let isOnAlarm = UserDefaults.standard.bool(forKey: "isOnAlarm")
+    
     var authStatus:  UNAuthorizationStatus = .denied
     
     func requestPermission() {
         center
             .requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
                 if granted == true && error == nil {
-#if DEBUG
-                    print("Notification permission granted!")
-                    //                    UserDefaults.standard.set(true, forKey: "isOnAlarm")
-#endif
+                    UserDefaults.standard.set(true, forKey: "isOnAlarm")
                 }
             }
     }
@@ -33,7 +33,6 @@ class LocalNotificationService {
     }
     
     func addNotification(interval: TimeInterval) {
-        let isOnAlarm = UserDefaults.standard.bool(forKey: "isOnAlarm")
         
         if isOnAlarm {
             let noti1 = UNMutableNotificationContent()
