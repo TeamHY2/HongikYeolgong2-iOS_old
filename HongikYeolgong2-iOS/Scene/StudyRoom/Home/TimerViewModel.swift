@@ -25,21 +25,18 @@ final class TimerViewModel: ViewModelType {
     
     // Input
     enum Action {
-        case startButtonTap
+        case startButtonTap(defaultTime: TimeInterval, currentTime: Date)
         case completeButtonTap
         case addTimeButtonTap
         case enterBackground
-        case enterFoureground
-        case setTime(Int)
+        case enterFoureground        
     }
     
     // Binding
     func send(action: Action) {
         switch action {
-        case .setTime(let studyTime):
-            setStudyTime(studyTime: studyTime)
-        case .startButtonTap:
-            startStudy()
+        case .startButtonTap(let defaultTime, let currentTime):
+            startStudy(defaultTime, currentTime)
         case .completeButtonTap:
             saveTime()
         case .addTimeButtonTap:
@@ -51,13 +48,13 @@ final class TimerViewModel: ViewModelType {
         }
     }
     
-    func setStudyTime(studyTime: Int) {
-        self.studyTime = .init(hours: studyTime)
-    }
-    
-    func startStudy() {
+    func startStudy(_ defaultTime: TimeInterval,_ currentTime: Date) {
         isStart = true
-        endTime = startTime + studyTime
+        self.studyTime = defaultTime
+        
+        let timeDiff = Int(Date().timeIntervalSince(currentTime) / 60)
+
+        endTime = startTime + studyTime - TimeInterval(minutes: timeDiff)
         remainingTime = endTime.timeIntervalSince(startTime)
         
         // Notification에 추가

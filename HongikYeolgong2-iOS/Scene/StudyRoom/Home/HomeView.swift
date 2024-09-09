@@ -62,9 +62,9 @@ struct HomeView: View {
         .dialog(isPresented: $showingDialog,
                 currentDate: $timerViewModel.startTime) {            
             Task {
-                guard let studyTime = await remoteConfigManager.getStudyTime() else { return }
-                timerViewModel.send(action: .setTime(studyTime))
-                timerViewModel.send(action: .startButtonTap)
+                guard let studyTime = await remoteConfigManager.getStudyTime() else { return }  
+                let defaultTime: TimeInterval = .init(hours: studyTime)
+                timerViewModel.send(action: .startButtonTap(defaultTime: defaultTime, currentTime: timerViewModel.startTime))
                 calendarViewModel.send(action: .startStudy)
             }
         }
