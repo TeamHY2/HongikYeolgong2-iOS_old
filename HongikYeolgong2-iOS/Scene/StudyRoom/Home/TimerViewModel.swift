@@ -19,17 +19,16 @@ final class TimerViewModel: ViewModelType {
     private let timer = Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()
     
     private var checkTime: Date?
+    private var timeDiffSeconds: TimeInterval = .init(seconds: 0)
+    private var studyTime: TimeInterval = .init(hours: 6)
     private var subscription: AnyCancellable?
-    
-    var studyTime: TimeInterval = .init(hours: 6)
-    
     // Input
     enum Action {
         case startButtonTap(defaultTime: TimeInterval, currentTime: Date)
         case completeButtonTap
         case addTimeButtonTap
         case enterBackground
-        case enterFoureground        
+        case enterFoureground
     }
     
     // Binding
@@ -49,12 +48,17 @@ final class TimerViewModel: ViewModelType {
     }
     
     func startStudy(_ defaultTime: TimeInterval,_ currentTime: Date) {
-        isStart = true
-        self.studyTime = defaultTime
+        let timeDiff = Int(Date().timeIntervalSince(currentTime))
+        let timeDiffMinutes: TimeInterval = .init(minutes: timeDiff / 60)
+        let timeDiffSeconds: TimeInterval = .init(seconds: (timeDiff / 60) * 60)
         
-        let timeDiff = Int(Date().timeIntervalSince(currentTime) / 60)
-
-        endTime = startTime + studyTime - TimeInterval(minutes: timeDiff)
+        self.isStart = true
+        self.studyTime = defaultTime
+        self.startTime = currentTime
+        
+        self.timeDiffSeconds = timeDiffSeconds
+        
+        endTime = startTime + studyTime - timeDiffMinutes
         remainingTime = endTime.timeIntervalSince(startTime)
         
         // Notification에 추가
@@ -73,8 +77,9 @@ final class TimerViewModel: ViewModelType {
     func saveTime() {
         subscription?.cancel()
         isStart = false
-        totalTime = endTime.timeIntervalSince(startTime) - remainingTime
+        totalTime = endTime.timeIntervalSince(startTime) - remainingTime + timeDiffSeconds
         LocalNotificationService.shared.removeNotification()
+        endTime = nil
     }
     
     func addTime() {
